@@ -1,0 +1,85 @@
+aid: cloudsmith
+name: Cloudsmith
+description: >-
+  Cloudsmith is a cloud-native, universal package management platform
+  providing fully managed, geo-replicated artifact repositories for over 30
+  package formats (Docker, npm, Maven, NuGet, PyPI, RubyGems, RPM, Deb, Helm,
+  Cargo, Go, Composer, Conan, Conda, Vagrant, Raw, and more). The Cloudsmith
+  REST API (v1) at api.cloudsmith.io exposes operations for organizations,
+  repositories, packages, files, entitlements, vulnerabilities, webhooks,
+  audit logs, metrics, quotas, deny policies, namespaces, distros, formats,
+  recycle bin, storage regions, and broadcasts. Authentication is via API
+  key passed in the Authorization header as "token YOUR_API_KEY".
+type: Index
+image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+url: https://raw.githubusercontent.com/api-evangelist/cloudsmith/refs/heads/main/apis.yml
+created: '2024-01-01'
+modified: '2026-04-25'
+specificationVersion: '0.19'
+x-type: company
+tags:
+  - Artifact Management
+  - DevOps
+  - DevSecOps
+  - Distribution
+  - Package Management
+  - Registry
+  - Repository
+  - Software Supply Chain
+  - Universal
+  - Vulnerability Scanning
+apis:
+  - aid: cloudsmith:v1
+    name: Cloudsmith API (v1)
+    tags:
+      - REST
+      - Packages
+      - Repositories
+      - Entitlements
+      - Webhooks
+    image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+    baseURL: https://api.cloudsmith.io
+    humanURL: https://docs.cloudsmith.com/api
+    properties:
+      - url: https://docs.cloudsmith.com/api
+        type: Documentation
+      - url: https://api.cloudsmith.io/?format=openapi
+        type: OpenAPI
+      - url: openapi/cloudsmith-openapi.json
+        type: OpenAPI
+      - url: https://help.cloudsmith.io/reference/getting-started-with-the-api
+        type: Getting Started
+    description: >-
+      The Cloudsmith REST API (v1) covers 217+ endpoints across 22 tag
+      groups including repos, orgs, packages, entitlements, files, user,
+      webhooks, quota, vulnerabilities, metrics, audit-log, distros,
+      formats, namespaces, recycle-bin, storage-regions, badges,
+      broadcasts, bulk-action, rates, status. Default page size is 30
+      items, max 500. Authentication is via personal or service-account
+      API key in the Authorization header.
+common:
+  - type: Website
+    url: https://cloudsmith.com/
+  - type: Documentation
+    url: https://docs.cloudsmith.com/
+  - type: API Reference
+    url: https://docs.cloudsmith.com/api
+  - type: Getting Started
+    url: https://help.cloudsmith.io/reference/getting-started-with-the-api
+  - type: Status
+    url: https://status.cloudsmith.io/
+  - type: Privacy Policy
+    url: https://cloudsmith.com/legal/privacy-notice/
+  - type: GitHub
+    url: https://github.com/cloudsmith-io
+  - type: OpenAPI
+    url: openapi/cloudsmith-openapi.json
+  - type: JSON-LD
+    url: json-ld/cloudsmith-context.jsonld
+  - type: Spectral
+    url: rules/cloudsmith-rules.yml
+  - type: Naftiko Capabilities
+    url: capabilities/package-management.yaml
+maintainers:
+  - FN: Kin Lane
+    email: kinlane@gmail.com

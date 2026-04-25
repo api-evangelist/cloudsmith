@@ -1,0 +1,361 @@
+# Naftiko capabilities profile for the Cloudsmith API (v1).
+# Maps verbs against the Cloudsmith REST surface for orgs, repos,
+# packages, files, entitlements, webhooks, vulnerabilities, audit log,
+# metrics, quota, namespaces, distros, formats, and recycle bin.
+provider: cloudsmith
+name: Cloudsmith Package Management
+description: >-
+  Capabilities span managing organizations and repositories, uploading and
+  searching packages and files, controlling access via entitlement tokens,
+  delivering webhooks for repo events, scanning for vulnerabilities,
+  reading audit logs and metrics, enforcing quotas and deny policies,
+  exploring namespaces, formats and distros, and recovering deleted
+  packages from the recycle bin. Authentication is via API key in
+  "Authorization: token <key>"; pagination uses page/page_size.
+capabilities:
+  - id: cloudsmith.orgs.list
+    name: List organizations
+    description: List organizations the authenticated user belongs to.
+    api: cloudsmith:v1
+    outputs:
+      - items
+
+  - id: cloudsmith.orgs.get
+    name: Get organization
+    description: Fetch organization details by slug.
+    api: cloudsmith:v1
+    inputs:
+      - org
+    outputs:
+      - organization
+
+  - id: cloudsmith.repos.list
+    name: List repositories
+    description: List repositories visible to the calling token, optionally scoped to an owner.
+    api: cloudsmith:v1
+    inputs:
+      - owner
+      - page
+      - page_size
+    outputs:
+      - items
+
+  - id: cloudsmith.repos.create
+    name: Create repository
+    description: Create a new repository under an owner with a given format and storage region.
+    api: cloudsmith:v1
+    inputs:
+      - owner
+      - name
+      - slug
+      - repository_type
+      - storage_region
+    outputs:
+      - repository
+
+  - id: cloudsmith.repos.update
+    name: Update repository
+    description: Update repository settings.
+    api: cloudsmith:v1
+    inputs:
+      - owner
+      - repo
+      - settings
+    outputs:
+      - repository
+
+  - id: cloudsmith.repos.delete
+    name: Delete repository
+    description: Delete a repository by owner/slug.
+    api: cloudsmith:v1
+    inputs:
+      - owner
+      - repo
+    outputs:
+      - status
+
+  - id: cloudsmith.packages.list
+    name: List packages
+    description: List packages in a repository with optional query and sort.
+    api: cloudsmith:v1
+    inputs:
+      - owner
+      - repo
+      - query
+      - sort
+      - page
+      - page_size
+    outputs:
+      - items
+
+  - id: cloudsmith.packages.get
+    name: Get package
+    description: Fetch a package by identifier.
+    api: cloudsmith:v1
+    inputs:
+      - owner
+      - repo
+      - identifier
+    outputs:
+      - package
+
+  - id: cloudsmith.packages.upload
+    name: Upload package
+    description: Upload a new package of a given format (docker, npm, maven, nuget, pypi, etc.).
+    api: cloudsmith:v1
+    inputs:
+      - owner
+      - repo
+      - format
+      - file
+      - metadata
+    outputs:
+      - package
+
+  - id: cloudsmith.packages.delete
+    name: Delete package
+    description: Delete a package by identifier (move to recycle bin).
+    api: cloudsmith:v1
+    inputs:
+      - owner
+      - repo
+      - identifier
+    outputs:
+      - status
+
+  - id: cloudsmith.packages.copy
+    name: Copy package
+    description: Copy a package to another repository.
+    api: cloudsmith:v1
+    inputs:
+      - owner
+      - repo
+      - identifier
+      - destination
+    outputs:
+      - package
+
+  - id: cloudsmith.packages.move
+    name: Move package
+    description: Move a package to another repository.
+    api: cloudsmith:v1
+    inputs:
+      - owner
+      - repo
+      - identifier
+      - destination
+    outputs:
+      - package
+
+  - id: cloudsmith.packages.tag
+    name: Tag package
+    description: Add or replace tags on a package.
+    api: cloudsmith:v1
+    inputs:
+      - owner
+      - repo
+      - identifier
+      - tags
+    outputs:
+      - package
+
+  - id: cloudsmith.files.upload-init
+    name: Initialize file upload
+    description: Begin a multipart file upload to a repository.
+    api: cloudsmith:v1
+    inputs:
+      - owner
+      - repo
+      - filename
+      - filesize
+    outputs:
+      - identifier
+      - upload_url
+
+  - id: cloudsmith.files.upload-complete
+    name: Complete file upload
+    description: Finalize a multipart upload and turn the parts into a stored file.
+    api: cloudsmith:v1
+    inputs:
+      - owner
+      - repo
+      - identifier
+    outputs:
+      - file
+
+  - id: cloudsmith.entitlements.list
+    name: List entitlements
+    description: List entitlement tokens for a repository.
+    api: cloudsmith:v1
+    inputs:
+      - owner
+      - repo
+    outputs:
+      - items
+
+  - id: cloudsmith.entitlements.create
+    name: Create entitlement
+    description: Create a new entitlement token with optional limits and metadata.
+    api: cloudsmith:v1
+    inputs:
+      - owner
+      - repo
+      - name
+      - limit_num_downloads
+      - limit_date_range_from
+      - limit_date_range_to
+    outputs:
+      - entitlement
+
+  - id: cloudsmith.entitlements.refresh
+    name: Refresh entitlement
+    description: Rotate the token value for an entitlement.
+    api: cloudsmith:v1
+    inputs:
+      - owner
+      - repo
+      - identifier
+    outputs:
+      - entitlement
+
+  - id: cloudsmith.entitlements.disable
+    name: Disable entitlement
+    description: Disable an entitlement so its token no longer authenticates.
+    api: cloudsmith:v1
+    inputs:
+      - owner
+      - repo
+      - identifier
+    outputs:
+      - status
+
+  - id: cloudsmith.entitlements.enable
+    name: Enable entitlement
+    description: Enable a previously disabled entitlement.
+    api: cloudsmith:v1
+    inputs:
+      - owner
+      - repo
+      - identifier
+    outputs:
+      - status
+
+  - id: cloudsmith.webhooks.list
+    name: List webhooks
+    description: List webhooks configured for a repository.
+    api: cloudsmith:v1
+    inputs:
+      - owner
+      - repo
+    outputs:
+      - items
+
+  - id: cloudsmith.webhooks.create
+    name: Create webhook
+    description: Create a webhook delivering events to a target URL.
+    api: cloudsmith:v1
+    inputs:
+      - owner
+      - repo
+      - target_url
+      - events
+      - secret_value
+    outputs:
+      - webhook
+
+  - id: cloudsmith.webhooks.delete
+    name: Delete webhook
+    description: Remove a webhook by identifier.
+    api: cloudsmith:v1
+    inputs:
+      - owner
+      - repo
+      - identifier
+    outputs:
+      - status
+
+  - id: cloudsmith.vulnerabilities.list
+    name: List vulnerability findings
+    description: List vulnerabilities detected in repository packages.
+    api: cloudsmith:v1
+    inputs:
+      - owner
+      - repo
+      - severity
+    outputs:
+      - items
+
+  - id: cloudsmith.audit.list
+    name: List audit log
+    description: Read audit events for an organization or repository.
+    api: cloudsmith:v1
+    inputs:
+      - owner
+      - repo
+      - from_date
+      - to_date
+    outputs:
+      - items
+
+  - id: cloudsmith.metrics.packages
+    name: Package metrics
+    description: Fetch download counts and bandwidth metrics for repository packages.
+    api: cloudsmith:v1
+    inputs:
+      - owner
+      - repo
+      - period
+    outputs:
+      - metrics
+
+  - id: cloudsmith.metrics.entitlements
+    name: Entitlement metrics
+    description: Fetch usage metrics keyed by entitlement token.
+    api: cloudsmith:v1
+    inputs:
+      - owner
+      - repo
+      - period
+    outputs:
+      - metrics
+
+  - id: cloudsmith.quota.get
+    name: Get quota
+    description: Read storage and bandwidth quotas for an organization.
+    api: cloudsmith:v1
+    inputs:
+      - org
+    outputs:
+      - quota
+
+  - id: cloudsmith.distros.list
+    name: List supported distros
+    description: List operating-system distros and versions Cloudsmith targets for OS-package formats.
+    api: cloudsmith:v1
+    outputs:
+      - items
+
+  - id: cloudsmith.formats.list
+    name: List supported formats
+    description: List package formats Cloudsmith supports (Docker, npm, Maven, etc.).
+    api: cloudsmith:v1
+    outputs:
+      - items
+
+  - id: cloudsmith.recycle-bin.restore
+    name: Restore from recycle bin
+    description: Restore a deleted package from the recycle bin.
+    api: cloudsmith:v1
+    inputs:
+      - owner
+      - repo
+      - identifier
+    outputs:
+      - package
+
+  - id: cloudsmith.user.self
+    name: Get current user
+    description: Return the profile of the authenticated user.
+    api: cloudsmith:v1
+    outputs:
+      - user

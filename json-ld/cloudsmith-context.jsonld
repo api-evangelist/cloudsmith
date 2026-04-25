@@ -1,0 +1,135 @@
+{
+  "@context": {
+    "@version": 1.1,
+    "cloudsmith": "https://api.cloudsmith.io/ns/",
+    "schema": "https://schema.org/",
+    "spdx": "http://spdx.org/rdf/terms#",
+    "xsd": "http://www.w3.org/2001/XMLSchema#",
+    "dcterms": "http://purl.org/dc/terms/",
+
+    "Organization": {
+      "@id": "cloudsmith:Organization",
+      "@context": {
+        "slug": "schema:identifier",
+        "name": "schema:name",
+        "country": "schema:addressCountry",
+        "createdAt": {
+          "@id": "dcterms:created",
+          "@type": "xsd:dateTime"
+        }
+      }
+    },
+
+    "Repository": {
+      "@id": "cloudsmith:Repository",
+      "@context": {
+        "slug": "schema:identifier",
+        "name": "schema:name",
+        "namespace": "cloudsmith:namespace",
+        "repositoryType": "cloudsmith:repository_type",
+        "storageRegion": "cloudsmith:storage_region",
+        "indexFiles": "cloudsmith:index_files",
+        "createdAt": {
+          "@id": "dcterms:created",
+          "@type": "xsd:dateTime"
+        }
+      }
+    },
+
+    "Package": {
+      "@id": "cloudsmith:Package",
+      "@context": {
+        "identifier": "schema:identifier",
+        "name": "schema:name",
+        "version": "schema:softwareVersion",
+        "format": "cloudsmith:format",
+        "filename": "cloudsmith:filename",
+        "size": "schema:contentSize",
+        "checksumSha256": "spdx:checksum",
+        "downloadCount": "cloudsmith:downloads",
+        "uploadedAt": {
+          "@id": "dcterms:created",
+          "@type": "xsd:dateTime"
+        }
+      }
+    },
+
+    "File": {
+      "@id": "cloudsmith:File",
+      "@context": {
+        "identifier": "schema:identifier",
+        "filename": "cloudsmith:filename",
+        "size": "schema:contentSize",
+        "checksumSha256": "spdx:checksum"
+      }
+    },
+
+    "Entitlement": {
+      "@id": "cloudsmith:Entitlement",
+      "@context": {
+        "identifier": "schema:identifier",
+        "name": "schema:name",
+        "token": "cloudsmith:token",
+        "isActive": "cloudsmith:is_active",
+        "limitDateRangeFrom": "cloudsmith:limit_date_from",
+        "limitDateRangeTo": "cloudsmith:limit_date_to",
+        "limitNumDownloads": "cloudsmith:limit_num_downloads"
+      }
+    },
+
+    "Webhook": {
+      "@id": "cloudsmith:Webhook",
+      "@context": {
+        "identifier": "schema:identifier",
+        "targetUrl": {
+          "@id": "schema:url",
+          "@type": "@id"
+        },
+        "events": {
+          "@id": "cloudsmith:events",
+          "@container": "@set"
+        },
+        "isActive": "cloudsmith:is_active"
+      }
+    },
+
+    "AuditEvent": {
+      "@id": "cloudsmith:AuditEvent",
+      "@context": {
+        "identifier": "schema:identifier",
+        "actor": "schema:agent",
+        "event": "schema:action",
+        "objectKind": "cloudsmith:object_kind",
+        "objectIdentifier": "cloudsmith:object_identifier",
+        "createdAt": {
+          "@id": "dcterms:created",
+          "@type": "xsd:dateTime"
+        }
+      }
+    },
+
+    "Vulnerability": {
+      "@id": "cloudsmith:Vulnerability",
+      "@context": {
+        "identifier": "schema:identifier",
+        "cveId": "cloudsmith:cve_id",
+        "severity": "cloudsmith:severity",
+        "score": "cloudsmith:score",
+        "package": "cloudsmith:package_id"
+      }
+    },
+
+    "Distro": {
+      "@id": "cloudsmith:Distro",
+      "@context": {
+        "slug": "schema:identifier",
+        "name": "schema:name",
+        "format": "cloudsmith:format",
+        "versions": {
+          "@id": "cloudsmith:versions",
+          "@container": "@list"
+        }
+      }
+    }
+  }
+}
