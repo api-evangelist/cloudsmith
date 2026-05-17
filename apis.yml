@@ -16,7 +16,7 @@ url: https://raw.githubusercontent.com/api-evangelist/cloudsmith/refs/heads/main
 created: '2024-01-01'
 modified: '2026-04-25'
 specificationVersion: '0.19'
-x-type: company
+kind: company
 tags:
   - Artifact Management
   - DevOps
@@ -48,7 +48,7 @@ apis:
       - url: openapi/cloudsmith-openapi.json
         type: OpenAPI
       - url: https://help.cloudsmith.io/reference/getting-started-with-the-api
-        type: Getting Started
+        type: GettingStarted
     description: >-
       The Cloudsmith REST API (v1) covers 217+ endpoints across 22 tag
       groups including repos, orgs, packages, entitlements, files, user,
@@ -62,19 +62,19 @@ common:
     url: https://cloudsmith.com/
   - type: Documentation
     url: https://docs.cloudsmith.com/
-  - type: API Reference
+  - type: APIReference
     url: https://docs.cloudsmith.com/api
-  - type: Getting Started
+  - type: GettingStarted
     url: https://help.cloudsmith.io/reference/getting-started-with-the-api
-  - type: Status
+  - type: StatusPage
     url: https://status.cloudsmith.io/
-  - type: Privacy Policy
+  - type: PrivacyPolicy
     url: https://cloudsmith.com/legal/privacy-notice/
   - type: GitHub
     url: https://github.com/cloudsmith-io
   - type: OpenAPI
     url: openapi/cloudsmith-openapi.json
-  - type: JSON-LD
+  - type: JSONLD
     url: json-ld/cloudsmith-context.jsonld
   - type: Spectral
     url: rules/cloudsmith-rules.yml
