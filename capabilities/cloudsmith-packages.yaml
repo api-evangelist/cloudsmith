@@ -1,0 +1,2873 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Cloudsmith API (v1) — packages
+  description: 'Cloudsmith API (v1) — packages. 71 operations. Lead operation: Get a list of all packages associated with
+    repository.. Self-contained Naftiko capability covering one Cloudsmith business surface.'
+  tags:
+  - Cloudsmith
+  - packages
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    CLOUDSMITH_API_KEY: CLOUDSMITH_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: cloudsmith-packages
+    baseUri: https://api.cloudsmith.io
+    description: Cloudsmith API (v1) — packages business capability. Self-contained, no shared references.
+    resources:
+    - name: packages-owner-repo
+      path: /packages/{owner}/{repo}/
+      operations:
+      - name: packageslist
+        method: GET
+        description: Get a list of all packages associated with repository.
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: page
+          in: query
+          type: integer
+          description: A page number within the paginated result set.
+        - name: page_size
+          in: query
+          type: integer
+          description: Number of results to return per page.
+        - name: query
+          in: query
+          type: string
+          description: A search term for querying names, filenames, versions, distributions, architectures, formats or statuses
+            of packages.
+        - name: sort
+          in: query
+          type: string
+          description: A field for sorting objects in ascending or descending order.
+    - name: packages-owner-repo-groups
+      path: /packages/{owner}/{repo}/groups/
+      operations:
+      - name: packagesgroupslist
+        method: GET
+        description: Return a list of Package Groups in a repository.
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: page
+          in: query
+          type: integer
+          description: A page number within the paginated result set.
+        - name: page_size
+          in: query
+          type: integer
+          description: Number of results to return per page.
+        - name: group_by
+          in: query
+          type: string
+          description: 'A field to group packages by. Available options: name, backend_kind.'
+        - name: hide_subcomponents
+          in: query
+          type: boolean
+          description: Whether to hide packages which are subcomponents of another package in the results
+        - name: query
+          in: query
+          type: string
+          description: A search term for querying names, filenames, versions, distributions, architectures, formats, or statuses
+            of packages.
+        - name: sort
+          in: query
+          type: string
+          description: 'A field for sorting objects in ascending or descending order. Use `-` prefix for descending order
+            (e.g., `-name`). Available options: name, count, num_downloads'
+    - name: packages-owner-repo-upload-alpine
+      path: /packages/{owner}/{repo}/upload/alpine/
+      operations:
+      - name: packagesuploadalpine
+        method: POST
+        description: Create a new Alpine package
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: data
+          in: body
+          type: string
+    - name: packages-owner-repo-upload-cargo
+      path: /packages/{owner}/{repo}/upload/cargo/
+      operations:
+      - name: packagesuploadcargo
+        method: POST
+        description: Create a new Cargo package
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: data
+          in: body
+          type: string
+    - name: packages-owner-repo-upload-cocoapods
+      path: /packages/{owner}/{repo}/upload/cocoapods/
+      operations:
+      - name: packagesuploadcocoapods
+        method: POST
+        description: Create a new CocoaPods package
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: data
+          in: body
+          type: string
+    - name: packages-owner-repo-upload-composer
+      path: /packages/{owner}/{repo}/upload/composer/
+      operations:
+      - name: packagesuploadcomposer
+        method: POST
+        description: Create a new Composer package
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: data
+          in: body
+          type: string
+    - name: packages-owner-repo-upload-conan
+      path: /packages/{owner}/{repo}/upload/conan/
+      operations:
+      - name: packagesuploadconan
+        method: POST
+        description: Create a new Conan package
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: data
+          in: body
+          type: string
+    - name: packages-owner-repo-upload-conda
+      path: /packages/{owner}/{repo}/upload/conda/
+      operations:
+      - name: packagesuploadconda
+        method: POST
+        description: Create a new Conda package
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: data
+          in: body
+          type: string
+    - name: packages-owner-repo-upload-cran
+      path: /packages/{owner}/{repo}/upload/cran/
+      operations:
+      - name: packagesuploadcran
+        method: POST
+        description: Create a new CRAN package
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: data
+          in: body
+          type: string
+    - name: packages-owner-repo-upload-dart
+      path: /packages/{owner}/{repo}/upload/dart/
+      operations:
+      - name: packagesuploaddart
+        method: POST
+        description: Create a new Dart package
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: data
+          in: body
+          type: string
+    - name: packages-owner-repo-upload-deb
+      path: /packages/{owner}/{repo}/upload/deb/
+      operations:
+      - name: packagesuploaddeb
+        method: POST
+        description: Create a new Debian package
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: data
+          in: body
+          type: string
+    - name: packages-owner-repo-upload-docker
+      path: /packages/{owner}/{repo}/upload/docker/
+      operations:
+      - name: packagesuploaddocker
+        method: POST
+        description: Create a new Docker package
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: data
+          in: body
+          type: string
+    - name: packages-owner-repo-upload-generic
+      path: /packages/{owner}/{repo}/upload/generic/
+      operations:
+      - name: packagesuploadgeneric
+        method: POST
+        description: Create a new Generic package
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: data
+          in: body
+          type: string
+    - name: packages-owner-repo-upload-go
+      path: /packages/{owner}/{repo}/upload/go/
+      operations:
+      - name: packagesuploadgo
+        method: POST
+        description: Create a new Go package
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: data
+          in: body
+          type: string
+    - name: packages-owner-repo-upload-helm
+      path: /packages/{owner}/{repo}/upload/helm/
+      operations:
+      - name: packagesuploadhelm
+        method: POST
+        description: Create a new Helm package
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: data
+          in: body
+          type: string
+    - name: packages-owner-repo-upload-hex
+      path: /packages/{owner}/{repo}/upload/hex/
+      operations:
+      - name: packagesuploadhex
+        method: POST
+        description: Create a new Hex package
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: data
+          in: body
+          type: string
+    - name: packages-owner-repo-upload-huggingface
+      path: /packages/{owner}/{repo}/upload/huggingface/
+      operations:
+      - name: packagesuploadhuggingface
+        method: POST
+        description: Create a new HuggingFace package
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: data
+          in: body
+          type: string
+    - name: packages-owner-repo-upload-luarocks
+      path: /packages/{owner}/{repo}/upload/luarocks/
+      operations:
+      - name: packagesuploadluarocks
+        method: POST
+        description: Create a new LuaRocks package
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: data
+          in: body
+          type: string
+    - name: packages-owner-repo-upload-maven
+      path: /packages/{owner}/{repo}/upload/maven/
+      operations:
+      - name: packagesuploadmaven
+        method: POST
+        description: Create a new Maven package
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: data
+          in: body
+          type: string
+    - name: packages-owner-repo-upload-mcp
+      path: /packages/{owner}/{repo}/upload/mcp/
+      operations:
+      - name: packagesuploadmcp
+        method: POST
+        description: Create a new MCP package
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: data
+          in: body
+          type: string
+    - name: packages-owner-repo-upload-npm
+      path: /packages/{owner}/{repo}/upload/npm/
+      operations:
+      - name: packagesuploadnpm
+        method: POST
+        description: Create a new npm package
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: data
+          in: body
+          type: string
+    - name: packages-owner-repo-upload-nuget
+      path: /packages/{owner}/{repo}/upload/nuget/
+      operations:
+      - name: packagesuploadnuget
+        method: POST
+        description: Create a new NuGet package
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: data
+          in: body
+          type: string
+    - name: packages-owner-repo-upload-p2
+      path: /packages/{owner}/{repo}/upload/p2/
+      operations:
+      - name: packagesuploadp2
+        method: POST
+        description: Create a new P2 package
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: data
+          in: body
+          type: string
+    - name: packages-owner-repo-upload-python
+      path: /packages/{owner}/{repo}/upload/python/
+      operations:
+      - name: packagesuploadpython
+        method: POST
+        description: Create a new Python package
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: data
+          in: body
+          type: string
+    - name: packages-owner-repo-upload-raw
+      path: /packages/{owner}/{repo}/upload/raw/
+      operations:
+      - name: packagesuploadraw
+        method: POST
+        description: Create a new Raw package
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: data
+          in: body
+          type: string
+    - name: packages-owner-repo-upload-rpm
+      path: /packages/{owner}/{repo}/upload/rpm/
+      operations:
+      - name: packagesuploadrpm
+        method: POST
+        description: Create a new RedHat package
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: data
+          in: body
+          type: string
+    - name: packages-owner-repo-upload-ruby
+      path: /packages/{owner}/{repo}/upload/ruby/
+      operations:
+      - name: packagesuploadruby
+        method: POST
+        description: Create a new Ruby package
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: data
+          in: body
+          type: string
+    - name: packages-owner-repo-upload-swift
+      path: /packages/{owner}/{repo}/upload/swift/
+      operations:
+      - name: packagesuploadswift
+        method: POST
+        description: Create a new Swift package
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: data
+          in: body
+          type: string
+    - name: packages-owner-repo-upload-terraform
+      path: /packages/{owner}/{repo}/upload/terraform/
+      operations:
+      - name: packagesuploadterraform
+        method: POST
+        description: Create a new Terraform package
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: data
+          in: body
+          type: string
+    - name: packages-owner-repo-upload-vagrant
+      path: /packages/{owner}/{repo}/upload/vagrant/
+      operations:
+      - name: packagesuploadvagrant
+        method: POST
+        description: Create a new Vagrant package
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: data
+          in: body
+          type: string
+    - name: packages-owner-repo-upload-vsx
+      path: /packages/{owner}/{repo}/upload/vsx/
+      operations:
+      - name: packagesuploadvsx
+        method: POST
+        description: Create a new VSX package
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: data
+          in: body
+          type: string
+    - name: packages-owner-repo-validate-upload-alpine
+      path: /packages/{owner}/{repo}/validate-upload/alpine/
+      operations:
+      - name: packagesvalidateuploadalpine
+        method: POST
+        description: Validate parameters for create Alpine package
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: data
+          in: body
+          type: string
+    - name: packages-owner-repo-validate-upload-cargo
+      path: /packages/{owner}/{repo}/validate-upload/cargo/
+      operations:
+      - name: packagesvalidateuploadcargo
+        method: POST
+        description: Validate parameters for create Cargo package
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: data
+          in: body
+          type: string
+    - name: packages-owner-repo-validate-upload-cocoapods
+      path: /packages/{owner}/{repo}/validate-upload/cocoapods/
+      operations:
+      - name: packagesvalidateuploadcocoapods
+        method: POST
+        description: Validate parameters for create CocoaPods package
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: data
+          in: body
+          type: string
+    - name: packages-owner-repo-validate-upload-composer
+      path: /packages/{owner}/{repo}/validate-upload/composer/
+      operations:
+      - name: packagesvalidateuploadcomposer
+        method: POST
+        description: Validate parameters for create Composer package
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: data
+          in: body
+          type: string
+    - name: packages-owner-repo-validate-upload-conan
+      path: /packages/{owner}/{repo}/validate-upload/conan/
+      operations:
+      - name: packagesvalidateuploadconan
+        method: POST
+        description: Validate parameters for create Conan package
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: data
+          in: body
+          type: string
+    - name: packages-owner-repo-validate-upload-conda
+      path: /packages/{owner}/{repo}/validate-upload/conda/
+      operations:
+      - name: packagesvalidateuploadconda
+        method: POST
+        description: Validate parameters for create Conda package
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: data
+          in: body
+          type: string
+    - name: packages-owner-repo-validate-upload-cran
+      path: /packages/{owner}/{repo}/validate-upload/cran/
+      operations:
+      - name: packagesvalidateuploadcran
+        method: POST
+        description: Validate parameters for create CRAN package
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: data
+          in: body
+          type: string
+    - name: packages-owner-repo-validate-upload-dart
+      path: /packages/{owner}/{repo}/validate-upload/dart/
+      operations:
+      - name: packagesvalidateuploaddart
+        method: POST
+        description: Validate parameters for create Dart package
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: data
+          in: body
+          type: string
+    - name: packages-owner-repo-validate-upload-deb
+      path: /packages/{owner}/{repo}/validate-upload/deb/
+      operations:
+      - name: packagesvalidateuploaddeb
+        method: POST
+        description: Validate parameters for create Debian package
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: data
+          in: body
+          type: string
+    - name: packages-owner-repo-validate-upload-docker
+      path: /packages/{owner}/{repo}/validate-upload/docker/
+      operations:
+      - name: packagesvalidateuploaddocker
+        method: POST
+        description: Validate parameters for create Docker package
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: data
+          in: body
+          type: string
+    - name: packages-owner-repo-validate-upload-generic
+      path: /packages/{owner}/{repo}/validate-upload/generic/
+      operations:
+      - name: packagesvalidateuploadgeneric
+        method: POST
+        description: Validate parameters for create Generic package
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: data
+          in: body
+          type: string
+    - name: packages-owner-repo-validate-upload-go
+      path: /packages/{owner}/{repo}/validate-upload/go/
+      operations:
+      - name: packagesvalidateuploadgo
+        method: POST
+        description: Validate parameters for create Go package
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: data
+          in: body
+          type: string
+    - name: packages-owner-repo-validate-upload-helm
+      path: /packages/{owner}/{repo}/validate-upload/helm/
+      operations:
+      - name: packagesvalidateuploadhelm
+        method: POST
+        description: Validate parameters for create Helm package
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: data
+          in: body
+          type: string
+    - name: packages-owner-repo-validate-upload-hex
+      path: /packages/{owner}/{repo}/validate-upload/hex/
+      operations:
+      - name: packagesvalidateuploadhex
+        method: POST
+        description: Validate parameters for create Hex package
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: data
+          in: body
+          type: string
+    - name: packages-owner-repo-validate-upload-huggingface
+      path: /packages/{owner}/{repo}/validate-upload/huggingface/
+      operations:
+      - name: packagesvalidateuploadhuggingface
+        method: POST
+        description: Validate parameters for create HuggingFace package
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: data
+          in: body
+          type: string
+    - name: packages-owner-repo-validate-upload-luarocks
+      path: /packages/{owner}/{repo}/validate-upload/luarocks/
+      operations:
+      - name: packagesvalidateuploadluarocks
+        method: POST
+        description: Validate parameters for create LuaRocks package
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: data
+          in: body
+          type: string
+    - name: packages-owner-repo-validate-upload-maven
+      path: /packages/{owner}/{repo}/validate-upload/maven/
+      operations:
+      - name: packagesvalidateuploadmaven
+        method: POST
+        description: Validate parameters for create Maven package
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: data
+          in: body
+          type: string
+    - name: packages-owner-repo-validate-upload-mcp
+      path: /packages/{owner}/{repo}/validate-upload/mcp/
+      operations:
+      - name: packagesvalidateuploadmcp
+        method: POST
+        description: Validate parameters for create MCP package
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: data
+          in: body
+          type: string
+    - name: packages-owner-repo-validate-upload-npm
+      path: /packages/{owner}/{repo}/validate-upload/npm/
+      operations:
+      - name: packagesvalidateuploadnpm
+        method: POST
+        description: Validate parameters for create npm package
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: data
+          in: body
+          type: string
+    - name: packages-owner-repo-validate-upload-nuget
+      path: /packages/{owner}/{repo}/validate-upload/nuget/
+      operations:
+      - name: packagesvalidateuploadnuget
+        method: POST
+        description: Validate parameters for create NuGet package
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: data
+          in: body
+          type: string
+    - name: packages-owner-repo-validate-upload-p2
+      path: /packages/{owner}/{repo}/validate-upload/p2/
+      operations:
+      - name: packagesvalidateuploadp2
+        method: POST
+        description: Validate parameters for create P2 package
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: data
+          in: body
+          type: string
+    - name: packages-owner-repo-validate-upload-python
+      path: /packages/{owner}/{repo}/validate-upload/python/
+      operations:
+      - name: packagesvalidateuploadpython
+        method: POST
+        description: Validate parameters for create Python package
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: data
+          in: body
+          type: string
+    - name: packages-owner-repo-validate-upload-raw
+      path: /packages/{owner}/{repo}/validate-upload/raw/
+      operations:
+      - name: packagesvalidateuploadraw
+        method: POST
+        description: Validate parameters for create Raw package
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: data
+          in: body
+          type: string
+    - name: packages-owner-repo-validate-upload-rpm
+      path: /packages/{owner}/{repo}/validate-upload/rpm/
+      operations:
+      - name: packagesvalidateuploadrpm
+        method: POST
+        description: Validate parameters for create RedHat package
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: data
+          in: body
+          type: string
+    - name: packages-owner-repo-validate-upload-ruby
+      path: /packages/{owner}/{repo}/validate-upload/ruby/
+      operations:
+      - name: packagesvalidateuploadruby
+        method: POST
+        description: Validate parameters for create Ruby package
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: data
+          in: body
+          type: string
+    - name: packages-owner-repo-validate-upload-swift
+      path: /packages/{owner}/{repo}/validate-upload/swift/
+      operations:
+      - name: packagesvalidateuploadswift
+        method: POST
+        description: Validate parameters for create Swift package
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: data
+          in: body
+          type: string
+    - name: packages-owner-repo-validate-upload-terraform
+      path: /packages/{owner}/{repo}/validate-upload/terraform/
+      operations:
+      - name: packagesvalidateuploadterraform
+        method: POST
+        description: Validate parameters for create Terraform package
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: data
+          in: body
+          type: string
+    - name: packages-owner-repo-validate-upload-vagrant
+      path: /packages/{owner}/{repo}/validate-upload/vagrant/
+      operations:
+      - name: packagesvalidateuploadvagrant
+        method: POST
+        description: Validate parameters for create Vagrant package
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: data
+          in: body
+          type: string
+    - name: packages-owner-repo-validate-upload-vsx
+      path: /packages/{owner}/{repo}/validate-upload/vsx/
+      operations:
+      - name: packagesvalidateuploadvsx
+        method: POST
+        description: Validate parameters for create VSX package
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: data
+          in: body
+          type: string
+    - name: packages-owner-repo-identifier
+      path: /packages/{owner}/{repo}/{identifier}/
+      operations:
+      - name: packagesread
+        method: GET
+        description: Get a specific package in a repository.
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+      - name: packagesdelete
+        method: DELETE
+        description: Delete a specific package in a repository.
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: packages-owner-repo-identifier-copy
+      path: /packages/{owner}/{repo}/{identifier}/copy/
+      operations:
+      - name: packagescopy
+        method: POST
+        description: Copy a package to another repository.
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: data
+          in: body
+          type: string
+    - name: packages-owner-repo-identifier-dependencies
+      path: /packages/{owner}/{repo}/{identifier}/dependencies/
+      operations:
+      - name: packagesdependencies
+        method: GET
+        description: Get the list of dependencies for a package. Transitive dependencies are included where supported.
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: packages-owner-repo-identifier-move
+      path: /packages/{owner}/{repo}/{identifier}/move/
+      operations:
+      - name: packagesmove
+        method: POST
+        description: Move a package to another repository.
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: data
+          in: body
+          type: string
+    - name: packages-owner-repo-identifier-quarantine
+      path: /packages/{owner}/{repo}/{identifier}/quarantine/
+      operations:
+      - name: packagesquarantine
+        method: POST
+        description: Quarantine or release a package.
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: data
+          in: body
+          type: string
+    - name: packages-owner-repo-identifier-resync
+      path: /packages/{owner}/{repo}/{identifier}/resync/
+      operations:
+      - name: packagesresync
+        method: POST
+        description: Schedule a package for resynchronisation.
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: packages-owner-repo-identifier-scan
+      path: /packages/{owner}/{repo}/{identifier}/scan/
+      operations:
+      - name: packagesscan
+        method: POST
+        description: Schedule a package for scanning.
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: packages-owner-repo-identifier-status
+      path: /packages/{owner}/{repo}/{identifier}/status/
+      operations:
+      - name: packagesstatus
+        method: GET
+        description: Get the synchronization status for a package.
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: packages-owner-repo-identifier-tag
+      path: /packages/{owner}/{repo}/{identifier}/tag/
+      operations:
+      - name: packagestag
+        method: POST
+        description: Add/Replace/Remove tags for a package.
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: data
+          in: body
+          type: string
+    - name: packages-owner-repo-identifier-update-license
+      path: /packages/{owner}/{repo}/{identifier}/update-license/
+      operations:
+      - name: packagesupdatelicense
+        method: PATCH
+        description: Update the license for a package.
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: data
+          in: body
+          type: string
+  exposes:
+  - type: rest
+    namespace: cloudsmith-packages-rest
+    port: 8080
+    description: REST adapter for Cloudsmith API (v1) — packages. One Spectral-compliant resource per consumed operation,
+      prefixed with /v1.
+    resources:
+    - path: /v1/packages/{owner}/{repo}
+      name: packages-owner-repo
+      description: REST surface for packages-owner-repo.
+      operations:
+      - method: GET
+        name: packageslist
+        description: Get a list of all packages associated with repository.
+        call: cloudsmith-packages.packageslist
+        with:
+          page: rest.page
+          page_size: rest.page_size
+          query: rest.query
+          sort: rest.sort
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/packages/{owner}/{repo}/groups
+      name: packages-owner-repo-groups
+      description: REST surface for packages-owner-repo-groups.
+      operations:
+      - method: GET
+        name: packagesgroupslist
+        description: Return a list of Package Groups in a repository.
+        call: cloudsmith-packages.packagesgroupslist
+        with:
+          page: rest.page
+          page_size: rest.page_size
+          group_by: rest.group_by
+          hide_subcomponents: rest.hide_subcomponents
+          query: rest.query
+          sort: rest.sort
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/packages/{owner}/{repo}/upload/alpine
+      name: packages-owner-repo-upload-alpine
+      description: REST surface for packages-owner-repo-upload-alpine.
+      operations:
+      - method: POST
+        name: packagesuploadalpine
+        description: Create a new Alpine package
+        call: cloudsmith-packages.packagesuploadalpine
+        with:
+          data: rest.data
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/packages/{owner}/{repo}/upload/cargo
+      name: packages-owner-repo-upload-cargo
+      description: REST surface for packages-owner-repo-upload-cargo.
+      operations:
+      - method: POST
+        name: packagesuploadcargo
+        description: Create a new Cargo package
+        call: cloudsmith-packages.packagesuploadcargo
+        with:
+          data: rest.data
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/packages/{owner}/{repo}/upload/cocoapods
+      name: packages-owner-repo-upload-cocoapods
+      description: REST surface for packages-owner-repo-upload-cocoapods.
+      operations:
+      - method: POST
+        name: packagesuploadcocoapods
+        description: Create a new CocoaPods package
+        call: cloudsmith-packages.packagesuploadcocoapods
+        with:
+          data: rest.data
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/packages/{owner}/{repo}/upload/composer
+      name: packages-owner-repo-upload-composer
+      description: REST surface for packages-owner-repo-upload-composer.
+      operations:
+      - method: POST
+        name: packagesuploadcomposer
+        description: Create a new Composer package
+        call: cloudsmith-packages.packagesuploadcomposer
+        with:
+          data: rest.data
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/packages/{owner}/{repo}/upload/conan
+      name: packages-owner-repo-upload-conan
+      description: REST surface for packages-owner-repo-upload-conan.
+      operations:
+      - method: POST
+        name: packagesuploadconan
+        description: Create a new Conan package
+        call: cloudsmith-packages.packagesuploadconan
+        with:
+          data: rest.data
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/packages/{owner}/{repo}/upload/conda
+      name: packages-owner-repo-upload-conda
+      description: REST surface for packages-owner-repo-upload-conda.
+      operations:
+      - method: POST
+        name: packagesuploadconda
+        description: Create a new Conda package
+        call: cloudsmith-packages.packagesuploadconda
+        with:
+          data: rest.data
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/packages/{owner}/{repo}/upload/cran
+      name: packages-owner-repo-upload-cran
+      description: REST surface for packages-owner-repo-upload-cran.
+      operations:
+      - method: POST
+        name: packagesuploadcran
+        description: Create a new CRAN package
+        call: cloudsmith-packages.packagesuploadcran
+        with:
+          data: rest.data
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/packages/{owner}/{repo}/upload/dart
+      name: packages-owner-repo-upload-dart
+      description: REST surface for packages-owner-repo-upload-dart.
+      operations:
+      - method: POST
+        name: packagesuploaddart
+        description: Create a new Dart package
+        call: cloudsmith-packages.packagesuploaddart
+        with:
+          data: rest.data
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/packages/{owner}/{repo}/upload/deb
+      name: packages-owner-repo-upload-deb
+      description: REST surface for packages-owner-repo-upload-deb.
+      operations:
+      - method: POST
+        name: packagesuploaddeb
+        description: Create a new Debian package
+        call: cloudsmith-packages.packagesuploaddeb
+        with:
+          data: rest.data
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/packages/{owner}/{repo}/upload/docker
+      name: packages-owner-repo-upload-docker
+      description: REST surface for packages-owner-repo-upload-docker.
+      operations:
+      - method: POST
+        name: packagesuploaddocker
+        description: Create a new Docker package
+        call: cloudsmith-packages.packagesuploaddocker
+        with:
+          data: rest.data
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/packages/{owner}/{repo}/upload/generic
+      name: packages-owner-repo-upload-generic
+      description: REST surface for packages-owner-repo-upload-generic.
+      operations:
+      - method: POST
+        name: packagesuploadgeneric
+        description: Create a new Generic package
+        call: cloudsmith-packages.packagesuploadgeneric
+        with:
+          data: rest.data
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/packages/{owner}/{repo}/upload/go
+      name: packages-owner-repo-upload-go
+      description: REST surface for packages-owner-repo-upload-go.
+      operations:
+      - method: POST
+        name: packagesuploadgo
+        description: Create a new Go package
+        call: cloudsmith-packages.packagesuploadgo
+        with:
+          data: rest.data
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/packages/{owner}/{repo}/upload/helm
+      name: packages-owner-repo-upload-helm
+      description: REST surface for packages-owner-repo-upload-helm.
+      operations:
+      - method: POST
+        name: packagesuploadhelm
+        description: Create a new Helm package
+        call: cloudsmith-packages.packagesuploadhelm
+        with:
+          data: rest.data
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/packages/{owner}/{repo}/upload/hex
+      name: packages-owner-repo-upload-hex
+      description: REST surface for packages-owner-repo-upload-hex.
+      operations:
+      - method: POST
+        name: packagesuploadhex
+        description: Create a new Hex package
+        call: cloudsmith-packages.packagesuploadhex
+        with:
+          data: rest.data
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/packages/{owner}/{repo}/upload/huggingface
+      name: packages-owner-repo-upload-huggingface
+      description: REST surface for packages-owner-repo-upload-huggingface.
+      operations:
+      - method: POST
+        name: packagesuploadhuggingface
+        description: Create a new HuggingFace package
+        call: cloudsmith-packages.packagesuploadhuggingface
+        with:
+          data: rest.data
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/packages/{owner}/{repo}/upload/luarocks
+      name: packages-owner-repo-upload-luarocks
+      description: REST surface for packages-owner-repo-upload-luarocks.
+      operations:
+      - method: POST
+        name: packagesuploadluarocks
+        description: Create a new LuaRocks package
+        call: cloudsmith-packages.packagesuploadluarocks
+        with:
+          data: rest.data
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/packages/{owner}/{repo}/upload/maven
+      name: packages-owner-repo-upload-maven
+      description: REST surface for packages-owner-repo-upload-maven.
+      operations:
+      - method: POST
+        name: packagesuploadmaven
+        description: Create a new Maven package
+        call: cloudsmith-packages.packagesuploadmaven
+        with:
+          data: rest.data
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/packages/{owner}/{repo}/upload/mcp
+      name: packages-owner-repo-upload-mcp
+      description: REST surface for packages-owner-repo-upload-mcp.
+      operations:
+      - method: POST
+        name: packagesuploadmcp
+        description: Create a new MCP package
+        call: cloudsmith-packages.packagesuploadmcp
+        with:
+          data: rest.data
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/packages/{owner}/{repo}/upload/npm
+      name: packages-owner-repo-upload-npm
+      description: REST surface for packages-owner-repo-upload-npm.
+      operations:
+      - method: POST
+        name: packagesuploadnpm
+        description: Create a new npm package
+        call: cloudsmith-packages.packagesuploadnpm
+        with:
+          data: rest.data
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/packages/{owner}/{repo}/upload/nuget
+      name: packages-owner-repo-upload-nuget
+      description: REST surface for packages-owner-repo-upload-nuget.
+      operations:
+      - method: POST
+        name: packagesuploadnuget
+        description: Create a new NuGet package
+        call: cloudsmith-packages.packagesuploadnuget
+        with:
+          data: rest.data
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/packages/{owner}/{repo}/upload/p2
+      name: packages-owner-repo-upload-p2
+      description: REST surface for packages-owner-repo-upload-p2.
+      operations:
+      - method: POST
+        name: packagesuploadp2
+        description: Create a new P2 package
+        call: cloudsmith-packages.packagesuploadp2
+        with:
+          data: rest.data
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/packages/{owner}/{repo}/upload/python
+      name: packages-owner-repo-upload-python
+      description: REST surface for packages-owner-repo-upload-python.
+      operations:
+      - method: POST
+        name: packagesuploadpython
+        description: Create a new Python package
+        call: cloudsmith-packages.packagesuploadpython
+        with:
+          data: rest.data
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/packages/{owner}/{repo}/upload/raw
+      name: packages-owner-repo-upload-raw
+      description: REST surface for packages-owner-repo-upload-raw.
+      operations:
+      - method: POST
+        name: packagesuploadraw
+        description: Create a new Raw package
+        call: cloudsmith-packages.packagesuploadraw
+        with:
+          data: rest.data
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/packages/{owner}/{repo}/upload/rpm
+      name: packages-owner-repo-upload-rpm
+      description: REST surface for packages-owner-repo-upload-rpm.
+      operations:
+      - method: POST
+        name: packagesuploadrpm
+        description: Create a new RedHat package
+        call: cloudsmith-packages.packagesuploadrpm
+        with:
+          data: rest.data
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/packages/{owner}/{repo}/upload/ruby
+      name: packages-owner-repo-upload-ruby
+      description: REST surface for packages-owner-repo-upload-ruby.
+      operations:
+      - method: POST
+        name: packagesuploadruby
+        description: Create a new Ruby package
+        call: cloudsmith-packages.packagesuploadruby
+        with:
+          data: rest.data
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/packages/{owner}/{repo}/upload/swift
+      name: packages-owner-repo-upload-swift
+      description: REST surface for packages-owner-repo-upload-swift.
+      operations:
+      - method: POST
+        name: packagesuploadswift
+        description: Create a new Swift package
+        call: cloudsmith-packages.packagesuploadswift
+        with:
+          data: rest.data
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/packages/{owner}/{repo}/upload/terraform
+      name: packages-owner-repo-upload-terraform
+      description: REST surface for packages-owner-repo-upload-terraform.
+      operations:
+      - method: POST
+        name: packagesuploadterraform
+        description: Create a new Terraform package
+        call: cloudsmith-packages.packagesuploadterraform
+        with:
+          data: rest.data
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/packages/{owner}/{repo}/upload/vagrant
+      name: packages-owner-repo-upload-vagrant
+      description: REST surface for packages-owner-repo-upload-vagrant.
+      operations:
+      - method: POST
+        name: packagesuploadvagrant
+        description: Create a new Vagrant package
+        call: cloudsmith-packages.packagesuploadvagrant
+        with:
+          data: rest.data
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/packages/{owner}/{repo}/upload/vsx
+      name: packages-owner-repo-upload-vsx
+      description: REST surface for packages-owner-repo-upload-vsx.
+      operations:
+      - method: POST
+        name: packagesuploadvsx
+        description: Create a new VSX package
+        call: cloudsmith-packages.packagesuploadvsx
+        with:
+          data: rest.data
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/packages/{owner}/{repo}/validate-upload/alpine
+      name: packages-owner-repo-validate-upload-alpine
+      description: REST surface for packages-owner-repo-validate-upload-alpine.
+      operations:
+      - method: POST
+        name: packagesvalidateuploadalpine
+        description: Validate parameters for create Alpine package
+        call: cloudsmith-packages.packagesvalidateuploadalpine
+        with:
+          data: rest.data
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/packages/{owner}/{repo}/validate-upload/cargo
+      name: packages-owner-repo-validate-upload-cargo
+      description: REST surface for packages-owner-repo-validate-upload-cargo.
+      operations:
+      - method: POST
+        name: packagesvalidateuploadcargo
+        description: Validate parameters for create Cargo package
+        call: cloudsmith-packages.packagesvalidateuploadcargo
+        with:
+          data: rest.data
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/packages/{owner}/{repo}/validate-upload/cocoapods
+      name: packages-owner-repo-validate-upload-cocoapods
+      description: REST surface for packages-owner-repo-validate-upload-cocoapods.
+      operations:
+      - method: POST
+        name: packagesvalidateuploadcocoapods
+        description: Validate parameters for create CocoaPods package
+        call: cloudsmith-packages.packagesvalidateuploadcocoapods
+        with:
+          data: rest.data
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/packages/{owner}/{repo}/validate-upload/composer
+      name: packages-owner-repo-validate-upload-composer
+      description: REST surface for packages-owner-repo-validate-upload-composer.
+      operations:
+      - method: POST
+        name: packagesvalidateuploadcomposer
+        description: Validate parameters for create Composer package
+        call: cloudsmith-packages.packagesvalidateuploadcomposer
+        with:
+          data: rest.data
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/packages/{owner}/{repo}/validate-upload/conan
+      name: packages-owner-repo-validate-upload-conan
+      description: REST surface for packages-owner-repo-validate-upload-conan.
+      operations:
+      - method: POST
+        name: packagesvalidateuploadconan
+        description: Validate parameters for create Conan package
+        call: cloudsmith-packages.packagesvalidateuploadconan
+        with:
+          data: rest.data
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/packages/{owner}/{repo}/validate-upload/conda
+      name: packages-owner-repo-validate-upload-conda
+      description: REST surface for packages-owner-repo-validate-upload-conda.
+      operations:
+      - method: POST
+        name: packagesvalidateuploadconda
+        description: Validate parameters for create Conda package
+        call: cloudsmith-packages.packagesvalidateuploadconda
+        with:
+          data: rest.data
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/packages/{owner}/{repo}/validate-upload/cran
+      name: packages-owner-repo-validate-upload-cran
+      description: REST surface for packages-owner-repo-validate-upload-cran.
+      operations:
+      - method: POST
+        name: packagesvalidateuploadcran
+        description: Validate parameters for create CRAN package
+        call: cloudsmith-packages.packagesvalidateuploadcran
+        with:
+          data: rest.data
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/packages/{owner}/{repo}/validate-upload/dart
+      name: packages-owner-repo-validate-upload-dart
+      description: REST surface for packages-owner-repo-validate-upload-dart.
+      operations:
+      - method: POST
+        name: packagesvalidateuploaddart
+        description: Validate parameters for create Dart package
+        call: cloudsmith-packages.packagesvalidateuploaddart
+        with:
+          data: rest.data
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/packages/{owner}/{repo}/validate-upload/deb
+      name: packages-owner-repo-validate-upload-deb
+      description: REST surface for packages-owner-repo-validate-upload-deb.
+      operations:
+      - method: POST
+        name: packagesvalidateuploaddeb
+        description: Validate parameters for create Debian package
+        call: cloudsmith-packages.packagesvalidateuploaddeb
+        with:
+          data: rest.data
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/packages/{owner}/{repo}/validate-upload/docker
+      name: packages-owner-repo-validate-upload-docker
+      description: REST surface for packages-owner-repo-validate-upload-docker.
+      operations:
+      - method: POST
+        name: packagesvalidateuploaddocker
+        description: Validate parameters for create Docker package
+        call: cloudsmith-packages.packagesvalidateuploaddocker
+        with:
+          data: rest.data
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/packages/{owner}/{repo}/validate-upload/generic
+      name: packages-owner-repo-validate-upload-generic
+      description: REST surface for packages-owner-repo-validate-upload-generic.
+      operations:
+      - method: POST
+        name: packagesvalidateuploadgeneric
+        description: Validate parameters for create Generic package
+        call: cloudsmith-packages.packagesvalidateuploadgeneric
+        with:
+          data: rest.data
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/packages/{owner}/{repo}/validate-upload/go
+      name: packages-owner-repo-validate-upload-go
+      description: REST surface for packages-owner-repo-validate-upload-go.
+      operations:
+      - method: POST
+        name: packagesvalidateuploadgo
+        description: Validate parameters for create Go package
+        call: cloudsmith-packages.packagesvalidateuploadgo
+        with:
+          data: rest.data
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/packages/{owner}/{repo}/validate-upload/helm
+      name: packages-owner-repo-validate-upload-helm
+      description: REST surface for packages-owner-repo-validate-upload-helm.
+      operations:
+      - method: POST
+        name: packagesvalidateuploadhelm
+        description: Validate parameters for create Helm package
+        call: cloudsmith-packages.packagesvalidateuploadhelm
+        with:
+          data: rest.data
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/packages/{owner}/{repo}/validate-upload/hex
+      name: packages-owner-repo-validate-upload-hex
+      description: REST surface for packages-owner-repo-validate-upload-hex.
+      operations:
+      - method: POST
+        name: packagesvalidateuploadhex
+        description: Validate parameters for create Hex package
+        call: cloudsmith-packages.packagesvalidateuploadhex
+        with:
+          data: rest.data
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/packages/{owner}/{repo}/validate-upload/huggingface
+      name: packages-owner-repo-validate-upload-huggingface
+      description: REST surface for packages-owner-repo-validate-upload-huggingface.
+      operations:
+      - method: POST
+        name: packagesvalidateuploadhuggingface
+        description: Validate parameters for create HuggingFace package
+        call: cloudsmith-packages.packagesvalidateuploadhuggingface
+        with:
+          data: rest.data
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/packages/{owner}/{repo}/validate-upload/luarocks
+      name: packages-owner-repo-validate-upload-luarocks
+      description: REST surface for packages-owner-repo-validate-upload-luarocks.
+      operations:
+      - method: POST
+        name: packagesvalidateuploadluarocks
+        description: Validate parameters for create LuaRocks package
+        call: cloudsmith-packages.packagesvalidateuploadluarocks
+        with:
+          data: rest.data
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/packages/{owner}/{repo}/validate-upload/maven
+      name: packages-owner-repo-validate-upload-maven
+      description: REST surface for packages-owner-repo-validate-upload-maven.
+      operations:
+      - method: POST
+        name: packagesvalidateuploadmaven
+        description: Validate parameters for create Maven package
+        call: cloudsmith-packages.packagesvalidateuploadmaven
+        with:
+          data: rest.data
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/packages/{owner}/{repo}/validate-upload/mcp
+      name: packages-owner-repo-validate-upload-mcp
+      description: REST surface for packages-owner-repo-validate-upload-mcp.
+      operations:
+      - method: POST
+        name: packagesvalidateuploadmcp
+        description: Validate parameters for create MCP package
+        call: cloudsmith-packages.packagesvalidateuploadmcp
+        with:
+          data: rest.data
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/packages/{owner}/{repo}/validate-upload/npm
+      name: packages-owner-repo-validate-upload-npm
+      description: REST surface for packages-owner-repo-validate-upload-npm.
+      operations:
+      - method: POST
+        name: packagesvalidateuploadnpm
+        description: Validate parameters for create npm package
+        call: cloudsmith-packages.packagesvalidateuploadnpm
+        with:
+          data: rest.data
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/packages/{owner}/{repo}/validate-upload/nuget
+      name: packages-owner-repo-validate-upload-nuget
+      description: REST surface for packages-owner-repo-validate-upload-nuget.
+      operations:
+      - method: POST
+        name: packagesvalidateuploadnuget
+        description: Validate parameters for create NuGet package
+        call: cloudsmith-packages.packagesvalidateuploadnuget
+        with:
+          data: rest.data
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/packages/{owner}/{repo}/validate-upload/p2
+      name: packages-owner-repo-validate-upload-p2
+      description: REST surface for packages-owner-repo-validate-upload-p2.
+      operations:
+      - method: POST
+        name: packagesvalidateuploadp2
+        description: Validate parameters for create P2 package
+        call: cloudsmith-packages.packagesvalidateuploadp2
+        with:
+          data: rest.data
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/packages/{owner}/{repo}/validate-upload/python
+      name: packages-owner-repo-validate-upload-python
+      description: REST surface for packages-owner-repo-validate-upload-python.
+      operations:
+      - method: POST
+        name: packagesvalidateuploadpython
+        description: Validate parameters for create Python package
+        call: cloudsmith-packages.packagesvalidateuploadpython
+        with:
+          data: rest.data
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/packages/{owner}/{repo}/validate-upload/raw
+      name: packages-owner-repo-validate-upload-raw
+      description: REST surface for packages-owner-repo-validate-upload-raw.
+      operations:
+      - method: POST
+        name: packagesvalidateuploadraw
+        description: Validate parameters for create Raw package
+        call: cloudsmith-packages.packagesvalidateuploadraw
+        with:
+          data: rest.data
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/packages/{owner}/{repo}/validate-upload/rpm
+      name: packages-owner-repo-validate-upload-rpm
+      description: REST surface for packages-owner-repo-validate-upload-rpm.
+      operations:
+      - method: POST
+        name: packagesvalidateuploadrpm
+        description: Validate parameters for create RedHat package
+        call: cloudsmith-packages.packagesvalidateuploadrpm
+        with:
+          data: rest.data
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/packages/{owner}/{repo}/validate-upload/ruby
+      name: packages-owner-repo-validate-upload-ruby
+      description: REST surface for packages-owner-repo-validate-upload-ruby.
+      operations:
+      - method: POST
+        name: packagesvalidateuploadruby
+        description: Validate parameters for create Ruby package
+        call: cloudsmith-packages.packagesvalidateuploadruby
+        with:
+          data: rest.data
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/packages/{owner}/{repo}/validate-upload/swift
+      name: packages-owner-repo-validate-upload-swift
+      description: REST surface for packages-owner-repo-validate-upload-swift.
+      operations:
+      - method: POST
+        name: packagesvalidateuploadswift
+        description: Validate parameters for create Swift package
+        call: cloudsmith-packages.packagesvalidateuploadswift
+        with:
+          data: rest.data
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/packages/{owner}/{repo}/validate-upload/terraform
+      name: packages-owner-repo-validate-upload-terraform
+      description: REST surface for packages-owner-repo-validate-upload-terraform.
+      operations:
+      - method: POST
+        name: packagesvalidateuploadterraform
+        description: Validate parameters for create Terraform package
+        call: cloudsmith-packages.packagesvalidateuploadterraform
+        with:
+          data: rest.data
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/packages/{owner}/{repo}/validate-upload/vagrant
+      name: packages-owner-repo-validate-upload-vagrant
+      description: REST surface for packages-owner-repo-validate-upload-vagrant.
+      operations:
+      - method: POST
+        name: packagesvalidateuploadvagrant
+        description: Validate parameters for create Vagrant package
+        call: cloudsmith-packages.packagesvalidateuploadvagrant
+        with:
+          data: rest.data
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/packages/{owner}/{repo}/validate-upload/vsx
+      name: packages-owner-repo-validate-upload-vsx
+      description: REST surface for packages-owner-repo-validate-upload-vsx.
+      operations:
+      - method: POST
+        name: packagesvalidateuploadvsx
+        description: Validate parameters for create VSX package
+        call: cloudsmith-packages.packagesvalidateuploadvsx
+        with:
+          data: rest.data
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/packages/{owner}/{repo}/{identifier}
+      name: packages-owner-repo-identifier
+      description: REST surface for packages-owner-repo-identifier.
+      operations:
+      - method: GET
+        name: packagesread
+        description: Get a specific package in a repository.
+        call: cloudsmith-packages.packagesread
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: DELETE
+        name: packagesdelete
+        description: Delete a specific package in a repository.
+        call: cloudsmith-packages.packagesdelete
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/packages/{owner}/{repo}/{identifier}/copy
+      name: packages-owner-repo-identifier-copy
+      description: REST surface for packages-owner-repo-identifier-copy.
+      operations:
+      - method: POST
+        name: packagescopy
+        description: Copy a package to another repository.
+        call: cloudsmith-packages.packagescopy
+        with:
+          data: rest.data
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/packages/{owner}/{repo}/{identifier}/dependencies
+      name: packages-owner-repo-identifier-dependencies
+      description: REST surface for packages-owner-repo-identifier-dependencies.
+      operations:
+      - method: GET
+        name: packagesdependencies
+        description: Get the list of dependencies for a package. Transitive dependencies are included where supported.
+        call: cloudsmith-packages.packagesdependencies
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/packages/{owner}/{repo}/{identifier}/move
+      name: packages-owner-repo-identifier-move
+      description: REST surface for packages-owner-repo-identifier-move.
+      operations:
+      - method: POST
+        name: packagesmove
+        description: Move a package to another repository.
+        call: cloudsmith-packages.packagesmove
+        with:
+          data: rest.data
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/packages/{owner}/{repo}/{identifier}/quarantine
+      name: packages-owner-repo-identifier-quarantine
+      description: REST surface for packages-owner-repo-identifier-quarantine.
+      operations:
+      - method: POST
+        name: packagesquarantine
+        description: Quarantine or release a package.
+        call: cloudsmith-packages.packagesquarantine
+        with:
+          data: rest.data
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/packages/{owner}/{repo}/{identifier}/resync
+      name: packages-owner-repo-identifier-resync
+      description: REST surface for packages-owner-repo-identifier-resync.
+      operations:
+      - method: POST
+        name: packagesresync
+        description: Schedule a package for resynchronisation.
+        call: cloudsmith-packages.packagesresync
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/packages/{owner}/{repo}/{identifier}/scan
+      name: packages-owner-repo-identifier-scan
+      description: REST surface for packages-owner-repo-identifier-scan.
+      operations:
+      - method: POST
+        name: packagesscan
+        description: Schedule a package for scanning.
+        call: cloudsmith-packages.packagesscan
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/packages/{owner}/{repo}/{identifier}/status
+      name: packages-owner-repo-identifier-status
+      description: REST surface for packages-owner-repo-identifier-status.
+      operations:
+      - method: GET
+        name: packagesstatus
+        description: Get the synchronization status for a package.
+        call: cloudsmith-packages.packagesstatus
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/packages/{owner}/{repo}/{identifier}/tag
+      name: packages-owner-repo-identifier-tag
+      description: REST surface for packages-owner-repo-identifier-tag.
+      operations:
+      - method: POST
+        name: packagestag
+        description: Add/Replace/Remove tags for a package.
+        call: cloudsmith-packages.packagestag
+        with:
+          data: rest.data
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/packages/{owner}/{repo}/{identifier}/update-license
+      name: packages-owner-repo-identifier-update-license
+      description: REST surface for packages-owner-repo-identifier-update-license.
+      operations:
+      - method: PATCH
+        name: packagesupdatelicense
+        description: Update the license for a package.
+        call: cloudsmith-packages.packagesupdatelicense
+        with:
+          data: rest.data
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: cloudsmith-packages-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for Cloudsmith API (v1) — packages. One tool per consumed operation, routed inline through this
+      capability's consumes block.
+    tools:
+    - name: get-list-all-packages-associated
+      description: Get a list of all packages associated with repository.
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: cloudsmith-packages.packageslist
+      with:
+        page: tools.page
+        page_size: tools.page_size
+        query: tools.query
+        sort: tools.sort
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: return-list-package-groups-repository
+      description: Return a list of Package Groups in a repository.
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: cloudsmith-packages.packagesgroupslist
+      with:
+        page: tools.page
+        page_size: tools.page_size
+        group_by: tools.group_by
+        hide_subcomponents: tools.hide_subcomponents
+        query: tools.query
+        sort: tools.sort
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: create-new-alpine-package
+      description: Create a new Alpine package
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: cloudsmith-packages.packagesuploadalpine
+      with:
+        data: tools.data
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: create-new-cargo-package
+      description: Create a new Cargo package
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: cloudsmith-packages.packagesuploadcargo
+      with:
+        data: tools.data
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: create-new-cocoapods-package
+      description: Create a new CocoaPods package
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: cloudsmith-packages.packagesuploadcocoapods
+      with:
+        data: tools.data
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: create-new-composer-package
+      description: Create a new Composer package
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: cloudsmith-packages.packagesuploadcomposer
+      with:
+        data: tools.data
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: create-new-conan-package
+      description: Create a new Conan package
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: cloudsmith-packages.packagesuploadconan
+      with:
+        data: tools.data
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: create-new-conda-package
+      description: Create a new Conda package
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: cloudsmith-packages.packagesuploadconda
+      with:
+        data: tools.data
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: create-new-cran-package
+      description: Create a new CRAN package
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: cloudsmith-packages.packagesuploadcran
+      with:
+        data: tools.data
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: create-new-dart-package
+      description: Create a new Dart package
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: cloudsmith-packages.packagesuploaddart
+      with:
+        data: tools.data
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: create-new-debian-package
+      description: Create a new Debian package
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: cloudsmith-packages.packagesuploaddeb
+      with:
+        data: tools.data
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: create-new-docker-package
+      description: Create a new Docker package
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: cloudsmith-packages.packagesuploaddocker
+      with:
+        data: tools.data
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: create-new-generic-package
+      description: Create a new Generic package
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: cloudsmith-packages.packagesuploadgeneric
+      with:
+        data: tools.data
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: create-new-go-package
+      description: Create a new Go package
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: cloudsmith-packages.packagesuploadgo
+      with:
+        data: tools.data
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: create-new-helm-package
+      description: Create a new Helm package
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: cloudsmith-packages.packagesuploadhelm
+      with:
+        data: tools.data
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: create-new-hex-package
+      description: Create a new Hex package
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: cloudsmith-packages.packagesuploadhex
+      with:
+        data: tools.data
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: create-new-huggingface-package
+      description: Create a new HuggingFace package
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: cloudsmith-packages.packagesuploadhuggingface
+      with:
+        data: tools.data
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: create-new-luarocks-package
+      description: Create a new LuaRocks package
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: cloudsmith-packages.packagesuploadluarocks
+      with:
+        data: tools.data
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: create-new-maven-package
+      description: Create a new Maven package
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: cloudsmith-packages.packagesuploadmaven
+      with:
+        data: tools.data
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: create-new-mcp-package
+      description: Create a new MCP package
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: cloudsmith-packages.packagesuploadmcp
+      with:
+        data: tools.data
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: create-new-npm-package
+      description: Create a new npm package
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: cloudsmith-packages.packagesuploadnpm
+      with:
+        data: tools.data
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: create-new-nuget-package
+      description: Create a new NuGet package
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: false
+      call: cloudsmith-packages.packagesuploadnuget
+      with:
+        data: tools.data
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: create-new-p2-package
+      description: Create a new P2 package
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: cloudsmith-packages.packagesuploadp2
+      with:
+        data: tools.data
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: create-new-python-package
+      description: Create a new Python package
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: cloudsmith-packages.packagesuploadpython
+      with:
+        data: tools.data
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: create-new-raw-package
+      description: Create a new Raw package
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: cloudsmith-packages.packagesuploadraw
+      with:
+        data: tools.data
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: create-new-redhat-package
+      description: Create a new RedHat package
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: cloudsmith-packages.packagesuploadrpm
+      with:
+        data: tools.data
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: create-new-ruby-package
+      description: Create a new Ruby package
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: cloudsmith-packages.packagesuploadruby
+      with:
+        data: tools.data
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: create-new-swift-package
+      description: Create a new Swift package
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: cloudsmith-packages.packagesuploadswift
+      with:
+        data: tools.data
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: create-new-terraform-package
+      description: Create a new Terraform package
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: cloudsmith-packages.packagesuploadterraform
+      with:
+        data: tools.data
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: create-new-vagrant-package
+      description: Create a new Vagrant package
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: cloudsmith-packages.packagesuploadvagrant
+      with:
+        data: tools.data
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: create-new-vsx-package
+      description: Create a new VSX package
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: cloudsmith-packages.packagesuploadvsx
+      with:
+        data: tools.data
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: validate-parameters-create-alpine-package
+      description: Validate parameters for create Alpine package
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: false
+      call: cloudsmith-packages.packagesvalidateuploadalpine
+      with:
+        data: tools.data
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: validate-parameters-create-cargo-package
+      description: Validate parameters for create Cargo package
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: false
+      call: cloudsmith-packages.packagesvalidateuploadcargo
+      with:
+        data: tools.data
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: validate-parameters-create-cocoapods-package
+      description: Validate parameters for create CocoaPods package
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: false
+      call: cloudsmith-packages.packagesvalidateuploadcocoapods
+      with:
+        data: tools.data
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: validate-parameters-create-composer-package
+      description: Validate parameters for create Composer package
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: false
+      call: cloudsmith-packages.packagesvalidateuploadcomposer
+      with:
+        data: tools.data
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: validate-parameters-create-conan-package
+      description: Validate parameters for create Conan package
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: false
+      call: cloudsmith-packages.packagesvalidateuploadconan
+      with:
+        data: tools.data
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: validate-parameters-create-conda-package
+      description: Validate parameters for create Conda package
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: false
+      call: cloudsmith-packages.packagesvalidateuploadconda
+      with:
+        data: tools.data
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: validate-parameters-create-cran-package
+      description: Validate parameters for create CRAN package
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: false
+      call: cloudsmith-packages.packagesvalidateuploadcran
+      with:
+        data: tools.data
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: validate-parameters-create-dart-package
+      description: Validate parameters for create Dart package
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: false
+      call: cloudsmith-packages.packagesvalidateuploaddart
+      with:
+        data: tools.data
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: validate-parameters-create-debian-package
+      description: Validate parameters for create Debian package
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: false
+      call: cloudsmith-packages.packagesvalidateuploaddeb
+      with:
+        data: tools.data
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: validate-parameters-create-docker-package
+      description: Validate parameters for create Docker package
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: false
+      call: cloudsmith-packages.packagesvalidateuploaddocker
+      with:
+        data: tools.data
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: validate-parameters-create-generic-package
+      description: Validate parameters for create Generic package
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: false
+      call: cloudsmith-packages.packagesvalidateuploadgeneric
+      with:
+        data: tools.data
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: validate-parameters-create-go-package
+      description: Validate parameters for create Go package
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: false
+      call: cloudsmith-packages.packagesvalidateuploadgo
+      with:
+        data: tools.data
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: validate-parameters-create-helm-package
+      description: Validate parameters for create Helm package
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: false
+      call: cloudsmith-packages.packagesvalidateuploadhelm
+      with:
+        data: tools.data
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: validate-parameters-create-hex-package
+      description: Validate parameters for create Hex package
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: false
+      call: cloudsmith-packages.packagesvalidateuploadhex
+      with:
+        data: tools.data
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: validate-parameters-create-huggingface-package
+      description: Validate parameters for create HuggingFace package
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: false
+      call: cloudsmith-packages.packagesvalidateuploadhuggingface
+      with:
+        data: tools.data
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: validate-parameters-create-luarocks-package
+      description: Validate parameters for create LuaRocks package
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: false
+      call: cloudsmith-packages.packagesvalidateuploadluarocks
+      with:
+        data: tools.data
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: validate-parameters-create-maven-package
+      description: Validate parameters for create Maven package
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: false
+      call: cloudsmith-packages.packagesvalidateuploadmaven
+      with:
+        data: tools.data
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: validate-parameters-create-mcp-package
+      description: Validate parameters for create MCP package
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: false
+      call: cloudsmith-packages.packagesvalidateuploadmcp
+      with:
+        data: tools.data
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: validate-parameters-create-npm-package
+      description: Validate parameters for create npm package
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: false
+      call: cloudsmith-packages.packagesvalidateuploadnpm
+      with:
+        data: tools.data
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: validate-parameters-create-nuget-package
+      description: Validate parameters for create NuGet package
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: false
+      call: cloudsmith-packages.packagesvalidateuploadnuget
+      with:
+        data: tools.data
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: validate-parameters-create-p2-package
+      description: Validate parameters for create P2 package
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: false
+      call: cloudsmith-packages.packagesvalidateuploadp2
+      with:
+        data: tools.data
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: validate-parameters-create-python-package
+      description: Validate parameters for create Python package
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: false
+      call: cloudsmith-packages.packagesvalidateuploadpython
+      with:
+        data: tools.data
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: validate-parameters-create-raw-package
+      description: Validate parameters for create Raw package
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: false
+      call: cloudsmith-packages.packagesvalidateuploadraw
+      with:
+        data: tools.data
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: validate-parameters-create-redhat-package
+      description: Validate parameters for create RedHat package
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: false
+      call: cloudsmith-packages.packagesvalidateuploadrpm
+      with:
+        data: tools.data
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: validate-parameters-create-ruby-package
+      description: Validate parameters for create Ruby package
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: false
+      call: cloudsmith-packages.packagesvalidateuploadruby
+      with:
+        data: tools.data
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: validate-parameters-create-swift-package
+      description: Validate parameters for create Swift package
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: false
+      call: cloudsmith-packages.packagesvalidateuploadswift
+      with:
+        data: tools.data
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: validate-parameters-create-terraform-package
+      description: Validate parameters for create Terraform package
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: false
+      call: cloudsmith-packages.packagesvalidateuploadterraform
+      with:
+        data: tools.data
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: validate-parameters-create-vagrant-package
+      description: Validate parameters for create Vagrant package
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: false
+      call: cloudsmith-packages.packagesvalidateuploadvagrant
+      with:
+        data: tools.data
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: validate-parameters-create-vsx-package
+      description: Validate parameters for create VSX package
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: false
+      call: cloudsmith-packages.packagesvalidateuploadvsx
+      with:
+        data: tools.data
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: get-specific-package-repository
+      description: Get a specific package in a repository.
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: cloudsmith-packages.packagesread
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: delete-specific-package-repository
+      description: Delete a specific package in a repository.
+      hints:
+        readOnly: false
+        destructive: true
+        idempotent: true
+      call: cloudsmith-packages.packagesdelete
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: copy-package-another-repository
+      description: Copy a package to another repository.
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: cloudsmith-packages.packagescopy
+      with:
+        data: tools.data
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: get-list-dependencies-package-transitive
+      description: Get the list of dependencies for a package. Transitive dependencies are included where supported.
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: cloudsmith-packages.packagesdependencies
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: move-package-another-repository
+      description: Move a package to another repository.
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: cloudsmith-packages.packagesmove
+      with:
+        data: tools.data
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: quarantine-release-package
+      description: Quarantine or release a package.
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: cloudsmith-packages.packagesquarantine
+      with:
+        data: tools.data
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: schedule-package-resynchronisation
+      description: Schedule a package for resynchronisation.
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: cloudsmith-packages.packagesresync
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: schedule-package-scanning
+      description: Schedule a package for scanning.
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: cloudsmith-packages.packagesscan
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: get-synchronization-status-package
+      description: Get the synchronization status for a package.
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: cloudsmith-packages.packagesstatus
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: add-replace-remove-tags-package
+      description: Add/Replace/Remove tags for a package.
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: cloudsmith-packages.packagestag
+      with:
+        data: tools.data
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: update-license-package
+      description: Update the license for a package.
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: true
+      call: cloudsmith-packages.packagesupdatelicense
+      with:
+        data: tools.data
+      outputParameters:
+      - type: object
+        mapping: $.

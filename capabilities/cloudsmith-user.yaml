@@ -1,0 +1,211 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Cloudsmith API (v1) — user
+  description: 'Cloudsmith API (v1) — user. 5 operations. Lead operation: Provide a brief for the current user (if any)..
+    Self-contained Naftiko capability covering one Cloudsmith business surface.'
+  tags:
+  - Cloudsmith
+  - user
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    CLOUDSMITH_API_KEY: CLOUDSMITH_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: cloudsmith-user
+    baseUri: https://api.cloudsmith.io
+    description: Cloudsmith API (v1) — user business capability. Self-contained, no shared references.
+    resources:
+    - name: user-self
+      path: /user/self/
+      operations:
+      - name: userself
+        method: GET
+        description: Provide a brief for the current user (if any).
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: user-token
+      path: /user/token/
+      operations:
+      - name: usertokencreate
+        method: POST
+        description: Create or retrieve API token for a user.
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: data
+          in: body
+          type: string
+    - name: user-tokens
+      path: /user/tokens/
+      operations:
+      - name: usertokenslist
+        method: GET
+        description: Retrieve the API key assigned to the user that is currently authenticated.
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: page
+          in: query
+          type: integer
+          description: A page number within the paginated result set.
+        - name: page_size
+          in: query
+          type: integer
+          description: Number of results to return per page.
+      - name: usertokenscreate
+        method: POST
+        description: Create an API key for the user that is currently authenticated.
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: user-tokens-slug_perm-refresh
+      path: /user/tokens/{slug_perm}/refresh/
+      operations:
+      - name: usertokensrefresh
+        method: PUT
+        description: Refresh the specified API key for the user that is currently authenticated.
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+  exposes:
+  - type: rest
+    namespace: cloudsmith-user-rest
+    port: 8080
+    description: REST adapter for Cloudsmith API (v1) — user. One Spectral-compliant resource per consumed operation, prefixed
+      with /v1.
+    resources:
+    - path: /v1/user/self
+      name: user-self
+      description: REST surface for user-self.
+      operations:
+      - method: GET
+        name: userself
+        description: Provide a brief for the current user (if any).
+        call: cloudsmith-user.userself
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/user/token
+      name: user-token
+      description: REST surface for user-token.
+      operations:
+      - method: POST
+        name: usertokencreate
+        description: Create or retrieve API token for a user.
+        call: cloudsmith-user.usertokencreate
+        with:
+          data: rest.data
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/user/tokens
+      name: user-tokens
+      description: REST surface for user-tokens.
+      operations:
+      - method: GET
+        name: usertokenslist
+        description: Retrieve the API key assigned to the user that is currently authenticated.
+        call: cloudsmith-user.usertokenslist
+        with:
+          page: rest.page
+          page_size: rest.page_size
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: POST
+        name: usertokenscreate
+        description: Create an API key for the user that is currently authenticated.
+        call: cloudsmith-user.usertokenscreate
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/user/tokens/{slug-perm}/refresh
+      name: user-tokens-slug-perm-refresh
+      description: REST surface for user-tokens-slug_perm-refresh.
+      operations:
+      - method: PUT
+        name: usertokensrefresh
+        description: Refresh the specified API key for the user that is currently authenticated.
+        call: cloudsmith-user.usertokensrefresh
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: cloudsmith-user-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for Cloudsmith API (v1) — user. One tool per consumed operation, routed inline through this capability's
+      consumes block.
+    tools:
+    - name: provide-brief-current-user-if
+      description: Provide a brief for the current user (if any).
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: cloudsmith-user.userself
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: create-retrieve-api-token-user
+      description: Create or retrieve API token for a user.
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: false
+      call: cloudsmith-user.usertokencreate
+      with:
+        data: tools.data
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: retrieve-api-key-assigned-user
+      description: Retrieve the API key assigned to the user that is currently authenticated.
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: cloudsmith-user.usertokenslist
+      with:
+        page: tools.page
+        page_size: tools.page_size
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: create-api-key-user-that
+      description: Create an API key for the user that is currently authenticated.
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: cloudsmith-user.usertokenscreate
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: refresh-specified-api-key-user
+      description: Refresh the specified API key for the user that is currently authenticated.
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: true
+      call: cloudsmith-user.usertokensrefresh
+      outputParameters:
+      - type: object
+        mapping: $.

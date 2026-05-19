@@ -1,0 +1,243 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Cloudsmith API (v1) — files
+  description: 'Cloudsmith API (v1) — files. 5 operations. Lead operation: Request URL(s) to upload new package file upload(s)
+    to.. Self-contained Naftiko capability covering one Cloudsmith business surface.'
+  tags:
+  - Cloudsmith
+  - files
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    CLOUDSMITH_API_KEY: CLOUDSMITH_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: cloudsmith-files
+    baseUri: https://api.cloudsmith.io
+    description: Cloudsmith API (v1) — files business capability. Self-contained, no shared references.
+    resources:
+    - name: files-owner-repo
+      path: /files/{owner}/{repo}/
+      operations:
+      - name: filescreate
+        method: POST
+        description: Request URL(s) to upload new package file upload(s) to.
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: data
+          in: body
+          type: string
+    - name: files-owner-repo-validate
+      path: /files/{owner}/{repo}/validate/
+      operations:
+      - name: filesvalidate
+        method: POST
+        description: Validate parameters used for create.
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: data
+          in: body
+          type: string
+    - name: files-owner-repo-identifier-abort
+      path: /files/{owner}/{repo}/{identifier}/abort/
+      operations:
+      - name: filesabort
+        method: POST
+        description: Abort a multipart file upload.
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: data
+          in: body
+          type: string
+    - name: files-owner-repo-identifier-complete
+      path: /files/{owner}/{repo}/{identifier}/complete/
+      operations:
+      - name: filescomplete
+        method: POST
+        description: Complete a multipart file upload.
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: data
+          in: body
+          type: string
+    - name: files-owner-repo-identifier-info
+      path: /files/{owner}/{repo}/{identifier}/info/
+      operations:
+      - name: filesinfo
+        method: GET
+        description: Get upload information to perform a multipart file upload.
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: filename
+          in: query
+          type: string
+          description: The filename of the file being uploaded
+          required: true
+        - name: part_number
+          in: query
+          type: integer
+          description: The part number to be uploaded next
+  exposes:
+  - type: rest
+    namespace: cloudsmith-files-rest
+    port: 8080
+    description: REST adapter for Cloudsmith API (v1) — files. One Spectral-compliant resource per consumed operation, prefixed
+      with /v1.
+    resources:
+    - path: /v1/files/{owner}/{repo}
+      name: files-owner-repo
+      description: REST surface for files-owner-repo.
+      operations:
+      - method: POST
+        name: filescreate
+        description: Request URL(s) to upload new package file upload(s) to.
+        call: cloudsmith-files.filescreate
+        with:
+          data: rest.data
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/files/{owner}/{repo}/validate
+      name: files-owner-repo-validate
+      description: REST surface for files-owner-repo-validate.
+      operations:
+      - method: POST
+        name: filesvalidate
+        description: Validate parameters used for create.
+        call: cloudsmith-files.filesvalidate
+        with:
+          data: rest.data
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/files/{owner}/{repo}/{identifier}/abort
+      name: files-owner-repo-identifier-abort
+      description: REST surface for files-owner-repo-identifier-abort.
+      operations:
+      - method: POST
+        name: filesabort
+        description: Abort a multipart file upload.
+        call: cloudsmith-files.filesabort
+        with:
+          data: rest.data
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/files/{owner}/{repo}/{identifier}/complete
+      name: files-owner-repo-identifier-complete
+      description: REST surface for files-owner-repo-identifier-complete.
+      operations:
+      - method: POST
+        name: filescomplete
+        description: Complete a multipart file upload.
+        call: cloudsmith-files.filescomplete
+        with:
+          data: rest.data
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/files/{owner}/{repo}/{identifier}/info
+      name: files-owner-repo-identifier-info
+      description: REST surface for files-owner-repo-identifier-info.
+      operations:
+      - method: GET
+        name: filesinfo
+        description: Get upload information to perform a multipart file upload.
+        call: cloudsmith-files.filesinfo
+        with:
+          filename: rest.filename
+          part_number: rest.part_number
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: cloudsmith-files-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for Cloudsmith API (v1) — files. One tool per consumed operation, routed inline through this
+      capability's consumes block.
+    tools:
+    - name: request-url-s-upload-new-package
+      description: Request URL(s) to upload new package file upload(s) to.
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: cloudsmith-files.filescreate
+      with:
+        data: tools.data
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: validate-parameters-used-create
+      description: Validate parameters used for create.
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: false
+      call: cloudsmith-files.filesvalidate
+      with:
+        data: tools.data
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: abort-multipart-file-upload
+      description: Abort a multipart file upload.
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: cloudsmith-files.filesabort
+      with:
+        data: tools.data
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: complete-multipart-file-upload
+      description: Complete a multipart file upload.
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: cloudsmith-files.filescomplete
+      with:
+        data: tools.data
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: get-upload-information-perform-multipart
+      description: Get upload information to perform a multipart file upload.
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: cloudsmith-files.filesinfo
+      with:
+        filename: tools.filename
+        part_number: tools.part_number
+      outputParameters:
+      - type: object
+        mapping: $.

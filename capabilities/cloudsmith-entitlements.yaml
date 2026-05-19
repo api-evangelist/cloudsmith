@@ -1,0 +1,494 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Cloudsmith API (v1) — entitlements
+  description: 'Cloudsmith API (v1) — entitlements. 11 operations. Lead operation: Get a list of all entitlements in a repository..
+    Self-contained Naftiko capability covering one Cloudsmith business surface.'
+  tags:
+  - Cloudsmith
+  - entitlements
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    CLOUDSMITH_API_KEY: CLOUDSMITH_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: cloudsmith-entitlements
+    baseUri: https://api.cloudsmith.io
+    description: Cloudsmith API (v1) — entitlements business capability. Self-contained, no shared references.
+    resources:
+    - name: entitlements-owner-repo
+      path: /entitlements/{owner}/{repo}/
+      operations:
+      - name: entitlementslist
+        method: GET
+        description: Get a list of all entitlements in a repository.
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: page
+          in: query
+          type: integer
+          description: A page number within the paginated result set.
+        - name: page_size
+          in: query
+          type: integer
+          description: Number of results to return per page.
+        - name: show_tokens
+          in: query
+          type: boolean
+          description: Show entitlement token strings in results
+        - name: query
+          in: query
+          type: string
+          description: A search term for querying names of entitlements.
+        - name: active
+          in: query
+          type: boolean
+          description: If true, only include active tokens
+        - name: sort
+          in: query
+          type: string
+          description: 'A field for sorting objects in ascending or descending order. Use `-` prefix for descending order
+            (e.g., `-name`). Available options: name.'
+      - name: entitlementscreate
+        method: POST
+        description: Create a specific entitlement in a repository.
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: data
+          in: body
+          type: string
+        - name: show_tokens
+          in: query
+          type: boolean
+          description: Show entitlement token strings in results
+    - name: entitlements-owner-repo-sync
+      path: /entitlements/{owner}/{repo}/sync/
+      operations:
+      - name: entitlementssync
+        method: POST
+        description: Synchronise tokens from a source repository.
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: data
+          in: body
+          type: string
+        - name: show_tokens
+          in: query
+          type: boolean
+          description: Show entitlement token strings in results
+    - name: entitlements-owner-repo-identifier
+      path: /entitlements/{owner}/{repo}/{identifier}/
+      operations:
+      - name: entitlementsread
+        method: GET
+        description: Get a specific entitlement in a repository.
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: fuzzy
+          in: query
+          type: boolean
+          description: If true, entitlement identifiers including name will be fuzzy matched.
+        - name: show_tokens
+          in: query
+          type: boolean
+          description: Show entitlement token strings in results
+      - name: entitlementspartialupdate
+        method: PATCH
+        description: Update a specific entitlement in a repository.
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: data
+          in: body
+          type: string
+        - name: show_tokens
+          in: query
+          type: boolean
+          description: Show entitlement token strings in results
+      - name: entitlementsdelete
+        method: DELETE
+        description: Delete a specific entitlement in a repository.
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: entitlements-owner-repo-identifier-disable
+      path: /entitlements/{owner}/{repo}/{identifier}/disable/
+      operations:
+      - name: entitlementsdisable
+        method: POST
+        description: Disable an entitlement token in a repository.
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: entitlements-owner-repo-identifier-enable
+      path: /entitlements/{owner}/{repo}/{identifier}/enable/
+      operations:
+      - name: entitlementsenable
+        method: POST
+        description: Enable an entitlement token in a repository.
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: entitlements-owner-repo-identifier-refresh
+      path: /entitlements/{owner}/{repo}/{identifier}/refresh/
+      operations:
+      - name: entitlementsrefresh
+        method: POST
+        description: Refresh an entitlement token in a repository.
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: data
+          in: body
+          type: string
+        - name: show_tokens
+          in: query
+          type: boolean
+          description: Show entitlement token strings in results
+    - name: entitlements-owner-repo-identifier-reset
+      path: /entitlements/{owner}/{repo}/{identifier}/reset/
+      operations:
+      - name: entitlementsreset
+        method: POST
+        description: Reset the statistics for an entitlement token in a repository.
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: show_tokens
+          in: query
+          type: boolean
+          description: Show entitlement token strings in results
+    - name: entitlements-owner-repo-identifier-toggle-private-broadcasts
+      path: /entitlements/{owner}/{repo}/{identifier}/toggle-private-broadcasts/
+      operations:
+      - name: entitlementstoggleprivatebroadcasts
+        method: POST
+        description: Set private broadcast access for an entitlement token in a repository.
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: data
+          in: body
+          type: string
+  exposes:
+  - type: rest
+    namespace: cloudsmith-entitlements-rest
+    port: 8080
+    description: REST adapter for Cloudsmith API (v1) — entitlements. One Spectral-compliant resource per consumed operation,
+      prefixed with /v1.
+    resources:
+    - path: /v1/entitlements/{owner}/{repo}
+      name: entitlements-owner-repo
+      description: REST surface for entitlements-owner-repo.
+      operations:
+      - method: GET
+        name: entitlementslist
+        description: Get a list of all entitlements in a repository.
+        call: cloudsmith-entitlements.entitlementslist
+        with:
+          page: rest.page
+          page_size: rest.page_size
+          show_tokens: rest.show_tokens
+          query: rest.query
+          active: rest.active
+          sort: rest.sort
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: POST
+        name: entitlementscreate
+        description: Create a specific entitlement in a repository.
+        call: cloudsmith-entitlements.entitlementscreate
+        with:
+          data: rest.data
+          show_tokens: rest.show_tokens
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/entitlements/{owner}/{repo}/sync
+      name: entitlements-owner-repo-sync
+      description: REST surface for entitlements-owner-repo-sync.
+      operations:
+      - method: POST
+        name: entitlementssync
+        description: Synchronise tokens from a source repository.
+        call: cloudsmith-entitlements.entitlementssync
+        with:
+          data: rest.data
+          show_tokens: rest.show_tokens
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/entitlements/{owner}/{repo}/{identifier}
+      name: entitlements-owner-repo-identifier
+      description: REST surface for entitlements-owner-repo-identifier.
+      operations:
+      - method: GET
+        name: entitlementsread
+        description: Get a specific entitlement in a repository.
+        call: cloudsmith-entitlements.entitlementsread
+        with:
+          fuzzy: rest.fuzzy
+          show_tokens: rest.show_tokens
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: PATCH
+        name: entitlementspartialupdate
+        description: Update a specific entitlement in a repository.
+        call: cloudsmith-entitlements.entitlementspartialupdate
+        with:
+          data: rest.data
+          show_tokens: rest.show_tokens
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: DELETE
+        name: entitlementsdelete
+        description: Delete a specific entitlement in a repository.
+        call: cloudsmith-entitlements.entitlementsdelete
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/entitlements/{owner}/{repo}/{identifier}/disable
+      name: entitlements-owner-repo-identifier-disable
+      description: REST surface for entitlements-owner-repo-identifier-disable.
+      operations:
+      - method: POST
+        name: entitlementsdisable
+        description: Disable an entitlement token in a repository.
+        call: cloudsmith-entitlements.entitlementsdisable
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/entitlements/{owner}/{repo}/{identifier}/enable
+      name: entitlements-owner-repo-identifier-enable
+      description: REST surface for entitlements-owner-repo-identifier-enable.
+      operations:
+      - method: POST
+        name: entitlementsenable
+        description: Enable an entitlement token in a repository.
+        call: cloudsmith-entitlements.entitlementsenable
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/entitlements/{owner}/{repo}/{identifier}/refresh
+      name: entitlements-owner-repo-identifier-refresh
+      description: REST surface for entitlements-owner-repo-identifier-refresh.
+      operations:
+      - method: POST
+        name: entitlementsrefresh
+        description: Refresh an entitlement token in a repository.
+        call: cloudsmith-entitlements.entitlementsrefresh
+        with:
+          data: rest.data
+          show_tokens: rest.show_tokens
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/entitlements/{owner}/{repo}/{identifier}/reset
+      name: entitlements-owner-repo-identifier-reset
+      description: REST surface for entitlements-owner-repo-identifier-reset.
+      operations:
+      - method: POST
+        name: entitlementsreset
+        description: Reset the statistics for an entitlement token in a repository.
+        call: cloudsmith-entitlements.entitlementsreset
+        with:
+          show_tokens: rest.show_tokens
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/entitlements/{owner}/{repo}/{identifier}/toggle-private-broadcasts
+      name: entitlements-owner-repo-identifier-toggle-private-broadcasts
+      description: REST surface for entitlements-owner-repo-identifier-toggle-private-broadcasts.
+      operations:
+      - method: POST
+        name: entitlementstoggleprivatebroadcasts
+        description: Set private broadcast access for an entitlement token in a repository.
+        call: cloudsmith-entitlements.entitlementstoggleprivatebroadcasts
+        with:
+          data: rest.data
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: cloudsmith-entitlements-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for Cloudsmith API (v1) — entitlements. One tool per consumed operation, routed inline through
+      this capability's consumes block.
+    tools:
+    - name: get-list-all-entitlements-repository
+      description: Get a list of all entitlements in a repository.
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: cloudsmith-entitlements.entitlementslist
+      with:
+        page: tools.page
+        page_size: tools.page_size
+        show_tokens: tools.show_tokens
+        query: tools.query
+        active: tools.active
+        sort: tools.sort
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: create-specific-entitlement-repository
+      description: Create a specific entitlement in a repository.
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: cloudsmith-entitlements.entitlementscreate
+      with:
+        data: tools.data
+        show_tokens: tools.show_tokens
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: synchronise-tokens-source-repository
+      description: Synchronise tokens from a source repository.
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: cloudsmith-entitlements.entitlementssync
+      with:
+        data: tools.data
+        show_tokens: tools.show_tokens
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: get-specific-entitlement-repository
+      description: Get a specific entitlement in a repository.
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: cloudsmith-entitlements.entitlementsread
+      with:
+        fuzzy: tools.fuzzy
+        show_tokens: tools.show_tokens
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: update-specific-entitlement-repository
+      description: Update a specific entitlement in a repository.
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: true
+      call: cloudsmith-entitlements.entitlementspartialupdate
+      with:
+        data: tools.data
+        show_tokens: tools.show_tokens
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: delete-specific-entitlement-repository
+      description: Delete a specific entitlement in a repository.
+      hints:
+        readOnly: false
+        destructive: true
+        idempotent: true
+      call: cloudsmith-entitlements.entitlementsdelete
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: disable-entitlement-token-repository
+      description: Disable an entitlement token in a repository.
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: cloudsmith-entitlements.entitlementsdisable
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: enable-entitlement-token-repository
+      description: Enable an entitlement token in a repository.
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: cloudsmith-entitlements.entitlementsenable
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: refresh-entitlement-token-repository
+      description: Refresh an entitlement token in a repository.
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: cloudsmith-entitlements.entitlementsrefresh
+      with:
+        data: tools.data
+        show_tokens: tools.show_tokens
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: reset-statistics-entitlement-token-repository
+      description: Reset the statistics for an entitlement token in a repository.
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: cloudsmith-entitlements.entitlementsreset
+      with:
+        show_tokens: tools.show_tokens
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: set-private-broadcast-access-entitlement
+      description: Set private broadcast access for an entitlement token in a repository.
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: cloudsmith-entitlements.entitlementstoggleprivatebroadcasts
+      with:
+        data: tools.data
+      outputParameters:
+      - type: object
+        mapping: $.

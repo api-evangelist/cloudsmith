@@ -1,0 +1,81 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Cloudsmith API (v1) — bulk-action
+  description: 'Cloudsmith API (v1) — bulk-action. 1 operations. Lead operation: bulk-action. Self-contained Naftiko capability
+    covering one Cloudsmith business surface.'
+  tags:
+  - Cloudsmith
+  - bulk-action
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    CLOUDSMITH_API_KEY: CLOUDSMITH_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: cloudsmith-bulk-action
+    baseUri: https://api.cloudsmith.io
+    description: Cloudsmith API (v1) — bulk-action business capability. Self-contained, no shared references.
+    resources:
+    - name: bulk-action-owner
+      path: /bulk-action/{owner}/
+      operations:
+      - name: bulkaction
+        method: POST
+        description: Perform bulk operations on multiple packages within a repository or across all accessible repositories.
+          If 'repository' is provided, actions are limited to that repository. If 'repository' is omitted, actions are performed
+          across all reposi
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: data
+          in: body
+          type: string
+  exposes:
+  - type: rest
+    namespace: cloudsmith-bulk-action-rest
+    port: 8080
+    description: REST adapter for Cloudsmith API (v1) — bulk-action. One Spectral-compliant resource per consumed operation,
+      prefixed with /v1.
+    resources:
+    - path: /v1/bulk-action/{owner}
+      name: bulk-action-owner
+      description: REST surface for bulk-action-owner.
+      operations:
+      - method: POST
+        name: bulkaction
+        description: Perform bulk operations on multiple packages within a repository or across all accessible repositories.
+          If 'repository' is provided, actions are limited to that repository. If 'repository' is omitted, actions are performed
+          across all reposi
+        call: cloudsmith-bulk-action.bulkaction
+        with:
+          data: rest.data
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: cloudsmith-bulk-action-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for Cloudsmith API (v1) — bulk-action. One tool per consumed operation, routed inline through
+      this capability's consumes block.
+    tools:
+    - name: perform-bulk-operations-multiple-packages
+      description: Perform bulk operations on multiple packages within a repository or across all accessible repositories.
+        If 'repository' is provided, actions are limited to that repository. If 'repository' is omitted, actions are performed
+        across all reposi
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: cloudsmith-bulk-action.bulkaction
+      with:
+        data: tools.data
+      outputParameters:
+      - type: object
+        mapping: $.

@@ -1,0 +1,99 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Cloudsmith API (v1) — formats
+  description: 'Cloudsmith API (v1) — formats. 2 operations. Lead operation: Get a list of all supported package formats..
+    Self-contained Naftiko capability covering one Cloudsmith business surface.'
+  tags:
+  - Cloudsmith
+  - formats
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    CLOUDSMITH_API_KEY: CLOUDSMITH_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: cloudsmith-formats
+    baseUri: https://api.cloudsmith.io
+    description: Cloudsmith API (v1) — formats business capability. Self-contained, no shared references.
+    resources:
+    - name: formats
+      path: /formats/
+      operations:
+      - name: formatslist
+        method: GET
+        description: Get a list of all supported package formats.
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: formats-slug
+      path: /formats/{slug}/
+      operations:
+      - name: formatsread
+        method: GET
+        description: Get a specific supported package format.
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+  exposes:
+  - type: rest
+    namespace: cloudsmith-formats-rest
+    port: 8080
+    description: REST adapter for Cloudsmith API (v1) — formats. One Spectral-compliant resource per consumed operation, prefixed
+      with /v1.
+    resources:
+    - path: /v1/formats
+      name: formats
+      description: REST surface for formats.
+      operations:
+      - method: GET
+        name: formatslist
+        description: Get a list of all supported package formats.
+        call: cloudsmith-formats.formatslist
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/formats/{slug}
+      name: formats-slug
+      description: REST surface for formats-slug.
+      operations:
+      - method: GET
+        name: formatsread
+        description: Get a specific supported package format.
+        call: cloudsmith-formats.formatsread
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: cloudsmith-formats-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for Cloudsmith API (v1) — formats. One tool per consumed operation, routed inline through this
+      capability's consumes block.
+    tools:
+    - name: get-list-all-supported-package
+      description: Get a list of all supported package formats.
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: cloudsmith-formats.formatslist
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: get-specific-supported-package-format
+      description: Get a specific supported package format.
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: cloudsmith-formats.formatsread
+      outputParameters:
+      - type: object
+        mapping: $.

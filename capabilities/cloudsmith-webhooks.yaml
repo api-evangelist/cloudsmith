@@ -1,0 +1,205 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Cloudsmith API (v1) — webhooks
+  description: 'Cloudsmith API (v1) — webhooks. 5 operations. Lead operation: Get a list of all webhooks in a repository..
+    Self-contained Naftiko capability covering one Cloudsmith business surface.'
+  tags:
+  - Cloudsmith
+  - webhooks
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    CLOUDSMITH_API_KEY: CLOUDSMITH_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: cloudsmith-webhooks
+    baseUri: https://api.cloudsmith.io
+    description: Cloudsmith API (v1) — webhooks business capability. Self-contained, no shared references.
+    resources:
+    - name: webhooks-owner-repo
+      path: /webhooks/{owner}/{repo}/
+      operations:
+      - name: webhookslist
+        method: GET
+        description: Get a list of all webhooks in a repository.
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: page
+          in: query
+          type: integer
+          description: A page number within the paginated result set.
+        - name: page_size
+          in: query
+          type: integer
+          description: Number of results to return per page.
+      - name: webhookscreate
+        method: POST
+        description: Create a specific webhook in a repository.
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: data
+          in: body
+          type: string
+    - name: webhooks-owner-repo-identifier
+      path: /webhooks/{owner}/{repo}/{identifier}/
+      operations:
+      - name: webhooksread
+        method: GET
+        description: Views for working with repository webhooks.
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+      - name: webhookspartialupdate
+        method: PATCH
+        description: Update a specific webhook in a repository.
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: data
+          in: body
+          type: string
+      - name: webhooksdelete
+        method: DELETE
+        description: Delete a specific webhook in a repository.
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+  exposes:
+  - type: rest
+    namespace: cloudsmith-webhooks-rest
+    port: 8080
+    description: REST adapter for Cloudsmith API (v1) — webhooks. One Spectral-compliant resource per consumed operation,
+      prefixed with /v1.
+    resources:
+    - path: /v1/webhooks/{owner}/{repo}
+      name: webhooks-owner-repo
+      description: REST surface for webhooks-owner-repo.
+      operations:
+      - method: GET
+        name: webhookslist
+        description: Get a list of all webhooks in a repository.
+        call: cloudsmith-webhooks.webhookslist
+        with:
+          page: rest.page
+          page_size: rest.page_size
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: POST
+        name: webhookscreate
+        description: Create a specific webhook in a repository.
+        call: cloudsmith-webhooks.webhookscreate
+        with:
+          data: rest.data
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/webhooks/{owner}/{repo}/{identifier}
+      name: webhooks-owner-repo-identifier
+      description: REST surface for webhooks-owner-repo-identifier.
+      operations:
+      - method: GET
+        name: webhooksread
+        description: Views for working with repository webhooks.
+        call: cloudsmith-webhooks.webhooksread
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: PATCH
+        name: webhookspartialupdate
+        description: Update a specific webhook in a repository.
+        call: cloudsmith-webhooks.webhookspartialupdate
+        with:
+          data: rest.data
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: DELETE
+        name: webhooksdelete
+        description: Delete a specific webhook in a repository.
+        call: cloudsmith-webhooks.webhooksdelete
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: cloudsmith-webhooks-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for Cloudsmith API (v1) — webhooks. One tool per consumed operation, routed inline through this
+      capability's consumes block.
+    tools:
+    - name: get-list-all-webhooks-repository
+      description: Get a list of all webhooks in a repository.
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: cloudsmith-webhooks.webhookslist
+      with:
+        page: tools.page
+        page_size: tools.page_size
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: create-specific-webhook-repository
+      description: Create a specific webhook in a repository.
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: cloudsmith-webhooks.webhookscreate
+      with:
+        data: tools.data
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: views-working-repository-webhooks
+      description: Views for working with repository webhooks.
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: cloudsmith-webhooks.webhooksread
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: update-specific-webhook-repository
+      description: Update a specific webhook in a repository.
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: true
+      call: cloudsmith-webhooks.webhookspartialupdate
+      with:
+        data: tools.data
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: delete-specific-webhook-repository
+      description: Delete a specific webhook in a repository.
+      hints:
+        readOnly: false
+        destructive: true
+        idempotent: true
+      call: cloudsmith-webhooks.webhooksdelete
+      outputParameters:
+      - type: object
+        mapping: $.

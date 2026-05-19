@@ -1,0 +1,136 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Cloudsmith API (v1) — badges
+  description: 'Cloudsmith API (v1) — badges. 1 operations. Lead operation: Get latest package version for a package or package
+    group.. Self-contained Naftiko capability covering one Cloudsmith business surface.'
+  tags:
+  - Cloudsmith
+  - badges
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    CLOUDSMITH_API_KEY: CLOUDSMITH_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: cloudsmith-badges
+    baseUri: https://api.cloudsmith.io
+    description: Cloudsmith API (v1) — badges business capability. Self-contained, no shared references.
+    resources:
+    - name: badges-version-owner-repo-package_format-package_name-package_version-package_id
+      path: /badges/version/{owner}/{repo}/{package_format}/{package_name}/{package_version}/{package_identifiers}/
+      operations:
+      - name: badgesversionlist
+        method: GET
+        description: Get latest package version for a package or package group.
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: badge_token
+          in: query
+          type: string
+          description: Badge token to authenticate for private packages
+        - name: cacheSeconds
+          in: query
+          type: string
+          description: Override the shields.io badge cacheSeconds value.
+        - name: color
+          in: query
+          type: string
+          description: Override the shields.io badge color value.
+        - name: label
+          in: query
+          type: string
+          description: Override the shields.io badge label value.
+        - name: labelColor
+          in: query
+          type: string
+          description: Override the shields.io badge labelColor value.
+        - name: logoColor
+          in: query
+          type: string
+          description: Override the shields.io badge logoColor value.
+        - name: logoWidth
+          in: query
+          type: string
+          description: Override the shields.io badge logoWidth value.
+        - name: render
+          in: query
+          type: boolean
+          description: If true, badge will be rendered
+        - name: shields
+          in: query
+          type: boolean
+          description: If true, a shields response will be generated
+        - name: show_latest
+          in: query
+          type: boolean
+          description: If true, for latest version badges a '(latest)' suffix is added
+        - name: style
+          in: query
+          type: string
+          description: Override the shields.io badge style value.
+  exposes:
+  - type: rest
+    namespace: cloudsmith-badges-rest
+    port: 8080
+    description: REST adapter for Cloudsmith API (v1) — badges. One Spectral-compliant resource per consumed operation, prefixed
+      with /v1.
+    resources:
+    - path: /v1/badges/version/{owner}/{repo}/{package-format}/{package-name}/{package-version}/{package-identifiers}
+      name: badges-version-owner-repo-package-format-package-name-package-version-package-id
+      description: REST surface for badges-version-owner-repo-package_format-package_name-package_version-package_id.
+      operations:
+      - method: GET
+        name: badgesversionlist
+        description: Get latest package version for a package or package group.
+        call: cloudsmith-badges.badgesversionlist
+        with:
+          badge_token: rest.badge_token
+          cacheSeconds: rest.cacheSeconds
+          color: rest.color
+          label: rest.label
+          labelColor: rest.labelColor
+          logoColor: rest.logoColor
+          logoWidth: rest.logoWidth
+          render: rest.render
+          shields: rest.shields
+          show_latest: rest.show_latest
+          style: rest.style
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: cloudsmith-badges-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for Cloudsmith API (v1) — badges. One tool per consumed operation, routed inline through this
+      capability's consumes block.
+    tools:
+    - name: get-latest-package-version-package
+      description: Get latest package version for a package or package group.
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: cloudsmith-badges.badgesversionlist
+      with:
+        badge_token: tools.badge_token
+        cacheSeconds: tools.cacheSeconds
+        color: tools.color
+        label: tools.label
+        labelColor: tools.labelColor
+        logoColor: tools.logoColor
+        logoWidth: tools.logoWidth
+        render: tools.render
+        shields: tools.shields
+        show_latest: tools.show_latest
+        style: tools.style
+      outputParameters:
+      - type: object
+        mapping: $.

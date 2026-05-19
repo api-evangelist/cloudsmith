@@ -1,0 +1,141 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Cloudsmith API (v1) — audit-log
+  description: 'Cloudsmith API (v1) — audit-log. 2 operations. Lead operation: Lists audit log entries for a specific namespace..
+    Self-contained Naftiko capability covering one Cloudsmith business surface.'
+  tags:
+  - Cloudsmith
+  - audit-log
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    CLOUDSMITH_API_KEY: CLOUDSMITH_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: cloudsmith-audit-log
+    baseUri: https://api.cloudsmith.io
+    description: Cloudsmith API (v1) — audit-log business capability. Self-contained, no shared references.
+    resources:
+    - name: audit-log-owner
+      path: /audit-log/{owner}/
+      operations:
+      - name: auditlognamespacelist
+        method: GET
+        description: Lists audit log entries for a specific namespace.
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: page
+          in: query
+          type: integer
+          description: A page number within the paginated result set.
+        - name: page_size
+          in: query
+          type: integer
+          description: Number of results to return per page.
+        - name: query
+          in: query
+          type: string
+          description: A search term for querying events, actors, or timestamps of log records.
+    - name: audit-log-owner-repo
+      path: /audit-log/{owner}/{repo}/
+      operations:
+      - name: auditlogrepolist
+        method: GET
+        description: Lists audit log entries for a specific repository.
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: page
+          in: query
+          type: integer
+          description: A page number within the paginated result set.
+        - name: page_size
+          in: query
+          type: integer
+          description: Number of results to return per page.
+        - name: query
+          in: query
+          type: string
+          description: A search term for querying events, actors, or timestamps of log records.
+  exposes:
+  - type: rest
+    namespace: cloudsmith-audit-log-rest
+    port: 8080
+    description: REST adapter for Cloudsmith API (v1) — audit-log. One Spectral-compliant resource per consumed operation,
+      prefixed with /v1.
+    resources:
+    - path: /v1/audit-log/{owner}
+      name: audit-log-owner
+      description: REST surface for audit-log-owner.
+      operations:
+      - method: GET
+        name: auditlognamespacelist
+        description: Lists audit log entries for a specific namespace.
+        call: cloudsmith-audit-log.auditlognamespacelist
+        with:
+          page: rest.page
+          page_size: rest.page_size
+          query: rest.query
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/audit-log/{owner}/{repo}
+      name: audit-log-owner-repo
+      description: REST surface for audit-log-owner-repo.
+      operations:
+      - method: GET
+        name: auditlogrepolist
+        description: Lists audit log entries for a specific repository.
+        call: cloudsmith-audit-log.auditlogrepolist
+        with:
+          page: rest.page
+          page_size: rest.page_size
+          query: rest.query
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: cloudsmith-audit-log-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for Cloudsmith API (v1) — audit-log. One tool per consumed operation, routed inline through this
+      capability's consumes block.
+    tools:
+    - name: lists-audit-log-entries-specific
+      description: Lists audit log entries for a specific namespace.
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: cloudsmith-audit-log.auditlognamespacelist
+      with:
+        page: tools.page
+        page_size: tools.page_size
+        query: tools.query
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: lists-audit-log-entries-specific-2
+      description: Lists audit log entries for a specific repository.
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: cloudsmith-audit-log.auditlogrepolist
+      with:
+        page: tools.page
+        page_size: tools.page_size
+        query: tools.query
+      outputParameters:
+      - type: object
+        mapping: $.
