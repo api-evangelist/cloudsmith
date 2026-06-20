@@ -8,7 +8,7 @@ description: >-
   quotas, deny policies, namespaces, distros, formats, recycle bin, storage regions, and broadcasts. Authentication is
   via API key passed in the Authorization header as "token YOUR_API_KEY".
 type: Index
-image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
 url: https://raw.githubusercontent.com/api-evangelist/cloudsmith/refs/heads/main/apis.yml
 created: '2024-01-01'
 modified: '2026-05-19'
@@ -34,7 +34,7 @@ apis:
       - Repositories
       - Entitlements
       - Webhooks
-    image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+    image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
     baseURL: https://api.cloudsmith.io
     humanURL: https://docs.cloudsmith.com/api
     properties:
