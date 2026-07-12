@@ -1,0 +1,21 @@
+generated: '2026-07-11'
+method: derived
+source: openapi/cloudsmith-openapi.json
+summary:
+  types:
+  - apiKey
+  - http
+  api_key_in:
+  - header
+schemes:
+- name: apikey
+  type: apiKey
+  in: header
+  parameter: X-Api-Key
+  sources:
+  - openapi/cloudsmith-openapi.json
+- name: basic
+  type: http
+  scheme: basic
+  sources:
+  - openapi/cloudsmith-openapi.json

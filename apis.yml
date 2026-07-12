@@ -52,6 +52,10 @@ apis:
       recycle-bin, storage-regions, badges, broadcasts, bulk-action, rates, status. Default page size is 30 items, max
       500. Authentication is via personal or service-account API key in the Authorization header.
 common:
+  - type: DomainSecurity
+    url: security/cloudsmith-domain-security.yml
+  - type: Authentication
+    url: authentication/cloudsmith-authentication.yml
   - type: LinkedIn
     url: https://www.linkedin.com/company/cloudsmith
   - type: Website
