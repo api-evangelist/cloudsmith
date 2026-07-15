@@ -52,6 +52,8 @@ apis:
       recycle-bin, storage-regions, badges, broadcasts, bulk-action, rates, status. Default page size is 30 items, max
       500. Authentication is via personal or service-account API key in the Authorization header.
 common:
+  - type: AgenticAccess
+    url: agentic-access/cloudsmith-agentic-access.yml
   - type: DomainSecurity
     url: security/cloudsmith-domain-security.yml
   - type: Authentication
