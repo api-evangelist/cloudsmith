@@ -1,0 +1,336 @@
+swagger: '2.0'
+info:
+  title: Cloudsmith API (v1) audit-log recycle-bin API
+  description: The API to the Cloudsmith Service
+  termsOfService: https://help.cloudsmith.io
+  contact:
+    name: Cloudsmith Support
+    url: https://help.cloudsmith.io
+    email: support@cloudsmith.io
+  license:
+    name: MIT
+    url: https://opensource.org/licenses/MIT
+  version: v1
+host: api.cloudsmith.io
+basePath: /
+schemes:
+- https
+consumes:
+- application/json
+produces:
+- application/json
+security:
+- apikey: []
+- basic: []
+tags:
+- name: recycle-bin
+paths:
+  /recycle-bin/{owner}/:
+    parameters:
+    - name: owner
+      in: path
+      required: true
+      type: string
+    get:
+      operationId: recycle-bin_list
+      summary: List soft-deleted packages in recycle bin
+      description: Retrieve all soft-deleted packages in the workspace. Optionally filter by repository using the 'repository' query parameter.
+      parameters:
+      - name: page
+        in: query
+        description: A page number within the paginated result set.
+        required: false
+        type: integer
+      - name: page_size
+        in: query
+        description: Number of results to return per page.
+        required: false
+        type: integer
+      - name: repository
+        in: query
+        description: Filter packages by repository slug
+        required: false
+        type: string
+      responses:
+        '200':
+          description: OK
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/RecycleBinPackage'
+        '400':
+          description: Request could not be processed (see detail).
+          schema:
+            $ref: '#/definitions/ErrorDetail'
+        '422':
+          description: Missing or invalid parameters (see detail).
+          schema:
+            $ref: '#/definitions/ErrorDetail'
+      tags:
+      - recycle-bin
+  /recycle-bin/{owner}/action/:
+    parameters:
+    - name: owner
+      in: path
+      required: true
+      type: string
+    post:
+      operationId: recycle-bin_action
+      description: 'Perform actions on soft-deleted packages in the recycle bin. Supported actions: permanently delete (hard delete), restore. Returns a list of successfully actioned packages and any packages that failed with error details. '
+      parameters:
+      - name: data
+        in: body
+        required: false
+        schema:
+          $ref: '#/definitions/PackageRecycleBin'
+      responses:
+        '200':
+          description: OK
+          schema:
+            $ref: '#/definitions/PackageBulkActionResponse'
+        '400':
+          description: Request could not be processed (see detail).
+          schema:
+            $ref: '#/definitions/ErrorDetail'
+        '422':
+          description: Missing or invalid parameters (see detail).
+          schema:
+            $ref: '#/definitions/ErrorDetail'
+      tags:
+      - recycle-bin
+definitions:
+  PackageRecycleBin:
+    required:
+    - action
+    - identifiers
+    type: object
+    properties:
+      action:
+        title: Action
+        description: The action to perform on soft-deleted packages.
+        type: string
+        enum:
+        - hard_delete
+        - restore
+      identifiers:
+        description: A list of soft-deleted package identifiers to action.
+        type: array
+        items:
+          type: string
+          maxLength: 255
+          minLength: 1
+        maxItems: 100
+        minItems: 1
+      repository:
+        title: Repository
+        description: The repository name to filter packages to. If not provided, the action will be performed across all accessible repositories in the workspace.
+        type: string
+        maxLength: 255
+        minLength: 1
+  Tags:
+    description: All tags on the package, grouped by tag type. This includes immutable tags, but doesn't distinguish them from mutable. To see which tags are immutable specifically, see the tags_immutable field.
+    type: object
+    properties: {}
+  PackageBulkActionResponse:
+    type: object
+    properties:
+      action:
+        title: Action
+        description: The action that was performed.
+        type: string
+        readOnly: true
+        minLength: 1
+      packages_actioned:
+        description: List of package identifiers that were successfully actioned.
+        type: array
+        items:
+          type: string
+          minLength: 1
+        readOnly: true
+      packages_failed_to_action:
+        title: Packages failed to action
+        description: Dictionary of package identifiers that failed with their error details.
+        type: object
+        additionalProperties:
+          type: object
+          additionalProperties:
+            type: string
+            x-nullable: true
+        readOnly: true
+  ErrorDetail:
+    required:
+    - detail
+    type: object
+    properties:
+      detail:
+        title: Detail
+        description: An extended message for the response.
+        type: string
+        minLength: 1
+      fields:
+        title: Fields
+        description: 'A Dictionary of related errors where key: Field and value: Array of Errors related to that field'
+        type: object
+        additionalProperties:
+          type: array
+          items:
+            type: string
+            minLength: 1
+  RecycleBinPackage:
+    type: object
+    properties:
+      action_by:
+        title: Action by
+        description: The name of the user who deleted the package.
+        type: string
+        readOnly: true
+        minLength: 1
+        x-nullable: true
+      downloads:
+        title: Downloads
+        type: integer
+        readOnly: true
+      filename:
+        title: Filename
+        type: string
+        readOnly: true
+        minLength: 1
+      format:
+        title: Format
+        type: string
+        readOnly: true
+        minLength: 1
+      fully_qualified_name:
+        title: Fully qualified name
+        description: The fully qualified name of the package.
+        type: string
+        readOnly: true
+        minLength: 1
+      identifiers:
+        title: Identifiers
+        type: object
+        additionalProperties:
+          type: string
+          x-nullable: true
+        readOnly: true
+      invoked_retention_rule:
+        title: Invoked retention rule
+        description: Information about the retention rule that triggered deletion (if any).
+        type: object
+        additionalProperties:
+          type: string
+          x-nullable: true
+        readOnly: true
+        x-nullable: true
+      is_deleteable:
+        title: Is deleteable
+        type: boolean
+        readOnly: true
+      is_quarantined:
+        title: Is quarantined
+        type: boolean
+        readOnly: true
+      is_restorable:
+        title: Is restorable
+        type: boolean
+        readOnly: true
+      name:
+        title: Name
+        description: The name of this package.
+        type: string
+        readOnly: true
+        x-nullable: true
+      policy_violated:
+        title: Policy violated
+        description: Whether or not the package has violated any policy.
+        type: boolean
+        readOnly: true
+      repository:
+        title: Repository
+        type: string
+        readOnly: true
+        minLength: 1
+      security_scan_completed_at:
+        title: Security scan completed at
+        description: The datetime the security scanning was completed.
+        type: string
+        format: date-time
+        readOnly: true
+        x-nullable: true
+      security_scan_status:
+        title: Security scan status
+        type: string
+        enum:
+        - Awaiting Security Scan
+        - Security Scanning in Progress
+        - Scan Detected Vulnerabilities
+        - Scan Detected No Vulnerabilities
+        - Security Scanning Disabled
+        - Security Scanning Failed
+        - Security Scanning Skipped
+        - Security Scanning Not Supported
+        readOnly: true
+        default: Awaiting Security Scan
+        x-nullable: true
+      size:
+        title: Size
+        description: The calculated size of the package.
+        type: integer
+        readOnly: true
+      slug_perm:
+        title: Slug perm
+        type: string
+        format: slug
+        pattern: ^[-a-zA-Z0-9_]+$
+        readOnly: true
+        minLength: 1
+      status:
+        title: Status
+        description: The synchronisation status of the package.
+        type: integer
+        enum:
+        - 1
+        - 2
+        - 3
+        - 4
+        - 5
+        - 6
+        - 7
+        - 8
+        readOnly: true
+      status_updated_at:
+        title: Status updated at
+        description: The datetime the package status was updated at.
+        type: string
+        format: date-time
+        readOnly: true
+      tags:
+        $ref: '#/definitions/Tags'
+      type_display:
+        title: Type display
+        type: string
+        readOnly: true
+      uploaded_at:
+        title: Uploaded at
+        description: The date this package was uploaded.
+        type: string
+        format: date-time
+        readOnly: true
+      uploader:
+        title: Uploader
+        type: string
+        readOnly: true
+        minLength: 1
+      version:
+        title: Version
+        description: The raw version for this package.
+        type: string
+        readOnly: true
+        x-nullable: true
+securityDefinitions:
+  apikey:
+    type: apiKey
+    name: X-Api-Key
+    in: header
+  basic:
+    type: basic

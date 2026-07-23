@@ -1,0 +1,355 @@
+swagger: '2.0'
+info:
+  title: Cloudsmith API (v1) audit-log files API
+  description: The API to the Cloudsmith Service
+  termsOfService: https://help.cloudsmith.io
+  contact:
+    name: Cloudsmith Support
+    url: https://help.cloudsmith.io
+    email: support@cloudsmith.io
+  license:
+    name: MIT
+    url: https://opensource.org/licenses/MIT
+  version: v1
+host: api.cloudsmith.io
+basePath: /
+schemes:
+- https
+consumes:
+- application/json
+produces:
+- application/json
+security:
+- apikey: []
+- basic: []
+tags:
+- name: files
+paths:
+  /files/{owner}/{repo}/:
+    parameters:
+    - name: owner
+      in: path
+      required: true
+      type: string
+    - name: repo
+      in: path
+      required: true
+      type: string
+    post:
+      operationId: files_create
+      summary: Request URL(s) to upload new package file upload(s) to.
+      description: Request URL(s) to upload new package file upload(s) to.
+      parameters:
+      - name: data
+        in: body
+        required: false
+        schema:
+          $ref: '#/definitions/PackageFileUploadRequest'
+      responses:
+        '202':
+          description: The upload request was accepted
+          schema:
+            $ref: '#/definitions/PackageFileUpload'
+        '404':
+          description: Namespace (owner) or repository not found
+          schema:
+            $ref: '#/definitions/ErrorDetail'
+        '400':
+          description: Request could not be processed (see detail).
+          schema:
+            $ref: '#/definitions/ErrorDetail'
+        '422':
+          description: Missing or invalid parameters (see detail).
+          schema:
+            $ref: '#/definitions/ErrorDetail'
+      tags:
+      - files
+  /files/{owner}/{repo}/validate/:
+    parameters:
+    - name: owner
+      in: path
+      required: true
+      type: string
+    - name: repo
+      in: path
+      required: true
+      type: string
+    post:
+      operationId: files_validate
+      summary: Validate parameters used for create.
+      description: Validate parameters used for create.
+      parameters:
+      - name: data
+        in: body
+        required: false
+        schema:
+          $ref: '#/definitions/PackageFileUploadRequest'
+      responses:
+        '204':
+          description: Validation was successful, parameters are OK.
+        '404':
+          description: Namespace (owner) or repository not found
+          schema:
+            $ref: '#/definitions/ErrorDetail'
+        '400':
+          description: Request could not be processed (see detail).
+          schema:
+            $ref: '#/definitions/ErrorDetail'
+        '422':
+          description: Missing or invalid parameters (see detail).
+          schema:
+            $ref: '#/definitions/ErrorDetail'
+      tags:
+      - files
+  /files/{owner}/{repo}/{identifier}/abort/:
+    parameters:
+    - name: owner
+      in: path
+      required: true
+      type: string
+    - name: repo
+      in: path
+      required: true
+      type: string
+    - name: identifier
+      in: path
+      required: true
+      type: string
+    post:
+      operationId: files_abort
+      summary: Abort a multipart file upload.
+      description: Abort a multipart file upload.
+      parameters:
+      - name: data
+        in: body
+        required: false
+        schema:
+          $ref: '#/definitions/PackageFileUploadRequest'
+      responses:
+        '204':
+          description: The multipart upload was aborted successfully.
+        '400':
+          description: The multipart upload could not be aborted.
+          schema:
+            $ref: '#/definitions/ErrorDetail'
+        '404':
+          description: Namespace (owner), repository or upload file not found
+          schema:
+            $ref: '#/definitions/ErrorDetail'
+        '422':
+          description: Missing or invalid parameters (see detail).
+          schema:
+            $ref: '#/definitions/ErrorDetail'
+      tags:
+      - files
+  /files/{owner}/{repo}/{identifier}/complete/:
+    parameters:
+    - name: owner
+      in: path
+      required: true
+      type: string
+    - name: repo
+      in: path
+      required: true
+      type: string
+    - name: identifier
+      in: path
+      required: true
+      type: string
+    post:
+      operationId: files_complete
+      summary: Complete a multipart file upload.
+      description: Complete a multipart file upload.
+      parameters:
+      - name: data
+        in: body
+        required: false
+        schema:
+          $ref: '#/definitions/PackageFileUploadRequest'
+      responses:
+        '201':
+          description: The multipart upload was completed successfully.
+          schema:
+            $ref: '#/definitions/PackageFileUpload'
+        '400':
+          description: The multipart upload could not be completed.
+          schema:
+            $ref: '#/definitions/ErrorDetail'
+        '404':
+          description: Namespace (owner), repository or upload file not found
+          schema:
+            $ref: '#/definitions/ErrorDetail'
+        '422':
+          description: Missing or invalid parameters (see detail).
+          schema:
+            $ref: '#/definitions/ErrorDetail'
+      tags:
+      - files
+  /files/{owner}/{repo}/{identifier}/info/:
+    parameters:
+    - name: owner
+      in: path
+      required: true
+      type: string
+    - name: repo
+      in: path
+      required: true
+      type: string
+    - name: identifier
+      in: path
+      required: true
+      type: string
+    get:
+      operationId: files_info
+      summary: Get upload information to perform a multipart file upload.
+      description: Get upload information to perform a multipart file upload.
+      parameters:
+      - name: filename
+        in: query
+        description: The filename of the file being uploaded
+        required: true
+        type: string
+      - name: part_number
+        in: query
+        description: The part number to be uploaded next
+        required: false
+        type: integer
+      responses:
+        '200':
+          description: Information for multipart uploaded retrieved successfully.
+          schema:
+            $ref: '#/definitions/PackageFilePartsUpload'
+        '400':
+          description: The provided upload file was not a multipart upload.
+          schema:
+            $ref: '#/definitions/ErrorDetail'
+        '404':
+          description: Namespace (owner), repository or upload file not found
+          schema:
+            $ref: '#/definitions/ErrorDetail'
+        '422':
+          description: Missing or invalid parameters (see detail).
+          schema:
+            $ref: '#/definitions/ErrorDetail'
+      tags:
+      - files
+definitions:
+  PackageFilePartsUpload:
+    type: object
+    properties:
+      identifier:
+        title: Identifier
+        description: The identifier for the file to use uploading parts.
+        type: string
+        format: uri
+        readOnly: true
+        minLength: 1
+      upload_querystring:
+        title: Upload querystring
+        description: The querystring to use for the next-step PUT upload.
+        type: string
+        readOnly: true
+        minLength: 1
+        x-nullable: true
+      upload_url:
+        title: Upload url
+        description: The URL to use for the next-step PUT upload
+        type: string
+        format: uri
+        readOnly: true
+        minLength: 1
+  ErrorDetail:
+    required:
+    - detail
+    type: object
+    properties:
+      detail:
+        title: Detail
+        description: An extended message for the response.
+        type: string
+        minLength: 1
+      fields:
+        title: Fields
+        description: 'A Dictionary of related errors where key: Field and value: Array of Errors related to that field'
+        type: object
+        additionalProperties:
+          type: array
+          items:
+            type: string
+            minLength: 1
+  PackageFileUpload:
+    type: object
+    properties:
+      identifier:
+        title: Identifier
+        description: The identifier for the file to use when creating packages
+        type: string
+        format: uri
+        readOnly: true
+        minLength: 1
+      upload_fields:
+        title: Upload fields
+        description: The dictionary of fields that must be sent with POST uploads
+        type: object
+        readOnly: true
+        x-nullable: true
+      upload_headers:
+        title: Upload headers
+        description: The dictionary of headers that must be sent with uploads
+        type: object
+        readOnly: true
+        x-nullable: true
+      upload_querystring:
+        title: Upload querystring
+        description: The querystring to use for the next-step POST or PUT upload
+        type: string
+        readOnly: true
+        minLength: 1
+        x-nullable: true
+      upload_url:
+        title: Upload url
+        description: The URL to use for the next-step POST or PUT upload
+        type: string
+        format: uri
+        readOnly: true
+        minLength: 1
+  PackageFileUploadRequest:
+    required:
+    - filename
+    type: object
+    properties:
+      filename:
+        title: Filename
+        description: Filename for the package file upload.
+        type: string
+        minLength: 1
+      md5_checksum:
+        title: Md5 checksum
+        description: MD5 checksum for a POST-based package file upload.
+        type: string
+        maxLength: 32
+        minLength: 32
+      method:
+        title: Method
+        description: The method to use for package file upload.
+        type: string
+        enum:
+        - put_parts
+        - put
+        - post
+        - presigned
+        - unsigned_put
+        default: post
+      sha256_checksum:
+        title: Sha256 checksum
+        description: SHA256 checksum for a PUT-based package file upload.
+        type: string
+        maxLength: 64
+        minLength: 64
+securityDefinitions:
+  apikey:
+    type: apiKey
+    name: X-Api-Key
+    in: header
+  basic:
+    type: basic

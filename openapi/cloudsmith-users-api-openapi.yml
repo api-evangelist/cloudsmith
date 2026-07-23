@@ -1,0 +1,134 @@
+swagger: '2.0'
+info:
+  title: Cloudsmith API (v1) audit-log users API
+  description: The API to the Cloudsmith Service
+  termsOfService: https://help.cloudsmith.io
+  contact:
+    name: Cloudsmith Support
+    url: https://help.cloudsmith.io
+    email: support@cloudsmith.io
+  license:
+    name: MIT
+    url: https://opensource.org/licenses/MIT
+  version: v1
+host: api.cloudsmith.io
+basePath: /
+schemes:
+- https
+consumes:
+- application/json
+produces:
+- application/json
+security:
+- apikey: []
+- basic: []
+tags:
+- name: users
+paths:
+  /users/profile/{slug}/:
+    parameters:
+    - name: slug
+      in: path
+      required: true
+      type: string
+    get:
+      operationId: users_profile_read
+      summary: Provide a brief for the specified user (if any).
+      description: Provide a brief for the specified user (if any).
+      parameters: []
+      responses:
+        '200':
+          description: Retrieved details for the specified user (or current user, if none was specified)
+          schema:
+            $ref: '#/definitions/UserProfile'
+        '400':
+          description: Request could not be processed (see detail).
+          schema:
+            $ref: '#/definitions/ErrorDetail'
+        '422':
+          description: Missing or invalid parameters (see detail).
+          schema:
+            $ref: '#/definitions/ErrorDetail'
+      tags:
+      - users
+definitions:
+  ErrorDetail:
+    required:
+    - detail
+    type: object
+    properties:
+      detail:
+        title: Detail
+        description: An extended message for the response.
+        type: string
+        minLength: 1
+      fields:
+        title: Fields
+        description: 'A Dictionary of related errors where key: Field and value: Array of Errors related to that field'
+        type: object
+        additionalProperties:
+          type: array
+          items:
+            type: string
+            minLength: 1
+  UserProfile:
+    required:
+    - first_name
+    - last_name
+    type: object
+    properties:
+      company:
+        title: Company
+        type: string
+        maxLength: 64
+        x-nullable: true
+      first_name:
+        title: First name
+        type: string
+        maxLength: 120
+        minLength: 1
+      job_title:
+        title: Job title
+        type: string
+        maxLength: 64
+        x-nullable: true
+      joined_at:
+        title: Joined at
+        type: string
+        format: date-time
+      last_name:
+        title: Last name
+        type: string
+        maxLength: 120
+        minLength: 1
+      name:
+        title: Name
+        type: string
+        readOnly: true
+        minLength: 1
+      slug:
+        title: Slug
+        type: string
+        readOnly: true
+      slug_perm:
+        title: Slug perm
+        type: string
+        readOnly: true
+      tagline:
+        title: Tagline
+        description: Your tagline is a sentence about you. Make it funny. Make it professional. Either way, it's public and it represents who you are.
+        type: string
+        maxLength: 1024
+        x-nullable: true
+      url:
+        title: Url
+        type: string
+        format: uri
+        readOnly: true
+securityDefinitions:
+  apikey:
+    type: apiKey
+    name: X-Api-Key
+    in: header
+  basic:
+    type: basic

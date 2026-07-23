@@ -1,0 +1,424 @@
+swagger: '2.0'
+info:
+  title: Cloudsmith API (v1) audit-log quota API
+  description: The API to the Cloudsmith Service
+  termsOfService: https://help.cloudsmith.io
+  contact:
+    name: Cloudsmith Support
+    url: https://help.cloudsmith.io
+    email: support@cloudsmith.io
+  license:
+    name: MIT
+    url: https://opensource.org/licenses/MIT
+  version: v1
+host: api.cloudsmith.io
+basePath: /
+schemes:
+- https
+consumes:
+- application/json
+produces:
+- application/json
+security:
+- apikey: []
+- basic: []
+tags:
+- name: quota
+paths:
+  /quota/history/{owner}/:
+    parameters:
+    - name: owner
+      in: path
+      required: true
+      type: string
+    get:
+      operationId: quota_history_read
+      summary: Quota history for a given namespace.
+      description: Quota history for a given namespace.
+      parameters: []
+      responses:
+        '200':
+          description: OK
+          schema:
+            $ref: '#/definitions/QuotaHistory'
+        '400':
+          description: Request could not be processed (see detail).
+          schema:
+            $ref: '#/definitions/ErrorDetail'
+        '422':
+          description: Missing or invalid parameters (see detail).
+          schema:
+            $ref: '#/definitions/ErrorDetail'
+      tags:
+      - quota
+  /quota/oss/history/{owner}/:
+    parameters:
+    - name: owner
+      in: path
+      required: true
+      type: string
+    get:
+      operationId: quota_oss_history_read
+      summary: Open-source Quota history for a given namespace.
+      description: Open-source Quota history for a given namespace.
+      parameters: []
+      responses:
+        '200':
+          description: OK
+          schema:
+            $ref: '#/definitions/QuotaHistory'
+        '400':
+          description: Request could not be processed (see detail).
+          schema:
+            $ref: '#/definitions/ErrorDetail'
+        '422':
+          description: Missing or invalid parameters (see detail).
+          schema:
+            $ref: '#/definitions/ErrorDetail'
+      tags:
+      - quota
+  /quota/oss/{owner}/:
+    parameters:
+    - name: owner
+      in: path
+      required: true
+      type: string
+    get:
+      operationId: quota_oss_read
+      summary: Open-source Quota usage for a given namespace.
+      description: Open-source Quota usage for a given namespace.
+      parameters: []
+      responses:
+        '200':
+          description: OK
+          schema:
+            $ref: '#/definitions/Quota'
+        '400':
+          description: Request could not be processed (see detail).
+          schema:
+            $ref: '#/definitions/ErrorDetail'
+        '422':
+          description: Missing or invalid parameters (see detail).
+          schema:
+            $ref: '#/definitions/ErrorDetail'
+      tags:
+      - quota
+  /quota/{owner}/:
+    parameters:
+    - name: owner
+      in: path
+      required: true
+      type: string
+    get:
+      operationId: quota_read
+      summary: Quota usage for a given namespace.
+      description: Quota usage for a given namespace.
+      parameters: []
+      responses:
+        '200':
+          description: OK
+          schema:
+            $ref: '#/definitions/Quota'
+        '400':
+          description: Request could not be processed (see detail).
+          schema:
+            $ref: '#/definitions/ErrorDetail'
+        '422':
+          description: Missing or invalid parameters (see detail).
+          schema:
+            $ref: '#/definitions/ErrorDetail'
+      tags:
+      - quota
+definitions:
+  StorageAllocatedLimit:
+    type: object
+    properties:
+      configured:
+        title: Configured
+        type: string
+        maxLength: 32
+        minLength: 1
+      peak:
+        title: Peak
+        type: string
+        maxLength: 32
+        minLength: 1
+      percentage_used:
+        title: Percentage used
+        type: string
+        maxLength: 10
+        minLength: 1
+      plan_limit:
+        title: Plan limit
+        type: string
+        maxLength: 32
+        minLength: 1
+      used:
+        title: Used
+        type: string
+        maxLength: 32
+        minLength: 1
+      used_pre_deduplication:
+        title: Used pre deduplication
+        type: string
+        maxLength: 32
+        minLength: 1
+  StorageAllocatedLimitRaw:
+    type: object
+    properties:
+      configured:
+        title: Configured
+        type: integer
+      peak:
+        title: Peak
+        type: integer
+      percentage_used:
+        title: Percentage used
+        type: string
+        format: decimal
+      plan_limit:
+        title: Plan limit
+        type: integer
+      used:
+        title: Used
+        type: integer
+      used_pre_deduplication:
+        title: Used pre deduplication
+        type: integer
+  StorageUsage:
+    type: object
+    properties:
+      limit:
+        title: Limit
+        type: string
+        maxLength: 32
+        minLength: 1
+      peak:
+        title: Peak
+        type: string
+        maxLength: 32
+        minLength: 1
+      percentage:
+        title: Percentage
+        type: string
+        maxLength: 10
+        minLength: 1
+      used:
+        title: Used
+        type: string
+        maxLength: 32
+        minLength: 1
+  AllocatedLimit:
+    type: object
+    properties:
+      configured:
+        title: Configured
+        type: string
+        maxLength: 32
+        minLength: 1
+      percentage_used:
+        title: Percentage used
+        type: string
+        maxLength: 10
+        minLength: 1
+      plan_limit:
+        title: Plan limit
+        type: string
+        maxLength: 32
+        minLength: 1
+      used:
+        title: Used
+        type: string
+        maxLength: 32
+        minLength: 1
+  ErrorDetail:
+    required:
+    - detail
+    type: object
+    properties:
+      detail:
+        title: Detail
+        description: An extended message for the response.
+        type: string
+        minLength: 1
+      fields:
+        title: Fields
+        description: 'A Dictionary of related errors where key: Field and value: Array of Errors related to that field'
+        type: object
+        additionalProperties:
+          type: array
+          items:
+            type: string
+            minLength: 1
+  StorageUsageRaw:
+    type: object
+    properties:
+      limit:
+        title: Limit
+        type: integer
+      peak:
+        title: Peak
+        type: integer
+      percentage:
+        title: Percentage
+        type: string
+        format: decimal
+      used:
+        title: Used
+        type: integer
+  HistoryFieldsetRaw:
+    required:
+    - downloaded
+    - storage_used
+    - uploaded
+    type: object
+    properties:
+      downloaded:
+        $ref: '#/definitions/UsageRaw'
+      storage_used:
+        $ref: '#/definitions/StorageUsageRaw'
+      uploaded:
+        $ref: '#/definitions/UsageRaw'
+  UsageRaw:
+    type: object
+    properties:
+      limit:
+        title: Limit
+        type: integer
+      percentage:
+        title: Percentage
+        type: string
+        format: decimal
+      used:
+        title: Used
+        type: integer
+  Quota:
+    required:
+    - usage
+    type: object
+    properties:
+      usage:
+        $ref: '#/definitions/UsageFieldset'
+  UsageFieldset:
+    required:
+    - display
+    - raw
+    type: object
+    properties:
+      display:
+        $ref: '#/definitions/UsageLimits'
+      raw:
+        $ref: '#/definitions/UsageLimitsRaw'
+  HistoryFieldset:
+    required:
+    - downloaded
+    - storage_used
+    - uploaded
+    type: object
+    properties:
+      downloaded:
+        $ref: '#/definitions/Usage'
+      storage_used:
+        $ref: '#/definitions/StorageUsage'
+      uploaded:
+        $ref: '#/definitions/Usage'
+  History:
+    required:
+    - display
+    - end
+    - plan
+    - raw
+    - start
+    type: object
+    properties:
+      days:
+        title: Days
+        type: integer
+        default: 0
+      display:
+        $ref: '#/definitions/HistoryFieldset'
+      end:
+        title: End
+        type: string
+        format: date-time
+      plan:
+        title: Plan
+        type: string
+        maxLength: 64
+        minLength: 1
+      raw:
+        $ref: '#/definitions/HistoryFieldsetRaw'
+      start:
+        title: Start
+        type: string
+        format: date-time
+  QuotaHistory:
+    required:
+    - history
+    type: object
+    properties:
+      history:
+        type: array
+        items:
+          $ref: '#/definitions/History'
+  Usage:
+    type: object
+    properties:
+      limit:
+        title: Limit
+        type: string
+        maxLength: 32
+        minLength: 1
+      percentage:
+        title: Percentage
+        type: string
+        maxLength: 10
+        minLength: 1
+      used:
+        title: Used
+        type: string
+        maxLength: 32
+        minLength: 1
+  UsageLimitsRaw:
+    required:
+    - bandwidth
+    - storage
+    type: object
+    properties:
+      bandwidth:
+        $ref: '#/definitions/AllocatedLimitRaw'
+      storage:
+        $ref: '#/definitions/StorageAllocatedLimitRaw'
+  AllocatedLimitRaw:
+    type: object
+    properties:
+      configured:
+        title: Configured
+        type: integer
+      percentage_used:
+        title: Percentage used
+        type: string
+        format: decimal
+      plan_limit:
+        title: Plan limit
+        type: integer
+      used:
+        title: Used
+        type: integer
+  UsageLimits:
+    required:
+    - bandwidth
+    - storage
+    type: object
+    properties:
+      bandwidth:
+        $ref: '#/definitions/AllocatedLimit'
+      storage:
+        $ref: '#/definitions/StorageAllocatedLimit'
+securityDefinitions:
+  apikey:
+    type: apiKey
+    name: X-Api-Key
+    in: header
+  basic:
+    type: basic

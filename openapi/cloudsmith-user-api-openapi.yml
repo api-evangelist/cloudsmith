@@ -1,0 +1,304 @@
+swagger: '2.0'
+info:
+  title: Cloudsmith API (v1) audit-log user API
+  description: The API to the Cloudsmith Service
+  termsOfService: https://help.cloudsmith.io
+  contact:
+    name: Cloudsmith Support
+    url: https://help.cloudsmith.io
+    email: support@cloudsmith.io
+  license:
+    name: MIT
+    url: https://opensource.org/licenses/MIT
+  version: v1
+host: api.cloudsmith.io
+basePath: /
+schemes:
+- https
+consumes:
+- application/json
+produces:
+- application/json
+security:
+- apikey: []
+- basic: []
+tags:
+- name: user
+paths:
+  /user/self/:
+    parameters: []
+    get:
+      operationId: user_self
+      summary: Provide a brief for the current user (if any).
+      description: Provide a brief for the current user (if any).
+      parameters: []
+      responses:
+        '200':
+          description: Retrieved brief for the current user
+          schema:
+            $ref: '#/definitions/UserBrief'
+        '400':
+          description: Request could not be processed (see detail).
+          schema:
+            $ref: '#/definitions/ErrorDetail'
+        '422':
+          description: Missing or invalid parameters (see detail).
+          schema:
+            $ref: '#/definitions/ErrorDetail'
+      tags:
+      - user
+  /user/token/:
+    parameters: []
+    post:
+      operationId: user_token_create
+      summary: Create or retrieve API token for a user.
+      description: 'Handles both:
+
+        - Users authenticating with basic credentials to get a token
+
+        - Two-factor authentication flow'
+      parameters:
+      - name: data
+        in: body
+        required: false
+        schema:
+          $ref: '#/definitions/UserAuthTokenRequest'
+      responses:
+        '201':
+          description: Retrieved/created user API token/key.
+          schema:
+            $ref: '#/definitions/UserAuthToken'
+        '403':
+          description: Locked out.
+          schema:
+            $ref: '#/definitions/ErrorDetail'
+        '422':
+          description: Failed to authenticate.
+          schema:
+            $ref: '#/definitions/ErrorDetail'
+        '400':
+          description: Request could not be processed (see detail).
+          schema:
+            $ref: '#/definitions/ErrorDetail'
+      tags:
+      - user
+      security:
+      - basic: []
+  /user/tokens/:
+    parameters: []
+    get:
+      operationId: user_tokens_list
+      summary: Retrieve the API key assigned to the user that is currently authenticated.
+      description: Retrieve the API key assigned to the user that is currently authenticated.
+      parameters:
+      - name: page
+        in: query
+        description: A page number within the paginated result set.
+        required: false
+        type: integer
+      - name: page_size
+        in: query
+        description: Number of results to return per page.
+        required: false
+        type: integer
+      responses:
+        '200':
+          description: Retrieved the API key for the user that is currently authenticated.
+          schema:
+            required:
+            - results
+            type: object
+            properties:
+              results:
+                type: array
+                items:
+                  $ref: '#/definitions/UserAuthenticationToken'
+        '400':
+          description: Request could not be processed (see detail).
+          schema:
+            $ref: '#/definitions/ErrorDetail'
+        '422':
+          description: Missing or invalid parameters (see detail).
+          schema:
+            $ref: '#/definitions/ErrorDetail'
+      tags:
+      - user
+    post:
+      operationId: user_tokens_create
+      summary: Create an API key for the user that is currently authenticated.
+      description: Create an API key for the user that is currently authenticated.
+      parameters: []
+      responses:
+        '201':
+          description: Created an API key for the user that is currently authenticated.
+          schema:
+            $ref: '#/definitions/UserAuthenticationToken'
+        '400':
+          description: User has already created an API key.
+          schema:
+            $ref: '#/definitions/ErrorDetail'
+        '422':
+          description: Missing or invalid parameters (see detail).
+          schema:
+            $ref: '#/definitions/ErrorDetail'
+      tags:
+      - user
+  /user/tokens/{slug_perm}/refresh/:
+    parameters:
+    - name: slug_perm
+      in: path
+      required: true
+      type: string
+    put:
+      operationId: user_tokens_refresh
+      summary: Refresh the specified API key for the user that is currently authenticated.
+      description: Refresh the specified API key for the user that is currently authenticated.
+      parameters: []
+      responses:
+        '200':
+          description: Successfully refreshed the API key.
+          schema:
+            $ref: '#/definitions/UserAuthenticationToken'
+        '404':
+          description: The specified API key cannot be found.
+          schema:
+            $ref: '#/definitions/ErrorDetail'
+        '400':
+          description: Request could not be processed (see detail).
+          schema:
+            $ref: '#/definitions/ErrorDetail'
+        '422':
+          description: Missing or invalid parameters (see detail).
+          schema:
+            $ref: '#/definitions/ErrorDetail'
+      tags:
+      - user
+definitions:
+  UserAuthenticationToken:
+    type: object
+    properties:
+      created:
+        title: Created
+        description: The time at which the API key was created.
+        type: string
+        format: date-time
+        readOnly: true
+      key:
+        title: Key
+        description: The unique API key used for authentication. This will be obfuscated on read-only HTTP methods.
+        type: string
+        readOnly: true
+      slug_perm:
+        title: Slug perm
+        description: The slug_perm for token.
+        type: string
+        readOnly: true
+  ErrorDetail:
+    required:
+    - detail
+    type: object
+    properties:
+      detail:
+        title: Detail
+        description: An extended message for the response.
+        type: string
+        minLength: 1
+      fields:
+        title: Fields
+        description: 'A Dictionary of related errors where key: Field and value: Array of Errors related to that field'
+        type: object
+        additionalProperties:
+          type: array
+          items:
+            type: string
+            minLength: 1
+  UserBrief:
+    type: object
+    properties:
+      authenticated:
+        title: Authenticated
+        description: If true then you're logged in as a user.
+        type: boolean
+        readOnly: true
+      email:
+        title: Email address
+        description: Your email address that we use to contact you. This is only visible to you.
+        type: string
+        format: email
+        maxLength: 254
+        minLength: 1
+        x-nullable: true
+      name:
+        title: Name
+        description: The full name of the user (if any).
+        type: string
+        readOnly: true
+        minLength: 1
+        x-nullable: true
+      profile_url:
+        title: Profile url
+        description: The URL for the full profile of the user.
+        type: string
+        format: uri
+        readOnly: true
+        x-nullable: true
+      self_url:
+        title: Self url
+        type: string
+        readOnly: true
+      slug:
+        title: Slug
+        type: string
+        readOnly: true
+        x-nullable: true
+      slug_perm:
+        title: Slug perm
+        type: string
+        readOnly: true
+        x-nullable: true
+  UserAuthToken:
+    type: object
+    properties:
+      token:
+        title: Token
+        description: API token for the authenticated user
+        type: string
+        readOnly: true
+        minLength: 1
+      two_factor_required:
+        title: Two factor required
+        description: Flag indicating whether a 2FA code is required to complete authentication
+        type: boolean
+        readOnly: true
+      two_factor_token:
+        title: Two factor token
+        description: Token to use when providing 2FA code
+        type: string
+        readOnly: true
+        minLength: 1
+  UserAuthTokenRequest:
+    type: object
+    properties:
+      email:
+        title: Email
+        description: Email address to authenticate with
+        type: string
+        format: email
+        minLength: 1
+      password:
+        title: Password
+        description: Password to authenticate with
+        type: string
+        minLength: 1
+      totp_token:
+        title: Two-factor code
+        description: Two-factor authentication code
+        type: string
+        minLength: 1
+securityDefinitions:
+  apikey:
+    type: apiKey
+    name: X-Api-Key
+    in: header
+  basic:
+    type: basic

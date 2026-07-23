@@ -1,0 +1,120 @@
+swagger: '2.0'
+info:
+  title: Cloudsmith API (v1) audit-log storage-regions API
+  description: The API to the Cloudsmith Service
+  termsOfService: https://help.cloudsmith.io
+  contact:
+    name: Cloudsmith Support
+    url: https://help.cloudsmith.io
+    email: support@cloudsmith.io
+  license:
+    name: MIT
+    url: https://opensource.org/licenses/MIT
+  version: v1
+host: api.cloudsmith.io
+basePath: /
+schemes:
+- https
+consumes:
+- application/json
+produces:
+- application/json
+security:
+- apikey: []
+- basic: []
+tags:
+- name: storage-regions
+paths:
+  /storage-regions/:
+    parameters: []
+    get:
+      operationId: storage-regions_list
+      summary: Get a list of all available storage regions.
+      description: Get a list of all available storage regions.
+      parameters: []
+      responses:
+        '200':
+          description: Available storage regions retrieved
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/StorageRegion'
+        '400':
+          description: Request could not be processed (see detail).
+          schema:
+            $ref: '#/definitions/ErrorDetail'
+        '422':
+          description: Missing or invalid parameters (see detail).
+          schema:
+            $ref: '#/definitions/ErrorDetail'
+      tags:
+      - storage-regions
+  /storage-regions/{slug}/:
+    parameters:
+    - name: slug
+      in: path
+      required: true
+      type: string
+    get:
+      operationId: storage-regions_read
+      summary: Get a specific storage region.
+      description: Get a specific storage region.
+      parameters: []
+      responses:
+        '200':
+          description: OK
+          schema:
+            $ref: '#/definitions/StorageRegion'
+        '400':
+          description: Request could not be processed (see detail).
+          schema:
+            $ref: '#/definitions/ErrorDetail'
+        '422':
+          description: Missing or invalid parameters (see detail).
+          schema:
+            $ref: '#/definitions/ErrorDetail'
+      tags:
+      - storage-regions
+definitions:
+  ErrorDetail:
+    required:
+    - detail
+    type: object
+    properties:
+      detail:
+        title: Detail
+        description: An extended message for the response.
+        type: string
+        minLength: 1
+      fields:
+        title: Fields
+        description: 'A Dictionary of related errors where key: Field and value: Array of Errors related to that field'
+        type: object
+        additionalProperties:
+          type: array
+          items:
+            type: string
+            minLength: 1
+  StorageRegion:
+    required:
+    - label
+    - slug
+    type: object
+    properties:
+      label:
+        title: Label
+        description: Name of the storage region
+        type: string
+        minLength: 1
+      slug:
+        title: Slug
+        description: Slug for the storage region
+        type: string
+        minLength: 1
+securityDefinitions:
+  apikey:
+    type: apiKey
+    name: X-Api-Key
+    in: header
+  basic:
+    type: basic

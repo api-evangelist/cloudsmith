@@ -1,0 +1,4144 @@
+swagger: '2.0'
+info:
+  title: Cloudsmith API (v1) audit-log orgs API
+  description: The API to the Cloudsmith Service
+  termsOfService: https://help.cloudsmith.io
+  contact:
+    name: Cloudsmith Support
+    url: https://help.cloudsmith.io
+    email: support@cloudsmith.io
+  license:
+    name: MIT
+    url: https://opensource.org/licenses/MIT
+  version: v1
+host: api.cloudsmith.io
+basePath: /
+schemes:
+- https
+consumes:
+- application/json
+produces:
+- application/json
+security:
+- apikey: []
+- basic: []
+tags:
+- name: orgs
+paths:
+  /orgs/:
+    parameters: []
+    get:
+      operationId: orgs_list
+      summary: Get a list of all the organizations you are associated with.
+      description: Get a list of all the organizations you are associated with.
+      parameters:
+      - name: page
+        in: query
+        description: A page number within the paginated result set.
+        required: false
+        type: integer
+      - name: page_size
+        in: query
+        description: Number of results to return per page.
+        required: false
+        type: integer
+      responses:
+        '200':
+          description: OK
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/Organization'
+        '400':
+          description: Request could not be processed (see detail).
+          schema:
+            $ref: '#/definitions/ErrorDetail'
+        '422':
+          description: Missing or invalid parameters (see detail).
+          schema:
+            $ref: '#/definitions/ErrorDetail'
+      tags:
+      - orgs
+  /orgs/{org}/:
+    parameters:
+    - name: org
+      in: path
+      required: true
+      type: string
+    get:
+      operationId: orgs_read
+      summary: Get the details for the specific organization.
+      description: Get the details for the specific organization.
+      parameters: []
+      responses:
+        '200':
+          description: OK
+          schema:
+            $ref: '#/definitions/Organization'
+        '400':
+          description: Request could not be processed (see detail).
+          schema:
+            $ref: '#/definitions/ErrorDetail'
+        '422':
+          description: Missing or invalid parameters (see detail).
+          schema:
+            $ref: '#/definitions/ErrorDetail'
+      tags:
+      - orgs
+    delete:
+      operationId: orgs_delete
+      summary: Delete the specified organization.
+      description: Delete the specified organization.
+      parameters: []
+      responses:
+        '204':
+          description: No Content
+        '400':
+          description: Request could not be processed (see detail).
+          schema:
+            $ref: '#/definitions/ErrorDetail'
+        '422':
+          description: Missing or invalid parameters (see detail).
+          schema:
+            $ref: '#/definitions/ErrorDetail'
+      tags:
+      - orgs
+  /orgs/{org}/deny-policy/:
+    parameters:
+    - name: org
+      in: path
+      required: true
+      type: string
+    get:
+      operationId: orgs_deny-policy_list
+      summary: Get a list of all package deny policies.
+      description: Get a list of all package deny policies.
+      parameters:
+      - name: page
+        in: query
+        description: A page number within the paginated result set.
+        required: false
+        type: integer
+      - name: page_size
+        in: query
+        description: Number of results to return per page.
+        required: false
+        type: integer
+      responses:
+        '200':
+          description: OK
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/PackageDenyPolicy'
+        '400':
+          description: Request could not be processed (see detail).
+          schema:
+            $ref: '#/definitions/ErrorDetail'
+        '422':
+          description: Missing or invalid parameters (see detail).
+          schema:
+            $ref: '#/definitions/ErrorDetail'
+      tags:
+      - orgs
+    post:
+      operationId: orgs_deny-policy_create
+      summary: Create a package deny policy.
+      description: Create a package deny policy.
+      parameters:
+      - name: data
+        in: body
+        required: false
+        schema:
+          $ref: '#/definitions/PackageDenyPolicyRequest'
+      responses:
+        '201':
+          description: Created
+          schema:
+            $ref: '#/definitions/PackageDenyPolicy'
+        '400':
+          description: Request could not be processed (see detail).
+          schema:
+            $ref: '#/definitions/ErrorDetail'
+        '422':
+          description: Missing or invalid parameters (see detail).
+          schema:
+            $ref: '#/definitions/ErrorDetail'
+      tags:
+      - orgs
+  /orgs/{org}/deny-policy/{slug_perm}/:
+    parameters:
+    - name: org
+      in: path
+      required: true
+      type: string
+    - name: slug_perm
+      in: path
+      required: true
+      type: string
+    get:
+      operationId: orgs_deny-policy_read
+      summary: Get a package deny policy.
+      description: Get a package deny policy.
+      parameters: []
+      responses:
+        '200':
+          description: OK
+          schema:
+            $ref: '#/definitions/PackageDenyPolicy'
+        '400':
+          description: Request could not be processed (see detail).
+          schema:
+            $ref: '#/definitions/ErrorDetail'
+        '422':
+          description: Missing or invalid parameters (see detail).
+          schema:
+            $ref: '#/definitions/ErrorDetail'
+      tags:
+      - orgs
+    put:
+      operationId: orgs_deny-policy_update
+      summary: Update a package deny policy.
+      description: Update a package deny policy.
+      parameters:
+      - name: data
+        in: body
+        required: false
+        schema:
+          $ref: '#/definitions/PackageDenyPolicyRequest'
+      responses:
+        '200':
+          description: OK
+          schema:
+            $ref: '#/definitions/PackageDenyPolicy'
+        '400':
+          description: Request could not be processed (see detail).
+          schema:
+            $ref: '#/definitions/ErrorDetail'
+        '422':
+          description: Missing or invalid parameters (see detail).
+          schema:
+            $ref: '#/definitions/ErrorDetail'
+      tags:
+      - orgs
+    patch:
+      operationId: orgs_deny-policy_partial_update
+      summary: Partially update a package deny policy.
+      description: Partially update a package deny policy.
+      parameters:
+      - name: data
+        in: body
+        required: false
+        schema:
+          $ref: '#/definitions/PackageDenyPolicyRequestPatch'
+      responses:
+        '200':
+          description: OK
+          schema:
+            $ref: '#/definitions/PackageDenyPolicy'
+        '400':
+          description: Request could not be processed (see detail).
+          schema:
+            $ref: '#/definitions/ErrorDetail'
+        '422':
+          description: Missing or invalid parameters (see detail).
+          schema:
+            $ref: '#/definitions/ErrorDetail'
+      tags:
+      - orgs
+    delete:
+      operationId: orgs_deny-policy_delete
+      summary: Delete a package deny policy.
+      description: Delete a package deny policy.
+      parameters: []
+      responses:
+        '204':
+          description: No Content
+        '400':
+          description: Request could not be processed (see detail).
+          schema:
+            $ref: '#/definitions/ErrorDetail'
+        '422':
+          description: Missing or invalid parameters (see detail).
+          schema:
+            $ref: '#/definitions/ErrorDetail'
+      tags:
+      - orgs
+  /orgs/{org}/invites/:
+    parameters:
+    - name: org
+      in: path
+      required: true
+      type: string
+    get:
+      operationId: orgs_invites_list
+      summary: Get a list of all invites for an organization.
+      description: Get a list of all invites for an organization.
+      parameters:
+      - name: page
+        in: query
+        description: A page number within the paginated result set.
+        required: false
+        type: integer
+      - name: page_size
+        in: query
+        description: Number of results to return per page.
+        required: false
+        type: integer
+      responses:
+        '200':
+          description: Retrieved the list of organization invites
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/OrganizationInvite'
+        '404':
+          description: Organization invites not found
+          schema:
+            $ref: '#/definitions/ErrorDetail'
+        '400':
+          description: Request could not be processed (see detail).
+          schema:
+            $ref: '#/definitions/ErrorDetail'
+        '422':
+          description: Missing or invalid parameters (see detail).
+          schema:
+            $ref: '#/definitions/ErrorDetail'
+      tags:
+      - orgs
+    post:
+      operationId: orgs_invites_create
+      summary: Create an organization invite for a specific user
+      description: Create an organization invite for a specific user
+      parameters:
+      - name: data
+        in: body
+        required: false
+        schema:
+          $ref: '#/definitions/OrganizationInviteRequest'
+      responses:
+        '201':
+          description: Invite sent
+          schema:
+            $ref: '#/definitions/OrganizationInvite'
+        '400':
+          description: The invite cannot be created.
+          schema:
+            $ref: '#/definitions/ErrorDetail'
+        '422':
+          description: Missing or invalid parameters (see detail).
+          schema:
+            $ref: '#/definitions/ErrorDetail'
+      tags:
+      - orgs
+  /orgs/{org}/invites/{slug_perm}/:
+    parameters:
+    - name: org
+      in: path
+      required: true
+      type: string
+    - name: slug_perm
+      in: path
+      required: true
+      type: string
+    patch:
+      operationId: orgs_invites_partial_update
+      summary: Update a specific organization invite.
+      description: Update a specific organization invite.
+      parameters:
+      - name: data
+        in: body
+        required: false
+        schema:
+          $ref: '#/definitions/OrganizationInviteUpdateRequestPatch'
+      responses:
+        '200':
+          description: Invite updated
+          schema:
+            $ref: '#/definitions/OrganizationInvite'
+        '400':
+          description: The invite cannot be updated.
+          schema:
+            $ref: '#/definitions/ErrorDetail'
+        '404':
+          description: Invite not found.
+          schema:
+            $ref: '#/definitions/ErrorDetail'
+        '422':
+          description: Missing or invalid parameters (see detail).
+          schema:
+            $ref: '#/definitions/ErrorDetail'
+      tags:
+      - orgs
+    delete:
+      operationId: orgs_invites_delete
+      summary: Delete a specific organization invite
+      description: Delete a specific organization invite
+      parameters: []
+      responses:
+        '204':
+          description: Deleted the organization invite successfully.
+        '400':
+          description: The organization invite cannot be deleted.
+          schema:
+            $ref: '#/definitions/ErrorDetail'
+        '422':
+          description: Missing or invalid parameters (see detail).
+          schema:
+            $ref: '#/definitions/ErrorDetail'
+      tags:
+      - orgs
+  /orgs/{org}/invites/{slug_perm}/extend/:
+    parameters:
+    - name: org
+      in: path
+      required: true
+      type: string
+    - name: slug_perm
+      in: path
+      required: true
+      type: string
+    post:
+      operationId: orgs_invites_extend
+      summary: Extend an organization invite.
+      description: Extend an organization invite.
+      parameters: []
+      responses:
+        '200':
+          description: The invite has been extended
+          schema:
+            $ref: '#/definitions/OrganizationInviteExtend'
+        '404':
+          description: Invite not found.
+          schema:
+            $ref: '#/definitions/ErrorDetail'
+        '400':
+          description: Request could not be processed (see detail).
+          schema:
+            $ref: '#/definitions/ErrorDetail'
+        '422':
+          description: Missing or invalid parameters (see detail).
+          schema:
+            $ref: '#/definitions/ErrorDetail'
+      tags:
+      - orgs
+  /orgs/{org}/invites/{slug_perm}/resend/:
+    parameters:
+    - name: org
+      in: path
+      required: true
+      type: string
+    - name: slug_perm
+      in: path
+      required: true
+      type: string
+    post:
+      operationId: orgs_invites_resend
+      summary: Resend an organization invite.
+      description: Resend an organization invite.
+      parameters: []
+      responses:
+        '200':
+          description: The invite has been resent
+          schema:
+            $ref: '#/definitions/OrganizationInviteExtend'
+        '404':
+          description: Invite not found.
+          schema:
+            $ref: '#/definitions/ErrorDetail'
+        '400':
+          description: Request could not be processed (see detail).
+          schema:
+            $ref: '#/definitions/ErrorDetail'
+        '422':
+          description: Missing or invalid parameters (see detail).
+          schema:
+            $ref: '#/definitions/ErrorDetail'
+      tags:
+      - orgs
+  /orgs/{org}/license-policy-violation/:
+    parameters:
+    - name: org
+      in: path
+      required: true
+      type: string
+    get:
+      operationId: orgs_license-policy-violation_list
+      summary: List all current license policy violations for this Organization.
+      description: List all current license policy violations for this Organization.
+      parameters:
+      - name: cursor
+        in: query
+        description: The pagination cursor value.
+        required: false
+        type: string
+      - name: page_size
+        in: query
+        description: Number of results to return per page.
+        required: false
+        type: integer
+      responses:
+        '200':
+          description: OK
+          schema:
+            required:
+            - results
+            type: object
+            properties:
+              next:
+                type: string
+                format: uri
+                x-nullable: true
+              previous:
+                type: string
+                format: uri
+                x-nullable: true
+              results:
+                type: array
+                items:
+                  $ref: '#/definitions/PackageLicensePolicyViolationLog'
+            title: PackageLicensePolicyViolationLogCursorPage
+        '400':
+          description: Request could not be processed (see detail).
+          schema:
+            $ref: '#/definitions/ErrorDetail'
+        '422':
+          description: Missing or invalid parameters (see detail).
+          schema:
+            $ref: '#/definitions/ErrorDetail'
+      tags:
+      - orgs
+  /orgs/{org}/license-policy/:
+    parameters:
+    - name: org
+      in: path
+      required: true
+      type: string
+    get:
+      operationId: orgs_license-policy_list
+      summary: Get a list of all package license policies.
+      description: Get a list of all package license policies.
+      parameters:
+      - name: page
+        in: query
+        description: A page number within the paginated result set.
+        required: false
+        type: integer
+      - name: page_size
+        in: query
+        description: Number of results to return per page.
+        required: false
+        type: integer
+      responses:
+        '200':
+          description: OK
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/OrganizationPackageLicensePolicy'
+        '400':
+          description: Request could not be processed (see detail).
+          schema:
+            $ref: '#/definitions/ErrorDetail'
+        '422':
+          description: Missing or invalid parameters (see detail).
+          schema:
+            $ref: '#/definitions/ErrorDetail'
+      tags:
+      - orgs
+    post:
+      operationId: orgs_license-policy_create
+      summary: Create a package license policy.
+      description: Create a package license policy.
+      parameters:
+      - name: data
+        in: body
+        required: false
+        schema:
+          $ref: '#/definitions/OrganizationPackageLicensePolicyRequest'
+      responses:
+        '201':
+          description: Created
+          schema:
+            $ref: '#/definitions/OrganizationPackageLicensePolicy'
+        '400':
+          description: Request could not be processed (see detail).
+          schema:
+            $ref: '#/definitions/ErrorDetail'
+        '422':
+          description: Missing or invalid parameters (see detail).
+          schema:
+            $ref: '#/definitions/ErrorDetail'
+      tags:
+      - orgs
+  /orgs/{org}/license-policy/{policy_slug_perm}/evaluation/:
+    parameters:
+    - name: org
+      in: path
+      required: true
+      type: string
+    - name: policy_slug_perm
+      in: path
+      required: true
+      type: string
+    get:
+      operationId: orgs_license-policy_evaluation_list
+      summary: List evaluation requests for this policy.
+      description: List evaluation requests for this policy.
+      parameters:
+      - name: page
+        in: query
+        description: A page number within the paginated result set.
+        required: false
+        type: integer
+      - name: page_size
+        in: query
+        description: Number of results to return per page.
+        required: false
+        type: integer
+      responses:
+        '200':
+          description: OK
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/PackageLicensePolicyEvaluationRequest'
+        '400':
+          description: Request could not be processed (see detail).
+          schema:
+            $ref: '#/definitions/ErrorDetail'
+        '422':
+          description: Missing or invalid parameters (see detail).
+          schema:
+            $ref: '#/definitions/ErrorDetail'
+      tags:
+      - orgs
+    post:
+      operationId: orgs_license-policy_evaluation_create
+      summary: Create an evaluation request for this policy.
+      description: Create an evaluation request for this policy.
+      parameters:
+      - name: data
+        in: body
+        required: false
+        schema:
+          $ref: '#/definitions/PackageLicensePolicyEvaluationRequestRequest'
+      responses:
+        '201':
+          description: Created
+          schema:
+            $ref: '#/definitions/PackageLicensePolicyEvaluationRequest'
+        '400':
+          description: Request could not be processed (see detail).
+          schema:
+            $ref: '#/definitions/ErrorDetail'
+        '422':
+          description: Missing or invalid parameters (see detail).
+          schema:
+            $ref: '#/definitions/ErrorDetail'
+      tags:
+      - orgs
+  /orgs/{org}/license-policy/{policy_slug_perm}/evaluation/{slug_perm}/:
+    parameters:
+    - name: org
+      in: path
+      required: true
+      type: string
+    - name: policy_slug_perm
+      in: path
+      required: true
+      type: string
+    - name: slug_perm
+      in: path
+      required: true
+      type: string
+    get:
+      operationId: orgs_license-policy_evaluation_read
+      summary: Retrieve an evaluation request for this policy.
+      description: Retrieve an evaluation request for this policy.
+      parameters: []
+      responses:
+        '200':
+          description: OK
+          schema:
+            $ref: '#/definitions/PackageLicensePolicyEvaluationRequest'
+        '400':
+          description: Request could not be processed (see detail).
+          schema:
+            $ref: '#/definitions/ErrorDetail'
+        '422':
+          description: Missing or invalid parameters (see detail).
+          schema:
+            $ref: '#/definitions/ErrorDetail'
+      tags:
+      - orgs
+  /orgs/{org}/license-policy/{slug_perm}/:
+    parameters:
+    - name: org
+      in: path
+      required: true
+      type: string
+    - name: slug_perm
+      in: path
+      required: true
+      type: string
+    get:
+      operationId: orgs_license-policy_read
+      summary: Get a package license policy.
+      description: Get a package license policy.
+      parameters: []
+      responses:
+        '200':
+          description: OK
+          schema:
+            $ref: '#/definitions/OrganizationPackageLicensePolicy'
+        '400':
+          description: Request could not be processed (see detail).
+          schema:
+            $ref: '#/definitions/ErrorDetail'
+        '422':
+          description: Missing or invalid parameters (see detail).
+          schema:
+            $ref: '#/definitions/ErrorDetail'
+      tags:
+      - orgs
+    put:
+      operationId: orgs_license-policy_update
+      summary: Update a package license policy.
+      description: Update a package license policy.
+      parameters:
+      - name: data
+        in: body
+        required: false
+        schema:
+          $ref: '#/definitions/OrganizationPackageLicensePolicyRequest'
+      responses:
+        '200':
+          description: OK
+          schema:
+            $ref: '#/definitions/OrganizationPackageLicensePolicy'
+        '400':
+          description: Request could not be processed (see detail).
+          schema:
+            $ref: '#/definitions/ErrorDetail'
+        '422':
+          description: Missing or invalid parameters (see detail).
+          schema:
+            $ref: '#/definitions/ErrorDetail'
+      tags:
+      - orgs
+    patch:
+      operationId: orgs_license-policy_partial_update
+      summary: Partially update a package license policy.
+      description: Partially update a package license policy.
+      parameters:
+      - name: data
+        in: body
+        required: false
+        schema:
+          $ref: '#/definitions/OrganizationPackageLicensePolicyRequestPatch'
+      responses:
+        '200':
+          description: OK
+          schema:
+            $ref: '#/definitions/OrganizationPackageLicensePolicy'
+        '400':
+          description: Request could not be processed (see detail).
+          schema:
+            $ref: '#/definitions/ErrorDetail'
+        '422':
+          description: Missing or invalid parameters (see detail).
+          schema:
+            $ref: '#/definitions/ErrorDetail'
+      tags:
+      - orgs
+    delete:
+      operationId: orgs_license-policy_delete
+      summary: Delete a package license policy.
+      description: Delete a package license policy.
+      parameters: []
+      responses:
+        '204':
+          description: No Content
+        '400':
+          description: Request could not be processed (see detail).
+          schema:
+            $ref: '#/definitions/ErrorDetail'
+        '422':
+          description: Missing or invalid parameters (see detail).
+          schema:
+            $ref: '#/definitions/ErrorDetail'
+      tags:
+      - orgs
+  /orgs/{org}/members/:
+    parameters:
+    - name: org
+      in: path
+      required: true
+      type: string
+    get:
+      operationId: orgs_members_list
+      summary: Get the details for all organization members.
+      description: Get the details for all organization members.
+      parameters:
+      - name: page
+        in: query
+        description: A page number within the paginated result set.
+        required: false
+        type: integer
+      - name: page_size
+        in: query
+        description: Number of results to return per page.
+        required: false
+        type: integer
+      - name: is_active
+        in: query
+        description: Filter for active/inactive users.
+        required: false
+        type: boolean
+        default: false
+      - name: query
+        in: query
+        description: 'A search term for querying of members within an Organization.Available options are: email, org, user, userslug, inactive, user_name, role'
+        required: false
+        type: string
+        default: ''
+      - name: sort
+        in: query
+        description: 'A field for sorting objects in ascending or descending order. Use `-` prefix for descending order (e.g., `-user_name`). Available options: user_name, role.'
+        required: false
+        type: string
+        default: user_name
+      responses:
+        '200':
+          description: Retrieved the list of organization's members
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/OrganizationMembership'
+        '400':
+          description: Request could not be processed (see detail).
+          schema:
+            $ref: '#/definitions/ErrorDetail'
+        '422':
+          description: Missing or invalid parameters (see detail).
+          schema:
+            $ref: '#/definitions/ErrorDetail'
+      tags:
+      - orgs
+  /orgs/{org}/members/{member}/:
+    parameters:
+    - name: org
+      in: path
+      required: true
+      type: string
+    - name: member
+      in: path
+      required: true
+      type: string
+    get:
+      operationId: orgs_members_read
+      summary: Get the details for a specific organization member.
+      description: Get the details for a specific organization member.
+      parameters: []
+      responses:
+        '200':
+          description: OK
+          schema:
+            $ref: '#/definitions/OrganizationMembership'
+        '400':
+          description: Request could not be processed (see detail).
+          schema:
+            $ref: '#/definitions/ErrorDetail'
+        '422':
+          description: Missing or invalid parameters (see detail).
+          schema:
+            $ref: '#/definitions/ErrorDetail'
+      tags:
+      - orgs
+    patch:
+      operationId: orgs_members_partial_update
+      summary: Views for working with organization members.
+      description: Views for working with organization members.
+      parameters:
+      - name: data
+        in: body
+        required: false
+        schema:
+          $ref: '#/definitions/OrganizationMembershipRequestPatch'
+      responses:
+        '200':
+          description: OK
+          schema:
+            $ref: '#/definitions/OrganizationMembership'
+        '400':
+          description: Request could not be processed (see detail).
+          schema:
+            $ref: '#/definitions/ErrorDetail'
+        '422':
+          description: Missing or invalid parameters (see detail).
+          schema:
+            $ref: '#/definitions/ErrorDetail'
+      tags:
+      - orgs
+    delete:
+      operationId: orgs_members_delete
+      summary: Removes a member from the organization.
+      description: Removes a member from the organization.
+      parameters: []
+      responses:
+        '204':
+          description: Removed the organization member successfully.
+        '400':
+          description: The organization member cannot be deleted.
+          schema:
+            $ref: '#/definitions/ErrorDetail'
+        '422':
+          description: Missing or invalid parameters (see detail).
+          schema:
+            $ref: '#/definitions/ErrorDetail'
+      tags:
+      - orgs
+  /orgs/{org}/members/{member}/refresh/:
+    parameters:
+    - name: org
+      in: path
+      required: true
+      type: string
+    - name: member
+      in: path
+      required: true
+      type: string
+    post:
+      operationId: orgs_members_refresh
+      summary: Refresh a member of the organization's API key.
+      description: Refresh a member of the organization's API key.
+      parameters: []
+      responses:
+        '204':
+          description: Org member API key has been refreshed.
+        '400':
+          description: The org member's API key cannot be refreshed.
+          schema:
+            $ref: '#/definitions/ErrorDetail'
+        '404':
+          description: Org member not found.
+          schema:
+            $ref: '#/definitions/ErrorDetail'
+        '422':
+          description: Missing or invalid parameters (see detail).
+          schema:
+            $ref: '#/definitions/ErrorDetail'
+      tags:
+      - orgs
+  /orgs/{org}/members/{member}/remove/:
+    parameters:
+    - name: org
+      in: path
+      required: true
+      type: string
+    - name: member
+      in: path
+      required: true
+      type: string
+    get:
+      operationId: orgs_members_remove
+      summary: Removes a member from the organization (deprecated, use DELETE instead).
+      description: Removes a member from the organization (deprecated, use DELETE instead).
+      parameters: []
+      responses:
+        '204':
+          description: Removed the organization member successfully.
+        '400':
+          description: The organization member cannot be deleted.
+          schema:
+            $ref: '#/definitions/ErrorDetail'
+        '422':
+          description: Missing or invalid parameters (see detail).
+          schema:
+            $ref: '#/definitions/ErrorDetail'
+      tags:
+      - orgs
+  /orgs/{org}/members/{member}/update-role/:
+    parameters:
+    - name: org
+      in: path
+      required: true
+      type: string
+    - name: member
+      in: path
+      required: true
+      type: string
+    patch:
+      operationId: orgs_members_update_role
+      summary: Update a member's role in the organization.
+      description: Update a member's role in the organization.
+      parameters:
+      - name: data
+        in: body
+        required: false
+        schema:
+          $ref: '#/definitions/OrganizationMembershipRoleUpdateRequestPatch'
+      responses:
+        '200':
+          description: OK
+          schema:
+            $ref: '#/definitions/OrganizationMembershipRoleUpdate'
+        '400':
+          description: Request could not be processed (see detail).
+          schema:
+            $ref: '#/definitions/ErrorDetail'
+        '422':
+          description: Missing or invalid parameters (see detail).
+          schema:
+            $ref: '#/definitions/ErrorDetail'
+      tags:
+      - orgs
+  /orgs/{org}/members/{member}/update-visibility/:
+    parameters:
+    - name: org
+      in: path
+      required: true
+      type: string
+    - name: member
+      in: path
+      required: true
+      type: string
+    patch:
+      operationId: orgs_members_update_visibility
+      summary: Update a member's visibility in the organization.
+      description: Update a member's visibility in the organization.
+      parameters:
+      - name: data
+        in: body
+        required: false
+        schema:
+          $ref: '#/definitions/OrganizationMembershipVisibilityUpdateRequestPatch'
+      responses:
+        '200':
+          description: OK
+          schema:
+            $ref: '#/definitions/OrganizationMembershipVisibilityUpdate'
+        '400':
+          description: Request could not be processed (see detail).
+          schema:
+            $ref: '#/definitions/ErrorDetail'
+        '422':
+          description: Missing or invalid parameters (see detail).
+          schema:
+            $ref: '#/definitions/ErrorDetail'
+      tags:
+      - orgs
+  /orgs/{org}/openid-connect/:
+    parameters:
+    - name: org
+      in: path
+      required: true
+      type: string
+    get:
+      operationId: orgs_openid-connect_list
+      summary: Retrieve the list of OpenID Connect provider settings for the org.
+      description: Retrieve the list of OpenID Connect provider settings for the org.
+      parameters:
+      - name: page
+        in: query
+        description: A page number within the paginated result set.
+        required: false
+        type: integer
+      - name: page_size
+        in: query
+        description: Number of results to return per page.
+        required: false
+        type: integer
+      - name: query
+        in: query
+        description: 'A search term for querying of OpenID Connect (OIDC) provider settings.Available options are: name, provider_url, service_account'
+        required: false
+        type: string
+        default: ''
+      - name: sort
+        in: query
+        description: 'A field for sorting objects in ascending or descending order. Use `-` prefix for descending order (e.g., `-name`). Available options: name.'
+        required: false
+        type: string
+        default: name
+      responses:
+        '200':
+          description: Retrieved the list of OpenID Connect provider settings for the org
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/ProviderSettings'
+        '404':
+          description: Organization not found
+          schema:
+            $ref: '#/definitions/ErrorDetail'
+        '400':
+          description: Request could not be processed (see detail).
+          schema:
+            $ref: '#/definitions/ErrorDetail'
+        '422':
+          description: Missing or invalid parameters (see detail).
+          schema:
+            $ref: '#/definitions/ErrorDetail'
+      tags:
+      - orgs
+    post:
+      operationId: orgs_openid-connect_create
+      summary: Create the OpenID Connect provider settings for the org.
+      description: Create the OpenID Connect provider settings for the org.
+      parameters:
+      - name: data
+        in: body
+        required: false
+        schema:
+          $ref: '#/definitions/ProviderSettingsWriteRequest'
+      responses:
+        '201':
+          description: Created the OpenID Connect provider settings for the org
+          schema:
+            $ref: '#/definitions/ProviderSettingsWrite'
+        '404':
+          description: Organization not found
+          schema:
+            $ref: '#/definitions/ErrorDetail'
+        '400':
+          description: Request could not be processed (see detail).
+          schema:
+            $ref: '#/definitions/ErrorDetail'
+        '422':
+          description: Missing or invalid parameters (see detail).
+          schema:
+            $ref: '#/definitions/ErrorDetail'
+      tags:
+      - orgs
+  /orgs/{org}/openid-connect/{provider_setting}/dynamic-mappings/:
+    parameters:
+    - name: org
+      in: path
+      required: true
+      type: string
+    - name: provider_setting
+      in: path
+      required: true
+      type: string
+    get:
+      operationId: orgs_openid-connect_dynamic-mappings_list
+      summary: Retrieve the list of OpenID Connect dynamic mappings for the provider setting.
+      description: Retrieve the list of OpenID Connect dynamic mappings for the provider setting.
+      parameters:
+      - name: page
+        in: query
+        description: A page number within the paginated result set.
+        required: false
+        type: integer
+      - name: page_size
+        in: query
+        description: Number of results to return per page.
+        required: false
+        type: integer
+      responses:
+        '200':
+          description: Retrieved the list of OpenID Connect dynamic mappings for the selected provider setting
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/DynamicMapping'
+        '404':
+          description: Organization or Provider Setting not found (see detail)
+          schema:
+            $ref: '#/definitions/ErrorDetail'
+        '400':
+          description: Request could not be processed (see detail).
+          schema:
+            $ref: '#/definitions/ErrorDetail'
+        '422':
+          description: Missing or invalid parameters (see detail).
+          schema:
+            $ref: '#/definitions/ErrorDetail'
+      tags:
+      - orgs
+  /orgs/{org}/openid-connect/{provider_setting}/dynamic-mappings/{claim_value}/:
+    parameters:
+    - name: org
+      in: path
+      required: true
+      type: string
+    - name: provider_setting
+      in: path
+      required: true
+      type: string
+    - name: claim_value
+      in: path
+      required: true
+      type: string
+    get:
+      operationId: orgs_openid-connect_dynamic-mappings_read
+      summary: Retrieve a specific OpenID Connect dynamic mapping for the provider setting.
+      description: Retrieve a specific OpenID Connect dynamic mapping for the provider setting.
+      parameters: []
+      responses:
+        '200':
+          description: Retrieved the specified OpenID Connect dynamic mapping
+          schema:
+            $ref: '#/definitions/DynamicMapping'
+        '404':
+          description: Organization, Provider Setting or Dynamic Mapping with claim not found (see detail)
+          schema:
+            $ref: '#/definitions/ErrorDetail'
+        '400':
+          description: Request could not be processed (see detail).
+          schema:
+            $ref: '#/definitions/ErrorDetail'
+        '422':
+          description: Missing or invalid parameters (see detail).
+          schema:
+            $ref: '#/definitions/ErrorDetail'
+      tags:
+      - orgs
+  /orgs/{org}/openid-connect/{slug_perm}/:
+    parameters:
+    - name: org
+      in: path
+      required: true
+      type: string
+    - name: slug_perm
+      in: path
+      required: true
+      type: string
+    get:
+      operationId: orgs_openid-connect_read
+      summary: Retrieve a specific OpenID Connect provider setting for the org.
+      description: Retrieve a specific OpenID Connect provider setting for the org.
+      parameters: []
+      responses:
+        '200':
+          description: OK
+          schema:
+            $ref: '#/definitions/ProviderSettings'
+        '400':
+          description: Request could not be processed (see detail).
+          schema:
+            $ref: '#/definitions/ErrorDetail'
+        '422':
+          description: Missing or invalid parameters (see detail).
+          schema:
+            $ref: '#/definitions/ErrorDetail'
+      tags:
+      - orgs
+    put:
+      operationId: orgs_openid-connect_update
+      summary: Update a specific OpenID Connect provider setting for the org.
+      description: Update a specific OpenID Connect provider setting for the org.
+      parameters:
+      - name: data
+        in: body
+        required: false
+        schema:
+          $ref: '#/definitions/ProviderSettingsWriteRequest'
+      responses:
+        '200':
+          description: Updated the specified OpenID Connect provider setting for the org
+          schema:
+            $ref: '#/definitions/ProviderSettingsWrite'
+        '404':
+          description: Organization not found
+          schema:
+            $ref: '#/definitions/ErrorDetail'
+        '400':
+          description: Request could not be processed (see detail).
+          schema:
+            $ref: '#/definitions/ErrorDetail'
+        '422':
+          description: Missing or invalid parameters (see detail).
+          schema:
+            $ref: '#/definitions/ErrorDetail'
+      tags:
+      - orgs
+    patch:
+      operationId: orgs_openid-connect_partial_update
+      summary: Update a specific OpenID Connect provider setting for the org.
+      description: Update a specific OpenID Connect provider setting for the org.
+      parameters:
+      - name: data
+        in: body
+        required: false
+        schema:
+          $ref: '#/definitions/ProviderSettingsWriteRequestPatch'
+      responses:
+        '200':
+          description: Updated the specified OpenID Connect provider setting for the org
+          schema:
+            $ref: '#/definitions/ProviderSettingsWrite'
+        '404':
+          description: Organization not found
+          schema:
+            $ref: '#/definitions/ErrorDetail'
+        '400':
+          description: Request could not be processed (see detail).
+          schema:
+            $ref: '#/definitions/ErrorDetail'
+        '422':
+          description: Missing or invalid parameters (see detail).
+          schema:
+            $ref: '#/definitions/ErrorDetail'
+      tags:
+      - orgs
+    delete:
+      operationId: orgs_openid-connect_delete
+      summary: Delete a specific OpenID Connect provider setting for the org.
+      description: Delete a specific OpenID Connect provider setting for the org.
+      parameters: []
+      responses:
+        '204':
+          description: Deleted the specified OpenID Connect provider setting successfully.
+        '400':
+          description: The specified OpenID Connect provider setting cannot be deleted.
+          schema:
+            $ref: '#/definitions/ErrorDetail'
+        '422':
+          description: Missing or invalid parameters (see detail).
+          schema:
+            $ref: '#/definitions/ErrorDetail'
+      tags:
+      - orgs
+  /orgs/{org}/saml-authentication:
+    parameters:
+    - name: org
+      in: path
+      required: true
+      type: string
+    get:
+      operationId: orgs_saml-authentication_read
+      summary: Retrieve the SAML Authentication settings for this Organization.
+      description: Retrieve the SAML Authentication settings for this Organization.
+      parameters: []
+      responses:
+        '200':
+          description: Retrieved the SAML Authentication settings.
+          schema:
+            $ref: '#/definitions/OrganizationSAMLAuth'
+        '402':
+          description: SAML Authentication is not available; please upgrade your account!
+          schema:
+            $ref: '#/definitions/ErrorDetail'
+        '404':
+          description: Organization not found.
+          schema:
+            $ref: '#/definitions/ErrorDetail'
+        '400':
+          description: Request could not be processed (see detail).
+          schema:
+            $ref: '#/definitions/ErrorDetail'
+        '422':
+          description: Missing or invalid parameters (see detail).
+          schema:
+            $ref: '#/definitions/ErrorDetail'
+      tags:
+      - orgs
+    patch:
+      operationId: orgs_saml-authentication_partial_update
+      summary: Update the SAML Authentication settings for this Organization.
+      description: Update the SAML Authentication settings for this Organization.
+      parameters:
+      - name: data
+        in: body
+        required: false
+        schema:
+          $ref: '#/definitions/OrganizationSAMLAuthRequestPatch'
+      responses:
+        '200':
+          description: Updated the SAML Authentication settings.
+          schema:
+            $ref: '#/definitions/OrganizationSAMLAuth'
+        '402':
+          description: SAML Authentication is not available; please upgrade your account!
+          schema:
+            $ref: '#/definitions/ErrorDetail'
+        '404':
+          description: Organization not found.
+          schema:
+            $ref: '#/definitions/ErrorDetail'
+        '400':
+          description: Request could not be processed (see detail).
+          schema:
+            $ref: '#/definitions/ErrorDetail'
+        '422':
+          description: Missing or invalid parameters (see detail).
+          schema:
+            $ref: '#/definitions/ErrorDetail'
+      tags:
+      - orgs
+  /orgs/{org}/saml-group-sync/:
+    parameters:
+    - name: org
+      in: path
+      required: true
+      type: string
+    get:
+      operationId: orgs_saml-group-sync_list
+      summary: Get the details of all SAML Group Sync mapping within an organization.
+      description: Get the details of all SAML Group Sync mapping within an organization.
+      parameters:
+      - name: page
+        in: query
+        description: A page number within the paginated result set.
+        required: false
+        type: integer
+      - name: page_size
+        in: query
+        description: Number of results to return per page.
+        required: false
+        type: integer
+      responses:
+        '200':
+          description: Retrieved the list of all SAML Group Sync mappings for this org
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/OrganizationGroupSync'
+        '404':
+          description: Org namespace not found
+          schema:
+            $ref: '#/definitions/ErrorDetail'
+        '400':
+          description: Request could not be processed (see detail).
+          schema:
+            $ref: '#/definitions/ErrorDetail'
+        '422':
+          description: Missing or invalid parameters (see detail).
+          schema:
+            $ref: '#/definitions/ErrorDetail'
+      tags:
+      - orgs
+    post:
+      operationId: orgs_saml-group-sync_create
+      summary: Create a new SAML Group Sync mapping within an organization.
+      description: Create a new SAML Group Sync mapping within an organization.
+      parameters:
+      - name: data
+        in: body
+        required: false
+        schema:
+          $ref: '#/definitions/OrganizationGroupSyncRequest'
+      responses:
+        '201':
+          description: The SAML Group Sync mapping was created.
+          schema:
+            $ref: '#/definitions/OrganizationGroupSync'
+        '404':
+          description: Org namespace not found.
+          schema:
+            $ref: '#/definitions/ErrorDetail'
+        '400':
+          description: Request could not be processed (see detail).
+          schema:
+            $ref: '#/definitions/ErrorDetail'
+        '422':
+          description: Missing or invalid parameters (see detail).
+          schema:
+            $ref: '#/definitions/ErrorDetail'
+      tags:
+      - orgs
+  /orgs/{org}/saml-group-sync/disable/:
+    parameters:
+    - name: org
+      in: path
+      required: true
+      type: string
+    post:
+      operationId: orgs_saml-group-sync_disable
+      summary: Disable SAML Group Sync for this organization.
+      description: Disable SAML Group Sync for this organization.
+      parameters: []
+      responses:
+        '204':
+          description: SAML Group Sync has been disabled for this organization.
+        '404':
+          description: Org namespace not found
+          schema:
+            $ref: '#/definitions/ErrorDetail'
+        '400':
+          description: Request could not be processed (see detail).
+          schema:
+            $ref: '#/definitions/ErrorDetail'
+        '422':
+          description: Missing or invalid parameters (see detail).
+          schema:
+            $ref: '#/definitions/ErrorDetail'
+      tags:
+      - orgs
+  /orgs/{org}/saml-group-sync/enable/:
+    parameters:
+    - name: org
+      in: path
+      required: true
+      type: string
+    post:
+      operationId: orgs_saml-group-sync_enable
+      summary: Enable SAML Group Sync for this organization.
+      description: Enable SAML Group Sync for this organization.
+      parameters: []
+      responses:
+        '204':
+          description: SAML Group Sync has been enabled for this organization.
+        '404':
+          description: Org namespace not found
+          schema:
+            $ref: '#/definitions/ErrorDetail'
+        '400':
+          description: Request could not be processed (see detail).
+          schema:
+            $ref: '#/definitions/ErrorDetail'
+        '422':
+          description: Missing or invalid parameters (see detail).
+          schema:
+            $ref: '#/definitions/ErrorDetail'
+      tags:
+      - orgs
+  /orgs/{org}/saml-group-sync/status/:
+    parameters:
+    - name: org
+      in: path
+      required: true
+      type: string
+    get:
+      operationId: orgs_saml-group-sync_status
+      summary: Retrieve the SAML Group Sync status for this organization.
+      description: Retrieve the SAML Group Sync status for this organization.
+      parameters: []
+      responses:
+        '200':
+          description: Retrieved the SAML Group Sync status for this organization.
+          schema:
+            $ref: '#/definitions/OrganizationGroupSyncStatus'
+        '404':
+          description: Org namespace not found
+          schema:
+            $ref: '#/definitions/ErrorDetail'
+        '400':
+          description: Request could not be processed (see detail).
+          schema:
+            $ref: '#/definitions/ErrorDetail'
+        '422':
+          description: Missing or invalid parameters (see detail).
+          schema:
+            $ref: '#/definitions/ErrorDetail'
+      tags:
+      - orgs
+  /orgs/{org}/saml-group-sync/{slug_perm}/:
+    parameters:
+    - name: org
+      in: path
+      required: true
+      type: string
+    - name: slug_perm
+      in: path
+      required: true
+      type: string
+    delete:
+      operationId: orgs_saml-group-sync_delete
+      summary: Delete a SAML Group Sync mapping from an organization.
+      description: Delete a SAML Group Sync mapping from an organization.
+      parameters: []
+      responses:
+        '204':
+          description: Mapping removed successfully
+        '400':
+          description: Request could not be processed (see detail).
+          schema:
+            $ref: '#/definitions/ErrorDetail'
+        '422':
+          description: Missing or invalid parameters (see detail).
+          schema:
+            $ref: '#/definitions/ErrorDetail'
+      tags:
+      - orgs
+  /orgs/{org}/services/:
+    parameters:
+    - name: org
+      in: path
+      required: true
+      type: string
+    get:
+      operationId: orgs_services_list
+      summary: Get a list of all services within an organization.
+      description: Get a list of all services within an organization.
+      parameters:
+      - name: page
+        in: query
+        description: A page number within the paginated result set.
+        required: false
+        type: integer
+      - name: page_size
+        in: query
+        description: Number of results to return per page.
+        required: false
+        type: integer
+      - name: query
+        in: query
+        description: 'A search term for querying of services within an Organization.Available options are: name, role'
+        required: false
+        type: string
+        default: ''
+      - name: sort
+        in: query
+        description: 'A field for sorting objects in ascending or descending order. Use `-` prefix for descending order (e.g., `-created_at`). Available options: created_at, name, role.'
+        required: false
+        type: string
+        default: created_at
+      responses:
+        '200':
+          description: Retrieved the list of services within the org
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/Service'
+        '404':
+          description: Org namespace not found
+          schema:
+            $ref: '#/definitions/ErrorDetail'
+        '400':
+          description: Request could not be processed (see detail).
+          schema:
+            $ref: '#/definitions/ErrorDetail'
+        '422':
+          description: Missing or invalid parameters (see detail).
+          schema:
+            $ref: '#/definitions/ErrorDetail'
+      tags:
+      - orgs
+    post:
+      operationId: orgs_services_create
+      summary: Create a service within an organization.
+      description: Create a service within an organization.
+      parameters:
+      - name: data
+        in: body
+        required: false
+        schema:
+          $ref: '#/definitions/ServiceRequest'
+      responses:
+        '200':
+          description: Created the service within the org
+          schema:
+            $ref: '#/definitions/Service'
+        '404':
+          description: Org namespace not found
+          schema:
+            $ref: '#/definitions/ErrorDetail'
+        '400':
+          description: Request could not be processed (see detail).
+          schema:
+            $ref: '#/definitions/ErrorDetail'
+        '422':
+          description: Missing or invalid parameters (see detail).
+          schema:
+            $ref: '#/definitions/ErrorDetail'
+      tags:
+      - orgs
+  /orgs/{org}/services/{service}/:
+    parameters:
+    - name: org
+      in: path
+      required: true
+      type: string
+    - name: service
+      in: path
+      required: true
+      type: string
+    get:
+      operationId: orgs_services_read
+      summary: Retrieve details of a single service within an organization.
+      description: Retrieve details of a single service within an organization.
+      parameters: []
+      responses:
+        '200':
+          description: OK
+          schema:
+            $ref: '#/definitions/Service'
+        '400':
+          description: Request could not be processed (see detail).
+          schema:
+            $ref: '#/definitions/ErrorDetail'
+        '422':
+          description: Missing or invalid parameters (see detail).
+          schema:
+            $ref: '#/definitions/ErrorDetail'
+      tags:
+      - orgs
+    patch:
+      operationId: orgs_services_partial_update
+      summary: Update a service within an organization.
+      description: Update a service within an organization.
+      parameters:
+      - name: data
+        in: body
+        required: false
+        schema:
+          $ref: '#/definitions/ServiceRequestPatch'
+      responses:
+        '200':
+          description: Updated the service within the org
+          schema:
+            $ref: '#/definitions/Service'
+        '404':
+          description: Org namespace not found
+          schema:
+            $ref: '#/definitions/ErrorDetail'
+        '400':
+          description: Request could not be processed (see detail).
+          schema:
+            $ref: '#/definitions/ErrorDetail'
+        '422':
+          description: Missing or invalid parameters (see detail).
+          schema:
+            $ref: '#/definitions/ErrorDetail'
+      tags:
+      - orgs
+    delete:
+      operationId: orgs_services_delete
+      summary: Delete a specific service
+      description: Delete a specific service
+      parameters: []
+      responses:
+        '204':
+          description: Deleted the service successfully.
+        '400':
+          description: The service cannot be deleted.
+          schema:
+            $ref: '#/definitions/ErrorDetail'
+        '422':
+          description: Missing or invalid parameters (see detail).
+          schema:
+            $ref: '#/definitions/ErrorDetail'
+      tags:
+      - orgs
+  /orgs/{org}/services/{service}/refresh/:
+    parameters:
+    - name: org
+      in: path
+      required: true
+      type: string
+    - name: service
+      in: path
+      required: true
+      type: string
+    post:
+      operationId: orgs_services_refresh
+      summary: Refresh service API token.
+      description: Refresh service API token.
+      parameters: []
+      responses:
+        '200':
+          description: Refreshed the service token successfully.
+          schema:
+            $ref: '#/definitions/Service'
+        '400':
+          description: The service token cannot be refreshed.
+          schema:
+            $ref: '#/definitions/ErrorDetail'
+        '404':
+          description: Org namespace not found
+          schema:
+            $ref: '#/definitions/ErrorDetail'
+        '422':
+          description: Missing or invalid parameters (see detail).
+          schema:
+            $ref: '#/definitions/ErrorDetail'
+      tags:
+      - orgs
+  /orgs/{org}/teams/:
+    parameters:
+    - name: org
+      in: path
+      required: true
+      type: string
+    get:
+      operationId: orgs_teams_list
+      summary: Get the details of all teams within an organization.
+      description: Get the details of all teams within an organization.
+      parameters:
+      - name: page
+        in: query
+        description: A page number within the paginated result set.
+        required: false
+        type: integer
+      - name: page_size
+        in: query
+        description: Number of results to return per page.
+        required: false
+        type: integer
+      - name: for_user
+        in: query
+        description: Filter for teams that you are a member of.
+        required: false
+        type: boolean
+        default: false
+      - name: query
+        in: query
+        description: 'A search term for querying of teams within an Organization.Available options are: name, slug, user, userslug'
+        required: false
+        type: string
+        default: ''
+      - name: sort
+        in: query
+        description: 'A field for sorting objects in ascending or descending order. Use `-` prefix for descending order (e.g., `-name`). Available options: name, members.'
+        required: false
+        type: string
+        default: name
+      responses:
+        '200':
+          description: Retrieved the list of teams within the org
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/OrganizationTeam'
+        '404':
+          description: Org namespace not found
+          schema:
+            $ref: '#/definitions/ErrorDetail'
+        '400':
+          description: Request could not be processed (see detail).
+          schema:
+            $ref: '#/definitions/ErrorDetail'
+        '422':
+          description: Missing or invalid parameters (see detail).
+          schema:
+            $ref: '#/definitions/ErrorDetail'
+      tags:
+      - orgs
+    post:
+      operationId: orgs_teams_create
+      summary: Create a team for this organization.
+      description: Create a team for this organization.
+      parameters:
+      - name: data
+        in: body
+        required: false
+        schema:
+          $ref: '#/definitions/OrganizationTeamRequest'
+      responses:
+        '201':
+          description: Team created
+          schema:
+            $ref: '#/definitions/OrganizationTeam'
+        '400':
+          description: The team cannot be created.
+          schema:
+            $ref: '#/definitions/ErrorDetail'
+        '422':
+          description: Missing or invalid parameters (see detail).
+          schema:
+            $ref: '#/definitions/ErrorDetail'
+      tags:
+      - orgs
+  /orgs/{org}/teams/{team}/:
+    parameters:
+    - name: org
+      in: path
+      required: true
+      type: string
+    - name: team
+      in: path
+      required: true
+      type: string
+    get:
+      operationId: orgs_teams_read
+      summary: Get the details of a specific team within an organization.
+      description: Get the details of a specific team within an organization.
+      parameters: []
+      responses:
+        '200':
+          description: Retrieved the details of the requested team.
+          schema:
+            $ref: '#/definitions/OrganizationTeam'
+        '404':
+          description: Team not found.
+          schema:
+            $ref: '#/definitions/ErrorDetail'
+        '400':
+          description: Request could not be processed (see detail).
+          schema:
+            $ref: '#/definitions/ErrorDetail'
+        '422':
+          description: Missing or invalid parameters (see detail).
+          schema:
+            $ref: '#/definitions/ErrorDetail'
+      tags:
+      - orgs
+    patch:
+      operationId: orgs_teams_partial_update
+      summary: Update a specific team in a organization.
+      description: Update a specific team in a organization.
+      parameters:
+      - name: data
+        in: body
+        required: false
+        schema:
+          $ref: '#/definitions/OrganizationTeamRequestPatch'
+      responses:
+        '200':
+          description: Updated the specified team.
+          schema:
+            $ref: '#/definitions/OrganizationTeam'
+        '400':
+          description: The team cannot be edited.
+          schema:
+            $ref: '#/definitions/ErrorDetail'
+        '404':
+          description: Team not found.
+          schema:
+            $ref: '#/definitions/ErrorDetail'
+        '422':
+          description: Missing or invalid parameters (see detail).
+          schema:
+            $ref: '#/definitions/ErrorDetail'
+      tags:
+      - orgs
+    delete:
+      operationId: orgs_teams_delete
+      summary: Delete a specific team in a organization.
+      description: Delete a specific team in a organization.
+      parameters: []
+      responses:
+        '204':
+          description: Deleted the team successfully.
+        '400':
+          description: The team cannot be deleted.
+          schema:
+            $ref: '#/definitions/ErrorDetail'
+        '404':
+          description: Team not found.
+          schema:
+            $ref: '#/definitions/ErrorDetail'
+        '422':
+          description: Missing or invalid parameters (see detail).
+          schema:
+            $ref: '#/definitions/ErrorDetail'
+      tags:
+      - orgs
+  /orgs/{org}/teams/{team}/members:
+    parameters:
+    - name: org
+      in: path
+      required: true
+      type: string
+    - name: team
+      in: path
+      required: true
+      type: string
+    get:
+      operationId: orgs_teams_members_list
+      summary: List all members for the team.
+      description: List all members for the team.
+      parameters:
+      - name: user_kind
+        in: query
+        description: Filter accounts by type. Possible values are 'user' and 'service'. If not provided, only users are returned.
+        required: false
+        type: string
+        default: ''
+      responses:
+        '200':
+          description: Retrieved users for the specified team.
+          schema:
+            $ref: '#/definitions/OrganizationTeamMembers'
+        '404':
+          description: Team not found.
+          schema:
+            $ref: '#/definitions/ErrorDetail'
+        '400':
+          description: Request could not be processed (see detail).
+          schema:
+            $ref: '#/definitions/ErrorDetail'
+        '422':
+          description: Missing or invalid parameters (see detail).
+          schema:
+            $ref: '#/definitions/ErrorDetail'
+      tags:
+      - orgs
+    post:
+      operationId: orgs_teams_members_create
+      summary: Add users to a team.
+      description: Add users to a team.
+      parameters:
+      - name: data
+        in: body
+        required: false
+        schema:
+          $ref: '#/definitions/OrganizationTeamMembers'
+      responses:
+        '201':
+          description: The users were added to the team.
+          schema:
+            $ref: '#/definitions/OrganizationTeamMembers'
+        '404':
+          description: Team not found.
+          schema:
+            $ref: '#/definitions/ErrorDetail'
+        '400':
+          description: Request could not be processed (see detail).
+          schema:
+            $ref: '#/definitions/ErrorDetail'
+        '422':
+          description: Missing or invalid parameters (see detail).
+          schema:
+            $ref: '#/definitions/ErrorDetail'
+      tags:
+      - orgs
+    put:
+      operationId: orgs_teams_members_update
+      summary: Replace all team members.
+      description: Replace all team members.
+      parameters:
+      - name: data
+        in: body
+        required: false
+        schema:
+          $ref: '#/definitions/OrganizationTeamMembers'
+      responses:
+        '204':
+          description: The team members were replaced.
+          schema:
+            $ref: '#/definitions/OrganizationTeamMembers'
+        '404':
+          description: Team not found.
+          schema:
+            $ref: '#/definitions/ErrorDetail'
+        '400':
+          description: Request could not be processed (see detail).
+          schema:
+            $ref: '#/definitions/ErrorDetail'
+        '422':
+          description: Missing or invalid parameters (see detail).
+          schema:
+            $ref: '#/definitions/ErrorDetail'
+      tags:
+      - orgs
+  /orgs/{org}/vulnerability-policy-violation/:
+    parameters:
+    - name: org
+      in: path
+      required: true
+      type: string
+    get:
+      operationId: orgs_vulnerability-policy-violation_list
+      summary: List all current vulnerability policy violations for this Organization.
+      description: List all current vulnerability policy violations for this Organization.
+      parameters:
+      - name: cursor
+        in: query
+        description: The pagination cursor value.
+        required: false
+        type: string
+      - name: page_size
+        in: query
+        description: Number of results to return per page.
+        required: false
+        type: integer
+      responses:
+        '200':
+          description: OK
+          schema:
+            required:
+            - results
+            type: object
+            properties:
+              next:
+                type: string
+                format: uri
+                x-nullable: true
+              previous:
+                type: string
+                format: uri
+                x-nullable: true
+              results:
+                type: array
+                items:
+                  $ref: '#/definitions/PackageVulnerabilityPolicyViolationLog'
+            title: PackageVulnerabilityPolicyViolationLogCursorPage
+        '400':
+          description: Request could not be processed (see detail).
+          schema:
+            $ref: '#/definitions/ErrorDetail'
+        '422':
+          description: Missing or invalid parameters (see detail).
+          schema:
+            $ref: '#/definitions/ErrorDetail'
+      tags:
+      - orgs
+  /orgs/{org}/vulnerability-policy/:
+    parameters:
+    - name: org
+      in: path
+      required: true
+      type: string
+    get:
+      operationId: orgs_vulnerability-policy_list
+      summary: Get a list of all package vulnerability policies.
+      description: Get a list of all package vulnerability policies.
+      parameters:
+      - name: page
+        in: query
+        description: A page number within the paginated result set.
+        required: false
+        type: integer
+      - name: page_size
+        in: query
+        description: Number of results to return per page.
+        required: false
+        type: integer
+      responses:
+        '200':
+          description: OK
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/OrganizationPackageVulnerabilityPolicy'
+        '400':
+          description: Request could not be processed (see detail).
+          schema:
+            $ref: '#/definitions/ErrorDetail'
+        '422':
+          description: Missing or invalid parameters (see detail).
+          schema:
+            $ref: '#/definitions/ErrorDetail'
+      tags:
+      - orgs
+    post:
+      operationId: orgs_vulnerability-policy_create
+      summary: Create a package vulnerability policy.
+      description: Create a package vulnerability policy.
+      parameters:
+      - name: data
+        in: body
+        required: false
+        schema:
+          $ref: '#/definitions/OrganizationPackageVulnerabilityPolicyRequest'
+      responses:
+        '201':
+          description: Created
+          schema:
+            $ref: '#/definitions/OrganizationPackageVulnerabilityPolicy'
+        '400':
+          description: Request could not be processed (see detail).
+          schema:
+            $ref: '#/definitions/ErrorDetail'
+        '422':
+          description: Missing or invalid parameters (see detail).
+          schema:
+            $ref: '#/definitions/ErrorDetail'
+      tags:
+      - orgs
+  /orgs/{org}/vulnerability-policy/{policy_slug_perm}/evaluation/:
+    parameters:
+    - name: org
+      in: path
+      required: true
+      type: string
+    - name: policy_slug_perm
+      in: path
+      required: true
+      type: string
+    get:
+      operationId: orgs_vulnerability-policy_evaluation_list
+      summary: List evaluation requests for this policy.
+      description: List evaluation requests for this policy.
+      parameters:
+      - name: page
+        in: query
+        description: A page number within the paginated result set.
+        required: false
+        type: integer
+      - name: page_size
+        in: query
+        description: Number of results to return per page.
+        required: false
+        type: integer
+      responses:
+        '200':
+          description: OK
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/PackageVulnerabilityPolicyEvaluationRequest'
+        '400':
+          description: Request could not be processed (see detail).
+          schema:
+            $ref: '#/definitions/ErrorDetail'
+        '422':
+          description: Missing or invalid parameters (see detail).
+          schema:
+            $ref: '#/definitions/ErrorDetail'
+      tags:
+      - orgs
+    post:
+      operationId: orgs_vulnerability-policy_evaluation_create
+      summary: Create an evaluation request for this policy.
+      description: Create an evaluation request for this policy.
+      parameters:
+      - name: data
+        in: body
+        required: false
+        schema:
+          $ref: '#/definitions/PackageVulnerabilityPolicyEvaluationRequestRequest'
+      responses:
+        '201':
+          description: Created
+          schema:
+            $ref: '#/definitions/PackageVulnerabilityPolicyEvaluationRequest'
+        '400':
+          description: Request could not be processed (see detail).
+          schema:
+            $ref: '#/definitions/ErrorDetail'
+        '422':
+          description: Missing or invalid parameters (see detail).
+          schema:
+            $ref: '#/definitions/ErrorDetail'
+      tags:
+      - orgs
+  /orgs/{org}/vulnerability-policy/{policy_slug_perm}/evaluation/{slug_perm}/:
+    parameters:
+    - name: org
+      in: path
+      required: true
+      type: string
+    - name: policy_slug_perm
+      in: path
+      required: true
+      type: string
+    - name: slug_perm
+      in: path
+      required: true
+      type: string
+    get:
+      operationId: orgs_vulnerability-policy_evaluation_read
+      summary: Retrieve an evaluation request for this policy.
+      description: Retrieve an evaluation request for this policy.
+      parameters: []
+      responses:
+        '200':
+          description: OK
+          schema:
+            $ref: '#/definitions/PackageVulnerabilityPolicyEvaluationRequest'
+        '400':
+          description: Request could not be processed (see detail).
+          schema:
+            $ref: '#/definitions/ErrorDetail'
+        '422':
+          description: Missing or invalid parameters (see detail).
+          schema:
+            $ref: '#/definitions/ErrorDetail'
+      tags:
+      - orgs
+  /orgs/{org}/vulnerability-policy/{slug_perm}/:
+    parameters:
+    - name: org
+      in: path
+      required: true
+      type: string
+    - name: slug_perm
+      in: path
+      required: true
+      type: string
+    get:
+      operationId: orgs_vulnerability-policy_read
+      summary: Get a package vulnerability policy.
+      description: Get a package vulnerability policy.
+      parameters: []
+      responses:
+        '200':
+          description: OK
+          schema:
+            $ref: '#/definitions/OrganizationPackageVulnerabilityPolicy'
+        '400':
+          description: Request could not be processed (see detail).
+          schema:
+            $ref: '#/definitions/ErrorDetail'
+        '422':
+          description: Missing or invalid parameters (see detail).
+          schema:
+            $ref: '#/definitions/ErrorDetail'
+      tags:
+      - orgs
+    put:
+      operationId: orgs_vulnerability-policy_update
+      summary: Update a package vulnerability policy.
+      description: Update a package vulnerability policy.
+      parameters:
+      - name: data
+        in: body
+        required: false
+        schema:
+          $ref: '#/definitions/OrganizationPackageVulnerabilityPolicyRequest'
+      responses:
+        '200':
+          description: OK
+          schema:
+            $ref: '#/definitions/OrganizationPackageVulnerabilityPolicy'
+        '400':
+          description: Request could not be processed (see detail).
+          schema:
+            $ref: '#/definitions/ErrorDetail'
+        '422':
+          description: Missing or invalid parameters (see detail).
+          schema:
+            $ref: '#/definitions/ErrorDetail'
+      tags:
+      - orgs
+    patch:
+      operationId: orgs_vulnerability-policy_partial_update
+      summary: Partially update a package vulnerability policy.
+      description: Partially update a package vulnerability policy.
+      parameters:
+      - name: data
+        in: body
+        required: false
+        schema:
+          $ref: '#/definitions/OrganizationPackageVulnerabilityPolicyRequestPatch'
+      responses:
+        '200':
+          description: OK
+          schema:
+            $ref: '#/definitions/OrganizationPackageVulnerabilityPolicy'
+        '400':
+          description: Request could not be processed (see detail).
+          schema:
+            $ref: '#/definitions/ErrorDetail'
+        '422':
+          description: Missing or invalid parameters (see detail).
+          schema:
+            $ref: '#/definitions/ErrorDetail'
+      tags:
+      - orgs
+    delete:
+      operationId: orgs_vulnerability-policy_delete
+      summary: Delete a package vulnerability policy.
+      description: Delete a package vulnerability policy.
+      parameters: []
+      responses:
+        '204':
+          description: No Content
+        '400':
+          description: Request could not be processed (see detail).
+          schema:
+            $ref: '#/definitions/ErrorDetail'
+        '422':
+          description: Missing or invalid parameters (see detail).
+          schema:
+            $ref: '#/definitions/ErrorDetail'
+      tags:
+      - orgs
+definitions:
+  PackageDenyPolicyRequest:
+    required:
+    - package_query_string
+    type: object
+    properties:
+      description:
+        title: Description
+        type: string
+        maxLength: 250
+        x-nullable: true
+      enabled:
+        title: Enabled
+        description: Whether this rule is enabled or disabled.
+        type: boolean
+      name:
+        title: Name
+        type: string
+        maxLength: 100
+        x-nullable: true
+      package_query_string:
+        title: Package query string
+        description: Packages that match this query will trigger this deny rule.
+        type: string
+        minLength: 1
+  OrganizationPackageLicensePolicy:
+    required:
+    - name
+    - spdx_identifiers
+    type: object
+    properties:
+      allow_unknown_licenses:
+        title: Allow unknown licenses
+        type: boolean
+      created_at:
+        title: Created at
+        type: string
+        format: date-time
+        readOnly: true
+      description:
+        title: Description
+        type: string
+        maxLength: 250
+        minLength: 1
+        x-nullable: true
+      name:
+        title: Name
+        type: string
+        maxLength: 100
+        minLength: 1
+      on_violation_quarantine:
+        title: On violation quarantine
+        type: boolean
+      package_query_string:
+        title: Package query string
+        type: string
+        minLength: 1
+        x-nullable: true
+      slug_perm:
+        title: Slug perm
+        type: string
+        format: slug
+        pattern: ^[-a-zA-Z0-9_]+$
+        readOnly: true
+        minLength: 1
+      spdx_identifiers:
+        type: array
+        items:
+          type: string
+        uniqueItems: true
+      updated_at:
+        title: Updated at
+        type: string
+        format: date-time
+        readOnly: true
+  NestedLicensePolicy:
+    required:
+    - spdx_identifiers
+    type: object
+    properties:
+      allow_unknown_licenses:
+        title: Allow unknown licenses
+        type: boolean
+        readOnly: true
+      created_at:
+        title: Created at
+        type: string
+        format: date-time
+        readOnly: true
+      description:
+        title: Description
+        type: string
+        readOnly: true
+        minLength: 1
+        x-nullable: true
+      name:
+        title: Name
+        type: string
+        readOnly: true
+        minLength: 1
+      on_violation_quarantine:
+        title: On violation quarantine
+        type: boolean
+        readOnly: true
+      package_query_string:
+        title: Package query string
+        type: string
+        readOnly: true
+        minLength: 1
+        x-nullable: true
+      slug_perm:
+        title: Slug perm
+        type: string
+        format: slug
+        pattern: ^[-a-zA-Z0-9_]+$
+        readOnly: true
+        minLength: 1
+      spdx_identifiers:
+        type: array
+        items:
+          type: string
+        uniqueItems: true
+      updated_at:
+        title: Updated at
+        type: string
+        format: date-time
+        readOnly: true
+      url:
+        title: Url
+        type: string
+        format: uri
+        readOnly: true
+  ErrorDetail:
+    required:
+    - detail
+    type: object
+    properties:
+      detail:
+        title: Detail
+        description: An extended message for the response.
+        type: string
+        minLength: 1
+      fields:
+        title: Fields
+        description: 'A Dictionary of related errors where key: Field and value: Array of Errors related to that field'
+        type: object
+        additionalProperties:
+          type: array
+          items:
+            type: string
+            minLength: 1
+  OrganizationPackageVulnerabilityPolicyRequestPatch:
+    type: object
+    properties:
+      allow_unknown_severity:
+        title: Allow unknown severity
+        description: Denotes whether vulnerabilities detected by a security scan with an unknown severity are permitted by this policy.
+        type: boolean
+      description:
+        title: Description
+        type: string
+        maxLength: 250
+        minLength: 1
+        x-nullable: true
+      min_severity:
+        title: Min severity
+        type: string
+        enum:
+        - Low
+        - Medium
+        - High
+        - Critical
+        default: Critical
+      name:
+        title: Name
+        type: string
+        maxLength: 100
+        minLength: 1
+      on_violation_quarantine:
+        title: On violation quarantine
+        type: boolean
+      package_query_string:
+        title: Package query string
+        type: string
+        minLength: 1
+        x-nullable: true
+  ServiceTeams:
+    required:
+    - slug
+    type: object
+    properties:
+      role:
+        title: Role
+        description: The team role associated with the service
+        type: string
+        enum:
+        - Manager
+        - Member
+        default: Manager
+      slug:
+        title: Slug
+        description: The teams associated with the service
+        type: string
+        format: slug
+        pattern: ^[-a-zA-Z0-9_]+$
+        minLength: 1
+  ProviderSettingsWrite:
+    required:
+    - claims
+    - enabled
+    - name
+    - provider_url
+    type: object
+    properties:
+      claims:
+        title: Claims
+        description: The set of claims that any received tokens from the provider must contain to authenticate as the configured service account.
+        type: object
+      dynamic_mappings:
+        description: 'The dynamic mappings of `mapping_claim` values to service accounts. Cannot be provided if `service_accounts` is also set.
+
+
+          Note: This field and the dynamic mappings feature are still in early access. Breaking changes are possible as we receive feedback on this feature.'
+        type: array
+        items:
+          $ref: '#/definitions/DynamicMapping'
+      enabled:
+        title: Enabled
+        description: Whether the provider settings should be used for incoming OIDC requests.
+        type: boolean
+      mapping_claim:
+        title: Mapping claim
+        description: 'The OIDC claim to use for mapping to service accounts in dynamic_mappings. Cannot be provided if `service_accounts` is also set.
+
+
+          Note: This field and the dynamic mappings feature are still in early access. Breaking changes are possible as we receive feedback on this feature.'
+        type: string
+        minLength: 1
+        x-nullable: true
+      name:
+        title: Name
+        description: The name of the provider settings are being configured for
+        type: string
+        minLength: 1
+      provider_url:
+        title: Provider url
+        description: 'The URL from the provider that serves as the base for the OpenID configuration.
+
+          For example, if the OpenID configuration is available at https://token.actions.githubusercontent.com/.well-known/openid-configuration, the provider URL would be https://token.actions.githubusercontent.com/'
+        type: string
+        format: uri
+        minLength: 1
+      service_accounts:
+        description: The service accounts associated with these provider settings. Cannot be provided if `mapping_claim` or `dynamic_mappings` are specified.
+        type: array
+        items:
+          description: The service accounts associated with these provider settings. Cannot be provided if `mapping_claim` or `dynamic_mappings` are specified.
+          type: string
+        uniqueItems: true
+      slug:
+        title: Slug
+        description: The slug of the provider settings
+        type: string
+        format: slug
+        pattern: ^[-a-zA-Z0-9_]+$
+        readOnly: true
+        minLength: 1
+      slug_perm:
+        title: Slug perm
+        description: The unique, immutable identifier of the provider settings.
+        type: string
+        format: slug
+        pattern: ^[-a-zA-Z0-9_]+$
+        readOnly: true
+        minLength: 1
+  NestedVulnerabilityPolicy:
+    type: object
+    properties:
+      allow_unknown_severity:
+        title: Allow unknown severity
+        description: Denotes whether vulnerabilities detected by a security scan with an unknown severity are permitted by this policy.
+        type: boolean
+        readOnly: true
+      created_at:
+        title: Created at
+        type: string
+        format: date-time
+        readOnly: true
+      description:
+        title: Description
+        type: string
+        readOnly: true
+        minLength: 1
+        x-nullable: true
+      min_severity:
+        title: Min severity
+        type: string
+        enum:
+        - Low
+        - Medium
+        - High
+        - Critical
+        default: Critical
+      name:
+        title: Name
+        type: string
+        readOnly: true
+        minLength: 1
+      on_violation_quarantine:
+        title: On violation quarantine
+        type: boolean
+        readOnly: true
+      package_query_string:
+        title: Package query string
+        type: string
+        readOnly: true
+        minLength: 1
+        x-nullable: true
+      slug_perm:
+        title: Slug perm
+        type: string
+        format: slug
+        pattern: ^[-a-zA-Z0-9_]+$
+        readOnly: true
+        minLength: 1
+      updated_at:
+        title: Updated at
+        type: string
+        format: date-time
+        readOnly: true
+      url:
+        title: Url
+        type: string
+        format: uri
+        readOnly: true
+  ProviderSettings:
+    required:
+    - claims
+    - enabled
+    - name
+    - provider_url
+    type: object
+    properties:
+      claims:
+        title: Claims
+        description: The set of claims that any received tokens from the provider must contain to authenticate as the configured service account.
+        type: object
+      enabled:
+        title: Enabled
+        description: Whether the provider settings should be used for incoming OIDC requests.
+        type: boolean
+      mapping_claim:
+        title: Mapping claim
+        description: 'The OIDC claim to use for mapping to service accounts in dynamic_mappings.
+
+
+          Note: This field and the dynamic mappings feature are still in early access. Breaking changes are possible as we receive feedback on this feature.'
+        type: string
+        minLength: 1
+        x-nullable: true
+      name:
+        title: Name
+        description: The name of the provider settings are being configured for
+        type: string
+        minLength: 1
+      provider_url:
+        title: Provider url
+        description: 'The URL from the provider that serves as the base for the OpenID configuration.
+
+          For example, if the OpenID configuration is available at https://token.actions.githubusercontent.com/.well-known/openid-configuration, the provider URL would be https://token.actions.githubusercontent.com/'
+        type: string
+        format: uri
+        minLength: 1
+      service_accounts:
+        description: The service accounts associated with these provider settings.
+        type: array
+        items:
+          description: The service accounts associated with these provider settings.
+          type: string
+        uniqueItems: true
+      slug:
+        title: Slug
+        description: The slug of the provider settings
+        type: string
+        format: slug
+        pattern: ^[-a-zA-Z0-9_]+$
+        readOnly: true
+        minLength: 1
+      slug_perm:
+        title: Slug perm
+        description: The unique, immutable identifier of the provider settings.
+        type: string
+        format: slug
+        pattern: ^[-a-zA-Z0-9_]+$
+        readOnly: true
+        minLength: 1
+  PackageVulnerability:
+    required:
+    - identifier
+    type: object
+    properties:
+      identifier:
+        title: Identifier
+        type: string
+        minLength: 1
+      name:
+        title: Name
+        description: The name of this package.
+        type: string
+        readOnly: true
+        x-nullable: true
+      url:
+        title: Url
+        type: string
+        format: uri
+        readOnly: true
+        x-nullable: true
+      version:
+        title: Version
+        description: The raw version for this package.
+        type: string
+        readOnly: true
+        x-nullable: true
+  DynamicMapping:
+    description: 'The dynamic mappings of `mapping_claim` values to service accounts. Cannot be provided if `service_accounts` is also set.
+
+
+      Note: This field and the dynamic mappings feature are still in early access. Breaking changes are possible as we receive feedback on this feature.'
+    required:
+    - claim_value
+    - service_account
+    type: object
+    properties:
+      claim_value:
+        title: Claim value
+        description: 'The OIDC token claim value that must be present in the token for it to successfully authenticate as the mapped `service_account`.
+
+
+          Note: This field and the dynamic mappings feature are still in early access. Breaking changes are possible as we receive feedback on this feature.'
+        type: string
+        minLength: 1
+      service_account:
+        title: Service account
+        description: 'The service account associated with the provider setting and `claim_value`
+
+
+          Note: This field and the dynamic mappings feature are still in early access. Breaking changes are possible as we receive feedback on this feature.'
+        type: string
+        minLength: 1
+  OrganizationInviteExtend:
+    type: object
+    properties:
+      email:
+        title: Email
+        description: The email of the user to be invited.
+        type: string
+        format: email
+        minLength: 1
+      expires_at:
+        title: Expires at
+        type: string
+        format: date-time
+        readOnly: true
+      inviter:
+        title: Inviter
+        type: string
+        readOnly: true
+        minLength: 1
+      inviter_url:
+        title: Inviter url
+        type: string
+        format: uri
+        readOnly: true
+        x-nullable: true
+      org:
+        title: Org
+        type: string
+        readOnly: true
+      role:
+        title: Role
+        description: The role to be assigned to the invited user.
+        type: string
+        enum:
+        - Owner
+        - Manager
+        - Member
+        - Collaborator
+        default: Member
+      slug_perm:
+        title: Slug perm
+        description: The slug_perm of the invite to be extended.
+        type: string
+        format: slug
+        pattern: ^[-a-zA-Z0-9_]+$
+        readOnly: true
+        minLength: 1
+      teams:
+        type: array
+        items:
+          $ref: '#/definitions/OrganizationTeamInvite'
+      user:
+        title: User
+        description: The slug of the user to be invited.
+        type: string
+        minLength: 1
+      user_url:
+        title: User url
+        type: string
+        format: uri
+        readOnly: true
+        x-nullable: true
+  PackageVulnerabilityPolicyEvaluationRequest:
+    type: object
+    properties:
+      created_at:
+        title: Created at
+        type: string
+        format: date-time
+        readOnly: true
+      evaluation_count:
+        title: Evaluation count
+        type: integer
+        readOnly: true
+      policy:
+        $ref: '#/definitions/NestedVulnerabilityPolicy'
+      slug_perm:
+        title: Slug perm
+        type: string
+        format: slug
+        pattern: ^[-a-zA-Z0-9_]+$
+        readOnly: true
+        minLength: 1
+      status:
+        title: Status
+        type: string
+        enum:
+        - Pending
+        - In Progress
+        - Complete
+        - Cancelled
+        - Errored
+        readOnly: true
+        default: Pending
+      updated_at:
+        title: Updated at
+        type: string
+        format: date-time
+        readOnly: true
+      violation_count:
+        title: Violation count
+        type: integer
+        readOnly: true
+  ProviderSettingsWriteRequest:
+    required:
+    - claims
+    - enabled
+    - name
+    - provider_url
+    type: object
+    properties:
+      claims:
+        title: Claims
+        description: The set of claims that any received tokens from the provider must contain to authenticate as the configured service account.
+        type: object
+      dynamic_mappings:
+        description: 'The dynamic mappings of `mapping_claim` values to service accounts. Cannot be provided if `service_accounts` is also set.
+
+
+          Note: This field and the dynamic mappings feature are still in early access. Breaking changes are possible as we receive feedback on this feature.'
+        type: array
+        items:
+          $ref: '#/definitions/DynamicMapping'
+      enabled:
+        title: Enabled
+        description: Whether the provider settings should be used for incoming OIDC requests.
+        type: boolean
+      mapping_claim:
+        title: Mapping claim
+        description: 'The OIDC claim to use for mapping to service accounts in dynamic_mappings. Cannot be provided if `service_accounts` is also set.
+
+
+          Note: This field and the dynamic mappings feature are still in early access. Breaking changes are possible as we receive feedback on this feature.'
+        type: string
+        minLength: 1
+        x-nullable: true
+      name:
+        title: Name
+        description: The name of the provider settings are being configured for
+        type: string
+        minLength: 1
+      provider_url:
+        title: Provider url
+        description: 'The URL from the provider that serves as the base for the OpenID configuration.
+
+          For example, if the OpenID configuration is available at https://token.actions.githubusercontent.com/.well-known/openid-configuration, the provider URL would be https://token.actions.githubusercontent.com/'
+        type: string
+        format: uri
+        minLength: 1
+      service_accounts:
+        description: The service accounts associated with these provider settings. Cannot be provided if `mapping_claim` or `dynamic_mappings` are specified.
+        type: array
+        items:
+          description: The service accounts associated with these provider settings. Cannot be provided if `mapping_claim` or `dynamic_mappings` are specified.
+          type: string
+        uniqueItems: true
+  OrganizationMembershipVisibilityUpdate:
+    type: object
+    properties:
+      email:
+        title: Email
+        type: string
+        readOnly: true
+        minLength: 1
+      has_two_factor:
+        title: Has two factor
+        type: boolean
+        readOnly: true
+      joined_at:
+        title: Joined at
+        type: string
+        format: date-time
+        readOnly: true
+      last_login_at:
+        title: Last login at
+        type: string
+        format: date-time
+        readOnly: true
+        x-nullable: true
+      last_login_method:
+        title: Last login method
+        type: string
+        enum:
+        - Unknown
+        - Password
+        - Social
+        - SAML
+        - OIDC
+        readOnly: true
+        default: Unknown
+      role:
+        title: Role
+        type: string
+        enum:
+        - Owner
+        - Manager
+        - Member
+        - Collaborator
+        readOnly: true
+        default: Owner
+      user:
+        title: User
+        type: string
+        readOnly: true
+        minLength: 1
+      user_id:
+        title: User id
+        type: string
+        readOnly: true
+        minLength: 1
+      user_name:
+        title: User name
+        type: string
+        readOnly: true
+        minLength: 1
+      user_url:
+        title: User url
+        type: string
+        format: uri
+        readOnly: true
+      visibility:
+        title: Visibility
+        type: string
+        enum:
+        - Public
+        - Private
+        default: Public
+  OrganizationTeamInvite:
+    required:
+    - team
+    type: object
+    properties:
+      role:
+        title: Role
+        description: The role to be assigned to the invited user in the team.
+        type: string
+        enum:
+        - Manager
+        - Member
+        default: Member
+      team:
+        title: Team
+        description: The team identifier (slug).
+        type: string
+        format: slug
+        pattern: ^[-a-zA-Z0-9_]+$
+        minLength: 1
+  ServiceRequest:
+    required:
+    - name
+    type: object
+    properties:
+      description:
+        title: Description
+        description: The description of the service
+        type: string
+        maxLength: 1024
+        minLength: 1
+      name:
+        title: Name
+        description: The name of the service
+        type: string
+        maxLength: 120
+        minLength: 1
+      role:
+        title: Role
+        description: The role of the service.
+        type: string
+        enum:
+        - Manager
+        - Member
+        default: Member
+      teams:
+        type: array
+        items:
+          $ref: '#/definitions/ServiceTeams'
+  OrganizationSAMLAuthRequestPatch:
+    type: object
+    properties:
+      saml_auth_enabled:
+        title: Saml auth enabled
+        type: boolean
+      saml_auth_enforced:
+        title: Saml auth enforced
+        type: boolean
+      saml_metadata_inline:
+        title: Inline SAML metadata
+        description: If configured, SAML metadata will be used as entered instead of retrieved from a remote URL.
+        type: string
+        maxLength: 32000
+      saml_metadata_url:
+        title: Saml metadata url
+        description: If configured, SAML metadata be retrieved from a remote URL.
+        type: string
+        format: uri
+        maxLength: 254
+        x-nullable: true
+  PackageDenyPolicyRequestPatch:
+    type: object
+    properties:
+      description:
+        title: Description
+        type: string
+        maxLength: 250
+        x-nullable: true
+      enabled:
+        title: Enabled
+        description: Whether this rule is enabled or disabled.
+        type: boolean
+      name:
+        title: Name
+        type: string
+        maxLength: 100
+        x-nullable: true
+      package_query_string:
+        title: Package query string
+        description: Packages that match this query will trigger this deny rule.
+        type: string
+        minLength: 1
+  OrganizationTeamRequest:
+    required:
+    - name
+    type: object
+    properties:
+      description:
+        title: Description
+        description: A detailed description of the team.
+        type: string
+        maxLength: 200
+        x-nullable: true
+      name:
+        title: Name
+        description: A descriptive name for the team.
+        type: string
+        pattern: ^\w[\w \-'\.\/()]+$
+        maxLength: 200
+        minLength: 1
+      slug:
+        title: Slug
+        type: string
+        format: slug
+        pattern: ^[-a-zA-Z0-9_]+$
+        minLength: 1
+      visibility:
+        title: Visibility
+        type: string
+        enum:
+        - Visible
+        - Hidden
+        default: Visible
+  NestedVulnerabilityScanResults:
+    required:
+    - identifier
+    - scan_id
+    type: object
+    properties:
+      created_at:
+        title: Created at
+        description: The time this scan result was stored.
+        type: string
+        format: date-time
+        readOnly: true
+      has_vulnerabilities:
+        title: Has vulnerabilities
+        description: Do the results contain any known vulnerabilities?
+        type: boolean
+        readOnly: true
+      identifier:
+        title: Identifier
+        type: string
+        minLength: 1
+      max_severity:
+        title: Max severity
+        type: string
+        enum:
+        - Unknown
+        - Low
+        - Medium
+        - High
+        - Critical
+        default: Unknown
+      num_vulnerabilities:
+        title: Num vulnerabilities
+        type: integer
+        default: 0
+      scan_id:
+        title: Scan id
+        description: 'Deprecated (23-05-15): Please use ''identifier'' instead. Previously: A monotonically increasing number that identified a scan within a repository.'
+        type: integer
+        x-nullable: true
+      url:
+        title: Url
+        type: string
+        format: uri
+        readOnly: true
+        x-nullable: true
+  OrganizationSAMLAuth:
+    required:
+    - saml_auth_enabled
+    - saml_auth_enforced
+    type: object
+    properties:
+      saml_auth_enabled:
+        title: Saml auth enabled
+        type: boolean
+      saml_auth_enforced:
+        title: Saml auth enforced
+        type: boolean
+      saml_metadata_inline:
+        title: Inline SAML metadata
+        description: If configured, SAML metadata will be used as entered instead of retrieved from a remote URL.
+        type: string
+        maxLength: 32000
+      saml_metadata_url:
+        title: Saml metadata url
+        description: If configured, SAML metadata be retrieved from a remote URL.
+        type: string
+        format: uri
+        maxLength: 254
+        x-nullable: true
+  OrganizationTeamServiceMember:
+    description: The team members
+    required:
+    - role
+    - user
+    type: object
+    properties:
+      role:
+        title: Role
+        type: string
+        enum:
+        - Manager
+        - Member
+      user:
+        title: User
+        type: string
+        minLength: 1
+      user_kind:
+        title: User kind
+        type: string
+        enum:
+        - User
+        - Service
+        default: User
+  OrganizationPackageLicensePolicyRequest:
+    required:
+    - name
+    - spdx_identifiers
+    type: object
+    properties:
+      allow_unknown_licenses:
+        title: Allow unknown licenses
+        type: boolean
+      description:
+        title: Description
+        type: string
+        maxLength: 250
+        minLength: 1
+        x-nullable: true
+      name:
+        title: Name
+        type: string
+        maxLength: 100
+        minLength: 1
+      on_violation_quarantine:
+        title: On violation quarantine
+        type: boolean
+      package_query_string:
+        title: Package query string
+        type: string
+        minLength: 1
+        x-nullable: true
+      spdx_identifiers:
+        type: array
+        items:
+          type: string
+        uniqueItems: true
+  OrganizationInvite:
+    type: object
+    properties:
+      email:
+        title: Email
+        description: The email of the user to be invited.
+        type: string
+        format: email
+        minLength: 1
+      expires_at:
+        title: Expires at
+        type: string
+        format: date-time
+        readOnly: true
+      inviter:
+        title: Inviter
+        type: string
+        readOnly: true
+        minLength: 1
+      inviter_url:
+        title: Inviter url
+        type: string
+        format: uri
+        readOnly: true
+        x-nullable: true
+      org:
+        title: Org
+        type: string
+        readOnly: true
+      role:
+        title: Role
+        description: The role to be assigned to the invited user.
+        type: string
+        enum:
+        - Owner
+        - Manager
+        - Member
+        - Collaborator
+        default: Member
+      slug_perm:
+        title: Slug perm
+        type: string
+        format: slug
+        pattern: ^[-a-zA-Z0-9_]+$
+        readOnly: true
+        minLength: 1
+      teams:
+        type: array
+        items:
+          $ref: '#/definitions/OrganizationTeamInvite'
+      user:
+        title: User
+        description: The slug of the user to be invited.
+        type: string
+        minLength: 1
+      user_url:
+        title: User url
+        type: string
+        format: uri
+        readOnly: true
+        x-nullable: true
+  OrganizationInviteRequest:
+    type: object
+    properties:
+      email:
+        title: Email
+        description: The email of the user to be invited.
+        type: string
+        format: email
+        minLength: 1
+      role:
+        title: Role
+        description: The role to be assigned to the invited user.
+        type: string
+        enum:
+        - Owner
+        - Manager
+        - Member
+        - Collaborator
+        default: Member
+      teams:
+        type: array
+        items:
+          $ref: '#/definitions/OrganizationTeamInvite'
+      user:
+        title: User
+        description: The slug of the user to be invited.
+        type: string
+        minLength: 1
+  OrganizationMembershipRoleUpdate:
+    type: object
+    properties:
+      email:
+        title: Email
+        type: string
+        readOnly: true
+        minLength: 1
+      has_two_factor:
+        title: Has two factor
+        type: boolean
+        readOnly: true
+      joined_at:
+        title: Joined at
+        type: string
+        format: date-time
+        readOnly: true
+      last_login_at:
+        title: Last login at
+        type: string
+        format: date-time
+        readOnly: true
+        x-nullable: true
+      last_login_method:
+        title: Last login method
+        type: string
+        enum:
+        - Unknown
+        - Password
+        - Social
+        - SAML
+        - OIDC
+        readOnly: true
+        default: Unknown
+      role:
+        title: Role
+        type: string
+        enum:
+        - Owner
+        - Manager
+        - Member
+        - Collaborator
+        default: Owner
+      user:
+        title: User
+        type: string
+        readOnly: true
+        minLength: 1
+      user_id:
+        title: User id
+        type: string
+        readOnly: true
+        minLength: 1
+      user_name:
+        title: User name
+        type: string
+        readOnly: true
+        minLength: 1
+      user_url:
+        title: User url
+        type: string
+        format: uri
+        readOnly: true
+      visibility:
+        title: Visibility
+        type: string
+        enum:
+        - Public
+        - Private
+        readOnly: true
+        default: Public
+  PackageDenyPolicy:
+    required:
+    - package_query_string
+    type: object
+    properties:
+      action:
+        title: Action
+        type: string
+        enum:
+        - Block downloads
+        readOnly: true
+        default: Block downloads
+      created_at:
+        title: Created at
+        type: string
+        format: date-time
+        readOnly: true
+      description:
+        title: Description
+        type: string
+        maxLength: 250
+        x-nullable: true
+      enabled:
+        title: Enabled
+        description: Whether this rule is enabled or disabled.
+        type: boolean
+      name:
+        title: Name
+        type: string
+        maxLength: 100
+        x-nullable: true
+      package_query_string:
+        title: Package query string
+        description: Packages that match this query will trigger this deny rule.
+        type: string
+        minLength: 1
+      slug_perm:
+        title: Slug perm
+        type: string
+        format: slug
+        pattern: ^[-a-zA-Z0-9_]+$
+        readOnly: true
+        minLength: 1
+      status:
+        title: Status
+        type: string
+        enum:
+        - Pending
+        - In Progress
+        - Complete
+        - Cancelled
+        - Errored
+        readOnly: true
+        default: In Progress
+      updated_at:
+        title: Updated at
+        type: string
+        format: date-time
+        readOnly: true
+  PackageLicensePolicyEvaluationRequest:
+    type: object
+    properties:
+      created_at:
+        title: Created at
+        type: string
+        format: date-time
+        readOnly: true
+      evaluation_count:
+        title: Evaluation count
+        type: integer
+        readOnly: true
+      policy:
+        $ref: '#/definitions/NestedLicensePolicy'
+      slug_perm:
+        title: Slug perm
+        type: string
+        format: slug
+        pattern: ^[-a-zA-Z0-9_]+$
+        readOnly: true
+        minLength: 1
+      status:
+        title: Status
+        type: string
+        enum:
+        - Pending
+        - In Progress
+        - Complete
+        - Cancelled
+        - Errored
+        readOnly: true
+        default: Pending
+      updated_at:
+        title: Updated at
+        type: string
+        format: date-time
+        readOnly: true
+      violation_count:
+        title: Violation count
+        type: integer
+        readOnly: true
+  Organization:
+    required:
+    - name
+    type: object
+    properties:
+      country:
+        title: Country
+        type: string
+        readOnly: true
+        maxLength: 32
+        minLength: 1
+        x-nullable: true
+      created_at:
+        title: Created at
+        type: string
+        format: date-time
+        readOnly: true
+      location:
+        title: Location
+        description: The city/town/area your organization is based in.
+        type: string
+        readOnly: true
+        x-nullable: true
+      name:
+        title: Name
+        type: string
+        minLength: 1
+      slug:
+        title: Slug
+        type: string
+        readOnly: true
+      slug_perm:
+        title: Slug perm
+        type: string
+        readOnly: true
+      tagline:
+        title: Tagline
+        description: A short public descriptive for your organization.
+        type: string
+        readOnly: true
+        x-nullable: true
+  OrganizationGroupSyncRequest:
+    required:
+    - idp_key
+    - idp_value
+    - organization
+    - team
+    type: object
+    properties:
+      idp_key:
+        title: Idp key
+        type: string
+        maxLength: 100
+        minLength: 1
+      idp_value:
+        title: Idp value
+        type: string
+        maxLength: 100
+        minLength: 1
+      organization:
+        title: Organization
+        type: string
+      role:
+        title: Role
+        type: string
+        enum:
+        - Manager
+        - Member
+        default: Member
+      team:
+        title: Team
+        type: string
+        format: slug
+        pattern: ^[-a-zA-Z0-9_]+$
+  OrganizationInviteUpdateRequestPatch:
+    type: object
+    properties:
+      role:
+        title: Role
+        description: The role to be assigned to the invited user.
+        type: string
+        enum:
+        - Owner
+        - Manager
+        - Member
+        - Collaborator
+        default: Member
+  PackageVulnerabilityPolicyEvaluationRequestRequest:
+    type: object
+    properties: {}
+  OrganizationPackageLicensePolicyRequestPatch:
+    type: object
+    properties:
+      allow_unknown_licenses:
+        title: Allow unknown licenses
+        type: boolean
+      description:
+        title: Description
+        type: string
+        maxLength: 250
+        minLength: 1
+        x-nullable: true
+      name:
+        title: Name
+        type: string
+        maxLength: 100
+        minLength: 1
+      on_violation_quarantine:
+        title: On violation quarantine
+        type: boolean
+      package_query_string:
+        title: Package query string
+        type: string
+        minLength: 1
+        x-nullable: true
+      spdx_identifiers:
+        type: array
+        items:
+          type: string
+        uniqueItems: true
+  Service:
+    required:
+    - name
+    type: object
+    properties:
+      created_at:
+        title: Created at
+        type: string
+        format: date-time
+        readOnly: true
+      created_by:
+        title: Created by
+        type: string
+        readOnly: true
+        minLength: 1
+      created_by_url:
+        title: Created by url
+        type: string
+        format: uri
+        readOnly: true
+      description:
+        title: Description
+        description: The description of the service
+        type: string
+        maxLength: 1024
+        minLength: 1
+      key:
+        title: Key
+        description: The API key of the service
+        type: string
+        readOnly: true
+      key_expires_at:
+        title: Key expires at
+        description: The time at which the API key will expire. This will only be populated if the Organization has an active API Key Policy.
+        type: string
+        format: date-time
+        readOnly: true
+        x-nullable: true
+      name:
+        title: Name
+        description: The name of the service
+        type: string
+        maxLength: 120
+        minLength: 1
+      role:
+        title: Role
+        description: The role of the service.
+        type: string
+        enum:
+        - Manager
+        - Member
+        default: Member
+      slug:
+        title: Slug
+        description: The slug of the service
+        type: string
+        format: slug
+        pattern: ^[-a-zA-Z0-9_]+$
+        readOnly: true
+        minLength: 1
+      teams:
+        type: array
+        items:
+          $ref: '#/definitions/ServiceTeams'
+  OrganizationGroupSyncStatus:
+    type: object
+    properties:
+      saml_group_sync_status:
+        title: Saml group sync status
+        type: boolean
+        readOnly: true
+  OrganizationGroupSync:
+    required:
+    - idp_key
+    - idp_value
+    - team
+    type: object
+    properties:
+      idp_key:
+        title: Idp key
+        type: string
+        maxLength: 100
+        minLength: 1
+      idp_value:
+        title: Idp value
+        type: string
+        maxLength: 100
+        minLength: 1
+      role:
+        title: Role
+        type: string
+        enum:
+        - Manager
+        - Member
+        default: Member
+      slug_perm:
+        title: Slug perm
+        type: string
+        format: slug
+        pattern: ^[-a-zA-Z0-9_]+$
+        readOnly: true
+        minLength: 1
+      team:
+        title: Team
+        type: string
+        format: slug
+        pattern: ^[-a-zA-Z0-9_]+$
+  OrganizationTeamMembers:
+    required:
+    - members
+    type: object
+    properties:
+      members:
+        description: The team members
+        type: array
+        items:
+          $ref: '#/definitions/OrganizationTeamServiceMember'
+  PackageLicensePolicyEvaluationRequestRequest:
+    type: object
+    properties: {}
+  OrganizationMembershipRequestPatch:
+    type: object
+    properties: {}
+  ProviderSettingsWriteRequestPatch:
+    type: object
+    properties:
+      claims:
+        title: Claims
+        description: The set of claims that any received tokens from the provider must contain to authenticate as the configured service account.
+        type: object
+      dynamic_mappings:
+        description: 'The dynamic mappings of `mapping_claim` values to service accounts. Cannot be provided if `service_accounts` is also set.
+
+
+          Note: This field and the dynamic mappings feature are still in early access. Breaking changes are possible as we receive feedback on this feature.'
+        type: array
+        items:
+          $ref: '#/definitions/DynamicMapping'
+      enabled:
+        title: Enabled
+        description: Whether the provider settings should be used for incoming OIDC requests.
+        type: boolean
+      mapping_claim:
+        title: Mapping claim
+        description: 'The OIDC claim to use for mapping to service accounts in dynamic_mappings. Cannot be provided if `service_accounts` is also set.
+
+
+          Note: This field and the dynamic mappings feature are still in early access. Breaking changes are possible as we receive feedback on this feature.'
+        type: string
+        minLength: 1
+        x-nullable: true
+      name:
+        title: Name
+        description: The name of the provider settings are being configured for
+        type: string
+        minLength: 1
+      provider_url:
+        title: Provider url
+        description: 'The URL from the provider that serves as the base for the OpenID configuration.
+
+          For example, if the OpenID configuration is available at https://token.actions.githubusercontent.com/.well-known/openid-configuration, the provider URL would be https://token.actions.githubusercontent.com/'
+        type: string
+        format: uri
+        minLength: 1
+      service_accounts:
+        description: The service accounts associated with these provider settings. Cannot be provided if `mapping_claim` or `dynamic_mappings` are specified.
+        type: array
+        items:
+          description: The service accounts associated with these provider settings. Cannot be provided if `mapping_claim` or `dynamic_mappings` are specified.
+          type: string
+        uniqueItems: true
+  OrganizationTeamRequestPatch:
+    type: object
+    properties:
+      description:
+        title: Description
+        description: A detailed description of the team.
+        type: string
+        maxLength: 200
+        x-nullable: true
+      name:
+        title: Name
+        description: A descriptive name for the team.
+        type: string
+        pattern: ^\w[\w \-'\.\/()]+$
+        maxLength: 200
+        minLength: 1
+      slug:
+        title: Slug
+        type: string
+        format: slug
+        pattern: ^[-a-zA-Z0-9_]+$
+        minLength: 1
+      visibility:
+        title: Visibility
+        type: string
+        enum:
+        - Visible
+        - Hidden
+        default: Visible
+  OrganizationPackageVulnerabilityPolicyRequest:
+    required:
+    - name
+    type: object
+    properties:
+      allow_unknown_severity:
+        title: Allow unknown severity
+        description: Denotes whether vulnerabilities detected by a security scan with an unknown severity are permitted by this policy.
+        type: boolean
+      description:
+        title: Description
+        type: string
+        maxLength: 250
+        minLength: 1
+        x-nullable: true
+      min_severity:
+        title: Min severity
+        type: string
+        enum:
+        - Low
+        - Medium
+        - High
+        - Critical
+        default: Critical
+      name:
+        title: Name
+        type: string
+        maxLength: 100
+        minLength: 1
+      on_violation_quarantine:
+        title: On violation quarantine
+        type: boolean
+      package_query_string:
+        title: Package query string
+        type: string
+        minLength: 1
+        x-nullable: true
+  PackageLicensePolicyViolationLog:
+    required:
+    - package
+    - policy
+    - reasons
+    type: object
+    properties:
+      event_at:
+        title: Event at
+        type: string
+        format: date-time
+        readOnly: true
+      package:
+        $ref: '#/definitions/PackageVulnerability'
+      policy:
+        $ref: '#/definitions/NestedLicensePolicy'
+      reasons:
+        type: array
+        items:
+          type: string
+          minLength: 1
+  OrganizationTeam:
+    required:
+    - name
+    type: object
+    properties:
+      description:
+        title: Description
+        description: A detailed description of the team.
+        type: string
+        maxLength: 200
+        x-nullable: true
+      name:
+        title: Name
+        description: A descriptive name for the team.
+        type: string
+        pattern: ^\w[\w \-'\.\/()]+$
+        maxLength: 200
+        minLength: 1
+      slug:
+        title: Slug
+        type: string
+        format: slug
+        pattern: ^[-a-zA-Z0-9_]+$
+        minLength: 1
+      slug_perm:
+        title: Slug perm
+        type: string
+        format: slug
+        pattern: ^[-a-zA-Z0-9_]+$
+        readOnly: true
+        minLength: 1
+      visibility:
+        title: Visibility
+        type: string
+        enum:
+        - Visible
+        - Hidden
+        default: Visible
+  OrganizationPackageVulnerabilityPolicy:
+    required:
+    - name
+    type: object
+    properties:
+      allow_unknown_severity:
+        title: Allow unknown severity
+        description: Denotes whether vulnerabilities detected by a security scan with an unknown severity are permitted by this policy.
+        type: boolean
+      created_at:
+        title: Created at
+        type: string
+        format: date-time
+        readOnly: true
+      description:
+        title: Description
+        type: string
+        maxLength: 250
+        minLength: 1
+        x-nullable: true
+      min_severity:
+        title: Min severity
+        type: string
+        enum:
+        - Low
+        - Medium
+        - High
+        - Critical
+        default: Critical
+      name:
+        title: Name
+        type: string
+        maxLength: 100
+        minLength: 1
+      on_violation_quarantine:
+        title: On violation quarantine
+        type: boolean
+      package_query_string:
+        title: Package query string
+        type: string
+        minLength: 1
+        x-nullable: true
+      slug_perm:
+        title: Slug perm
+        type: string
+        format: slug
+        pattern: ^[-a-zA-Z0-9_]+$
+        readOnly: true
+        minLength: 1
+      updated_at:
+        title: Updated at
+        type: string
+        format: date-time
+        readOnly: true
+  OrganizationMembershipVisibilityUpdateRequestPatch:
+    type: object
+    properties:
+      visibility:
+        title: Visibility
+        type: string
+        enum:
+        - Public
+        - Private
+        default: Public
+  ServiceRequestPatch:
+    type: object
+    properties:
+      description:
+        title: Description
+        description: The description of the service
+        type: string
+        maxLength: 1024
+        minLength: 1
+      name:
+        title: Name
+        description: The name of the service
+        type: string
+        maxLength: 120
+        minLength: 1
+      role:
+        title: Role
+        description: The role of the service.
+        type: string
+        enum:
+        - Manager
+        - Member
+        default: Member
+      teams:
+        type: array
+        items:
+          $ref: '#/definitions/ServiceTeams'
+  OrganizationMembership:
+    type: object
+    properties:
+      email:
+        title: Email
+        type: string
+        readOnly: true
+        minLength: 1
+      has_two_factor:
+        title: Has two factor
+        type: boolean
+        readOnly: true
+      is_active:
+        title: Is active
+        type: boolean
+        readOnly: true
+      joined_at:
+        title: Joined at
+        type: string
+        format: date-time
+        readOnly: true
+      last_login_at:
+        title: Last login at
+        type: string
+        format: date-time
+        readOnly: true
+        x-nullable: true
+      last_login_method:
+        title: Last login method
+        type: string
+        enum:
+        - Unknown
+        - Password
+        - Social
+        - SAML
+        - OIDC
+        readOnly: true
+        default: Unknown
+      role:
+        title: Role
+        type: string
+        enum:
+        - Owner
+        - Manager
+        - Member
+        - Collaborator
+        readOnly: true
+        default: Owner
+      user:
+        title: User
+        type: string
+        readOnly: true
+        minLength: 1
+      user_id:
+        title: User id
+        type: string
+        readOnly: true
+        minLength: 1
+      user_name:
+        title: User name
+        type: string
+        readOnly: true
+        minLength: 1
+      user_url:
+        title: User url
+        type: string
+        format: uri
+        readOnly: true
+      visibility:
+        title: Visibility
+        type: string
+        enum:
+        - Public
+        - Private
+        readOnly: true
+        default: Public
+  OrganizationMembershipRoleUpdateRequestPatch:
+    type: object
+    properties:
+      role:
+        title: Role
+        type: string
+        enum:
+        - Owner
+        - Manager
+        - Member
+        - Collaborator
+        default: Owner
+  PackageVulnerabilityPolicyViolationLog:
+    required:
+    - package
+    - policy
+    - reasons
+    - vulnerability_scan_results
+    type: object
+    properties:
+      event_at:
+        title: Event at
+        type: string
+        format: date-time
+        readOnly: true
+      package:
+        $ref: '#/definitions/PackageVulnerability'
+      policy:
+        $ref: '#/definitions/NestedVulnerabilityPolicy'
+      reasons:
+        type: array
+        items:
+          type: string
+          minLength: 1
+      vulnerability_scan_results:
+        $ref: '#/definitions/NestedVulnerabilityScanResults'
+securityDefinitions:
+  apikey:
+    type: apiKey
+    name: X-Api-Key
+    in: header
+  basic:
+    type: basic

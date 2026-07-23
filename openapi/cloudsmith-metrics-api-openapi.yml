@@ -1,0 +1,317 @@
+swagger: '2.0'
+info:
+  title: Cloudsmith API (v1) audit-log metrics API
+  description: The API to the Cloudsmith Service
+  termsOfService: https://help.cloudsmith.io
+  contact:
+    name: Cloudsmith Support
+    url: https://help.cloudsmith.io
+    email: support@cloudsmith.io
+  license:
+    name: MIT
+    url: https://opensource.org/licenses/MIT
+  version: v1
+host: api.cloudsmith.io
+basePath: /
+schemes:
+- https
+consumes:
+- application/json
+produces:
+- application/json
+security:
+- apikey: []
+- basic: []
+tags:
+- name: metrics
+paths:
+  /metrics/entitlements/{owner}/:
+    parameters:
+    - name: owner
+      in: path
+      required: true
+      type: string
+    get:
+      operationId: metrics_entitlements_account_list
+      summary: View for listing entitlement token metrics, across an account.
+      description: View for listing entitlement token metrics, across an account.
+      parameters:
+      - name: page
+        in: query
+        description: A page number within the paginated result set.
+        required: false
+        type: integer
+      - name: page_size
+        in: query
+        description: Number of results to return per page.
+        required: false
+        type: integer
+      - name: finish
+        in: query
+        description: Include metrics upto and including this UTC date or UTC datetime. For example '2020-12-31' or '2021-12-13T00:00:00Z'.
+        required: false
+        type: string
+      - name: start
+        in: query
+        description: Include metrics from and including this UTC date or UTC datetime. For example '2020-12-31' or '2021-12-13T00:00:00Z'.
+        required: false
+        type: string
+      - name: tokens
+        in: query
+        description: A comma seperated list of tokens (slug perm) to include in the results.
+        required: false
+        type: string
+      responses:
+        '200':
+          description: Retrieved the metrics for entitlements.
+          schema:
+            $ref: '#/definitions/EntitlementUsageMetrics'
+        '400':
+          description: Request could not be processed (see detail).
+          schema:
+            $ref: '#/definitions/ErrorDetail'
+        '422':
+          description: Missing or invalid parameters (see detail).
+          schema:
+            $ref: '#/definitions/ErrorDetail'
+      tags:
+      - metrics
+  /metrics/entitlements/{owner}/{repo}/:
+    parameters:
+    - name: owner
+      in: path
+      required: true
+      type: string
+    - name: repo
+      in: path
+      required: true
+      type: string
+    get:
+      operationId: metrics_entitlements_repo_list
+      summary: View for listing entitlement token metrics, for a repository.
+      description: View for listing entitlement token metrics, for a repository.
+      parameters:
+      - name: page
+        in: query
+        description: A page number within the paginated result set.
+        required: false
+        type: integer
+      - name: page_size
+        in: query
+        description: Number of results to return per page.
+        required: false
+        type: integer
+      - name: finish
+        in: query
+        description: Include metrics upto and including this UTC date or UTC datetime. For example '2020-12-31' or '2021-12-13T00:00:00Z'.
+        required: false
+        type: string
+      - name: start
+        in: query
+        description: Include metrics from and including this UTC date or UTC datetime. For example '2020-12-31' or '2021-12-13T00:00:00Z'.
+        required: false
+        type: string
+      - name: tokens
+        in: query
+        description: A comma seperated list of tokens (slug perm) to include in the results.
+        required: false
+        type: string
+      responses:
+        '200':
+          description: Retrieved the metrics for entitlements.
+          schema:
+            $ref: '#/definitions/EntitlementUsageMetrics'
+        '400':
+          description: Request could not be processed (see detail).
+          schema:
+            $ref: '#/definitions/ErrorDetail'
+        '422':
+          description: Missing or invalid parameters (see detail).
+          schema:
+            $ref: '#/definitions/ErrorDetail'
+      tags:
+      - metrics
+  /metrics/packages/{owner}/{repo}/:
+    parameters:
+    - name: owner
+      in: path
+      required: true
+      type: string
+    - name: repo
+      in: path
+      required: true
+      type: string
+    get:
+      operationId: metrics_packages_list
+      summary: View for listing package usage metrics, for a repository.
+      description: View for listing package usage metrics, for a repository.
+      parameters:
+      - name: page
+        in: query
+        description: A page number within the paginated result set.
+        required: false
+        type: integer
+      - name: page_size
+        in: query
+        description: Number of results to return per page.
+        required: false
+        type: integer
+      - name: finish
+        in: query
+        description: Include metrics upto and including this UTC date or UTC datetime. For example '2020-12-31' or '2021-12-13T00:00:00Z'.
+        required: false
+        type: string
+      - name: packages
+        in: query
+        description: A comma seperated list of packages (slug perm) to include in the results.
+        required: false
+        type: string
+      - name: start
+        in: query
+        description: Include metrics from and including this UTC date or UTC datetime. For example '2020-12-31' or '2021-12-13T00:00:00Z'.
+        required: false
+        type: string
+      responses:
+        '200':
+          description: Retrieved the metrics for packages.
+          schema:
+            $ref: '#/definitions/PackageUsageMetrics'
+        '400':
+          description: Request could not be processed (see detail).
+          schema:
+            $ref: '#/definitions/ErrorDetail'
+        '422':
+          description: Missing or invalid parameters (see detail).
+          schema:
+            $ref: '#/definitions/ErrorDetail'
+      tags:
+      - metrics
+definitions:
+  EntitlementUsageMetrics:
+    required:
+    - tokens
+    type: object
+    properties:
+      tokens:
+        $ref: '#/definitions/CommonMetrics'
+  ErrorDetail:
+    required:
+    - detail
+    type: object
+    properties:
+      detail:
+        title: Detail
+        description: An extended message for the response.
+        type: string
+        minLength: 1
+      fields:
+        title: Fields
+        description: 'A Dictionary of related errors where key: Field and value: Array of Errors related to that field'
+        type: object
+        additionalProperties:
+          type: array
+          items:
+            type: string
+            minLength: 1
+  CommonDownloadsMetrics:
+    required:
+    - average
+    - highest
+    - lowest
+    - total
+    type: object
+    properties:
+      average:
+        $ref: '#/definitions/CommonDownloadsMetricsValue'
+      highest:
+        $ref: '#/definitions/CommonDownloadsMetricsValue'
+      lowest:
+        $ref: '#/definitions/CommonDownloadsMetricsValue'
+      total:
+        $ref: '#/definitions/CommonDownloadsMetricsValue'
+  CommonMetrics:
+    required:
+    - bandwidth
+    - downloads
+    type: object
+    properties:
+      active:
+        title: Active
+        description: Number of packages with at least 1 download
+        type: integer
+        default: 0
+      bandwidth:
+        $ref: '#/definitions/CommonBandwidthMetrics'
+      downloads:
+        $ref: '#/definitions/CommonDownloadsMetrics'
+      inactive:
+        title: Inactive
+        description: Packages with zero downloads
+        type: integer
+        default: 0
+      total:
+        title: Total
+        description: Total number of packages in repo
+        type: integer
+        default: 0
+  CommonBandwidthMetrics:
+    required:
+    - average
+    - highest
+    - lowest
+    - total
+    type: object
+    properties:
+      average:
+        $ref: '#/definitions/CommonBandwidthMetricsValue'
+      highest:
+        $ref: '#/definitions/CommonBandwidthMetricsValue'
+      lowest:
+        $ref: '#/definitions/CommonBandwidthMetricsValue'
+      total:
+        $ref: '#/definitions/CommonBandwidthMetricsValue'
+  CommonBandwidthMetricsValue:
+    description: Average bandwidth usage in the specified period, e.g. a day
+    required:
+    - display
+    - value
+    type: object
+    properties:
+      display:
+        title: Display
+        description: Bandwidth usage value
+        type: string
+        maxLength: 64
+        minLength: 1
+      units:
+        title: Units
+        description: Unit of measurement e.g. bytes
+        type: string
+        default: bytes
+        minLength: 1
+      value:
+        title: Value
+        description: Human readable version of display value
+        type: integer
+  CommonDownloadsMetricsValue:
+    required:
+    - value
+    type: object
+    properties:
+      value:
+        title: Value
+        type: integer
+  PackageUsageMetrics:
+    required:
+    - packages
+    type: object
+    properties:
+      packages:
+        $ref: '#/definitions/CommonMetrics'
+securityDefinitions:
+  apikey:
+    type: apiKey
+    name: X-Api-Key
+    in: header
+  basic:
+    type: basic
