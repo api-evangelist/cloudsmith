@@ -8,7 +8,20 @@ description: >-
   quotas, deny policies, namespaces, distros, formats, recycle bin, storage regions, and broadcasts. Authentication is
   via API key passed in the Authorization header as "token YOUR_API_KEY".
 type: Index
-image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+accessModel:
+  pricing: free
+  onboarding: self-serve
+  trial: false
+  try_now: true
+  public: false
+  label: Free · Self-serve signup
+  confidence: high
+  source:
+  - plans
+  - authentication
+  generated: '2026-07-22'
+  method: derived
+image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/icons/cloudsmith.png
 url: https://raw.githubusercontent.com/api-evangelist/cloudsmith/refs/heads/main/apis.yml
 created: '2024-01-01'
 modified: '2026-05-19'
@@ -26,31 +39,314 @@ tags:
   - Universal
   - Vulnerability Scanning
 apis:
-  - aid: cloudsmith:v1
-    name: Cloudsmith API (v1)
-    tags:
-      - REST
-      - Packages
-      - Repositories
-      - Entitlements
-      - Webhooks
-    image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
-    baseURL: https://api.cloudsmith.io
-    humanURL: https://docs.cloudsmith.com/api
-    properties:
-      - url: https://docs.cloudsmith.com/api
-        type: Documentation
-      - url: https://api.cloudsmith.io/?format=openapi
-        type: OpenAPI
-      - url: openapi/cloudsmith-openapi.json
-        type: OpenAPI
-      - url: https://help.cloudsmith.io/reference/getting-started-with-the-api
-        type: GettingStarted
-    description: >-
-      The Cloudsmith REST API (v1) covers 217+ endpoints across 22 tag groups including repos, orgs, packages,
-      entitlements, files, user, webhooks, quota, vulnerabilities, metrics, audit-log, distros, formats, namespaces,
-      recycle-bin, storage-regions, badges, broadcasts, bulk-action, rates, status. Default page size is 30 items, max
-      500. Authentication is via personal or service-account API key in the Authorization header.
+- aid: cloudsmith:cloudsmith-audit-log-api
+  name: Cloudsmith audit-log API
+  description: The audit-log API from Cloudsmith — 2 operation(s) for audit-log.
+  humanURL: https://docs.cloudsmith.com/api
+  baseURL: https://api.cloudsmith.io
+  tags:
+  - audit-log
+  properties:
+  - type: OpenAPI
+    url: openapi/cloudsmith-audit-log-api-openapi.yml
+  - type: Documentation
+    url: https://docs.cloudsmith.com/api
+  - type: GettingStarted
+    url: https://help.cloudsmith.io/reference/getting-started-with-the-api
+- aid: cloudsmith:cloudsmith-badges-api
+  name: Cloudsmith badges API
+  description: The badges API from Cloudsmith — 1 operation(s) for badges.
+  humanURL: https://docs.cloudsmith.com/api
+  baseURL: https://api.cloudsmith.io
+  tags:
+  - badges
+  properties:
+  - type: OpenAPI
+    url: openapi/cloudsmith-badges-api-openapi.yml
+  - type: Documentation
+    url: https://docs.cloudsmith.com/api
+  - type: GettingStarted
+    url: https://help.cloudsmith.io/reference/getting-started-with-the-api
+- aid: cloudsmith:cloudsmith-broadcasts-api
+  name: Cloudsmith broadcasts API
+  description: The broadcasts API from Cloudsmith — 1 operation(s) for broadcasts.
+  humanURL: https://docs.cloudsmith.com/api
+  baseURL: https://api.cloudsmith.io
+  tags:
+  - broadcasts
+  properties:
+  - type: OpenAPI
+    url: openapi/cloudsmith-broadcasts-api-openapi.yml
+  - type: Documentation
+    url: https://docs.cloudsmith.com/api
+  - type: GettingStarted
+    url: https://help.cloudsmith.io/reference/getting-started-with-the-api
+- aid: cloudsmith:cloudsmith-bulk-action-api
+  name: Cloudsmith bulk-action API
+  description: The bulk-action API from Cloudsmith — 1 operation(s) for bulk-action.
+  humanURL: https://docs.cloudsmith.com/api
+  baseURL: https://api.cloudsmith.io
+  tags:
+  - bulk-action
+  properties:
+  - type: OpenAPI
+    url: openapi/cloudsmith-bulk-action-api-openapi.yml
+  - type: Documentation
+    url: https://docs.cloudsmith.com/api
+  - type: GettingStarted
+    url: https://help.cloudsmith.io/reference/getting-started-with-the-api
+- aid: cloudsmith:cloudsmith-distros-api
+  name: Cloudsmith distros API
+  description: The distros API from Cloudsmith — 2 operation(s) for distros.
+  humanURL: https://docs.cloudsmith.com/api
+  baseURL: https://api.cloudsmith.io
+  tags:
+  - distros
+  properties:
+  - type: OpenAPI
+    url: openapi/cloudsmith-distros-api-openapi.yml
+  - type: Documentation
+    url: https://docs.cloudsmith.com/api
+  - type: GettingStarted
+    url: https://help.cloudsmith.io/reference/getting-started-with-the-api
+- aid: cloudsmith:cloudsmith-entitlements-api
+  name: Cloudsmith entitlements API
+  description: The entitlements API from Cloudsmith — 8 operation(s) for entitlements.
+  humanURL: https://docs.cloudsmith.com/api
+  baseURL: https://api.cloudsmith.io
+  tags:
+  - entitlements
+  properties:
+  - type: OpenAPI
+    url: openapi/cloudsmith-entitlements-api-openapi.yml
+  - type: Documentation
+    url: https://docs.cloudsmith.com/api
+  - type: GettingStarted
+    url: https://help.cloudsmith.io/reference/getting-started-with-the-api
+- aid: cloudsmith:cloudsmith-files-api
+  name: Cloudsmith files API
+  description: The files API from Cloudsmith — 5 operation(s) for files.
+  humanURL: https://docs.cloudsmith.com/api
+  baseURL: https://api.cloudsmith.io
+  tags:
+  - files
+  properties:
+  - type: OpenAPI
+    url: openapi/cloudsmith-files-api-openapi.yml
+  - type: Documentation
+    url: https://docs.cloudsmith.com/api
+  - type: GettingStarted
+    url: https://help.cloudsmith.io/reference/getting-started-with-the-api
+- aid: cloudsmith:cloudsmith-formats-api
+  name: Cloudsmith formats API
+  description: The formats API from Cloudsmith — 2 operation(s) for formats.
+  humanURL: https://docs.cloudsmith.com/api
+  baseURL: https://api.cloudsmith.io
+  tags:
+  - formats
+  properties:
+  - type: OpenAPI
+    url: openapi/cloudsmith-formats-api-openapi.yml
+  - type: Documentation
+    url: https://docs.cloudsmith.com/api
+  - type: GettingStarted
+    url: https://help.cloudsmith.io/reference/getting-started-with-the-api
+- aid: cloudsmith:cloudsmith-metrics-api
+  name: Cloudsmith metrics API
+  description: The metrics API from Cloudsmith — 3 operation(s) for metrics.
+  humanURL: https://docs.cloudsmith.com/api
+  baseURL: https://api.cloudsmith.io
+  tags:
+  - metrics
+  properties:
+  - type: OpenAPI
+    url: openapi/cloudsmith-metrics-api-openapi.yml
+  - type: Documentation
+    url: https://docs.cloudsmith.com/api
+  - type: GettingStarted
+    url: https://help.cloudsmith.io/reference/getting-started-with-the-api
+- aid: cloudsmith:cloudsmith-namespaces-api
+  name: Cloudsmith namespaces API
+  description: The namespaces API from Cloudsmith — 2 operation(s) for namespaces.
+  humanURL: https://docs.cloudsmith.com/api
+  baseURL: https://api.cloudsmith.io
+  tags:
+  - namespaces
+  properties:
+  - type: OpenAPI
+    url: openapi/cloudsmith-namespaces-api-openapi.yml
+  - type: Documentation
+    url: https://docs.cloudsmith.com/api
+  - type: GettingStarted
+    url: https://help.cloudsmith.io/reference/getting-started-with-the-api
+- aid: cloudsmith:cloudsmith-orgs-api
+  name: Cloudsmith orgs API
+  description: The orgs API from Cloudsmith — 40 operation(s) for orgs.
+  humanURL: https://docs.cloudsmith.com/api
+  baseURL: https://api.cloudsmith.io
+  tags:
+  - orgs
+  properties:
+  - type: OpenAPI
+    url: openapi/cloudsmith-orgs-api-openapi.yml
+  - type: Documentation
+    url: https://docs.cloudsmith.com/api
+  - type: GettingStarted
+    url: https://help.cloudsmith.io/reference/getting-started-with-the-api
+- aid: cloudsmith:cloudsmith-packages-api
+  name: Cloudsmith packages API
+  description: The packages API from Cloudsmith — 70 operation(s) for packages.
+  humanURL: https://docs.cloudsmith.com/api
+  baseURL: https://api.cloudsmith.io
+  tags:
+  - packages
+  properties:
+  - type: OpenAPI
+    url: openapi/cloudsmith-packages-api-openapi.yml
+  - type: Documentation
+    url: https://docs.cloudsmith.com/api
+  - type: GettingStarted
+    url: https://help.cloudsmith.io/reference/getting-started-with-the-api
+- aid: cloudsmith:cloudsmith-quota-api
+  name: Cloudsmith quota API
+  description: The quota API from Cloudsmith — 4 operation(s) for quota.
+  humanURL: https://docs.cloudsmith.com/api
+  baseURL: https://api.cloudsmith.io
+  tags:
+  - quota
+  properties:
+  - type: OpenAPI
+    url: openapi/cloudsmith-quota-api-openapi.yml
+  - type: Documentation
+    url: https://docs.cloudsmith.com/api
+  - type: GettingStarted
+    url: https://help.cloudsmith.io/reference/getting-started-with-the-api
+- aid: cloudsmith:cloudsmith-rates-api
+  name: Cloudsmith rates API
+  description: The rates API from Cloudsmith — 1 operation(s) for rates.
+  humanURL: https://docs.cloudsmith.com/api
+  baseURL: https://api.cloudsmith.io
+  tags:
+  - rates
+  properties:
+  - type: OpenAPI
+    url: openapi/cloudsmith-rates-api-openapi.yml
+  - type: Documentation
+    url: https://docs.cloudsmith.com/api
+  - type: GettingStarted
+    url: https://help.cloudsmith.io/reference/getting-started-with-the-api
+- aid: cloudsmith:cloudsmith-recycle-bin-api
+  name: Cloudsmith recycle-bin API
+  description: The recycle-bin API from Cloudsmith — 2 operation(s) for recycle-bin.
+  humanURL: https://docs.cloudsmith.com/api
+  baseURL: https://api.cloudsmith.io
+  tags:
+  - recycle-bin
+  properties:
+  - type: OpenAPI
+    url: openapi/cloudsmith-recycle-bin-api-openapi.yml
+  - type: Documentation
+    url: https://docs.cloudsmith.com/api
+  - type: GettingStarted
+    url: https://help.cloudsmith.io/reference/getting-started-with-the-api
+- aid: cloudsmith:cloudsmith-repos-api
+  name: Cloudsmith repos API
+  description: The repos API from Cloudsmith — 59 operation(s) for repos.
+  humanURL: https://docs.cloudsmith.com/api
+  baseURL: https://api.cloudsmith.io
+  tags:
+  - repos
+  properties:
+  - type: OpenAPI
+    url: openapi/cloudsmith-repos-api-openapi.yml
+  - type: Documentation
+    url: https://docs.cloudsmith.com/api
+  - type: GettingStarted
+    url: https://help.cloudsmith.io/reference/getting-started-with-the-api
+- aid: cloudsmith:cloudsmith-status-api
+  name: Cloudsmith status API
+  description: The status API from Cloudsmith — 1 operation(s) for status.
+  humanURL: https://docs.cloudsmith.com/api
+  baseURL: https://api.cloudsmith.io
+  tags:
+  - status
+  properties:
+  - type: OpenAPI
+    url: openapi/cloudsmith-status-api-openapi.yml
+  - type: Documentation
+    url: https://docs.cloudsmith.com/api
+  - type: GettingStarted
+    url: https://help.cloudsmith.io/reference/getting-started-with-the-api
+- aid: cloudsmith:cloudsmith-storage-regions-api
+  name: Cloudsmith storage-regions API
+  description: The storage-regions API from Cloudsmith — 2 operation(s) for storage-regions.
+  humanURL: https://docs.cloudsmith.com/api
+  baseURL: https://api.cloudsmith.io
+  tags:
+  - storage-regions
+  properties:
+  - type: OpenAPI
+    url: openapi/cloudsmith-storage-regions-api-openapi.yml
+  - type: Documentation
+    url: https://docs.cloudsmith.com/api
+  - type: GettingStarted
+    url: https://help.cloudsmith.io/reference/getting-started-with-the-api
+- aid: cloudsmith:cloudsmith-user-api
+  name: Cloudsmith user API
+  description: The user API from Cloudsmith — 4 operation(s) for user.
+  humanURL: https://docs.cloudsmith.com/api
+  baseURL: https://api.cloudsmith.io
+  tags:
+  - user
+  properties:
+  - type: OpenAPI
+    url: openapi/cloudsmith-user-api-openapi.yml
+  - type: Documentation
+    url: https://docs.cloudsmith.com/api
+  - type: GettingStarted
+    url: https://help.cloudsmith.io/reference/getting-started-with-the-api
+- aid: cloudsmith:cloudsmith-users-api
+  name: Cloudsmith users API
+  description: The users API from Cloudsmith — 1 operation(s) for users.
+  humanURL: https://docs.cloudsmith.com/api
+  baseURL: https://api.cloudsmith.io
+  tags:
+  - users
+  properties:
+  - type: OpenAPI
+    url: openapi/cloudsmith-users-api-openapi.yml
+  - type: Documentation
+    url: https://docs.cloudsmith.com/api
+  - type: GettingStarted
+    url: https://help.cloudsmith.io/reference/getting-started-with-the-api
+- aid: cloudsmith:cloudsmith-vulnerabilities-api
+  name: Cloudsmith vulnerabilities API
+  description: The vulnerabilities API from Cloudsmith — 4 operation(s) for vulnerabilities.
+  humanURL: https://docs.cloudsmith.com/api
+  baseURL: https://api.cloudsmith.io
+  tags:
+  - vulnerabilities
+  properties:
+  - type: OpenAPI
+    url: openapi/cloudsmith-vulnerabilities-api-openapi.yml
+  - type: Documentation
+    url: https://docs.cloudsmith.com/api
+  - type: GettingStarted
+    url: https://help.cloudsmith.io/reference/getting-started-with-the-api
+- aid: cloudsmith:cloudsmith-webhooks-api
+  name: Cloudsmith webhooks API
+  description: The webhooks API from Cloudsmith — 2 operation(s) for webhooks.
+  humanURL: https://docs.cloudsmith.com/api
+  baseURL: https://api.cloudsmith.io
+  tags:
+  - webhooks
+  properties:
+  - type: OpenAPI
+    url: openapi/cloudsmith-webhooks-api-openapi.yml
+  - type: Documentation
+    url: https://docs.cloudsmith.com/api
+  - type: GettingStarted
+    url: https://help.cloudsmith.io/reference/getting-started-with-the-api
 common:
   - type: AgenticAccess
     url: agentic-access/cloudsmith-agentic-access.yml
