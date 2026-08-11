@@ -371,7 +371,7 @@ common:
   - type: GitHub
     url: https://github.com/cloudsmith-io
   - type: OpenAPI
-    url: openapi/cloudsmith-openapi.json
+    url: openapi/_original/cloudsmith-openapi.json
   - type: JSONLD
     url: json-ld/cloudsmith-context.jsonld
   - type: Spectral
