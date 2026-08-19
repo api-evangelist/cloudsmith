@@ -1,0 +1,745 @@
+{
+  "item": [
+    {
+      "id": "b625fa51-ae00-4b5b-8370-8fa66e4e7e69",
+      "name": "audit-log",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "c83379d2-b130-4c0c-9352-69f988ccef46",
+          "name": "Lists audit log entries for a specific namespace.",
+          "request": {
+            "name": "Lists audit log entries for a specific namespace.",
+            "description": {
+              "content": "Lists audit log entries for a specific namespace.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "audit-log",
+                ":owner",
+                ""
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "page",
+                  "value": "<integer>",
+                  "description": "A page number within the paginated result set."
+                },
+                {
+                  "disabled": false,
+                  "key": "page_size",
+                  "value": "<integer>",
+                  "description": "Number of results to return per page."
+                },
+                {
+                  "disabled": false,
+                  "key": "query",
+                  "value": "<string>",
+                  "description": "A search term for querying events, actors, or timestamps of log records."
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "owner",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "589d44e6-9b33-437e-a647-3ac2d484d364",
+              "name": "Retrieved the list of audit log entries",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "audit-log",
+                    ":owner",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "page",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "page_size",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "query",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "owner",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-Api-Key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"actor\": \"string\",\n    \"actor_ip_address\": \"string\",\n    \"actor_location\": {\n      \"city\": \"string\",\n      \"continent\": \"string\",\n      \"country\": \"string\",\n      \"postal_code\": \"string\",\n      \"country_code\": \"string\",\n      \"latitude\": \"string\",\n      \"longitude\": \"string\"\n    },\n    \"actor_slug_perm\": \"string\",\n    \"context\": \"string\",\n    \"event\": \"string\",\n    \"event_at\": \"1961-07-05T01:37:57.738Z\",\n    \"object\": \"string\",\n    \"object_kind\": \"string\",\n    \"object_slug_perm\": \"string\",\n    \"target\": \"string\",\n    \"target_kind\": \"string\",\n    \"actor_kind\": \"string\",\n    \"actor_url\": \"https://nGktTteLPiQyRoqrHWYt.wutkeul3.YZYDB\",\n    \"target_slug_perm\": \"EhZgv\",\n    \"uuid\": \"433b853b-4316-fee6-0c24-ac4a28b68be1\"\n  },\n  {\n    \"actor\": \"string\",\n    \"actor_ip_address\": \"string\",\n    \"actor_location\": {\n      \"city\": \"string\",\n      \"continent\": \"string\",\n      \"country\": \"string\",\n      \"postal_code\": \"string\",\n      \"country_code\": \"string\",\n      \"latitude\": \"string\",\n      \"longitude\": \"string\"\n    },\n    \"actor_slug_perm\": \"string\",\n    \"context\": \"string\",\n    \"event\": \"string\",\n    \"event_at\": \"1989-11-09T00:12:49.496Z\",\n    \"object\": \"string\",\n    \"object_kind\": \"string\",\n    \"object_slug_perm\": \"str\",\n    \"target\": \"string\",\n    \"target_kind\": \"string\",\n    \"actor_kind\": \"string\",\n    \"actor_url\": \"http://DLTBBHnLAESBWmGKYBpYQGivkmc.ofPcZM,LKD,m7e9ragN871RXVcKefJSwTZe+mz6M+2\",\n    \"target_slug_perm\": \"3hSOdaQQcL\",\n    \"uuid\": \"84172b88-fa8c-5442-c26e-78c10eb36444\"\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "f2d8d861-4929-4b99-a7c6-3f912011367d",
+              "name": "Request could not be processed (see detail).",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "audit-log",
+                    ":owner",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "page",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "page_size",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "query",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "owner",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-Api-Key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"detail\": \"string\",\n  \"fields\": {\n    \"key_0\": [\n      \"string\",\n      \"string\"\n    ],\n    \"key_1\": [\n      \"string\",\n      \"string\"\n    ],\n    \"key_2\": [\n      \"string\",\n      \"string\"\n    ]\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "5c0f5ae9-7fa4-491b-9eaf-327a6b9cbd14",
+              "name": "Audit logs are not active; upgrade your account!",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "audit-log",
+                    ":owner",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "page",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "page_size",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "query",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "owner",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-Api-Key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Payment Required",
+              "code": 402,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"detail\": \"string\",\n  \"fields\": {\n    \"key_0\": [\n      \"string\",\n      \"string\"\n    ],\n    \"key_1\": [\n      \"string\",\n      \"string\"\n    ],\n    \"key_2\": [\n      \"string\",\n      \"string\"\n    ]\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "82ac4602-8e0d-4f88-8576-58d822f8e0ed",
+              "name": "Missing or invalid parameters (see detail).",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "audit-log",
+                    ":owner",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "page",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "page_size",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "query",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "owner",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-Api-Key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+              "code": 422,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"detail\": \"string\",\n  \"fields\": {\n    \"key_0\": [\n      \"string\",\n      \"string\"\n    ],\n    \"key_1\": [\n      \"string\",\n      \"string\"\n    ],\n    \"key_2\": [\n      \"string\",\n      \"string\"\n    ]\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "efa15b55-5c39-4339-8258-1114f8175ba6",
+          "name": "Lists audit log entries for a specific repository.",
+          "request": {
+            "name": "Lists audit log entries for a specific repository.",
+            "description": {
+              "content": "Lists audit log entries for a specific repository.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "audit-log",
+                ":owner",
+                ":repo",
+                ""
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "page",
+                  "value": "<integer>",
+                  "description": "A page number within the paginated result set."
+                },
+                {
+                  "disabled": false,
+                  "key": "page_size",
+                  "value": "<integer>",
+                  "description": "Number of results to return per page."
+                },
+                {
+                  "disabled": false,
+                  "key": "query",
+                  "value": "<string>",
+                  "description": "A search term for querying events, actors, or timestamps of log records."
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "owner",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "repo",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "a8ae7d10-0cc8-44a6-918d-7b79c5d7d2a8",
+              "name": "Retrieved the list of audit log entries",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "audit-log",
+                    ":owner",
+                    ":repo",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "page",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "page_size",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "query",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "owner",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "repo",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-Api-Key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"actor\": \"string\",\n    \"actor_ip_address\": \"string\",\n    \"actor_location\": {\n      \"city\": \"string\",\n      \"continent\": \"string\",\n      \"country\": \"string\",\n      \"postal_code\": \"string\",\n      \"country_code\": \"string\",\n      \"latitude\": \"string\",\n      \"longitude\": \"string\"\n    },\n    \"actor_slug_perm\": \"string\",\n    \"context\": \"string\",\n    \"event\": \"string\",\n    \"event_at\": \"1981-03-03T19:43:50.693Z\",\n    \"object\": \"string\",\n    \"object_kind\": \"string\",\n    \"object_slug_perm\": \"string\",\n    \"actor_kind\": \"string\",\n    \"actor_url\": \"http://Y.hvhEbJdI7r0wC+hC\",\n    \"uuid\": \"34104e32-3cce-6ea9-f09a-87440a91dc91\"\n  },\n  {\n    \"actor\": \"string\",\n    \"actor_ip_address\": \"string\",\n    \"actor_location\": {\n      \"city\": \"string\",\n      \"continent\": \"string\",\n      \"country\": \"string\",\n      \"postal_code\": \"string\",\n      \"country_code\": \"string\",\n      \"latitude\": \"string\",\n      \"longitude\": \"string\"\n    },\n    \"actor_slug_perm\": \"string\",\n    \"context\": \"string\",\n    \"event\": \"string\",\n    \"event_at\": \"1955-06-30T16:35:32.541Z\",\n    \"object\": \"string\",\n    \"object_kind\": \"string\",\n    \"object_slug_perm\": \"string\",\n    \"actor_kind\": \"string\",\n    \"actor_url\": \"http://rTpudIbpNengcvmty.ywPUo2Hsj8\",\n    \"uuid\": \"460daf35-404e-5bc7-cf7b-1fe5d0e6d066\"\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "959baa45-d2fb-40ac-9e33-4e020ba5efdf",
+              "name": "Request could not be processed (see detail).",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "audit-log",
+                    ":owner",
+                    ":repo",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "page",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "page_size",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "query",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "owner",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "repo",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-Api-Key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"detail\": \"string\",\n  \"fields\": {\n    \"key_0\": [\n      \"string\",\n      \"string\"\n    ],\n    \"key_1\": [\n      \"string\",\n      \"string\"\n    ],\n    \"key_2\": [\n      \"string\",\n      \"string\"\n    ]\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "af8f253f-14af-447c-a168-bbcb6ec33e9b",
+              "name": "Audit logs are not active; upgrade your account!",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "audit-log",
+                    ":owner",
+                    ":repo",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "page",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "page_size",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "query",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "owner",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "repo",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-Api-Key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Payment Required",
+              "code": 402,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"detail\": \"string\",\n  \"fields\": {\n    \"key_0\": [\n      \"string\",\n      \"string\"\n    ],\n    \"key_1\": [\n      \"string\",\n      \"string\"\n    ],\n    \"key_2\": [\n      \"string\",\n      \"string\"\n    ]\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "796d01e6-1abb-4dec-99b7-d40e5a7492f2",
+              "name": "Missing or invalid parameters (see detail).",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "audit-log",
+                    ":owner",
+                    ":repo",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "page",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "page_size",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "query",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "owner",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "repo",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-Api-Key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+              "code": 422,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"detail\": \"string\",\n  \"fields\": {\n    \"key_0\": [\n      \"string\",\n      \"string\"\n    ],\n    \"key_1\": [\n      \"string\",\n      \"string\"\n    ],\n    \"key_2\": [\n      \"string\",\n      \"string\"\n    ]\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.cloudsmith.io",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      {
+        "key": "key",
+        "value": "X-Api-Key"
+      },
+      {
+        "key": "value",
+        "value": "{{apiKey}}"
+      },
+      {
+        "key": "in",
+        "value": "header"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "6fd976ea-230f-45e0-8606-c6a850e507db",
+    "name": "Cloudsmith API (v1) audit-log API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "The API to the Cloudsmith Service\n\nContact Support:\n Name: Cloudsmith Support\n Email: support@cloudsmith.io",
+      "type": "text/plain"
+    }
+  }
+}

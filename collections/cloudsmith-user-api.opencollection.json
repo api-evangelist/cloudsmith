@@ -1,0 +1,94 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Cloudsmith API (v1) audit-log user API",
+    "version": "v1"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "user",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Provide a brief for the current user (if any).",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/user/self/"
+          },
+          "docs": "Provide a brief for the current user (if any)."
+        },
+        {
+          "info": {
+            "name": "Create or retrieve API token for a user.",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/user/token/"
+          },
+          "docs": "Handles both:\n- Users authenticating with basic credentials to get a token\n- Two-factor authentication flow"
+        },
+        {
+          "info": {
+            "name": "Retrieve the API key assigned to the user that is currently authenticated.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/user/tokens/",
+            "params": [
+              {
+                "name": "page",
+                "value": "",
+                "type": "query",
+                "description": "A page number within the paginated result set."
+              },
+              {
+                "name": "page_size",
+                "value": "",
+                "type": "query",
+                "description": "Number of results to return per page."
+              }
+            ]
+          },
+          "docs": "Retrieve the API key assigned to the user that is currently authenticated."
+        },
+        {
+          "info": {
+            "name": "Create an API key for the user that is currently authenticated.",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/user/tokens/"
+          },
+          "docs": "Create an API key for the user that is currently authenticated."
+        },
+        {
+          "info": {
+            "name": "Refresh the specified API key for the user that is currently authenticated.",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "{{baseUrl}}/user/tokens/:slug_perm/refresh/",
+            "params": [
+              {
+                "name": "slug_perm",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Refresh the specified API key for the user that is currently authenticated."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

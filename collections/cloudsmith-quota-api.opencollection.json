@@ -1,0 +1,90 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Cloudsmith API (v1) audit-log quota API",
+    "version": "v1"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "quota",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Quota history for a given namespace.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/quota/history/:owner/",
+            "params": [
+              {
+                "name": "owner",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Quota history for a given namespace."
+        },
+        {
+          "info": {
+            "name": "Open-source Quota history for a given namespace.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/quota/oss/history/:owner/",
+            "params": [
+              {
+                "name": "owner",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Open-source Quota history for a given namespace."
+        },
+        {
+          "info": {
+            "name": "Open-source Quota usage for a given namespace.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/quota/oss/:owner/",
+            "params": [
+              {
+                "name": "owner",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Open-source Quota usage for a given namespace."
+        },
+        {
+          "info": {
+            "name": "Quota usage for a given namespace.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/quota/:owner/",
+            "params": [
+              {
+                "name": "owner",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Quota usage for a given namespace."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

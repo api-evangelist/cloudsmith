@@ -1,0 +1,95 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Cloudsmith API (v1) audit-log API",
+    "version": "v1"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "audit-log",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Lists audit log entries for a specific namespace.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/audit-log/:owner/",
+            "params": [
+              {
+                "name": "owner",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "page",
+                "value": "",
+                "type": "query",
+                "description": "A page number within the paginated result set."
+              },
+              {
+                "name": "page_size",
+                "value": "",
+                "type": "query",
+                "description": "Number of results to return per page."
+              },
+              {
+                "name": "query",
+                "value": "",
+                "type": "query",
+                "description": "A search term for querying events, actors, or timestamps of log records."
+              }
+            ]
+          },
+          "docs": "Lists audit log entries for a specific namespace."
+        },
+        {
+          "info": {
+            "name": "Lists audit log entries for a specific repository.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/audit-log/:owner/:repo/",
+            "params": [
+              {
+                "name": "owner",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "repo",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "page",
+                "value": "",
+                "type": "query",
+                "description": "A page number within the paginated result set."
+              },
+              {
+                "name": "page_size",
+                "value": "",
+                "type": "query",
+                "description": "Number of results to return per page."
+              },
+              {
+                "name": "query",
+                "value": "",
+                "type": "query",
+                "description": "A search term for querying events, actors, or timestamps of log records."
+              }
+            ]
+          },
+          "docs": "Lists audit log entries for a specific repository."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

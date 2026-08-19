@@ -1,0 +1,881 @@
+{
+  "item": [
+    {
+      "id": "b99f9673-c8f9-494b-9298-ee3bce4d21fb",
+      "name": "quota",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "844a58d9-70ff-4a4b-b1aa-5683aa8cdc35",
+          "name": "Quota history for a given namespace.",
+          "request": {
+            "name": "Quota history for a given namespace.",
+            "description": {
+              "content": "Quota history for a given namespace.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "quota",
+                "history",
+                ":owner",
+                ""
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "owner",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "a5308df3-7d8a-41ce-82ff-fac633ceaa1e",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "quota",
+                    "history",
+                    ":owner",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "owner",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-Api-Key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"history\": [\n    {\n      \"display\": {\n        \"downloaded\": {\n          \"limit\": \"string\",\n          \"percentage\": \"string\",\n          \"used\": \"string\"\n        },\n        \"storage_used\": {\n          \"limit\": \"string\",\n          \"peak\": \"string\",\n          \"percentage\": \"string\",\n          \"used\": \"string\"\n        },\n        \"uploaded\": {\n          \"limit\": \"string\",\n          \"percentage\": \"string\",\n          \"used\": \"string\"\n        }\n      },\n      \"end\": \"1969-10-26T11:10:27.171Z\",\n      \"plan\": \"string\",\n      \"raw\": {\n        \"downloaded\": {\n          \"limit\": 6229,\n          \"percentage\": \"string\",\n          \"used\": 3321\n        },\n        \"storage_used\": {\n          \"limit\": 3397,\n          \"peak\": 2444,\n          \"percentage\": \"string\",\n          \"used\": 4839\n        },\n        \"uploaded\": {\n          \"limit\": 5849,\n          \"percentage\": \"string\",\n          \"used\": 3134\n        }\n      },\n      \"start\": \"1947-09-26T01:00:29.352Z\",\n      \"days\": 0\n    },\n    {\n      \"display\": {\n        \"downloaded\": {\n          \"limit\": \"string\",\n          \"percentage\": \"st\",\n          \"used\": \"string\"\n        },\n        \"storage_used\": {\n          \"limit\": \"string\",\n          \"peak\": \"string\",\n          \"percentage\": \"stri\",\n          \"used\": \"string\"\n        },\n        \"uploaded\": {\n          \"limit\": \"string\",\n          \"percentage\": \"string\",\n          \"used\": \"string\"\n        }\n      },\n      \"end\": \"2010-05-13T02:55:23.374Z\",\n      \"plan\": \"string\",\n      \"raw\": {\n        \"downloaded\": {\n          \"limit\": 4825,\n          \"percentage\": \"string\",\n          \"used\": 5373\n        },\n        \"storage_used\": {\n          \"limit\": 5448,\n          \"peak\": 2362,\n          \"percentage\": \"string\",\n          \"used\": 9502\n        },\n        \"uploaded\": {\n          \"limit\": 5940,\n          \"percentage\": \"string\",\n          \"used\": 6307\n        }\n      },\n      \"start\": \"1960-03-23T08:23:31.483Z\",\n      \"days\": 0\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "fa3eac5e-8d66-4573-af9f-9b60940006f1",
+              "name": "Request could not be processed (see detail).",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "quota",
+                    "history",
+                    ":owner",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "owner",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-Api-Key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"detail\": \"string\",\n  \"fields\": {\n    \"key_0\": [\n      \"string\",\n      \"string\"\n    ],\n    \"key_1\": [\n      \"string\",\n      \"string\"\n    ]\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "cb519e25-321e-4eea-b52f-3cce3ea0d554",
+              "name": "Missing or invalid parameters (see detail).",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "quota",
+                    "history",
+                    ":owner",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "owner",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-Api-Key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+              "code": 422,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"detail\": \"string\",\n  \"fields\": {\n    \"key_0\": [\n      \"str\",\n      \"string\"\n    ],\n    \"key_1\": [\n      \"string\",\n      \"string\"\n    ]\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "b4135df1-a693-4d19-adbe-e7ce95b33789",
+          "name": "Open-source Quota history for a given namespace.",
+          "request": {
+            "name": "Open-source Quota history for a given namespace.",
+            "description": {
+              "content": "Open-source Quota history for a given namespace.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "quota",
+                "oss",
+                "history",
+                ":owner",
+                ""
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "owner",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "6817fb8c-b6bd-4487-9075-619ecf7615df",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "quota",
+                    "oss",
+                    "history",
+                    ":owner",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "owner",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-Api-Key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"history\": [\n    {\n      \"display\": {\n        \"downloaded\": {\n          \"limit\": \"string\",\n          \"percentage\": \"string\",\n          \"used\": \"string\"\n        },\n        \"storage_used\": {\n          \"limit\": \"st\",\n          \"peak\": \"st\",\n          \"percentage\": \"string\",\n          \"used\": \"string\"\n        },\n        \"uploaded\": {\n          \"limit\": \"string\",\n          \"percentage\": \"s\",\n          \"used\": \"string\"\n        }\n      },\n      \"end\": \"2016-09-21T01:21:54.987Z\",\n      \"plan\": \"string\",\n      \"raw\": {\n        \"downloaded\": {\n          \"limit\": 5579,\n          \"percentage\": \"string\",\n          \"used\": 8550\n        },\n        \"storage_used\": {\n          \"limit\": 2189,\n          \"peak\": 7194,\n          \"percentage\": \"string\",\n          \"used\": 8835\n        },\n        \"uploaded\": {\n          \"limit\": 5676,\n          \"percentage\": \"string\",\n          \"used\": 792\n        }\n      },\n      \"start\": \"1996-05-11T14:41:00.051Z\",\n      \"days\": 0\n    },\n    {\n      \"display\": {\n        \"downloaded\": {\n          \"limit\": \"string\",\n          \"percentage\": \"stri\",\n          \"used\": \"string\"\n        },\n        \"storage_used\": {\n          \"limit\": \"string\",\n          \"peak\": \"string\",\n          \"percentage\": \"string\",\n          \"used\": \"string\"\n        },\n        \"uploaded\": {\n          \"limit\": \"string\",\n          \"percentage\": \"stri\",\n          \"used\": \"string\"\n        }\n      },\n      \"end\": \"2002-12-03T14:41:21.965Z\",\n      \"plan\": \"string\",\n      \"raw\": {\n        \"downloaded\": {\n          \"limit\": 6060,\n          \"percentage\": \"string\",\n          \"used\": 4988\n        },\n        \"storage_used\": {\n          \"limit\": 4498,\n          \"peak\": 7757,\n          \"percentage\": \"string\",\n          \"used\": 5849\n        },\n        \"uploaded\": {\n          \"limit\": 9660,\n          \"percentage\": \"string\",\n          \"used\": 1740\n        }\n      },\n      \"start\": \"1969-02-19T10:30:25.902Z\",\n      \"days\": 0\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "ed1be1a7-e2cd-4e70-8958-9eafc4bdce6d",
+              "name": "Request could not be processed (see detail).",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "quota",
+                    "oss",
+                    "history",
+                    ":owner",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "owner",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-Api-Key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"detail\": \"string\",\n  \"fields\": {\n    \"key_0\": [\n      \"str\",\n      \"string\"\n    ],\n    \"key_1\": [\n      \"string\",\n      \"string\"\n    ]\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "234f4a39-06ff-4de1-bfff-2fc0e71833b6",
+              "name": "Missing or invalid parameters (see detail).",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "quota",
+                    "oss",
+                    "history",
+                    ":owner",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "owner",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-Api-Key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+              "code": 422,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"detail\": \"string\",\n  \"fields\": {\n    \"key_0\": [\n      \"str\",\n      \"string\"\n    ],\n    \"key_1\": [\n      \"string\",\n      \"string\"\n    ]\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "b458733e-b47a-4d05-92dc-8122bb8fd2b1",
+          "name": "Open-source Quota usage for a given namespace.",
+          "request": {
+            "name": "Open-source Quota usage for a given namespace.",
+            "description": {
+              "content": "Open-source Quota usage for a given namespace.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "quota",
+                "oss",
+                ":owner",
+                ""
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "owner",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "adf8d632-c26a-4b91-8d5f-19f68f4d9d40",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "quota",
+                    "oss",
+                    ":owner",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "owner",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-Api-Key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"usage\": {\n    \"display\": {\n      \"bandwidth\": {\n        \"configured\": \"string\",\n        \"percentage_used\": \"string\",\n        \"plan_limit\": \"string\",\n        \"used\": \"string\"\n      },\n      \"storage\": {\n        \"configured\": \"string\",\n        \"peak\": \"string\",\n        \"percentage_used\": \"string\",\n        \"plan_limit\": \"string\",\n        \"used\": \"string\",\n        \"used_pre_deduplication\": \"string\"\n      }\n    },\n    \"raw\": {\n      \"bandwidth\": {\n        \"configured\": 8688,\n        \"percentage_used\": \"string\",\n        \"plan_limit\": 7956,\n        \"used\": 7019\n      },\n      \"storage\": {\n        \"configured\": 7610,\n        \"peak\": 8984,\n        \"percentage_used\": \"string\",\n        \"plan_limit\": 6430,\n        \"used\": 3780,\n        \"used_pre_deduplication\": 9196\n      }\n    }\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "27ef5caa-fcdb-4cbe-8cfb-372301aff497",
+              "name": "Request could not be processed (see detail).",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "quota",
+                    "oss",
+                    ":owner",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "owner",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-Api-Key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"detail\": \"string\",\n  \"fields\": {\n    \"key_0\": [\n      \"str\",\n      \"string\"\n    ],\n    \"key_1\": [\n      \"string\",\n      \"string\"\n    ]\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "534611df-69c2-4909-86b3-4cf758573fbd",
+              "name": "Missing or invalid parameters (see detail).",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "quota",
+                    "oss",
+                    ":owner",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "owner",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-Api-Key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+              "code": 422,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"detail\": \"string\",\n  \"fields\": {\n    \"key_0\": [\n      \"str\",\n      \"string\"\n    ],\n    \"key_1\": [\n      \"string\",\n      \"string\"\n    ]\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "7e5172b7-1fef-4e4e-b8f8-22f745d2759b",
+          "name": "Quota usage for a given namespace.",
+          "request": {
+            "name": "Quota usage for a given namespace.",
+            "description": {
+              "content": "Quota usage for a given namespace.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "quota",
+                ":owner",
+                ""
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "owner",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "cf7c73de-0744-452a-b308-758a52e0830b",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "quota",
+                    ":owner",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "owner",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-Api-Key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"usage\": {\n    \"display\": {\n      \"bandwidth\": {\n        \"configured\": \"string\",\n        \"percentage_used\": \"string\",\n        \"plan_limit\": \"string\",\n        \"used\": \"string\"\n      },\n      \"storage\": {\n        \"configured\": \"string\",\n        \"peak\": \"string\",\n        \"percentage_used\": \"string\",\n        \"plan_limit\": \"string\",\n        \"used\": \"string\",\n        \"used_pre_deduplication\": \"string\"\n      }\n    },\n    \"raw\": {\n      \"bandwidth\": {\n        \"configured\": 8688,\n        \"percentage_used\": \"string\",\n        \"plan_limit\": 7956,\n        \"used\": 7019\n      },\n      \"storage\": {\n        \"configured\": 7610,\n        \"peak\": 8984,\n        \"percentage_used\": \"string\",\n        \"plan_limit\": 6430,\n        \"used\": 3780,\n        \"used_pre_deduplication\": 9196\n      }\n    }\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "d53d4599-1d83-4fea-bb2e-2af1cf1f0556",
+              "name": "Request could not be processed (see detail).",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "quota",
+                    ":owner",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "owner",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-Api-Key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"detail\": \"string\",\n  \"fields\": {\n    \"key_0\": [\n      \"str\",\n      \"string\"\n    ],\n    \"key_1\": [\n      \"string\",\n      \"string\"\n    ]\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "92d09871-4cf9-4b8c-80f1-44718c6d7c3a",
+              "name": "Missing or invalid parameters (see detail).",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "quota",
+                    ":owner",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "owner",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-Api-Key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+              "code": 422,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"detail\": \"string\",\n  \"fields\": {\n    \"key_0\": [\n      \"str\",\n      \"string\"\n    ],\n    \"key_1\": [\n      \"string\",\n      \"string\"\n    ]\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.cloudsmith.io",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      {
+        "key": "key",
+        "value": "X-Api-Key"
+      },
+      {
+        "key": "value",
+        "value": "{{apiKey}}"
+      },
+      {
+        "key": "in",
+        "value": "header"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "57c5463e-eab5-4753-8c8c-f9592415537d",
+    "name": "Cloudsmith API (v1) audit-log quota API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "The API to the Cloudsmith Service\n\nContact Support:\n Name: Cloudsmith Support\n Email: support@cloudsmith.io",
+      "type": "text/plain"
+    }
+  }
+}

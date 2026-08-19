@@ -1,0 +1,36 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Cloudsmith API (v1) audit-log bulk-action API",
+    "version": "v1"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "bulk-action",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "bulk_action",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/bulk-action/:owner/",
+            "params": [
+              {
+                "name": "owner",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Perform bulk operations on multiple packages within a repository or across all accessible repositories. If 'repository' is provided, actions are limited to that repository. If 'repository' is omitted, actions are performed across all repositories the user has access to within the workspace. Returns a list of successfully actioned packages and any packages that failed with error details. "
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

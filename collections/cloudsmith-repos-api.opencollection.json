@@ -1,0 +1,4136 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Cloudsmith API (v1) audit-log repos API",
+    "version": "v1"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "repos",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get a list of all repositories associated with current user.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/repos/",
+            "params": [
+              {
+                "name": "page",
+                "value": "",
+                "type": "query",
+                "description": "A page number within the paginated result set."
+              },
+              {
+                "name": "page_size",
+                "value": "",
+                "type": "query",
+                "description": "Number of results to return per page."
+              }
+            ]
+          },
+          "docs": "Get a list of all repositories associated with current user."
+        },
+        {
+          "info": {
+            "name": "Get a list of all repositories within a namespace.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/repos/:owner/",
+            "params": [
+              {
+                "name": "owner",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "page",
+                "value": "",
+                "type": "query",
+                "description": "A page number within the paginated result set."
+              },
+              {
+                "name": "page_size",
+                "value": "",
+                "type": "query",
+                "description": "Number of results to return per page."
+              },
+              {
+                "name": "query",
+                "value": "",
+                "type": "query",
+                "description": "A search term for querying repositories. Available options are: name, slug. Explicit filters: broadcast_state, repository_type."
+              },
+              {
+                "name": "sort",
+                "value": "",
+                "type": "query",
+                "description": "A field for sorting objects in ascending or descending order."
+              }
+            ]
+          },
+          "docs": "Get a list of all repositories within a namespace."
+        },
+        {
+          "info": {
+            "name": "Create a new repository in a given namespace.",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/repos/:owner/",
+            "params": [
+              {
+                "name": "owner",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Create a new repository in a given namespace."
+        },
+        {
+          "info": {
+            "name": "Get a specific repository.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/repos/:owner/:identifier/",
+            "params": [
+              {
+                "name": "owner",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "identifier",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Get a specific repository."
+        },
+        {
+          "info": {
+            "name": "Update details about a repository in a given namespace.",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "{{baseUrl}}/repos/:owner/:identifier/",
+            "params": [
+              {
+                "name": "owner",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "identifier",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Update details about a repository in a given namespace."
+        },
+        {
+          "info": {
+            "name": "repos_delete",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "{{baseUrl}}/repos/:owner/:identifier/",
+            "params": [
+              {
+                "name": "owner",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "identifier",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Delete a repository in a given namespace.Repositories are soft-deleted and can be restored within a retention period. During this time, the repository's slug remains reserved and cannot be reused for new repositories."
+        },
+        {
+          "info": {
+            "name": "Retrieve the active ECDSA key for the Repository.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/repos/:owner/:identifier/ecdsa/",
+            "params": [
+              {
+                "name": "owner",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "identifier",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Retrieve the active ECDSA key for the Repository."
+        },
+        {
+          "info": {
+            "name": "Set the active ECDSA key for the Repository.",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/repos/:owner/:identifier/ecdsa/",
+            "params": [
+              {
+                "name": "owner",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "identifier",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Set the active ECDSA key for the Repository."
+        },
+        {
+          "info": {
+            "name": "Regenerate ECDSA Key for the Repository.",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/repos/:owner/:identifier/ecdsa/regenerate/",
+            "params": [
+              {
+                "name": "owner",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "identifier",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Regenerate ECDSA Key for the Repository."
+        },
+        {
+          "info": {
+            "name": "List all repository geoip rules.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/repos/:owner/:identifier/geoip",
+            "params": [
+              {
+                "name": "owner",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "identifier",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "List all repository geoip rules."
+        },
+        {
+          "info": {
+            "name": "Replace repository geoip rules.",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "{{baseUrl}}/repos/:owner/:identifier/geoip",
+            "params": [
+              {
+                "name": "owner",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "identifier",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Replace repository geoip rules."
+        },
+        {
+          "info": {
+            "name": "Partially update repository geoip rules.",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "{{baseUrl}}/repos/:owner/:identifier/geoip",
+            "params": [
+              {
+                "name": "owner",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "identifier",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Partially update repository geoip rules."
+        },
+        {
+          "info": {
+            "name": "Disable GeoIP for this repository.",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/repos/:owner/:identifier/geoip/disable/",
+            "params": [
+              {
+                "name": "owner",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "identifier",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Disable GeoIP for this repository."
+        },
+        {
+          "info": {
+            "name": "Enable GeoIP for this repository.",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/repos/:owner/:identifier/geoip/enable/",
+            "params": [
+              {
+                "name": "owner",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "identifier",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Enable GeoIP for this repository."
+        },
+        {
+          "info": {
+            "name": "Retrieve the GeoIP status for this repository.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/repos/:owner/:identifier/geoip/status/",
+            "params": [
+              {
+                "name": "owner",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "identifier",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Retrieve the GeoIP status for this repository."
+        },
+        {
+          "info": {
+            "name": "Test a list of IP addresses against the repository's current GeoIP rules.",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/repos/:owner/:identifier/geoip/test/",
+            "params": [
+              {
+                "name": "owner",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "identifier",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Test a list of IP addresses against the repository's current GeoIP rules."
+        },
+        {
+          "info": {
+            "name": "Retrieve the active GPG key for the Repository.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/repos/:owner/:identifier/gpg/",
+            "params": [
+              {
+                "name": "owner",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "identifier",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Retrieve the active GPG key for the Repository."
+        },
+        {
+          "info": {
+            "name": "Set the active GPG key for the Repository.",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/repos/:owner/:identifier/gpg/",
+            "params": [
+              {
+                "name": "owner",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "identifier",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Set the active GPG key for the Repository."
+        },
+        {
+          "info": {
+            "name": "Regenerate GPG Key for the Repository.",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/repos/:owner/:identifier/gpg/regenerate/",
+            "params": [
+              {
+                "name": "owner",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "identifier",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Regenerate GPG Key for the Repository."
+        },
+        {
+          "info": {
+            "name": "List all explicity created privileges for the repository.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/repos/:owner/:identifier/privileges",
+            "params": [
+              {
+                "name": "owner",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "identifier",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "page",
+                "value": "",
+                "type": "query",
+                "description": "A page number within the paginated result set."
+              },
+              {
+                "name": "page_size",
+                "value": "",
+                "type": "query",
+                "description": "Number of results to return per page."
+              }
+            ]
+          },
+          "docs": "List all explicity created privileges for the repository."
+        },
+        {
+          "info": {
+            "name": "Replace all existing repository privileges with those specified.",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "{{baseUrl}}/repos/:owner/:identifier/privileges",
+            "params": [
+              {
+                "name": "owner",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "identifier",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Replace all existing repository privileges with those specified."
+        },
+        {
+          "info": {
+            "name": "Modify privileges for the repository.",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "{{baseUrl}}/repos/:owner/:identifier/privileges",
+            "params": [
+              {
+                "name": "owner",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "identifier",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Modify privileges for the repository."
+        },
+        {
+          "info": {
+            "name": "Retrieve the active RSA key for the Repository.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/repos/:owner/:identifier/rsa/",
+            "params": [
+              {
+                "name": "owner",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "identifier",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Retrieve the active RSA key for the Repository."
+        },
+        {
+          "info": {
+            "name": "Set the active RSA key for the Repository.",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/repos/:owner/:identifier/rsa/",
+            "params": [
+              {
+                "name": "owner",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "identifier",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Set the active RSA key for the Repository."
+        },
+        {
+          "info": {
+            "name": "Regenerate RSA Key for the Repository.",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/repos/:owner/:identifier/rsa/regenerate/",
+            "params": [
+              {
+                "name": "owner",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "identifier",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Regenerate RSA Key for the Repository."
+        },
+        {
+          "info": {
+            "name": "List Alpine upstream configs for this repository.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/repos/:owner/:identifier/upstream/alpine/",
+            "params": [
+              {
+                "name": "owner",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "identifier",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "page",
+                "value": "",
+                "type": "query",
+                "description": "A page number within the paginated result set."
+              },
+              {
+                "name": "page_size",
+                "value": "",
+                "type": "query",
+                "description": "Number of results to return per page."
+              }
+            ]
+          },
+          "docs": "List Alpine upstream configs for this repository."
+        },
+        {
+          "info": {
+            "name": "Create an Alpine upstream config for this repository.",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/repos/:owner/:identifier/upstream/alpine/",
+            "params": [
+              {
+                "name": "owner",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "identifier",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Create an Alpine upstream config for this repository."
+        },
+        {
+          "info": {
+            "name": "Retrieve an Alpine upstream config for this repository.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/repos/:owner/:identifier/upstream/alpine/:slug_perm/",
+            "params": [
+              {
+                "name": "owner",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "identifier",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "slug_perm",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Retrieve an Alpine upstream config for this repository."
+        },
+        {
+          "info": {
+            "name": "Update an Alpine upstream config for this repository.",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "{{baseUrl}}/repos/:owner/:identifier/upstream/alpine/:slug_perm/",
+            "params": [
+              {
+                "name": "owner",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "identifier",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "slug_perm",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Update an Alpine upstream config for this repository."
+        },
+        {
+          "info": {
+            "name": "Partially update an Alpine upstream config for this repository.",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "{{baseUrl}}/repos/:owner/:identifier/upstream/alpine/:slug_perm/",
+            "params": [
+              {
+                "name": "owner",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "identifier",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "slug_perm",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Partially update an Alpine upstream config for this repository."
+        },
+        {
+          "info": {
+            "name": "Delete an Alpine upstream config for this repository.",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "{{baseUrl}}/repos/:owner/:identifier/upstream/alpine/:slug_perm/",
+            "params": [
+              {
+                "name": "owner",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "identifier",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "slug_perm",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Delete an Alpine upstream config for this repository."
+        },
+        {
+          "info": {
+            "name": "List Cargo upstream configs for this repository.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/repos/:owner/:identifier/upstream/cargo/",
+            "params": [
+              {
+                "name": "owner",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "identifier",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "page",
+                "value": "",
+                "type": "query",
+                "description": "A page number within the paginated result set."
+              },
+              {
+                "name": "page_size",
+                "value": "",
+                "type": "query",
+                "description": "Number of results to return per page."
+              }
+            ]
+          },
+          "docs": "List Cargo upstream configs for this repository."
+        },
+        {
+          "info": {
+            "name": "Create a Cargo upstream config for this repository.",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/repos/:owner/:identifier/upstream/cargo/",
+            "params": [
+              {
+                "name": "owner",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "identifier",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Create a Cargo upstream config for this repository."
+        },
+        {
+          "info": {
+            "name": "Retrieve a Cargo upstream config for this repository.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/repos/:owner/:identifier/upstream/cargo/:slug_perm/",
+            "params": [
+              {
+                "name": "owner",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "identifier",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "slug_perm",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Retrieve a Cargo upstream config for this repository."
+        },
+        {
+          "info": {
+            "name": "Update a Cargo upstream config for this repository.",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "{{baseUrl}}/repos/:owner/:identifier/upstream/cargo/:slug_perm/",
+            "params": [
+              {
+                "name": "owner",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "identifier",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "slug_perm",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Update a Cargo upstream config for this repository."
+        },
+        {
+          "info": {
+            "name": "Partially update a Cargo upstream config for this repository.",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "{{baseUrl}}/repos/:owner/:identifier/upstream/cargo/:slug_perm/",
+            "params": [
+              {
+                "name": "owner",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "identifier",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "slug_perm",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Partially update a Cargo upstream config for this repository."
+        },
+        {
+          "info": {
+            "name": "Delete a Cargo upstream config for this repository.",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "{{baseUrl}}/repos/:owner/:identifier/upstream/cargo/:slug_perm/",
+            "params": [
+              {
+                "name": "owner",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "identifier",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "slug_perm",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Delete a Cargo upstream config for this repository."
+        },
+        {
+          "info": {
+            "name": "List Composer upstream configs for this repository.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/repos/:owner/:identifier/upstream/composer/",
+            "params": [
+              {
+                "name": "owner",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "identifier",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "page",
+                "value": "",
+                "type": "query",
+                "description": "A page number within the paginated result set."
+              },
+              {
+                "name": "page_size",
+                "value": "",
+                "type": "query",
+                "description": "Number of results to return per page."
+              }
+            ]
+          },
+          "docs": "List Composer upstream configs for this repository."
+        },
+        {
+          "info": {
+            "name": "Create a Composer upstream config for this repository.",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/repos/:owner/:identifier/upstream/composer/",
+            "params": [
+              {
+                "name": "owner",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "identifier",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Create a Composer upstream config for this repository."
+        },
+        {
+          "info": {
+            "name": "Retrieve a Composer upstream config for this repository.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/repos/:owner/:identifier/upstream/composer/:slug_perm/",
+            "params": [
+              {
+                "name": "owner",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "identifier",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "slug_perm",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Retrieve a Composer upstream config for this repository."
+        },
+        {
+          "info": {
+            "name": "Update a Composer upstream config for this repository.",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "{{baseUrl}}/repos/:owner/:identifier/upstream/composer/:slug_perm/",
+            "params": [
+              {
+                "name": "owner",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "identifier",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "slug_perm",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Update a Composer upstream config for this repository."
+        },
+        {
+          "info": {
+            "name": "Partially update a Composer upstream config for this repository.",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "{{baseUrl}}/repos/:owner/:identifier/upstream/composer/:slug_perm/",
+            "params": [
+              {
+                "name": "owner",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "identifier",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "slug_perm",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Partially update a Composer upstream config for this repository."
+        },
+        {
+          "info": {
+            "name": "Delete a Composer upstream config for this repository.",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "{{baseUrl}}/repos/:owner/:identifier/upstream/composer/:slug_perm/",
+            "params": [
+              {
+                "name": "owner",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "identifier",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "slug_perm",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Delete a Composer upstream config for this repository."
+        },
+        {
+          "info": {
+            "name": "List Conda upstream configs for this repository.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/repos/:owner/:identifier/upstream/conda/",
+            "params": [
+              {
+                "name": "owner",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "identifier",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "page",
+                "value": "",
+                "type": "query",
+                "description": "A page number within the paginated result set."
+              },
+              {
+                "name": "page_size",
+                "value": "",
+                "type": "query",
+                "description": "Number of results to return per page."
+              }
+            ]
+          },
+          "docs": "List Conda upstream configs for this repository."
+        },
+        {
+          "info": {
+            "name": "Create a Conda upstream config for this repository.",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/repos/:owner/:identifier/upstream/conda/",
+            "params": [
+              {
+                "name": "owner",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "identifier",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Create a Conda upstream config for this repository."
+        },
+        {
+          "info": {
+            "name": "Retrieve a Conda upstream config for this repository.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/repos/:owner/:identifier/upstream/conda/:slug_perm/",
+            "params": [
+              {
+                "name": "owner",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "identifier",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "slug_perm",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Retrieve a Conda upstream config for this repository."
+        },
+        {
+          "info": {
+            "name": "Update a Conda upstream config for this repository.",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "{{baseUrl}}/repos/:owner/:identifier/upstream/conda/:slug_perm/",
+            "params": [
+              {
+                "name": "owner",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "identifier",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "slug_perm",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Update a Conda upstream config for this repository."
+        },
+        {
+          "info": {
+            "name": "Partially update a Conda upstream config for this repository.",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "{{baseUrl}}/repos/:owner/:identifier/upstream/conda/:slug_perm/",
+            "params": [
+              {
+                "name": "owner",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "identifier",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "slug_perm",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Partially update a Conda upstream config for this repository."
+        },
+        {
+          "info": {
+            "name": "Delete a Conda upstream config for this repository.",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "{{baseUrl}}/repos/:owner/:identifier/upstream/conda/:slug_perm/",
+            "params": [
+              {
+                "name": "owner",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "identifier",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "slug_perm",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Delete a Conda upstream config for this repository."
+        },
+        {
+          "info": {
+            "name": "List CRAN upstream configs for this repository.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/repos/:owner/:identifier/upstream/cran/",
+            "params": [
+              {
+                "name": "owner",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "identifier",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "page",
+                "value": "",
+                "type": "query",
+                "description": "A page number within the paginated result set."
+              },
+              {
+                "name": "page_size",
+                "value": "",
+                "type": "query",
+                "description": "Number of results to return per page."
+              }
+            ]
+          },
+          "docs": "List CRAN upstream configs for this repository."
+        },
+        {
+          "info": {
+            "name": "Create a CRAN upstream config for this repository.",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/repos/:owner/:identifier/upstream/cran/",
+            "params": [
+              {
+                "name": "owner",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "identifier",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Create a CRAN upstream config for this repository."
+        },
+        {
+          "info": {
+            "name": "Retrieve a CRAN upstream config for this repository.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/repos/:owner/:identifier/upstream/cran/:slug_perm/",
+            "params": [
+              {
+                "name": "owner",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "identifier",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "slug_perm",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Retrieve a CRAN upstream config for this repository."
+        },
+        {
+          "info": {
+            "name": "Update a CRAN upstream config for this repository.",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "{{baseUrl}}/repos/:owner/:identifier/upstream/cran/:slug_perm/",
+            "params": [
+              {
+                "name": "owner",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "identifier",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "slug_perm",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Update a CRAN upstream config for this repository."
+        },
+        {
+          "info": {
+            "name": "Partially update a CRAN upstream config for this repository.",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "{{baseUrl}}/repos/:owner/:identifier/upstream/cran/:slug_perm/",
+            "params": [
+              {
+                "name": "owner",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "identifier",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "slug_perm",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Partially update a CRAN upstream config for this repository."
+        },
+        {
+          "info": {
+            "name": "Delete a CRAN upstream config for this repository.",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "{{baseUrl}}/repos/:owner/:identifier/upstream/cran/:slug_perm/",
+            "params": [
+              {
+                "name": "owner",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "identifier",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "slug_perm",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Delete a CRAN upstream config for this repository."
+        },
+        {
+          "info": {
+            "name": "List Dart upstream configs for this repository.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/repos/:owner/:identifier/upstream/dart/",
+            "params": [
+              {
+                "name": "owner",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "identifier",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "page",
+                "value": "",
+                "type": "query",
+                "description": "A page number within the paginated result set."
+              },
+              {
+                "name": "page_size",
+                "value": "",
+                "type": "query",
+                "description": "Number of results to return per page."
+              }
+            ]
+          },
+          "docs": "List Dart upstream configs for this repository."
+        },
+        {
+          "info": {
+            "name": "Create a Dart upstream config for this repository.",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/repos/:owner/:identifier/upstream/dart/",
+            "params": [
+              {
+                "name": "owner",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "identifier",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Create a Dart upstream config for this repository."
+        },
+        {
+          "info": {
+            "name": "Retrieve a Dart upstream config for this repository.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/repos/:owner/:identifier/upstream/dart/:slug_perm/",
+            "params": [
+              {
+                "name": "owner",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "identifier",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "slug_perm",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Retrieve a Dart upstream config for this repository."
+        },
+        {
+          "info": {
+            "name": "Update a Dart upstream config for this repository.",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "{{baseUrl}}/repos/:owner/:identifier/upstream/dart/:slug_perm/",
+            "params": [
+              {
+                "name": "owner",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "identifier",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "slug_perm",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Update a Dart upstream config for this repository."
+        },
+        {
+          "info": {
+            "name": "Partially update a Dart upstream config for this repository.",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "{{baseUrl}}/repos/:owner/:identifier/upstream/dart/:slug_perm/",
+            "params": [
+              {
+                "name": "owner",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "identifier",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "slug_perm",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Partially update a Dart upstream config for this repository."
+        },
+        {
+          "info": {
+            "name": "Delete a Dart upstream config for this repository.",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "{{baseUrl}}/repos/:owner/:identifier/upstream/dart/:slug_perm/",
+            "params": [
+              {
+                "name": "owner",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "identifier",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "slug_perm",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Delete a Dart upstream config for this repository."
+        },
+        {
+          "info": {
+            "name": "List Debian upstream configs for this repository.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/repos/:owner/:identifier/upstream/deb/",
+            "params": [
+              {
+                "name": "owner",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "identifier",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "page",
+                "value": "",
+                "type": "query",
+                "description": "A page number within the paginated result set."
+              },
+              {
+                "name": "page_size",
+                "value": "",
+                "type": "query",
+                "description": "Number of results to return per page."
+              }
+            ]
+          },
+          "docs": "List Debian upstream configs for this repository."
+        },
+        {
+          "info": {
+            "name": "Create a Debian upstream config for this repository.",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/repos/:owner/:identifier/upstream/deb/",
+            "params": [
+              {
+                "name": "owner",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "identifier",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Create a Debian upstream config for this repository."
+        },
+        {
+          "info": {
+            "name": "Retrieve a Debian upstream config for this repository.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/repos/:owner/:identifier/upstream/deb/:slug_perm/",
+            "params": [
+              {
+                "name": "owner",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "identifier",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "slug_perm",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Retrieve a Debian upstream config for this repository."
+        },
+        {
+          "info": {
+            "name": "Update a Debian upstream config for this repository.",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "{{baseUrl}}/repos/:owner/:identifier/upstream/deb/:slug_perm/",
+            "params": [
+              {
+                "name": "owner",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "identifier",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "slug_perm",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Update a Debian upstream config for this repository."
+        },
+        {
+          "info": {
+            "name": "Partially update a Debian upstream config for this repository.",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "{{baseUrl}}/repos/:owner/:identifier/upstream/deb/:slug_perm/",
+            "params": [
+              {
+                "name": "owner",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "identifier",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "slug_perm",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Partially update a Debian upstream config for this repository."
+        },
+        {
+          "info": {
+            "name": "Delete a Debian upstream config for this repository.",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "{{baseUrl}}/repos/:owner/:identifier/upstream/deb/:slug_perm/",
+            "params": [
+              {
+                "name": "owner",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "identifier",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "slug_perm",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Delete a Debian upstream config for this repository."
+        },
+        {
+          "info": {
+            "name": "List Docker upstream configs for this repository.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/repos/:owner/:identifier/upstream/docker/",
+            "params": [
+              {
+                "name": "owner",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "identifier",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "page",
+                "value": "",
+                "type": "query",
+                "description": "A page number within the paginated result set."
+              },
+              {
+                "name": "page_size",
+                "value": "",
+                "type": "query",
+                "description": "Number of results to return per page."
+              }
+            ]
+          },
+          "docs": "List Docker upstream configs for this repository."
+        },
+        {
+          "info": {
+            "name": "Create a Docker upstream config for this repository.",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/repos/:owner/:identifier/upstream/docker/",
+            "params": [
+              {
+                "name": "owner",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "identifier",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Create a Docker upstream config for this repository."
+        },
+        {
+          "info": {
+            "name": "Retrieve a Docker upstream config for this repository.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/repos/:owner/:identifier/upstream/docker/:slug_perm/",
+            "params": [
+              {
+                "name": "owner",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "identifier",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "slug_perm",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Retrieve a Docker upstream config for this repository."
+        },
+        {
+          "info": {
+            "name": "Update a Docker upstream config for this repository.",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "{{baseUrl}}/repos/:owner/:identifier/upstream/docker/:slug_perm/",
+            "params": [
+              {
+                "name": "owner",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "identifier",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "slug_perm",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Update a Docker upstream config for this repository."
+        },
+        {
+          "info": {
+            "name": "Partially update a Docker upstream config for this repository.",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "{{baseUrl}}/repos/:owner/:identifier/upstream/docker/:slug_perm/",
+            "params": [
+              {
+                "name": "owner",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "identifier",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "slug_perm",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Partially update a Docker upstream config for this repository."
+        },
+        {
+          "info": {
+            "name": "Delete a Docker upstream config for this repository.",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "{{baseUrl}}/repos/:owner/:identifier/upstream/docker/:slug_perm/",
+            "params": [
+              {
+                "name": "owner",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "identifier",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "slug_perm",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Delete a Docker upstream config for this repository."
+        },
+        {
+          "info": {
+            "name": "List Generic upstream configs for this repository.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/repos/:owner/:identifier/upstream/generic/",
+            "params": [
+              {
+                "name": "owner",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "identifier",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "page",
+                "value": "",
+                "type": "query",
+                "description": "A page number within the paginated result set."
+              },
+              {
+                "name": "page_size",
+                "value": "",
+                "type": "query",
+                "description": "Number of results to return per page."
+              }
+            ]
+          },
+          "docs": "List Generic upstream configs for this repository."
+        },
+        {
+          "info": {
+            "name": "Create a Generic upstream config for this repository.",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/repos/:owner/:identifier/upstream/generic/",
+            "params": [
+              {
+                "name": "owner",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "identifier",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Create a Generic upstream config for this repository."
+        },
+        {
+          "info": {
+            "name": "Retrieve a Generic upstream config for this repository.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/repos/:owner/:identifier/upstream/generic/:slug_perm/",
+            "params": [
+              {
+                "name": "owner",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "identifier",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "slug_perm",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Retrieve a Generic upstream config for this repository."
+        },
+        {
+          "info": {
+            "name": "Update a Generic upstream config for this repository.",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "{{baseUrl}}/repos/:owner/:identifier/upstream/generic/:slug_perm/",
+            "params": [
+              {
+                "name": "owner",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "identifier",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "slug_perm",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Update a Generic upstream config for this repository."
+        },
+        {
+          "info": {
+            "name": "Partially update a Generic upstream config for this repository.",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "{{baseUrl}}/repos/:owner/:identifier/upstream/generic/:slug_perm/",
+            "params": [
+              {
+                "name": "owner",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "identifier",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "slug_perm",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Partially update a Generic upstream config for this repository."
+        },
+        {
+          "info": {
+            "name": "Delete a Generic upstream config for this repository.",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "{{baseUrl}}/repos/:owner/:identifier/upstream/generic/:slug_perm/",
+            "params": [
+              {
+                "name": "owner",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "identifier",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "slug_perm",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Delete a Generic upstream config for this repository."
+        },
+        {
+          "info": {
+            "name": "List Go upstream configs for this repository.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/repos/:owner/:identifier/upstream/go/",
+            "params": [
+              {
+                "name": "owner",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "identifier",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "page",
+                "value": "",
+                "type": "query",
+                "description": "A page number within the paginated result set."
+              },
+              {
+                "name": "page_size",
+                "value": "",
+                "type": "query",
+                "description": "Number of results to return per page."
+              }
+            ]
+          },
+          "docs": "List Go upstream configs for this repository."
+        },
+        {
+          "info": {
+            "name": "Create a Go upstream config for this repository.",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/repos/:owner/:identifier/upstream/go/",
+            "params": [
+              {
+                "name": "owner",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "identifier",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Create a Go upstream config for this repository."
+        },
+        {
+          "info": {
+            "name": "Retrieve a Go upstream config for this repository.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/repos/:owner/:identifier/upstream/go/:slug_perm/",
+            "params": [
+              {
+                "name": "owner",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "identifier",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "slug_perm",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Retrieve a Go upstream config for this repository."
+        },
+        {
+          "info": {
+            "name": "Update a Go upstream config for this repository.",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "{{baseUrl}}/repos/:owner/:identifier/upstream/go/:slug_perm/",
+            "params": [
+              {
+                "name": "owner",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "identifier",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "slug_perm",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Update a Go upstream config for this repository."
+        },
+        {
+          "info": {
+            "name": "Partially update a Go upstream config for this repository.",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "{{baseUrl}}/repos/:owner/:identifier/upstream/go/:slug_perm/",
+            "params": [
+              {
+                "name": "owner",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "identifier",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "slug_perm",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Partially update a Go upstream config for this repository."
+        },
+        {
+          "info": {
+            "name": "Delete a Go upstream config for this repository.",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "{{baseUrl}}/repos/:owner/:identifier/upstream/go/:slug_perm/",
+            "params": [
+              {
+                "name": "owner",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "identifier",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "slug_perm",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Delete a Go upstream config for this repository."
+        },
+        {
+          "info": {
+            "name": "List Helm upstream configs for this repository.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/repos/:owner/:identifier/upstream/helm/",
+            "params": [
+              {
+                "name": "owner",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "identifier",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "page",
+                "value": "",
+                "type": "query",
+                "description": "A page number within the paginated result set."
+              },
+              {
+                "name": "page_size",
+                "value": "",
+                "type": "query",
+                "description": "Number of results to return per page."
+              }
+            ]
+          },
+          "docs": "List Helm upstream configs for this repository."
+        },
+        {
+          "info": {
+            "name": "Create a Helm upstream config for this repository.",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/repos/:owner/:identifier/upstream/helm/",
+            "params": [
+              {
+                "name": "owner",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "identifier",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Create a Helm upstream config for this repository."
+        },
+        {
+          "info": {
+            "name": "Retrieve a Helm upstream config for this repository.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/repos/:owner/:identifier/upstream/helm/:slug_perm/",
+            "params": [
+              {
+                "name": "owner",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "identifier",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "slug_perm",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Retrieve a Helm upstream config for this repository."
+        },
+        {
+          "info": {
+            "name": "Update a Helm upstream config for this repository.",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "{{baseUrl}}/repos/:owner/:identifier/upstream/helm/:slug_perm/",
+            "params": [
+              {
+                "name": "owner",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "identifier",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "slug_perm",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Update a Helm upstream config for this repository."
+        },
+        {
+          "info": {
+            "name": "Partially update a Helm upstream config for this repository.",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "{{baseUrl}}/repos/:owner/:identifier/upstream/helm/:slug_perm/",
+            "params": [
+              {
+                "name": "owner",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "identifier",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "slug_perm",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Partially update a Helm upstream config for this repository."
+        },
+        {
+          "info": {
+            "name": "Delete a Helm upstream config for this repository.",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "{{baseUrl}}/repos/:owner/:identifier/upstream/helm/:slug_perm/",
+            "params": [
+              {
+                "name": "owner",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "identifier",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "slug_perm",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Delete a Helm upstream config for this repository."
+        },
+        {
+          "info": {
+            "name": "List Hex upstream configs for this repository.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/repos/:owner/:identifier/upstream/hex/",
+            "params": [
+              {
+                "name": "owner",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "identifier",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "page",
+                "value": "",
+                "type": "query",
+                "description": "A page number within the paginated result set."
+              },
+              {
+                "name": "page_size",
+                "value": "",
+                "type": "query",
+                "description": "Number of results to return per page."
+              }
+            ]
+          },
+          "docs": "List Hex upstream configs for this repository."
+        },
+        {
+          "info": {
+            "name": "Create a Hex upstream config for this repository.",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/repos/:owner/:identifier/upstream/hex/",
+            "params": [
+              {
+                "name": "owner",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "identifier",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Create a Hex upstream config for this repository."
+        },
+        {
+          "info": {
+            "name": "Retrieve a Hex upstream config for this repository.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/repos/:owner/:identifier/upstream/hex/:slug_perm/",
+            "params": [
+              {
+                "name": "owner",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "identifier",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "slug_perm",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Retrieve a Hex upstream config for this repository."
+        },
+        {
+          "info": {
+            "name": "Update a Hex upstream config for this repository.",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "{{baseUrl}}/repos/:owner/:identifier/upstream/hex/:slug_perm/",
+            "params": [
+              {
+                "name": "owner",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "identifier",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "slug_perm",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Update a Hex upstream config for this repository."
+        },
+        {
+          "info": {
+            "name": "Partially update a Hex upstream config for this repository.",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "{{baseUrl}}/repos/:owner/:identifier/upstream/hex/:slug_perm/",
+            "params": [
+              {
+                "name": "owner",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "identifier",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "slug_perm",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Partially update a Hex upstream config for this repository."
+        },
+        {
+          "info": {
+            "name": "Delete a Hex upstream config for this repository.",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "{{baseUrl}}/repos/:owner/:identifier/upstream/hex/:slug_perm/",
+            "params": [
+              {
+                "name": "owner",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "identifier",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "slug_perm",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Delete a Hex upstream config for this repository."
+        },
+        {
+          "info": {
+            "name": "List HuggingFace upstream configs for this repository.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/repos/:owner/:identifier/upstream/huggingface/",
+            "params": [
+              {
+                "name": "owner",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "identifier",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "page",
+                "value": "",
+                "type": "query",
+                "description": "A page number within the paginated result set."
+              },
+              {
+                "name": "page_size",
+                "value": "",
+                "type": "query",
+                "description": "Number of results to return per page."
+              }
+            ]
+          },
+          "docs": "List HuggingFace upstream configs for this repository."
+        },
+        {
+          "info": {
+            "name": "Create a HuggingFace upstream config for this repository.",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/repos/:owner/:identifier/upstream/huggingface/",
+            "params": [
+              {
+                "name": "owner",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "identifier",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Create a HuggingFace upstream config for this repository."
+        },
+        {
+          "info": {
+            "name": "Retrieve a HuggingFace upstream config for this repository.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/repos/:owner/:identifier/upstream/huggingface/:slug_perm/",
+            "params": [
+              {
+                "name": "owner",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "identifier",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "slug_perm",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Retrieve a HuggingFace upstream config for this repository."
+        },
+        {
+          "info": {
+            "name": "Update a HuggingFace upstream config for this repository.",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "{{baseUrl}}/repos/:owner/:identifier/upstream/huggingface/:slug_perm/",
+            "params": [
+              {
+                "name": "owner",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "identifier",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "slug_perm",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Update a HuggingFace upstream config for this repository."
+        },
+        {
+          "info": {
+            "name": "Partially update a HuggingFace upstream config for this repository.",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "{{baseUrl}}/repos/:owner/:identifier/upstream/huggingface/:slug_perm/",
+            "params": [
+              {
+                "name": "owner",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "identifier",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "slug_perm",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Partially update a HuggingFace upstream config for this repository."
+        },
+        {
+          "info": {
+            "name": "Delete a HuggingFace upstream config for this repository.",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "{{baseUrl}}/repos/:owner/:identifier/upstream/huggingface/:slug_perm/",
+            "params": [
+              {
+                "name": "owner",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "identifier",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "slug_perm",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Delete a HuggingFace upstream config for this repository."
+        },
+        {
+          "info": {
+            "name": "List Maven upstream configs for this repository.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/repos/:owner/:identifier/upstream/maven/",
+            "params": [
+              {
+                "name": "owner",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "identifier",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "page",
+                "value": "",
+                "type": "query",
+                "description": "A page number within the paginated result set."
+              },
+              {
+                "name": "page_size",
+                "value": "",
+                "type": "query",
+                "description": "Number of results to return per page."
+              }
+            ]
+          },
+          "docs": "List Maven upstream configs for this repository."
+        },
+        {
+          "info": {
+            "name": "Create a Maven upstream config for this repository.",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/repos/:owner/:identifier/upstream/maven/",
+            "params": [
+              {
+                "name": "owner",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "identifier",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Create a Maven upstream config for this repository."
+        },
+        {
+          "info": {
+            "name": "Retrieve a Maven upstream config for this repository.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/repos/:owner/:identifier/upstream/maven/:slug_perm/",
+            "params": [
+              {
+                "name": "owner",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "identifier",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "slug_perm",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Retrieve a Maven upstream config for this repository."
+        },
+        {
+          "info": {
+            "name": "Update a Maven upstream config for this repository.",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "{{baseUrl}}/repos/:owner/:identifier/upstream/maven/:slug_perm/",
+            "params": [
+              {
+                "name": "owner",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "identifier",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "slug_perm",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Update a Maven upstream config for this repository."
+        },
+        {
+          "info": {
+            "name": "Partially update a Maven upstream config for this repository.",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "{{baseUrl}}/repos/:owner/:identifier/upstream/maven/:slug_perm/",
+            "params": [
+              {
+                "name": "owner",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "identifier",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "slug_perm",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Partially update a Maven upstream config for this repository."
+        },
+        {
+          "info": {
+            "name": "Delete a Maven upstream config for this repository.",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "{{baseUrl}}/repos/:owner/:identifier/upstream/maven/:slug_perm/",
+            "params": [
+              {
+                "name": "owner",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "identifier",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "slug_perm",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Delete a Maven upstream config for this repository."
+        },
+        {
+          "info": {
+            "name": "List npm upstream configs for this repository.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/repos/:owner/:identifier/upstream/npm/",
+            "params": [
+              {
+                "name": "owner",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "identifier",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "page",
+                "value": "",
+                "type": "query",
+                "description": "A page number within the paginated result set."
+              },
+              {
+                "name": "page_size",
+                "value": "",
+                "type": "query",
+                "description": "Number of results to return per page."
+              }
+            ]
+          },
+          "docs": "List npm upstream configs for this repository."
+        },
+        {
+          "info": {
+            "name": "Create a npm upstream config for this repository.",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/repos/:owner/:identifier/upstream/npm/",
+            "params": [
+              {
+                "name": "owner",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "identifier",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Create a npm upstream config for this repository."
+        },
+        {
+          "info": {
+            "name": "Retrieve a npm upstream config for this repository.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/repos/:owner/:identifier/upstream/npm/:slug_perm/",
+            "params": [
+              {
+                "name": "owner",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "identifier",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "slug_perm",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Retrieve a npm upstream config for this repository."
+        },
+        {
+          "info": {
+            "name": "Update a npm upstream config for this repository.",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "{{baseUrl}}/repos/:owner/:identifier/upstream/npm/:slug_perm/",
+            "params": [
+              {
+                "name": "owner",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "identifier",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "slug_perm",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Update a npm upstream config for this repository."
+        },
+        {
+          "info": {
+            "name": "Partially update a npm upstream config for this repository.",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "{{baseUrl}}/repos/:owner/:identifier/upstream/npm/:slug_perm/",
+            "params": [
+              {
+                "name": "owner",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "identifier",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "slug_perm",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Partially update a npm upstream config for this repository."
+        },
+        {
+          "info": {
+            "name": "Delete a npm upstream config for this repository.",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "{{baseUrl}}/repos/:owner/:identifier/upstream/npm/:slug_perm/",
+            "params": [
+              {
+                "name": "owner",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "identifier",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "slug_perm",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Delete a npm upstream config for this repository."
+        },
+        {
+          "info": {
+            "name": "List NuGet upstream configs for this repository.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/repos/:owner/:identifier/upstream/nuget/",
+            "params": [
+              {
+                "name": "owner",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "identifier",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "page",
+                "value": "",
+                "type": "query",
+                "description": "A page number within the paginated result set."
+              },
+              {
+                "name": "page_size",
+                "value": "",
+                "type": "query",
+                "description": "Number of results to return per page."
+              }
+            ]
+          },
+          "docs": "List NuGet upstream configs for this repository."
+        },
+        {
+          "info": {
+            "name": "Create a NuGet upstream config for this repository.",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/repos/:owner/:identifier/upstream/nuget/",
+            "params": [
+              {
+                "name": "owner",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "identifier",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Create a NuGet upstream config for this repository."
+        },
+        {
+          "info": {
+            "name": "Retrieve a NuGet upstream config for this repository.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/repos/:owner/:identifier/upstream/nuget/:slug_perm/",
+            "params": [
+              {
+                "name": "owner",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "identifier",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "slug_perm",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Retrieve a NuGet upstream config for this repository."
+        },
+        {
+          "info": {
+            "name": "Update a NuGet upstream config for this repository.",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "{{baseUrl}}/repos/:owner/:identifier/upstream/nuget/:slug_perm/",
+            "params": [
+              {
+                "name": "owner",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "identifier",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "slug_perm",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Update a NuGet upstream config for this repository."
+        },
+        {
+          "info": {
+            "name": "Partially update a NuGet upstream config for this repository.",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "{{baseUrl}}/repos/:owner/:identifier/upstream/nuget/:slug_perm/",
+            "params": [
+              {
+                "name": "owner",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "identifier",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "slug_perm",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Partially update a NuGet upstream config for this repository."
+        },
+        {
+          "info": {
+            "name": "Delete a NuGet upstream config for this repository.",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "{{baseUrl}}/repos/:owner/:identifier/upstream/nuget/:slug_perm/",
+            "params": [
+              {
+                "name": "owner",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "identifier",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "slug_perm",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Delete a NuGet upstream config for this repository."
+        },
+        {
+          "info": {
+            "name": "List Python upstream configs for this repository.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/repos/:owner/:identifier/upstream/python/",
+            "params": [
+              {
+                "name": "owner",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "identifier",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "page",
+                "value": "",
+                "type": "query",
+                "description": "A page number within the paginated result set."
+              },
+              {
+                "name": "page_size",
+                "value": "",
+                "type": "query",
+                "description": "Number of results to return per page."
+              }
+            ]
+          },
+          "docs": "List Python upstream configs for this repository."
+        },
+        {
+          "info": {
+            "name": "Create a Python upstream config for this repository.",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/repos/:owner/:identifier/upstream/python/",
+            "params": [
+              {
+                "name": "owner",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "identifier",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Create a Python upstream config for this repository."
+        },
+        {
+          "info": {
+            "name": "Retrieve a Python upstream config for this repository.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/repos/:owner/:identifier/upstream/python/:slug_perm/",
+            "params": [
+              {
+                "name": "owner",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "identifier",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "slug_perm",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Retrieve a Python upstream config for this repository."
+        },
+        {
+          "info": {
+            "name": "Update a Python upstream config for this repository.",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "{{baseUrl}}/repos/:owner/:identifier/upstream/python/:slug_perm/",
+            "params": [
+              {
+                "name": "owner",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "identifier",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "slug_perm",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Update a Python upstream config for this repository."
+        },
+        {
+          "info": {
+            "name": "Partially update a Python upstream config for this repository.",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "{{baseUrl}}/repos/:owner/:identifier/upstream/python/:slug_perm/",
+            "params": [
+              {
+                "name": "owner",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "identifier",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "slug_perm",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Partially update a Python upstream config for this repository."
+        },
+        {
+          "info": {
+            "name": "Delete a Python upstream config for this repository.",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "{{baseUrl}}/repos/:owner/:identifier/upstream/python/:slug_perm/",
+            "params": [
+              {
+                "name": "owner",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "identifier",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "slug_perm",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Delete a Python upstream config for this repository."
+        },
+        {
+          "info": {
+            "name": "List RedHat upstream configs for this repository.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/repos/:owner/:identifier/upstream/rpm/",
+            "params": [
+              {
+                "name": "owner",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "identifier",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "page",
+                "value": "",
+                "type": "query",
+                "description": "A page number within the paginated result set."
+              },
+              {
+                "name": "page_size",
+                "value": "",
+                "type": "query",
+                "description": "Number of results to return per page."
+              }
+            ]
+          },
+          "docs": "List RedHat upstream configs for this repository."
+        },
+        {
+          "info": {
+            "name": "Create a RedHat upstream config for this repository.",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/repos/:owner/:identifier/upstream/rpm/",
+            "params": [
+              {
+                "name": "owner",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "identifier",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Create a RedHat upstream config for this repository."
+        },
+        {
+          "info": {
+            "name": "Retrieve a RedHat upstream config for this repository.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/repos/:owner/:identifier/upstream/rpm/:slug_perm/",
+            "params": [
+              {
+                "name": "owner",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "identifier",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "slug_perm",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Retrieve a RedHat upstream config for this repository."
+        },
+        {
+          "info": {
+            "name": "Update a RedHat upstream config for this repository.",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "{{baseUrl}}/repos/:owner/:identifier/upstream/rpm/:slug_perm/",
+            "params": [
+              {
+                "name": "owner",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "identifier",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "slug_perm",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Update a RedHat upstream config for this repository."
+        },
+        {
+          "info": {
+            "name": "Partially update a RedHat upstream config for this repository.",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "{{baseUrl}}/repos/:owner/:identifier/upstream/rpm/:slug_perm/",
+            "params": [
+              {
+                "name": "owner",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "identifier",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "slug_perm",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Partially update a RedHat upstream config for this repository."
+        },
+        {
+          "info": {
+            "name": "Delete a RedHat upstream config for this repository.",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "{{baseUrl}}/repos/:owner/:identifier/upstream/rpm/:slug_perm/",
+            "params": [
+              {
+                "name": "owner",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "identifier",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "slug_perm",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Delete a RedHat upstream config for this repository."
+        },
+        {
+          "info": {
+            "name": "List Ruby upstream configs for this repository.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/repos/:owner/:identifier/upstream/ruby/",
+            "params": [
+              {
+                "name": "owner",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "identifier",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "page",
+                "value": "",
+                "type": "query",
+                "description": "A page number within the paginated result set."
+              },
+              {
+                "name": "page_size",
+                "value": "",
+                "type": "query",
+                "description": "Number of results to return per page."
+              }
+            ]
+          },
+          "docs": "List Ruby upstream configs for this repository."
+        },
+        {
+          "info": {
+            "name": "Create a Ruby upstream config for this repository.",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/repos/:owner/:identifier/upstream/ruby/",
+            "params": [
+              {
+                "name": "owner",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "identifier",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Create a Ruby upstream config for this repository."
+        },
+        {
+          "info": {
+            "name": "Retrieve a Ruby upstream config for this repository.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/repos/:owner/:identifier/upstream/ruby/:slug_perm/",
+            "params": [
+              {
+                "name": "owner",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "identifier",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "slug_perm",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Retrieve a Ruby upstream config for this repository."
+        },
+        {
+          "info": {
+            "name": "Update a Ruby upstream config for this repository.",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "{{baseUrl}}/repos/:owner/:identifier/upstream/ruby/:slug_perm/",
+            "params": [
+              {
+                "name": "owner",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "identifier",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "slug_perm",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Update a Ruby upstream config for this repository."
+        },
+        {
+          "info": {
+            "name": "Partially update a Ruby upstream config for this repository.",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "{{baseUrl}}/repos/:owner/:identifier/upstream/ruby/:slug_perm/",
+            "params": [
+              {
+                "name": "owner",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "identifier",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "slug_perm",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Partially update a Ruby upstream config for this repository."
+        },
+        {
+          "info": {
+            "name": "Delete a Ruby upstream config for this repository.",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "{{baseUrl}}/repos/:owner/:identifier/upstream/ruby/:slug_perm/",
+            "params": [
+              {
+                "name": "owner",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "identifier",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "slug_perm",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Delete a Ruby upstream config for this repository."
+        },
+        {
+          "info": {
+            "name": "List Swift upstream configs for this repository.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/repos/:owner/:identifier/upstream/swift/",
+            "params": [
+              {
+                "name": "owner",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "identifier",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "page",
+                "value": "",
+                "type": "query",
+                "description": "A page number within the paginated result set."
+              },
+              {
+                "name": "page_size",
+                "value": "",
+                "type": "query",
+                "description": "Number of results to return per page."
+              }
+            ]
+          },
+          "docs": "List Swift upstream configs for this repository."
+        },
+        {
+          "info": {
+            "name": "Create a Swift upstream config for this repository.",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/repos/:owner/:identifier/upstream/swift/",
+            "params": [
+              {
+                "name": "owner",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "identifier",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Create a Swift upstream config for this repository."
+        },
+        {
+          "info": {
+            "name": "Retrieve a Swift upstream config for this repository.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/repos/:owner/:identifier/upstream/swift/:slug_perm/",
+            "params": [
+              {
+                "name": "owner",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "identifier",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "slug_perm",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Retrieve a Swift upstream config for this repository."
+        },
+        {
+          "info": {
+            "name": "Update a Swift upstream config for this repository.",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "{{baseUrl}}/repos/:owner/:identifier/upstream/swift/:slug_perm/",
+            "params": [
+              {
+                "name": "owner",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "identifier",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "slug_perm",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Update a Swift upstream config for this repository."
+        },
+        {
+          "info": {
+            "name": "Partially update a Swift upstream config for this repository.",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "{{baseUrl}}/repos/:owner/:identifier/upstream/swift/:slug_perm/",
+            "params": [
+              {
+                "name": "owner",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "identifier",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "slug_perm",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Partially update a Swift upstream config for this repository."
+        },
+        {
+          "info": {
+            "name": "Delete a Swift upstream config for this repository.",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "{{baseUrl}}/repos/:owner/:identifier/upstream/swift/:slug_perm/",
+            "params": [
+              {
+                "name": "owner",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "identifier",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "slug_perm",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Delete a Swift upstream config for this repository."
+        },
+        {
+          "info": {
+            "name": "Retrieve the active X.509 ECDSA certificate for the Repository.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/repos/:owner/:identifier/x509-ecdsa/",
+            "params": [
+              {
+                "name": "owner",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "identifier",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Retrieve the active X.509 ECDSA certificate for the Repository."
+        },
+        {
+          "info": {
+            "name": "Retrieve the active X.509 RSA certificate for the Repository.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/repos/:owner/:identifier/x509-rsa/",
+            "params": [
+              {
+                "name": "owner",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "identifier",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Retrieve the active X.509 RSA certificate for the Repository."
+        },
+        {
+          "info": {
+            "name": "Retrieve the retention rules for the repository.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/repos/:owner/:repo/retention/",
+            "params": [
+              {
+                "name": "owner",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "repo",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Retrieve the retention rules for the repository."
+        },
+        {
+          "info": {
+            "name": "Update the retention rules for the repository.",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "{{baseUrl}}/repos/:owner/:repo/retention/",
+            "params": [
+              {
+                "name": "owner",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "repo",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Update the retention rules for the repository."
+        },
+        {
+          "info": {
+            "name": "Transfer a repository to a different region.",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/repos/:owner/:repo/transfer-region/",
+            "params": [
+              {
+                "name": "owner",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "repo",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Transfer a repository to a different region."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

@@ -1,0 +1,47 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Cloudsmith API (v1) audit-log storage-regions API",
+    "version": "v1"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "storage-regions",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get a list of all available storage regions.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/storage-regions/"
+          },
+          "docs": "Get a list of all available storage regions."
+        },
+        {
+          "info": {
+            "name": "Get a specific storage region.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/storage-regions/:slug/",
+            "params": [
+              {
+                "name": "slug",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Get a specific storage region."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

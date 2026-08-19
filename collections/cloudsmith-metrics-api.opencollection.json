@@ -1,0 +1,172 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Cloudsmith API (v1) audit-log metrics API",
+    "version": "v1"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "metrics",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "View for listing entitlement token metrics, across an account.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/metrics/entitlements/:owner/",
+            "params": [
+              {
+                "name": "owner",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "page",
+                "value": "",
+                "type": "query",
+                "description": "A page number within the paginated result set."
+              },
+              {
+                "name": "page_size",
+                "value": "",
+                "type": "query",
+                "description": "Number of results to return per page."
+              },
+              {
+                "name": "finish",
+                "value": "",
+                "type": "query",
+                "description": "Include metrics upto and including this UTC date or UTC datetime. For example '2020-12-31' or '2021-12-13T00:00:00Z'."
+              },
+              {
+                "name": "start",
+                "value": "",
+                "type": "query",
+                "description": "Include metrics from and including this UTC date or UTC datetime. For example '2020-12-31' or '2021-12-13T00:00:00Z'."
+              },
+              {
+                "name": "tokens",
+                "value": "",
+                "type": "query",
+                "description": "A comma seperated list of tokens (slug perm) to include in the results."
+              }
+            ]
+          },
+          "docs": "View for listing entitlement token metrics, across an account."
+        },
+        {
+          "info": {
+            "name": "View for listing entitlement token metrics, for a repository.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/metrics/entitlements/:owner/:repo/",
+            "params": [
+              {
+                "name": "owner",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "repo",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "page",
+                "value": "",
+                "type": "query",
+                "description": "A page number within the paginated result set."
+              },
+              {
+                "name": "page_size",
+                "value": "",
+                "type": "query",
+                "description": "Number of results to return per page."
+              },
+              {
+                "name": "finish",
+                "value": "",
+                "type": "query",
+                "description": "Include metrics upto and including this UTC date or UTC datetime. For example '2020-12-31' or '2021-12-13T00:00:00Z'."
+              },
+              {
+                "name": "start",
+                "value": "",
+                "type": "query",
+                "description": "Include metrics from and including this UTC date or UTC datetime. For example '2020-12-31' or '2021-12-13T00:00:00Z'."
+              },
+              {
+                "name": "tokens",
+                "value": "",
+                "type": "query",
+                "description": "A comma seperated list of tokens (slug perm) to include in the results."
+              }
+            ]
+          },
+          "docs": "View for listing entitlement token metrics, for a repository."
+        },
+        {
+          "info": {
+            "name": "View for listing package usage metrics, for a repository.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/metrics/packages/:owner/:repo/",
+            "params": [
+              {
+                "name": "owner",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "repo",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "page",
+                "value": "",
+                "type": "query",
+                "description": "A page number within the paginated result set."
+              },
+              {
+                "name": "page_size",
+                "value": "",
+                "type": "query",
+                "description": "Number of results to return per page."
+              },
+              {
+                "name": "finish",
+                "value": "",
+                "type": "query",
+                "description": "Include metrics upto and including this UTC date or UTC datetime. For example '2020-12-31' or '2021-12-13T00:00:00Z'."
+              },
+              {
+                "name": "packages",
+                "value": "",
+                "type": "query",
+                "description": "A comma seperated list of packages (slug perm) to include in the results."
+              },
+              {
+                "name": "start",
+                "value": "",
+                "type": "query",
+                "description": "Include metrics from and including this UTC date or UTC datetime. For example '2020-12-31' or '2021-12-13T00:00:00Z'."
+              }
+            ]
+          },
+          "docs": "View for listing package usage metrics, for a repository."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

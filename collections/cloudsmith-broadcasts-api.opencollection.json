@@ -1,0 +1,36 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Cloudsmith API (v1) audit-log broadcasts API",
+    "version": "v1"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "broadcasts",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Create a broadcast token.",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/broadcasts/:org/broadcast-token/",
+            "params": [
+              {
+                "name": "org",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Create a broadcast token."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

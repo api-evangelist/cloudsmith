@@ -1,0 +1,3747 @@
+{
+  "item": [
+    {
+      "id": "276b688e-f24b-47b9-8687-0a3c8346cac9",
+      "name": "entitlements",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "0208f21e-f403-43c6-9bd3-f9f7cfc4fa95",
+          "name": "Get a list of all entitlements in a repository.",
+          "request": {
+            "name": "Get a list of all entitlements in a repository.",
+            "description": {
+              "content": "Get a list of all entitlements in a repository.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "entitlements",
+                ":owner",
+                ":repo",
+                ""
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "page",
+                  "value": "<integer>",
+                  "description": "A page number within the paginated result set."
+                },
+                {
+                  "disabled": false,
+                  "key": "page_size",
+                  "value": "<integer>",
+                  "description": "Number of results to return per page."
+                },
+                {
+                  "disabled": false,
+                  "key": "show_tokens",
+                  "value": "false",
+                  "description": "Show entitlement token strings in results"
+                },
+                {
+                  "disabled": false,
+                  "key": "query",
+                  "value": "<string>",
+                  "description": "A search term for querying names of entitlements."
+                },
+                {
+                  "disabled": false,
+                  "key": "active",
+                  "value": "false",
+                  "description": "If true, only include active tokens"
+                },
+                {
+                  "disabled": false,
+                  "key": "sort",
+                  "value": "name",
+                  "description": "A field for sorting objects in ascending or descending order. Use `-` prefix for descending order (e.g., `-name`). Available options: name."
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "owner",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "repo",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "00c9c59f-442f-4468-a6e4-cf35d22db21b",
+              "name": "Retrieved the list of entitlement tokens",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "entitlements",
+                    ":owner",
+                    ":repo",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "page",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "page_size",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "show_tokens",
+                      "value": "false"
+                    },
+                    {
+                      "key": "query",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "active",
+                      "value": "false"
+                    },
+                    {
+                      "key": "sort",
+                      "value": "name"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "owner",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "repo",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-Api-Key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"name\": \"string\",\n    \"access_private_broadcasts\": false,\n    \"clients\": 3649,\n    \"created_at\": \"2014-12-16T18:09:13.566Z\",\n    \"created_by\": \"string\",\n    \"created_by_url\": \"https://GRbLgOgJjYQiRnlaqQkUyjKmRCIk.rfxtkw7uSyoAogZTRo5pEuh+fcrKLaXZUMx2IKhRIqJpfaUqDn3cvZO\",\n    \"default\": true,\n    \"disable_url\": \"http://YK.owhrXjIbS4NyBSHZueQa\",\n    \"downloads\": 9660,\n    \"enable_url\": \"https://pNPmynxxCpgjyu.verP4dtXmzqwgaf09XYH\",\n    \"eula_accepted\": {\n      \"identifier\": \"S741QHk\",\n      \"number\": 439590372\n    },\n    \"eula_accepted_at\": \"1981-08-12T22:40:27.617Z\",\n    \"eula_accepted_from\": \"string\",\n    \"eula_required\": false,\n    \"has_limits\": false,\n    \"identifier\": 9091,\n    \"is_active\": false,\n    \"is_limited\": true,\n    \"limit_bandwidth\": -1232159866534899700,\n    \"limit_bandwidth_unit\": \"Byte\",\n    \"limit_date_range_from\": \"2001-02-18T17:41:30.250Z\",\n    \"limit_date_range_to\": \"1973-02-05T02:42:49.097Z\",\n    \"limit_num_clients\": 1751264007586218000,\n    \"limit_num_downloads\": -5941813877809549000,\n    \"limit_package_query\": \"string\",\n    \"limit_path_query\": \"string\",\n    \"metadata\": {},\n    \"refresh_url\": \"https://tKoQpxCL.oqjwPfynP2f.8TGdYjn-b1CNnAz,NeBcGfEZQ2YQaz-lkJnHTEjfTgUIfsVN5dwRPuXJ7zOYH\",\n    \"reset_url\": \"https://heRWvvIQaYPtXUUAwtwHEMLHhYBMIzry.qnE,EM3d0ZUgSGcFz4rZurrHodaasrkVXncatGU7rZqG4PNM-gNY3g3fPDK6p\",\n    \"scheduled_reset_at\": \"2018-06-25T19:02:16.431Z\",\n    \"scheduled_reset_period\": \"Never Reset\",\n    \"self_url\": \"https://xFU.lrbgcjsc4JrKfbxAX0Wws7++Q6iKqTuvTsjHwfhJ.1f\",\n    \"slug_perm\": \"5Zu81\",\n    \"token\": \"string\",\n    \"updated_at\": \"1989-10-31T01:50:20.718Z\",\n    \"updated_by\": \"string\",\n    \"updated_by_url\": \"http://JNLkzhzCuAEEHeUbhdvklWGWAfDz.ogoqOMRlZ7iFwYRV\",\n    \"usage\": \"st\",\n    \"user\": \"string\",\n    \"user_url\": \"http://mD.qbAvAycXkAprGZkYhpcZ\"\n  },\n  {\n    \"name\": \"string\",\n    \"access_private_broadcasts\": true,\n    \"clients\": 1976,\n    \"created_at\": \"1981-12-21T13:28:43.861Z\",\n    \"created_by\": \"string\",\n    \"created_by_url\": \"http://suKOZkoMJGHGlFH.rzaECH8OUcxY6Wvdb0jt1AdlEU\",\n    \"default\": false,\n    \"disable_url\": \"http://kqOpvoMAyAwPZZivXEvsvby.aclmo-5g24\",\n    \"downloads\": 5875,\n    \"enable_url\": \"http://AYdVWkaVZvzIVADjneSm.zxsO\",\n    \"eula_accepted\": {\n      \"identifier\": \"6c\",\n      \"number\": 1015805936\n    },\n    \"eula_accepted_at\": \"1976-10-08T04:46:13.288Z\",\n    \"eula_accepted_from\": \"string\",\n    \"eula_required\": false,\n    \"has_limits\": true,\n    \"identifier\": 7766,\n    \"is_active\": false,\n    \"is_limited\": true,\n    \"limit_bandwidth\": 98177029764538370,\n    \"limit_bandwidth_unit\": \"Byte\",\n    \"limit_date_range_from\": \"2001-09-20T20:54:29.323Z\",\n    \"limit_date_range_to\": \"1984-12-28T08:23:27.677Z\",\n    \"limit_num_clients\": -8550203326766367000,\n    \"limit_num_downloads\": 963934711036565500,\n    \"limit_package_query\": \"string\",\n    \"limit_path_query\": \"string\",\n    \"metadata\": {},\n    \"refresh_url\": \"http://rRYRaHkHsye.yyUOGsO.Mz-9264lGh08R5RQEuN8ikmZvxjxYkADtoU2\",\n    \"reset_url\": \"https://BIZA.cxeTunai24rmF7XqbCq1Jr.Mn2qWejBMVEBCcHj+DFkQkdX3ID+VFG1\",\n    \"scheduled_reset_at\": \"2015-05-22T20:29:01.712Z\",\n    \"scheduled_reset_period\": \"Never Reset\",\n    \"self_url\": \"http://GxLVHGIulsdLgwPJsPnjZc.ahsOLqkrCEOPMCVT0Hu\",\n    \"slug_perm\": \"DWGarsB8\",\n    \"token\": \"string\",\n    \"updated_at\": \"1979-10-05T20:43:42.915Z\",\n    \"updated_by\": \"string\",\n    \"updated_by_url\": \"https://ixhDwdxbQsYeHGEZQWD.mrzrZDr0AqFdHdliateMe84dI.p7MpHg0IWrMNh,C.5jAjj.0C+Yl4G0v3bFu.34GPBd\",\n    \"usage\": \"string\",\n    \"user\": \"string\",\n    \"user_url\": \"http://wGaWF.qkw0-V4xBCuHU,gvcCZtmXVA.DTADoryWKIm-LCNtbN9,ctU+Zw-\"\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "856de157-572a-4e61-b1ca-70f96955594e",
+              "name": "Request could not be processed (see detail).",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "entitlements",
+                    ":owner",
+                    ":repo",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "page",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "page_size",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "show_tokens",
+                      "value": "false"
+                    },
+                    {
+                      "key": "query",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "active",
+                      "value": "false"
+                    },
+                    {
+                      "key": "sort",
+                      "value": "name"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "owner",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "repo",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-Api-Key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"detail\": \"string\",\n  \"fields\": {\n    \"key_0\": [\n      \"string\",\n      \"string\"\n    ]\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "6a8a0379-e3e1-48ea-b37e-7d76886d76bf",
+              "name": "Owner namespace or repository not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "entitlements",
+                    ":owner",
+                    ":repo",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "page",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "page_size",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "show_tokens",
+                      "value": "false"
+                    },
+                    {
+                      "key": "query",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "active",
+                      "value": "false"
+                    },
+                    {
+                      "key": "sort",
+                      "value": "name"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "owner",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "repo",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-Api-Key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"detail\": \"string\",\n  \"fields\": {\n    \"key_0\": [\n      \"string\",\n      \"string\"\n    ],\n    \"key_1\": [\n      \"string\",\n      \"string\"\n    ]\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "39305cac-b9bf-4255-a2e5-e921bfbd76b2",
+              "name": "Missing or invalid parameters (see detail).",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "entitlements",
+                    ":owner",
+                    ":repo",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "page",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "page_size",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "show_tokens",
+                      "value": "false"
+                    },
+                    {
+                      "key": "query",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "active",
+                      "value": "false"
+                    },
+                    {
+                      "key": "sort",
+                      "value": "name"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "owner",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "repo",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-Api-Key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+              "code": 422,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"detail\": \"string\",\n  \"fields\": {\n    \"key_0\": [\n      \"string\",\n      \"string\"\n    ],\n    \"key_1\": [\n      \"string\",\n      \"string\"\n    ]\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "acf0b3d3-b5ed-4a1f-a07e-82ab8c5d299f",
+          "name": "Create a specific entitlement in a repository.",
+          "request": {
+            "name": "Create a specific entitlement in a repository.",
+            "description": {
+              "content": "Create a specific entitlement in a repository.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "entitlements",
+                ":owner",
+                ":repo",
+                ""
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "show_tokens",
+                  "value": "false",
+                  "description": "Show entitlement token strings in results"
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "owner",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "repo",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"<string>\",\n  \"eula_required\": \"<boolean>\",\n  \"is_active\": \"<boolean>\",\n  \"limit_bandwidth\": \"<integer>\",\n  \"limit_bandwidth_unit\": \"Byte\",\n  \"limit_date_range_from\": \"<dateTime>\",\n  \"limit_date_range_to\": \"<dateTime>\",\n  \"limit_num_clients\": \"<integer>\",\n  \"limit_num_downloads\": \"<integer>\",\n  \"limit_package_query\": \"<string>\",\n  \"limit_path_query\": \"<string>\",\n  \"metadata\": \"<object>\",\n  \"scheduled_reset_at\": \"<dateTime>\",\n  \"scheduled_reset_period\": \"Never Reset\",\n  \"token\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "9491f3f4-c439-4529-8821-09c81c225549",
+              "name": "Created the specified entitlement",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "entitlements",
+                    ":owner",
+                    ":repo",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "show_tokens",
+                      "value": "false"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "owner",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "repo",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-Api-Key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"<string>\",\n  \"eula_required\": \"<boolean>\",\n  \"is_active\": \"<boolean>\",\n  \"limit_bandwidth\": \"<integer>\",\n  \"limit_bandwidth_unit\": \"Byte\",\n  \"limit_date_range_from\": \"<dateTime>\",\n  \"limit_date_range_to\": \"<dateTime>\",\n  \"limit_num_clients\": \"<integer>\",\n  \"limit_num_downloads\": \"<integer>\",\n  \"limit_package_query\": \"<string>\",\n  \"limit_path_query\": \"<string>\",\n  \"metadata\": \"<object>\",\n  \"scheduled_reset_at\": \"<dateTime>\",\n  \"scheduled_reset_period\": \"Never Reset\",\n  \"token\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"name\": \"string\",\n  \"access_private_broadcasts\": true,\n  \"clients\": 5242,\n  \"created_at\": \"1948-07-20T07:41:27.074Z\",\n  \"created_by\": \"string\",\n  \"created_by_url\": \"http://hQjryb.ixLrGhF-perlkIzwnkuwbt3Uvu52apR3lOZyytI8xF\",\n  \"default\": false,\n  \"disable_url\": \"https://XXsemhISiYlvVIBh.okzX8WFvU+ka+bbftJekbJQ1afVczSoEwhoQZWxvgbjC+SOJ2WxZqtMJM6ByqKiz\",\n  \"downloads\": 9694,\n  \"enable_url\": \"http://bd.mwHiaZ29KaUxBE3SLeJfOxyBH0U6hz7wXbOUrZ.kjkkvB8fPiP3cfYBg\",\n  \"eula_accepted\": {\n    \"identifier\": \"UqHvMAW\",\n    \"number\": 1737767006\n  },\n  \"eula_accepted_at\": \"1987-01-12T05:37:50.612Z\",\n  \"eula_accepted_from\": \"string\",\n  \"eula_required\": false,\n  \"has_limits\": false,\n  \"identifier\": 3228,\n  \"is_active\": false,\n  \"is_limited\": true,\n  \"limit_bandwidth\": 8321995343699214000,\n  \"limit_bandwidth_unit\": \"Byte\",\n  \"limit_date_range_from\": \"1947-07-03T10:33:52.046Z\",\n  \"limit_date_range_to\": \"2009-06-06T13:51:15.583Z\",\n  \"limit_num_clients\": 4805197475857826000,\n  \"limit_num_downloads\": 2618206816150778000,\n  \"limit_package_query\": \"string\",\n  \"limit_path_query\": \"string\",\n  \"metadata\": {},\n  \"refresh_url\": \"https://nadoQhiPNrqL.oiwxpDURcCSU6X8uJhs+uUVmy0UyQFZkvbx3jyhfjAMnkevY0-RsZl2-q\",\n  \"reset_url\": \"https://jWb.ijomyXSHm07iW5Hcg9Q4YBXdZ8WfCUK8aP\",\n  \"scheduled_reset_at\": \"2000-06-29T02:15:25.789Z\",\n  \"scheduled_reset_period\": \"Never Reset\",\n  \"self_url\": \"http://B.sdbmIiN\",\n  \"slug_perm\": \"YJ-Q2e3QKF\",\n  \"token\": \"string\",\n  \"updated_at\": \"2012-04-06T04:29:31.174Z\",\n  \"updated_by\": \"string\",\n  \"updated_by_url\": \"https://deaQdkOfhLPqRs.imL2xD9g-jHG8ivVkbmRJVuTC0iFUnpBP\",\n  \"usage\": \"string\",\n  \"user\": \"string\",\n  \"user_url\": \"https://KJzGcXRniqXrN.kvjvm.wiHQzOWe,nITfmanZ3HssUkD,avzLP7AGT9Ecjtv\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "8ca194ab-aa8f-4061-b187-8f381deed2f7",
+              "name": "Request could not be processed (see detail).",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "entitlements",
+                    ":owner",
+                    ":repo",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "show_tokens",
+                      "value": "false"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "owner",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "repo",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-Api-Key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"<string>\",\n  \"eula_required\": \"<boolean>\",\n  \"is_active\": \"<boolean>\",\n  \"limit_bandwidth\": \"<integer>\",\n  \"limit_bandwidth_unit\": \"Byte\",\n  \"limit_date_range_from\": \"<dateTime>\",\n  \"limit_date_range_to\": \"<dateTime>\",\n  \"limit_num_clients\": \"<integer>\",\n  \"limit_num_downloads\": \"<integer>\",\n  \"limit_package_query\": \"<string>\",\n  \"limit_path_query\": \"<string>\",\n  \"metadata\": \"<object>\",\n  \"scheduled_reset_at\": \"<dateTime>\",\n  \"scheduled_reset_period\": \"Never Reset\",\n  \"token\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"detail\": \"string\",\n  \"fields\": {\n    \"key_0\": [\n      \"string\",\n      \"string\"\n    ],\n    \"key_1\": [\n      \"string\",\n      \"string\"\n    ]\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "d957aa16-1bfa-4b4a-87f9-03241692e258",
+              "name": "Owner namespace or repository not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "entitlements",
+                    ":owner",
+                    ":repo",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "show_tokens",
+                      "value": "false"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "owner",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "repo",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-Api-Key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"<string>\",\n  \"eula_required\": \"<boolean>\",\n  \"is_active\": \"<boolean>\",\n  \"limit_bandwidth\": \"<integer>\",\n  \"limit_bandwidth_unit\": \"Byte\",\n  \"limit_date_range_from\": \"<dateTime>\",\n  \"limit_date_range_to\": \"<dateTime>\",\n  \"limit_num_clients\": \"<integer>\",\n  \"limit_num_downloads\": \"<integer>\",\n  \"limit_package_query\": \"<string>\",\n  \"limit_path_query\": \"<string>\",\n  \"metadata\": \"<object>\",\n  \"scheduled_reset_at\": \"<dateTime>\",\n  \"scheduled_reset_period\": \"Never Reset\",\n  \"token\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"detail\": \"string\",\n  \"fields\": {\n    \"key_0\": [\n      \"string\",\n      \"string\"\n    ],\n    \"key_1\": [\n      \"string\",\n      \"string\"\n    ]\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "bb9b0735-ebeb-4d01-9d4e-39604f48b248",
+              "name": "Missing or invalid parameters (see detail).",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "entitlements",
+                    ":owner",
+                    ":repo",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "show_tokens",
+                      "value": "false"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "owner",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "repo",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-Api-Key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"<string>\",\n  \"eula_required\": \"<boolean>\",\n  \"is_active\": \"<boolean>\",\n  \"limit_bandwidth\": \"<integer>\",\n  \"limit_bandwidth_unit\": \"Byte\",\n  \"limit_date_range_from\": \"<dateTime>\",\n  \"limit_date_range_to\": \"<dateTime>\",\n  \"limit_num_clients\": \"<integer>\",\n  \"limit_num_downloads\": \"<integer>\",\n  \"limit_package_query\": \"<string>\",\n  \"limit_path_query\": \"<string>\",\n  \"metadata\": \"<object>\",\n  \"scheduled_reset_at\": \"<dateTime>\",\n  \"scheduled_reset_period\": \"Never Reset\",\n  \"token\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+              "code": 422,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"detail\": \"string\",\n  \"fields\": {\n    \"key_0\": [\n      \"string\",\n      \"string\"\n    ],\n    \"key_1\": [\n      \"string\",\n      \"string\"\n    ]\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "b289f796-021c-4ab2-9f94-3ab9a659ccc4",
+          "name": "Synchronise tokens from a source repository.",
+          "request": {
+            "name": "Synchronise tokens from a source repository.",
+            "description": {
+              "content": "Synchronise tokens from a source repository.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "entitlements",
+                ":owner",
+                ":repo",
+                "sync",
+                ""
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "show_tokens",
+                  "value": "false",
+                  "description": "Show entitlement token strings in results"
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "owner",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "repo",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"source\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "39aff808-6079-45a6-8b77-6bc109d60d24",
+              "name": "The tokens have been synchronised from the source repository.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "entitlements",
+                    ":owner",
+                    ":repo",
+                    "sync",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "show_tokens",
+                      "value": "false"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "owner",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "repo",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-Api-Key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"source\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"tokens\": [\n    {\n      \"name\": \"string\",\n      \"access_private_broadcasts\": true,\n      \"clients\": 1432,\n      \"created_at\": \"1953-06-19T06:13:29.641Z\",\n      \"created_by\": \"string\",\n      \"created_by_url\": \"http://hORwCXDRqXcErjNmAiUTs.nzfnFnXJEjhSXpyQWY3w9A65bEGruY5uxRxBKla.vrBQjlJ1IPlivE0Pkwmb7c4RP4gmucVKl1TBPci9\",\n      \"default\": false,\n      \"disable_url\": \"http://DRyLkVEaHDhdkACh.mniyqIS3dksZ2ljD.7UK6tmp6UyVY3vSe7XmxlovpUa\",\n      \"downloads\": 9380,\n      \"enable_url\": \"http://XNmunbsjeezBvrSKyJraQPGSF.miukAy7KeR2OfqpKDV6,J9AodSYTVv\",\n      \"eula_accepted\": {\n        \"identifier\": \"yDa\",\n        \"number\": 758139501\n      },\n      \"eula_accepted_at\": \"2004-07-10T01:55:11.804Z\",\n      \"eula_accepted_from\": \"string\",\n      \"eula_required\": false,\n      \"has_limits\": true,\n      \"identifier\": 9256,\n      \"is_active\": true,\n      \"is_limited\": true,\n      \"limit_bandwidth\": -2450225815128781000,\n      \"limit_bandwidth_unit\": \"Byte\",\n      \"limit_date_range_from\": \"1967-03-02T16:37:25.442Z\",\n      \"limit_date_range_to\": \"1973-04-12T18:45:15.663Z\",\n      \"limit_num_clients\": -6856004564734550000,\n      \"limit_num_downloads\": 856781943794180100,\n      \"limit_package_query\": \"string\",\n      \"limit_path_query\": \"string\",\n      \"metadata\": {},\n      \"refresh_url\": \"http://nHYjUjkYvT.cfSV-,Tj,p+KdcAPnxjGZE-US33XLxq1q\",\n      \"reset_url\": \"https://schtkDXXBxxiuTXEfNuzeCHIc.hlsNpYQq+u3KtYk2YELFVN+\",\n      \"scheduled_reset_at\": \"1951-03-26T07:37:22.160Z\",\n      \"scheduled_reset_period\": \"Never Reset\",\n      \"self_url\": \"http://XNgDRRSySEQUzWjdt.nmflfp7sJEQ\",\n      \"slug_perm\": \"teQRu_6\",\n      \"token\": \"string\",\n      \"updated_at\": \"1948-05-24T22:56:15.519Z\",\n      \"updated_by\": \"string\",\n      \"updated_by_url\": \"https://CKJLSvHTh.gnreQXX5dkkHRN\",\n      \"usage\": \"string\",\n      \"user\": \"string\",\n      \"user_url\": \"http://goDeAbofxfSzcwWcfymvrEiWiNLPisIX.kduxkSKU.bUSRhWrGtGDDpBWiDfQ9Z6wK\"\n    },\n    {\n      \"name\": \"string\",\n      \"access_private_broadcasts\": true,\n      \"clients\": 9688,\n      \"created_at\": \"1976-03-07T20:33:45.534Z\",\n      \"created_by\": \"string\",\n      \"created_by_url\": \"https://D.sdE40wx8Uv1d-6yiInmggdpL68NhNAeSS\",\n      \"default\": false,\n      \"disable_url\": \"http://uxHJzaqLkjJfICanEzIMslIiiKjW.gummUQZjrGrMBgUREeVlDw3Xg.h4zvVJ8OqpvXjNvp9VcceybA\",\n      \"downloads\": 3019,\n      \"enable_url\": \"https://grJiMVNKtqOhjzyaNqHvvUEhhebEvp.hsryfbVWrNwLJ.f6w8SngyF4C8y9\",\n      \"eula_accepted\": {\n        \"identifier\": \"-4S\",\n        \"number\": 470366905\n      },\n      \"eula_accepted_at\": \"1972-06-07T07:46:43.492Z\",\n      \"eula_accepted_from\": \"string\",\n      \"eula_required\": false,\n      \"has_limits\": true,\n      \"identifier\": 6080,\n      \"is_active\": false,\n      \"is_limited\": true,\n      \"limit_bandwidth\": 8093054403240051000,\n      \"limit_bandwidth_unit\": \"Byte\",\n      \"limit_date_range_from\": \"1960-05-19T14:52:15.397Z\",\n      \"limit_date_range_to\": \"1955-08-02T05:47:03.236Z\",\n      \"limit_num_clients\": -6802290161426874000,\n      \"limit_num_downloads\": -708473590129989600,\n      \"limit_package_query\": \"string\",\n      \"limit_path_query\": \"string\",\n      \"metadata\": {},\n      \"refresh_url\": \"http://LbPG.duwZjBFEliTPjHOYa,GsFne.dmGRak1-j6DAajp3\",\n      \"reset_url\": \"https://yrUHs.litK-KCeeX-hJhFVhjT-OnWlzU1mYZyeGS6SKD5ZcfHNIKJQc-y9ET4Au\",\n      \"scheduled_reset_at\": \"1947-02-20T20:02:57.737Z\",\n      \"scheduled_reset_period\": \"Never Reset\",\n      \"self_url\": \"http://WNSltYpxrBEWrKmUBWF.dugiZL6x7zvvRkUDkenN4nZZKKOgQxpwPMsOVUCLxK2ziimB6k3F9XVsj6Vpm-mr3Z6+-jT\",\n      \"slug_perm\": \"V\",\n      \"token\": \"string\",\n      \"updated_at\": \"1993-04-22T17:24:08.185Z\",\n      \"updated_by\": \"string\",\n      \"updated_by_url\": \"https://IK.ixBdRVKV5a+7gInNuaBJtUlI7lXBgo0dCdWrC\",\n      \"usage\": \"string\",\n      \"user\": \"string\",\n      \"user_url\": \"http://xhRjzGlgtXabCbiOQIbuhKwcMcM.mksqCgRLea\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "efc8866f-7c50-401d-8f47-06221d734fcc",
+              "name": "Request could not be processed (see detail).",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "entitlements",
+                    ":owner",
+                    ":repo",
+                    "sync",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "show_tokens",
+                      "value": "false"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "owner",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "repo",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-Api-Key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"source\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"detail\": \"string\",\n  \"fields\": {\n    \"key_0\": [\n      \"string\",\n      \"string\"\n    ],\n    \"key_1\": [\n      \"string\",\n      \"string\"\n    ]\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "ec4e834e-95f3-4fc9-8fdc-f798630408f4",
+              "name": "Owner namespace or repository not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "entitlements",
+                    ":owner",
+                    ":repo",
+                    "sync",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "show_tokens",
+                      "value": "false"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "owner",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "repo",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-Api-Key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"source\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"detail\": \"string\",\n  \"fields\": {\n    \"key_0\": [\n      \"string\",\n      \"string\"\n    ],\n    \"key_1\": [\n      \"string\",\n      \"string\"\n    ]\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "8d5f42c5-022b-40b4-8b4c-18a1d80f7c0f",
+              "name": "Missing or invalid parameters (see detail).",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "entitlements",
+                    ":owner",
+                    ":repo",
+                    "sync",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "show_tokens",
+                      "value": "false"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "owner",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "repo",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-Api-Key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"source\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+              "code": 422,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"detail\": \"string\",\n  \"fields\": {\n    \"key_0\": [\n      \"string\",\n      \"string\"\n    ],\n    \"key_1\": [\n      \"string\",\n      \"string\"\n    ]\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "41c199c2-3fc1-4055-8ec5-db26fd1346b2",
+          "name": "Get a specific entitlement in a repository.",
+          "request": {
+            "name": "Get a specific entitlement in a repository.",
+            "description": {
+              "content": "Get a specific entitlement in a repository.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "entitlements",
+                ":owner",
+                ":repo",
+                ":identifier",
+                ""
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "fuzzy",
+                  "value": "false",
+                  "description": "If true, entitlement identifiers including name will be fuzzy matched."
+                },
+                {
+                  "disabled": false,
+                  "key": "show_tokens",
+                  "value": "false",
+                  "description": "Show entitlement token strings in results"
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "owner",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "repo",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "identifier",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "8e46e9ab-f2b6-4d44-9bbe-d3018ccb795c",
+              "name": "Retrieved the specified entitlement",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "entitlements",
+                    ":owner",
+                    ":repo",
+                    ":identifier",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "fuzzy",
+                      "value": "false"
+                    },
+                    {
+                      "key": "show_tokens",
+                      "value": "false"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "owner",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "repo",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "identifier",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-Api-Key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"name\": \"string\",\n  \"access_private_broadcasts\": true,\n  \"clients\": 5242,\n  \"created_at\": \"1948-07-20T07:41:27.074Z\",\n  \"created_by\": \"string\",\n  \"created_by_url\": \"http://hQjryb.ixLrGhF-perlkIzwnkuwbt3Uvu52apR3lOZyytI8xF\",\n  \"default\": false,\n  \"disable_url\": \"https://XXsemhISiYlvVIBh.okzX8WFvU+ka+bbftJekbJQ1afVczSoEwhoQZWxvgbjC+SOJ2WxZqtMJM6ByqKiz\",\n  \"downloads\": 9694,\n  \"enable_url\": \"http://bd.mwHiaZ29KaUxBE3SLeJfOxyBH0U6hz7wXbOUrZ.kjkkvB8fPiP3cfYBg\",\n  \"eula_accepted\": {\n    \"identifier\": \"UqHvMAW\",\n    \"number\": 1737767006\n  },\n  \"eula_accepted_at\": \"1987-01-12T05:37:50.612Z\",\n  \"eula_accepted_from\": \"string\",\n  \"eula_required\": false,\n  \"has_limits\": false,\n  \"identifier\": 3228,\n  \"is_active\": false,\n  \"is_limited\": true,\n  \"limit_bandwidth\": 8321995343699214000,\n  \"limit_bandwidth_unit\": \"Byte\",\n  \"limit_date_range_from\": \"1947-07-03T10:33:52.046Z\",\n  \"limit_date_range_to\": \"2009-06-06T13:51:15.583Z\",\n  \"limit_num_clients\": 4805197475857826000,\n  \"limit_num_downloads\": 2618206816150778000,\n  \"limit_package_query\": \"string\",\n  \"limit_path_query\": \"string\",\n  \"metadata\": {},\n  \"refresh_url\": \"https://nadoQhiPNrqL.oiwxpDURcCSU6X8uJhs+uUVmy0UyQFZkvbx3jyhfjAMnkevY0-RsZl2-q\",\n  \"reset_url\": \"https://jWb.ijomyXSHm07iW5Hcg9Q4YBXdZ8WfCUK8aP\",\n  \"scheduled_reset_at\": \"2000-06-29T02:15:25.789Z\",\n  \"scheduled_reset_period\": \"Never Reset\",\n  \"self_url\": \"http://B.sdbmIiN\",\n  \"slug_perm\": \"YJ-Q2e3QKF\",\n  \"token\": \"string\",\n  \"updated_at\": \"2012-04-06T04:29:31.174Z\",\n  \"updated_by\": \"string\",\n  \"updated_by_url\": \"https://deaQdkOfhLPqRs.imL2xD9g-jHG8ivVkbmRJVuTC0iFUnpBP\",\n  \"usage\": \"string\",\n  \"user\": \"string\",\n  \"user_url\": \"https://KJzGcXRniqXrN.kvjvm.wiHQzOWe,nITfmanZ3HssUkD,avzLP7AGT9Ecjtv\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "ab2d4ef5-6366-48af-a296-753e57526c85",
+              "name": "Couldn't retrieve the specified token because the request contains an error.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "entitlements",
+                    ":owner",
+                    ":repo",
+                    ":identifier",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "fuzzy",
+                      "value": "false"
+                    },
+                    {
+                      "key": "show_tokens",
+                      "value": "false"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "owner",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "repo",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "identifier",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-Api-Key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"detail\": \"string\",\n  \"fields\": {\n    \"key_0\": [\n      \"string\",\n      \"string\"\n    ],\n    \"key_1\": [\n      \"string\",\n      \"string\"\n    ]\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "02212cf1-55f4-4b62-a81e-a69a44cab639",
+              "name": "Owner namespace or repository not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "entitlements",
+                    ":owner",
+                    ":repo",
+                    ":identifier",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "fuzzy",
+                      "value": "false"
+                    },
+                    {
+                      "key": "show_tokens",
+                      "value": "false"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "owner",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "repo",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "identifier",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-Api-Key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"detail\": \"string\",\n  \"fields\": {\n    \"key_0\": [\n      \"string\",\n      \"string\"\n    ],\n    \"key_1\": [\n      \"string\",\n      \"string\"\n    ]\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "9a6a4051-99fc-4dfc-b850-8a9cb76abbc7",
+              "name": "Missing or invalid parameters (see detail).",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "entitlements",
+                    ":owner",
+                    ":repo",
+                    ":identifier",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "fuzzy",
+                      "value": "false"
+                    },
+                    {
+                      "key": "show_tokens",
+                      "value": "false"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "owner",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "repo",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "identifier",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-Api-Key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+              "code": 422,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"detail\": \"string\",\n  \"fields\": {\n    \"key_0\": [\n      \"string\",\n      \"string\"\n    ],\n    \"key_1\": [\n      \"string\",\n      \"string\"\n    ]\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "9e9a7604-1502-478d-98e8-36f0723515a4",
+          "name": "Update a specific entitlement in a repository.",
+          "request": {
+            "name": "Update a specific entitlement in a repository.",
+            "description": {
+              "content": "Update a specific entitlement in a repository.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "entitlements",
+                ":owner",
+                ":repo",
+                ":identifier",
+                ""
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "show_tokens",
+                  "value": "false",
+                  "description": "Show entitlement token strings in results"
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "owner",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "repo",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "identifier",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PATCH",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"eula_required\": \"<boolean>\",\n  \"is_active\": \"<boolean>\",\n  \"limit_bandwidth\": \"<integer>\",\n  \"limit_bandwidth_unit\": \"Byte\",\n  \"limit_date_range_from\": \"<dateTime>\",\n  \"limit_date_range_to\": \"<dateTime>\",\n  \"limit_num_clients\": \"<integer>\",\n  \"limit_num_downloads\": \"<integer>\",\n  \"limit_package_query\": \"<string>\",\n  \"limit_path_query\": \"<string>\",\n  \"metadata\": \"<object>\",\n  \"name\": \"<string>\",\n  \"scheduled_reset_at\": \"<dateTime>\",\n  \"scheduled_reset_period\": \"Never Reset\",\n  \"token\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "6db229f7-0f4f-450b-a153-766b3817423e",
+              "name": "Updated the specified entitlement",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "entitlements",
+                    ":owner",
+                    ":repo",
+                    ":identifier",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "show_tokens",
+                      "value": "false"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "owner",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "repo",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "identifier",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-Api-Key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"eula_required\": \"<boolean>\",\n  \"is_active\": \"<boolean>\",\n  \"limit_bandwidth\": \"<integer>\",\n  \"limit_bandwidth_unit\": \"Byte\",\n  \"limit_date_range_from\": \"<dateTime>\",\n  \"limit_date_range_to\": \"<dateTime>\",\n  \"limit_num_clients\": \"<integer>\",\n  \"limit_num_downloads\": \"<integer>\",\n  \"limit_package_query\": \"<string>\",\n  \"limit_path_query\": \"<string>\",\n  \"metadata\": \"<object>\",\n  \"name\": \"<string>\",\n  \"scheduled_reset_at\": \"<dateTime>\",\n  \"scheduled_reset_period\": \"Never Reset\",\n  \"token\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"name\": \"string\",\n  \"access_private_broadcasts\": true,\n  \"clients\": 5242,\n  \"created_at\": \"1948-07-20T07:41:27.074Z\",\n  \"created_by\": \"string\",\n  \"created_by_url\": \"http://hQjryb.ixLrGhF-perlkIzwnkuwbt3Uvu52apR3lOZyytI8xF\",\n  \"default\": false,\n  \"disable_url\": \"https://XXsemhISiYlvVIBh.okzX8WFvU+ka+bbftJekbJQ1afVczSoEwhoQZWxvgbjC+SOJ2WxZqtMJM6ByqKiz\",\n  \"downloads\": 9694,\n  \"enable_url\": \"http://bd.mwHiaZ29KaUxBE3SLeJfOxyBH0U6hz7wXbOUrZ.kjkkvB8fPiP3cfYBg\",\n  \"eula_accepted\": {\n    \"identifier\": \"UqHvMAW\",\n    \"number\": 1737767006\n  },\n  \"eula_accepted_at\": \"1987-01-12T05:37:50.612Z\",\n  \"eula_accepted_from\": \"string\",\n  \"eula_required\": false,\n  \"has_limits\": false,\n  \"identifier\": 3228,\n  \"is_active\": false,\n  \"is_limited\": true,\n  \"limit_bandwidth\": 8321995343699214000,\n  \"limit_bandwidth_unit\": \"Byte\",\n  \"limit_date_range_from\": \"1947-07-03T10:33:52.046Z\",\n  \"limit_date_range_to\": \"2009-06-06T13:51:15.583Z\",\n  \"limit_num_clients\": 4805197475857826000,\n  \"limit_num_downloads\": 2618206816150778000,\n  \"limit_package_query\": \"string\",\n  \"limit_path_query\": \"string\",\n  \"metadata\": {},\n  \"refresh_url\": \"https://nadoQhiPNrqL.oiwxpDURcCSU6X8uJhs+uUVmy0UyQFZkvbx3jyhfjAMnkevY0-RsZl2-q\",\n  \"reset_url\": \"https://jWb.ijomyXSHm07iW5Hcg9Q4YBXdZ8WfCUK8aP\",\n  \"scheduled_reset_at\": \"2000-06-29T02:15:25.789Z\",\n  \"scheduled_reset_period\": \"Never Reset\",\n  \"self_url\": \"http://B.sdbmIiN\",\n  \"slug_perm\": \"YJ-Q2e3QKF\",\n  \"token\": \"string\",\n  \"updated_at\": \"2012-04-06T04:29:31.174Z\",\n  \"updated_by\": \"string\",\n  \"updated_by_url\": \"https://deaQdkOfhLPqRs.imL2xD9g-jHG8ivVkbmRJVuTC0iFUnpBP\",\n  \"usage\": \"string\",\n  \"user\": \"string\",\n  \"user_url\": \"https://KJzGcXRniqXrN.kvjvm.wiHQzOWe,nITfmanZ3HssUkD,avzLP7AGT9Ecjtv\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "d1b0fda3-dbbf-4517-8720-fe34034cda58",
+              "name": "The entitlement cannot be edited.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "entitlements",
+                    ":owner",
+                    ":repo",
+                    ":identifier",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "show_tokens",
+                      "value": "false"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "owner",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "repo",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "identifier",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-Api-Key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"eula_required\": \"<boolean>\",\n  \"is_active\": \"<boolean>\",\n  \"limit_bandwidth\": \"<integer>\",\n  \"limit_bandwidth_unit\": \"Byte\",\n  \"limit_date_range_from\": \"<dateTime>\",\n  \"limit_date_range_to\": \"<dateTime>\",\n  \"limit_num_clients\": \"<integer>\",\n  \"limit_num_downloads\": \"<integer>\",\n  \"limit_package_query\": \"<string>\",\n  \"limit_path_query\": \"<string>\",\n  \"metadata\": \"<object>\",\n  \"name\": \"<string>\",\n  \"scheduled_reset_at\": \"<dateTime>\",\n  \"scheduled_reset_period\": \"Never Reset\",\n  \"token\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"detail\": \"string\",\n  \"fields\": {\n    \"key_0\": [\n      \"string\",\n      \"string\"\n    ],\n    \"key_1\": [\n      \"string\",\n      \"string\"\n    ]\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "33b66235-1d40-4a24-a1e5-217585c74de2",
+              "name": "Owner namespace or repository not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "entitlements",
+                    ":owner",
+                    ":repo",
+                    ":identifier",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "show_tokens",
+                      "value": "false"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "owner",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "repo",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "identifier",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-Api-Key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"eula_required\": \"<boolean>\",\n  \"is_active\": \"<boolean>\",\n  \"limit_bandwidth\": \"<integer>\",\n  \"limit_bandwidth_unit\": \"Byte\",\n  \"limit_date_range_from\": \"<dateTime>\",\n  \"limit_date_range_to\": \"<dateTime>\",\n  \"limit_num_clients\": \"<integer>\",\n  \"limit_num_downloads\": \"<integer>\",\n  \"limit_package_query\": \"<string>\",\n  \"limit_path_query\": \"<string>\",\n  \"metadata\": \"<object>\",\n  \"name\": \"<string>\",\n  \"scheduled_reset_at\": \"<dateTime>\",\n  \"scheduled_reset_period\": \"Never Reset\",\n  \"token\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"detail\": \"string\",\n  \"fields\": {\n    \"key_0\": [\n      \"string\",\n      \"string\"\n    ],\n    \"key_1\": [\n      \"string\",\n      \"string\"\n    ]\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "08e82178-d80f-45db-8982-8c4620f4c0b9",
+              "name": "Missing or invalid parameters (see detail).",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "entitlements",
+                    ":owner",
+                    ":repo",
+                    ":identifier",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "show_tokens",
+                      "value": "false"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "owner",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "repo",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "identifier",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-Api-Key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"eula_required\": \"<boolean>\",\n  \"is_active\": \"<boolean>\",\n  \"limit_bandwidth\": \"<integer>\",\n  \"limit_bandwidth_unit\": \"Byte\",\n  \"limit_date_range_from\": \"<dateTime>\",\n  \"limit_date_range_to\": \"<dateTime>\",\n  \"limit_num_clients\": \"<integer>\",\n  \"limit_num_downloads\": \"<integer>\",\n  \"limit_package_query\": \"<string>\",\n  \"limit_path_query\": \"<string>\",\n  \"metadata\": \"<object>\",\n  \"name\": \"<string>\",\n  \"scheduled_reset_at\": \"<dateTime>\",\n  \"scheduled_reset_period\": \"Never Reset\",\n  \"token\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+              "code": 422,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"detail\": \"string\",\n  \"fields\": {\n    \"key_0\": [\n      \"string\",\n      \"string\"\n    ],\n    \"key_1\": [\n      \"string\",\n      \"string\"\n    ]\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "7c0d5ba1-f3f0-478d-b23f-c8182b35636b",
+          "name": "Delete a specific entitlement in a repository.",
+          "request": {
+            "name": "Delete a specific entitlement in a repository.",
+            "description": {
+              "content": "Delete a specific entitlement in a repository.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "entitlements",
+                ":owner",
+                ":repo",
+                ":identifier",
+                ""
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "owner",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "repo",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "identifier",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "DELETE",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "6cfe9909-7f6c-4957-8552-3650d9f9f80b",
+              "name": "Soft-deleted the specified entitlement token successfully.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "entitlements",
+                    ":owner",
+                    ":repo",
+                    ":identifier",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "owner",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "repo",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "identifier",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-Api-Key",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "No Content",
+              "code": 204,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "e63b0fc8-2a74-480b-bf9c-7b8fb618bcce",
+              "name": "The entitlement cannot be deleted.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "entitlements",
+                    ":owner",
+                    ":repo",
+                    ":identifier",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "owner",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "repo",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "identifier",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-Api-Key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"detail\": \"string\",\n  \"fields\": {\n    \"key_0\": [\n      \"string\",\n      \"string\"\n    ],\n    \"key_1\": [\n      \"string\",\n      \"string\"\n    ]\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "8041c3d9-c25d-48c7-8095-1a5dfc543d3c",
+              "name": "Missing or invalid parameters (see detail).",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "entitlements",
+                    ":owner",
+                    ":repo",
+                    ":identifier",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "owner",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "repo",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "identifier",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-Api-Key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+              "code": 422,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"detail\": \"string\",\n  \"fields\": {\n    \"key_0\": [\n      \"string\",\n      \"string\"\n    ],\n    \"key_1\": [\n      \"string\",\n      \"string\"\n    ]\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "b7a0b793-f1cd-4940-8b1f-0942f0733967",
+          "name": "Disable an entitlement token in a repository.",
+          "request": {
+            "name": "Disable an entitlement token in a repository.",
+            "description": {
+              "content": "Disable an entitlement token in a repository.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "entitlements",
+                ":owner",
+                ":repo",
+                ":identifier",
+                "disable",
+                ""
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "owner",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "repo",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "identifier",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "9d4c21bb-4d32-4210-9583-9ec13091cf28",
+              "name": "The entitlement token has been disabled.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "entitlements",
+                    ":owner",
+                    ":repo",
+                    ":identifier",
+                    "disable",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "owner",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "repo",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "identifier",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-Api-Key",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "No Content",
+              "code": 204,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "289971f7-dd5c-4fb0-a392-377d7bce845d",
+              "name": "Request could not be processed (see detail).",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "entitlements",
+                    ":owner",
+                    ":repo",
+                    ":identifier",
+                    "disable",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "owner",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "repo",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "identifier",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-Api-Key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"detail\": \"string\",\n  \"fields\": {\n    \"key_0\": [\n      \"string\",\n      \"string\"\n    ],\n    \"key_1\": [\n      \"string\",\n      \"string\"\n    ]\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "ce951f69-f663-4974-a6ad-0276aa8b9cb0",
+              "name": "Missing or invalid parameters (see detail).",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "entitlements",
+                    ":owner",
+                    ":repo",
+                    ":identifier",
+                    "disable",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "owner",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "repo",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "identifier",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-Api-Key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+              "code": 422,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"detail\": \"string\",\n  \"fields\": {\n    \"key_0\": [\n      \"string\",\n      \"string\"\n    ],\n    \"key_1\": [\n      \"string\",\n      \"string\"\n    ]\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "93c903bd-bc2d-4cf2-88c9-0df94eb17a8a",
+          "name": "Enable an entitlement token in a repository.",
+          "request": {
+            "name": "Enable an entitlement token in a repository.",
+            "description": {
+              "content": "Enable an entitlement token in a repository.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "entitlements",
+                ":owner",
+                ":repo",
+                ":identifier",
+                "enable",
+                ""
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "owner",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "repo",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "identifier",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "fd477cd8-ca44-44dc-aec6-61cc009a9c36",
+              "name": "The entitlement token has been enabled.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "entitlements",
+                    ":owner",
+                    ":repo",
+                    ":identifier",
+                    "enable",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "owner",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "repo",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "identifier",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-Api-Key",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "No Content",
+              "code": 204,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "050e38c5-e885-49d3-90c9-43369dd7b630",
+              "name": "Request could not be processed (see detail).",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "entitlements",
+                    ":owner",
+                    ":repo",
+                    ":identifier",
+                    "enable",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "owner",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "repo",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "identifier",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-Api-Key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"detail\": \"string\",\n  \"fields\": {\n    \"key_0\": [\n      \"string\",\n      \"string\"\n    ],\n    \"key_1\": [\n      \"string\",\n      \"string\"\n    ]\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "b5897926-cc3c-49ad-a311-2c233a9d8e2f",
+              "name": "Missing or invalid parameters (see detail).",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "entitlements",
+                    ":owner",
+                    ":repo",
+                    ":identifier",
+                    "enable",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "owner",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "repo",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "identifier",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-Api-Key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+              "code": 422,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"detail\": \"string\",\n  \"fields\": {\n    \"key_0\": [\n      \"string\",\n      \"string\"\n    ],\n    \"key_1\": [\n      \"string\",\n      \"string\"\n    ]\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "512adb1c-316b-4eca-96da-e0e7dab46301",
+          "name": "Refresh an entitlement token in a repository.",
+          "request": {
+            "name": "Refresh an entitlement token in a repository.",
+            "description": {
+              "content": "Refresh an entitlement token in a repository.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "entitlements",
+                ":owner",
+                ":repo",
+                ":identifier",
+                "refresh",
+                ""
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "show_tokens",
+                  "value": "false",
+                  "description": "Show entitlement token strings in results"
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "owner",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "repo",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "identifier",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"eula_required\": \"<boolean>\",\n  \"is_active\": \"<boolean>\",\n  \"limit_bandwidth\": \"<integer>\",\n  \"limit_bandwidth_unit\": \"Byte\",\n  \"limit_date_range_from\": \"<dateTime>\",\n  \"limit_date_range_to\": \"<dateTime>\",\n  \"limit_num_clients\": \"<integer>\",\n  \"limit_num_downloads\": \"<integer>\",\n  \"limit_package_query\": \"<string>\",\n  \"limit_path_query\": \"<string>\",\n  \"metadata\": \"<object>\",\n  \"scheduled_reset_at\": \"<dateTime>\",\n  \"scheduled_reset_period\": \"Never Reset\",\n  \"token\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "bbbedbac-3bfc-4cdd-87b0-a08776c72b15",
+              "name": "The entitlement token has been refreshed.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "entitlements",
+                    ":owner",
+                    ":repo",
+                    ":identifier",
+                    "refresh",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "show_tokens",
+                      "value": "false"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "owner",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "repo",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "identifier",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-Api-Key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"eula_required\": \"<boolean>\",\n  \"is_active\": \"<boolean>\",\n  \"limit_bandwidth\": \"<integer>\",\n  \"limit_bandwidth_unit\": \"Byte\",\n  \"limit_date_range_from\": \"<dateTime>\",\n  \"limit_date_range_to\": \"<dateTime>\",\n  \"limit_num_clients\": \"<integer>\",\n  \"limit_num_downloads\": \"<integer>\",\n  \"limit_package_query\": \"<string>\",\n  \"limit_path_query\": \"<string>\",\n  \"metadata\": \"<object>\",\n  \"scheduled_reset_at\": \"<dateTime>\",\n  \"scheduled_reset_period\": \"Never Reset\",\n  \"token\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"access_private_broadcasts\": false,\n  \"clients\": 6681,\n  \"created_at\": \"1964-12-29T04:29:01.859Z\",\n  \"created_by\": \"string\",\n  \"created_by_url\": \"http://EWywVQLKi.pyBjGF6dS6GHNvqVEwOek11FvBln+4Qj0F5eE6-OgJtClE1G3qSRkz6H7BzHoL2-fP\",\n  \"default\": false,\n  \"disable_url\": \"http://yOzWnfxVQmZe.qfglbIVJndekHfZ2ekMY6Hm-LpzX+57PtuMpgpEAlYQK+Kjcx4BGRO6cIS4IezFEeU\",\n  \"downloads\": 3359,\n  \"enable_url\": \"https://ILXnX.kvwtmN42HTPyl5MaA5,fWk7uZ6,UO+iwe2DZkmkLJDQC.DHYbmDQSWOF1fDYjB3efWaZkPiw\",\n  \"eula_accepted\": {\n    \"identifier\": \"JH\",\n    \"number\": 1545610573\n  },\n  \"eula_accepted_at\": \"1995-06-03T00:14:03.510Z\",\n  \"eula_accepted_from\": \"string\",\n  \"eula_required\": true,\n  \"has_limits\": true,\n  \"identifier\": 5884,\n  \"is_active\": true,\n  \"is_limited\": true,\n  \"limit_bandwidth\": -7897731484794720000,\n  \"limit_bandwidth_unit\": \"Byte\",\n  \"limit_date_range_from\": \"1966-09-18T14:35:02.201Z\",\n  \"limit_date_range_to\": \"2023-05-22T12:49:22.856Z\",\n  \"limit_num_clients\": -2642443576982360000,\n  \"limit_num_downloads\": -7454597845126646000,\n  \"limit_package_query\": \"string\",\n  \"limit_path_query\": \"string\",\n  \"metadata\": {},\n  \"name\": \"string\",\n  \"refresh_url\": \"https://xgtaOQHlQrePmdbjOuX.ozmeR6DE1-3jq0YnAmltAqOjeiW\",\n  \"reset_url\": \"https://IhqGzaCilUMJSYae.xezBXWBClYgzQvuq7rUPRk8clQXpAj,n4+d6J\",\n  \"scheduled_reset_at\": \"1979-05-25T19:14:26.770Z\",\n  \"scheduled_reset_period\": \"Never Reset\",\n  \"self_url\": \"http://UuqaQAbLvVlgVTEbjZbtwAToTJ.weulcG3fIp4.td,\",\n  \"slug_perm\": \"cjD\",\n  \"token\": \"string\",\n  \"updated_at\": \"1948-11-29T15:58:57.605Z\",\n  \"updated_by\": \"string\",\n  \"updated_by_url\": \"https://FPEBzRHzgSAKO.xmcqksD-ZI.fLp77eVZLm8W-Xa-RjrrwhiAb\",\n  \"usage\": \"string\",\n  \"user\": \"string\",\n  \"user_url\": \"https://hCl.kznl6S1p2sWZDxG1WPdvo0a1CZzVUSsAFHWSLK,aqHlpS3wY\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "84aba2a8-7402-45c1-b4b3-bf6025a8252d",
+              "name": "Request could not be processed (see detail).",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "entitlements",
+                    ":owner",
+                    ":repo",
+                    ":identifier",
+                    "refresh",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "show_tokens",
+                      "value": "false"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "owner",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "repo",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "identifier",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-Api-Key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"eula_required\": \"<boolean>\",\n  \"is_active\": \"<boolean>\",\n  \"limit_bandwidth\": \"<integer>\",\n  \"limit_bandwidth_unit\": \"Byte\",\n  \"limit_date_range_from\": \"<dateTime>\",\n  \"limit_date_range_to\": \"<dateTime>\",\n  \"limit_num_clients\": \"<integer>\",\n  \"limit_num_downloads\": \"<integer>\",\n  \"limit_package_query\": \"<string>\",\n  \"limit_path_query\": \"<string>\",\n  \"metadata\": \"<object>\",\n  \"scheduled_reset_at\": \"<dateTime>\",\n  \"scheduled_reset_period\": \"Never Reset\",\n  \"token\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"detail\": \"string\",\n  \"fields\": {\n    \"key_0\": [\n      \"string\",\n      \"string\"\n    ],\n    \"key_1\": [\n      \"string\",\n      \"string\"\n    ]\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "cf5db814-39d7-437c-af27-2f71b068c86f",
+              "name": "Missing or invalid parameters (see detail).",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "entitlements",
+                    ":owner",
+                    ":repo",
+                    ":identifier",
+                    "refresh",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "show_tokens",
+                      "value": "false"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "owner",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "repo",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "identifier",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-Api-Key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"eula_required\": \"<boolean>\",\n  \"is_active\": \"<boolean>\",\n  \"limit_bandwidth\": \"<integer>\",\n  \"limit_bandwidth_unit\": \"Byte\",\n  \"limit_date_range_from\": \"<dateTime>\",\n  \"limit_date_range_to\": \"<dateTime>\",\n  \"limit_num_clients\": \"<integer>\",\n  \"limit_num_downloads\": \"<integer>\",\n  \"limit_package_query\": \"<string>\",\n  \"limit_path_query\": \"<string>\",\n  \"metadata\": \"<object>\",\n  \"scheduled_reset_at\": \"<dateTime>\",\n  \"scheduled_reset_period\": \"Never Reset\",\n  \"token\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+              "code": 422,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"detail\": \"string\",\n  \"fields\": {\n    \"key_0\": [\n      \"string\",\n      \"string\"\n    ],\n    \"key_1\": [\n      \"string\",\n      \"string\"\n    ]\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "5f847224-6720-4d6d-8657-3632ff6b9ef1",
+          "name": "Reset the statistics for an entitlement token in a repository.",
+          "request": {
+            "name": "Reset the statistics for an entitlement token in a repository.",
+            "description": {
+              "content": "Reset the statistics for an entitlement token in a repository.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "entitlements",
+                ":owner",
+                ":repo",
+                ":identifier",
+                "reset",
+                ""
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "show_tokens",
+                  "value": "false",
+                  "description": "Show entitlement token strings in results"
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "owner",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "repo",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "identifier",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "f1447e85-68a7-4b4a-af77-0007630a086a",
+              "name": "The entitlement token statistics have been reset.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "entitlements",
+                    ":owner",
+                    ":repo",
+                    ":identifier",
+                    "reset",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "show_tokens",
+                      "value": "false"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "owner",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "repo",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "identifier",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-Api-Key",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "No Content",
+              "code": 204,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "3ba3361e-3869-46f9-be0d-520f72205f47",
+              "name": "Request could not be processed (see detail).",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "entitlements",
+                    ":owner",
+                    ":repo",
+                    ":identifier",
+                    "reset",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "show_tokens",
+                      "value": "false"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "owner",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "repo",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "identifier",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-Api-Key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"detail\": \"string\",\n  \"fields\": {\n    \"key_0\": [\n      \"string\",\n      \"string\"\n    ],\n    \"key_1\": [\n      \"string\",\n      \"string\"\n    ]\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "eedd1747-f775-432e-b045-e4f4d4b618cb",
+              "name": "Missing or invalid parameters (see detail).",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "entitlements",
+                    ":owner",
+                    ":repo",
+                    ":identifier",
+                    "reset",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "show_tokens",
+                      "value": "false"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "owner",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "repo",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "identifier",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-Api-Key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+              "code": 422,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"detail\": \"string\",\n  \"fields\": {\n    \"key_0\": [\n      \"string\",\n      \"string\"\n    ],\n    \"key_1\": [\n      \"string\",\n      \"string\"\n    ]\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "b8250dc6-f59a-4bf6-b41a-9e0bc6655546",
+          "name": "Set private broadcast access for an entitlement token in a repository.",
+          "request": {
+            "name": "Set private broadcast access for an entitlement token in a repository.",
+            "description": {
+              "content": "Set private broadcast access for an entitlement token in a repository.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "entitlements",
+                ":owner",
+                ":repo",
+                ":identifier",
+                "toggle-private-broadcasts",
+                ""
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "owner",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "repo",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "identifier",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"access_private_broadcasts\": \"<boolean>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "ec3a1be0-5292-437a-81f9-9c11e55bf101",
+              "name": "Private broadcasts access has been updated for the entitlement token.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "entitlements",
+                    ":owner",
+                    ":repo",
+                    ":identifier",
+                    "toggle-private-broadcasts",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "owner",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "repo",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "identifier",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-Api-Key",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"access_private_broadcasts\": \"<boolean>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "a5e12119-30d2-4288-a62c-523acbb76078",
+              "name": "Request could not be processed (see detail).",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "entitlements",
+                    ":owner",
+                    ":repo",
+                    ":identifier",
+                    "toggle-private-broadcasts",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "owner",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "repo",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "identifier",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-Api-Key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"access_private_broadcasts\": \"<boolean>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"detail\": \"string\",\n  \"fields\": {\n    \"key_0\": [\n      \"string\",\n      \"string\"\n    ],\n    \"key_1\": [\n      \"string\",\n      \"string\"\n    ]\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "72f6f3b7-9284-4b92-a50a-b51bf47aaad4",
+              "name": "Missing or invalid parameters (see detail).",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "entitlements",
+                    ":owner",
+                    ":repo",
+                    ":identifier",
+                    "toggle-private-broadcasts",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "owner",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "repo",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "identifier",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-Api-Key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"access_private_broadcasts\": \"<boolean>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+              "code": 422,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"detail\": \"string\",\n  \"fields\": {\n    \"key_0\": [\n      \"string\",\n      \"string\"\n    ],\n    \"key_1\": [\n      \"string\",\n      \"string\"\n    ]\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.cloudsmith.io",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      {
+        "key": "key",
+        "value": "X-Api-Key"
+      },
+      {
+        "key": "value",
+        "value": "{{apiKey}}"
+      },
+      {
+        "key": "in",
+        "value": "header"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "a1634aee-939c-474c-a554-010481336a03",
+    "name": "Cloudsmith API (v1) audit-log entitlements API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "The API to the Cloudsmith Service\n\nContact Support:\n Name: Cloudsmith Support\n Email: support@cloudsmith.io",
+      "type": "text/plain"
+    }
+  }
+}

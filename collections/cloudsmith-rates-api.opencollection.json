@@ -1,0 +1,29 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Cloudsmith API (v1) audit-log rates API",
+    "version": "v1"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "rates",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Endpoint to check rate limits for current user.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/rates/limits/"
+          },
+          "docs": "Endpoint to check rate limits for current user."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

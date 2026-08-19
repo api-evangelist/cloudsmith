@@ -1,0 +1,1651 @@
+{
+  "item": [
+    {
+      "id": "6c7056b5-dbbe-455c-8842-996d754908b8",
+      "name": "webhooks",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "578b4024-98c5-47ed-a0d6-68ffb7c024d6",
+          "name": "Get a list of all webhooks in a repository.",
+          "request": {
+            "name": "Get a list of all webhooks in a repository.",
+            "description": {
+              "content": "Get a list of all webhooks in a repository.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "webhooks",
+                ":owner",
+                ":repo",
+                ""
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "page",
+                  "value": "<integer>",
+                  "description": "A page number within the paginated result set."
+                },
+                {
+                  "disabled": false,
+                  "key": "page_size",
+                  "value": "<integer>",
+                  "description": "Number of results to return per page."
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "owner",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "repo",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "d05bf139-13ee-45df-906a-9de1ab3f9704",
+              "name": "Retrieved the list of webhooks",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "webhooks",
+                    ":owner",
+                    ":repo",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "page",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "page_size",
+                      "value": "<integer>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "owner",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "repo",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-Api-Key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"events\": [\n      \"package.syncing\",\n      \"package.syncing\"\n    ],\n    \"target_url\": \"https://IFZOfcJhDYXvHoPABPMRxbNRA.hvtjPuXNCKbCNkgDrQY,pYoMjgwJStMwQZfTO+pS,hhQkD5RVLewd1qgRG.OBxgHaqsr1Q5lwlV\",\n    \"templates\": [\n      {\n        \"event\": \"string\",\n        \"template\": \"string\"\n      },\n      {\n        \"event\": \"string\",\n        \"template\": \"string\"\n      }\n    ],\n    \"created_at\": \"1978-02-08T12:42:21.516Z\",\n    \"created_by\": \"string\",\n    \"created_by_url\": \"http://IXkPIcGFHzMObmuKYn.kmzUgjEvL.+7MbXQQZ34hJPBdrRfS.-JYYqos\",\n    \"disable_reason\": 1,\n    \"disable_reason_str\": \"string\",\n    \"identifier\": 4578,\n    \"is_active\": true,\n    \"is_last_response_bad\": false,\n    \"last_response_status\": 1040,\n    \"last_response_status_str\": \"string\",\n    \"num_sent\": 3702,\n    \"package_query\": \"string\",\n    \"request_body_format\": 3,\n    \"request_body_format_str\": \"string\",\n    \"request_body_template_format\": 1,\n    \"request_body_template_format_str\": \"string\",\n    \"request_content_type\": \"string\",\n    \"secret_header\": \"hWsS\",\n    \"self_url\": \"https://FTgcHJGiaduLd.gzwfOhNbj2rECvOe0ZyXsr42xg+JonmfpZvw3U4csPi4obAatfKsYEq\",\n    \"slug_perm\": \"DbOAEfZ\",\n    \"updated_at\": \"1980-01-23T09:12:30.016Z\",\n    \"updated_by\": \"string\",\n    \"updated_by_url\": \"http://LbdckMzaUQONXnDDdekhLiDPARkbhj.nxAAVB8fJIelN8H404drwKfs6BR4M87Jj74hSSv\",\n    \"verify_ssl\": true\n  },\n  {\n    \"events\": [\n      \"*\",\n      \"package.restored\"\n    ],\n    \"target_url\": \"http://tgwlrBGvgnuVgWsPmbHYXNCmgYkgQzn.pfDVAgRHN\",\n    \"templates\": [\n      {\n        \"event\": \"string\",\n        \"template\": \"string\"\n      },\n      {\n        \"event\": \"string\",\n        \"template\": \"string\"\n      }\n    ],\n    \"created_at\": \"1965-06-27T00:24:13.679Z\",\n    \"created_by\": \"string\",\n    \"created_by_url\": \"http://OnaQEuWdXPCNcAiDHnzQpaHscvwE.ggf-0CP9sLgSmaILVR-CnkEw8MSkmwXi4BQup\",\n    \"disable_reason\": 2,\n    \"disable_reason_str\": \"string\",\n    \"identifier\": 9739,\n    \"is_active\": true,\n    \"is_last_response_bad\": true,\n    \"last_response_status\": 3537,\n    \"last_response_status_str\": \"string\",\n    \"num_sent\": 3584,\n    \"package_query\": \"string\",\n    \"request_body_format\": 1,\n    \"request_body_format_str\": \"string\",\n    \"request_body_template_format\": 0,\n    \"request_body_template_format_str\": \"string\",\n    \"request_content_type\": \"string\",\n    \"secret_header\": \"cmq8LqxB40\",\n    \"self_url\": \"https://WthhzgQksiRgErREiZGYnb.jgivXr.km5xxNzRH.rHH5.v4N7F.xAl7-Il0WQiHmnF2x4UoMiEUdqAikB7ct8C-o5ZxCD47oK5sMAh3gz+.oo,QdmmH\",\n    \"slug_perm\": \"BvzUbNy\",\n    \"updated_at\": \"2000-12-19T19:50:07.980Z\",\n    \"updated_by\": \"string\",\n    \"updated_by_url\": \"https://rSDCGeoFWIwKhUsRfKii.kwajx9\",\n    \"verify_ssl\": true\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "0c6dd299-8ce3-4571-a652-2c034a96e315",
+              "name": "Request could not be processed (see detail).",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "webhooks",
+                    ":owner",
+                    ":repo",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "page",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "page_size",
+                      "value": "<integer>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "owner",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "repo",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-Api-Key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"detail\": \"string\",\n  \"fields\": {\n    \"key_0\": [\n      \"string\",\n      \"string\"\n    ],\n    \"key_1\": [\n      \"string\",\n      \"string\"\n    ]\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "82ed4cda-96b5-4f22-9782-cd893f496282",
+              "name": "Owner namespace or repository not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "webhooks",
+                    ":owner",
+                    ":repo",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "page",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "page_size",
+                      "value": "<integer>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "owner",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "repo",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-Api-Key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"detail\": \"string\",\n  \"fields\": {\n    \"key_0\": [\n      \"string\",\n      \"str\"\n    ],\n    \"key_1\": [\n      \"string\",\n      \"string\"\n    ],\n    \"key_2\": [\n      \"string\",\n      \"string\"\n    ]\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "3c5c119f-c20e-46fc-9f40-7f38bcd4538a",
+              "name": "Missing or invalid parameters (see detail).",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "webhooks",
+                    ":owner",
+                    ":repo",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "page",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "page_size",
+                      "value": "<integer>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "owner",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "repo",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-Api-Key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+              "code": 422,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"detail\": \"string\",\n  \"fields\": {\n    \"key_0\": [\n      \"string\",\n      \"str\"\n    ],\n    \"key_1\": [\n      \"string\",\n      \"string\"\n    ],\n    \"key_2\": [\n      \"string\",\n      \"string\"\n    ]\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "29c263e2-914b-40f2-a304-c8f174d158d9",
+          "name": "Create a specific webhook in a repository.",
+          "request": {
+            "name": "Create a specific webhook in a repository.",
+            "description": {
+              "content": "Create a specific webhook in a repository.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "webhooks",
+                ":owner",
+                ":repo",
+                ""
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "owner",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "repo",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"events\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"target_url\": \"<uri>\",\n  \"templates\": [\n    {\n      \"event\": \"<string>\",\n      \"template\": \"<string>\"\n    },\n    {\n      \"event\": \"<string>\",\n      \"template\": \"<string>\"\n    }\n  ],\n  \"is_active\": \"<boolean>\",\n  \"package_query\": \"<string>\",\n  \"request_body_format\": \"<integer>\",\n  \"request_body_template_format\": \"<integer>\",\n  \"request_content_type\": \"<string>\",\n  \"secret_header\": \"<string>\",\n  \"secret_value\": \"<string>\",\n  \"signature_key\": \"<string>\",\n  \"verify_ssl\": \"<boolean>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "d7a4a089-9bc1-48ba-b448-290de18d0061",
+              "name": "Created the specified webhook",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "webhooks",
+                    ":owner",
+                    ":repo",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "owner",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "repo",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-Api-Key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"events\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"target_url\": \"<uri>\",\n  \"templates\": [\n    {\n      \"event\": \"<string>\",\n      \"template\": \"<string>\"\n    },\n    {\n      \"event\": \"<string>\",\n      \"template\": \"<string>\"\n    }\n  ],\n  \"is_active\": \"<boolean>\",\n  \"package_query\": \"<string>\",\n  \"request_body_format\": \"<integer>\",\n  \"request_body_template_format\": \"<integer>\",\n  \"request_content_type\": \"<string>\",\n  \"secret_header\": \"<string>\",\n  \"secret_value\": \"<string>\",\n  \"signature_key\": \"<string>\",\n  \"verify_ssl\": \"<boolean>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"events\": [\n    \"*\",\n    \"package.quarantined\"\n  ],\n  \"target_url\": \"http://Fr.pyth1e9Bq1HEBc\",\n  \"templates\": [\n    {\n      \"event\": \"<string>\",\n      \"template\": \"<string>\"\n    },\n    {\n      \"event\": \"<string>\",\n      \"template\": \"<string>\"\n    }\n  ],\n  \"created_at\": \"1959-02-18T06:55:26.171Z\",\n  \"created_by\": \"string\",\n  \"created_by_url\": \"https://eqiMAPRZJreInwkPVvczbDwJHNp.vkdGRe.LHMuYuB4+mxP3XGO4AA-9+\",\n  \"disable_reason\": 6,\n  \"disable_reason_str\": \"string\",\n  \"identifier\": 1369,\n  \"is_active\": false,\n  \"is_last_response_bad\": false,\n  \"last_response_status\": 3811,\n  \"last_response_status_str\": \"string\",\n  \"num_sent\": 4639,\n  \"package_query\": \"string\",\n  \"request_body_format\": 0,\n  \"request_body_format_str\": \"string\",\n  \"request_body_template_format\": 1,\n  \"request_body_template_format_str\": \"string\",\n  \"request_content_type\": \"string\",\n  \"secret_header\": \"GL6RWo4\",\n  \"self_url\": \"https://kw.vbIBIUXS84Byi4FwtkNi9Mv3h,FBMQ53KQPkcHKJu.xz84ONvCqQ.MmUi5d\",\n  \"slug_perm\": \"Iou\",\n  \"updated_at\": \"1985-07-23T10:36:21.079Z\",\n  \"updated_by\": \"string\",\n  \"updated_by_url\": \"http://UCQgDJEcBopgImuPXpFSShRT.axeEcZcIjlsNb46J3tFMDrK44hbgMdBKav2-yEX2bUpa,rkZ04qoZidkKME.\",\n  \"verify_ssl\": false\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "c3051bc6-cf99-4a59-abf1-f30a5cef91e6",
+              "name": "Request could not be processed (see detail).",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "webhooks",
+                    ":owner",
+                    ":repo",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "owner",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "repo",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-Api-Key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"events\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"target_url\": \"<uri>\",\n  \"templates\": [\n    {\n      \"event\": \"<string>\",\n      \"template\": \"<string>\"\n    },\n    {\n      \"event\": \"<string>\",\n      \"template\": \"<string>\"\n    }\n  ],\n  \"is_active\": \"<boolean>\",\n  \"package_query\": \"<string>\",\n  \"request_body_format\": \"<integer>\",\n  \"request_body_template_format\": \"<integer>\",\n  \"request_content_type\": \"<string>\",\n  \"secret_header\": \"<string>\",\n  \"secret_value\": \"<string>\",\n  \"signature_key\": \"<string>\",\n  \"verify_ssl\": \"<boolean>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"detail\": \"string\",\n  \"fields\": {\n    \"key_0\": [\n      \"string\",\n      \"str\"\n    ],\n    \"key_1\": [\n      \"string\",\n      \"string\"\n    ],\n    \"key_2\": [\n      \"string\",\n      \"string\"\n    ]\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "13c70873-2c6c-45ac-b65c-c708abe7ff5e",
+              "name": "Owner namespace or repository not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "webhooks",
+                    ":owner",
+                    ":repo",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "owner",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "repo",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-Api-Key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"events\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"target_url\": \"<uri>\",\n  \"templates\": [\n    {\n      \"event\": \"<string>\",\n      \"template\": \"<string>\"\n    },\n    {\n      \"event\": \"<string>\",\n      \"template\": \"<string>\"\n    }\n  ],\n  \"is_active\": \"<boolean>\",\n  \"package_query\": \"<string>\",\n  \"request_body_format\": \"<integer>\",\n  \"request_body_template_format\": \"<integer>\",\n  \"request_content_type\": \"<string>\",\n  \"secret_header\": \"<string>\",\n  \"secret_value\": \"<string>\",\n  \"signature_key\": \"<string>\",\n  \"verify_ssl\": \"<boolean>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"detail\": \"string\",\n  \"fields\": {\n    \"key_0\": [\n      \"string\",\n      \"str\"\n    ],\n    \"key_1\": [\n      \"string\",\n      \"string\"\n    ],\n    \"key_2\": [\n      \"string\",\n      \"string\"\n    ]\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "6a3424c0-dd70-43d2-a215-2c5f7a404889",
+              "name": "Missing or invalid parameters (see detail).",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "webhooks",
+                    ":owner",
+                    ":repo",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "owner",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "repo",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-Api-Key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"events\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"target_url\": \"<uri>\",\n  \"templates\": [\n    {\n      \"event\": \"<string>\",\n      \"template\": \"<string>\"\n    },\n    {\n      \"event\": \"<string>\",\n      \"template\": \"<string>\"\n    }\n  ],\n  \"is_active\": \"<boolean>\",\n  \"package_query\": \"<string>\",\n  \"request_body_format\": \"<integer>\",\n  \"request_body_template_format\": \"<integer>\",\n  \"request_content_type\": \"<string>\",\n  \"secret_header\": \"<string>\",\n  \"secret_value\": \"<string>\",\n  \"signature_key\": \"<string>\",\n  \"verify_ssl\": \"<boolean>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+              "code": 422,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"detail\": \"string\",\n  \"fields\": {\n    \"key_0\": [\n      \"string\",\n      \"str\"\n    ],\n    \"key_1\": [\n      \"string\",\n      \"string\"\n    ],\n    \"key_2\": [\n      \"string\",\n      \"string\"\n    ]\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "d2ba906a-afe5-4cee-8ffc-9c50927ee730",
+          "name": "Views for working with repository webhooks.",
+          "request": {
+            "name": "Views for working with repository webhooks.",
+            "description": {
+              "content": "Views for working with repository webhooks.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "webhooks",
+                ":owner",
+                ":repo",
+                ":identifier",
+                ""
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "owner",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "repo",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "identifier",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "e4927258-8a2b-48ef-b200-14660cfd98c0",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "webhooks",
+                    ":owner",
+                    ":repo",
+                    ":identifier",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "owner",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "repo",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "identifier",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-Api-Key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"events\": [\n    \"*\",\n    \"package.quarantined\"\n  ],\n  \"target_url\": \"http://Fr.pyth1e9Bq1HEBc\",\n  \"templates\": [\n    {\n      \"event\": \"<string>\",\n      \"template\": \"<string>\"\n    },\n    {\n      \"event\": \"<string>\",\n      \"template\": \"<string>\"\n    }\n  ],\n  \"created_at\": \"1959-02-18T06:55:26.171Z\",\n  \"created_by\": \"string\",\n  \"created_by_url\": \"https://eqiMAPRZJreInwkPVvczbDwJHNp.vkdGRe.LHMuYuB4+mxP3XGO4AA-9+\",\n  \"disable_reason\": 6,\n  \"disable_reason_str\": \"string\",\n  \"identifier\": 1369,\n  \"is_active\": false,\n  \"is_last_response_bad\": false,\n  \"last_response_status\": 3811,\n  \"last_response_status_str\": \"string\",\n  \"num_sent\": 4639,\n  \"package_query\": \"string\",\n  \"request_body_format\": 0,\n  \"request_body_format_str\": \"string\",\n  \"request_body_template_format\": 1,\n  \"request_body_template_format_str\": \"string\",\n  \"request_content_type\": \"string\",\n  \"secret_header\": \"GL6RWo4\",\n  \"self_url\": \"https://kw.vbIBIUXS84Byi4FwtkNi9Mv3h,FBMQ53KQPkcHKJu.xz84ONvCqQ.MmUi5d\",\n  \"slug_perm\": \"Iou\",\n  \"updated_at\": \"1985-07-23T10:36:21.079Z\",\n  \"updated_by\": \"string\",\n  \"updated_by_url\": \"http://UCQgDJEcBopgImuPXpFSShRT.axeEcZcIjlsNb46J3tFMDrK44hbgMdBKav2-yEX2bUpa,rkZ04qoZidkKME.\",\n  \"verify_ssl\": false\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "57ecc262-a614-4fef-82b9-b7e7aa9c685c",
+              "name": "Request could not be processed (see detail).",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "webhooks",
+                    ":owner",
+                    ":repo",
+                    ":identifier",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "owner",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "repo",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "identifier",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-Api-Key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"detail\": \"string\",\n  \"fields\": {\n    \"key_0\": [\n      \"string\",\n      \"str\"\n    ],\n    \"key_1\": [\n      \"string\",\n      \"string\"\n    ],\n    \"key_2\": [\n      \"string\",\n      \"string\"\n    ]\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "a8c1e843-a4b3-4204-b423-c1ac1efe3369",
+              "name": "Missing or invalid parameters (see detail).",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "webhooks",
+                    ":owner",
+                    ":repo",
+                    ":identifier",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "owner",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "repo",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "identifier",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-Api-Key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+              "code": 422,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"detail\": \"string\",\n  \"fields\": {\n    \"key_0\": [\n      \"string\",\n      \"str\"\n    ],\n    \"key_1\": [\n      \"string\",\n      \"string\"\n    ],\n    \"key_2\": [\n      \"string\",\n      \"string\"\n    ]\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "33a288eb-084c-4c55-8a7b-8fbe7ed79fa1",
+          "name": "Update a specific webhook in a repository.",
+          "request": {
+            "name": "Update a specific webhook in a repository.",
+            "description": {
+              "content": "Update a specific webhook in a repository.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "webhooks",
+                ":owner",
+                ":repo",
+                ":identifier",
+                ""
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "owner",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "repo",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "identifier",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PATCH",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"events\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"is_active\": \"<boolean>\",\n  \"package_query\": \"<string>\",\n  \"request_body_format\": \"<integer>\",\n  \"request_body_template_format\": \"<integer>\",\n  \"request_content_type\": \"<string>\",\n  \"secret_header\": \"<string>\",\n  \"secret_value\": \"<string>\",\n  \"signature_key\": \"<string>\",\n  \"target_url\": \"<uri>\",\n  \"templates\": [\n    {\n      \"event\": \"<string>\",\n      \"template\": \"<string>\"\n    },\n    {\n      \"event\": \"<string>\",\n      \"template\": \"<string>\"\n    }\n  ],\n  \"verify_ssl\": \"<boolean>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "43775520-4d36-4665-a024-edb7293b6f94",
+              "name": "Updated the specified webhook",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "webhooks",
+                    ":owner",
+                    ":repo",
+                    ":identifier",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "owner",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "repo",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "identifier",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-Api-Key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"events\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"is_active\": \"<boolean>\",\n  \"package_query\": \"<string>\",\n  \"request_body_format\": \"<integer>\",\n  \"request_body_template_format\": \"<integer>\",\n  \"request_content_type\": \"<string>\",\n  \"secret_header\": \"<string>\",\n  \"secret_value\": \"<string>\",\n  \"signature_key\": \"<string>\",\n  \"target_url\": \"<uri>\",\n  \"templates\": [\n    {\n      \"event\": \"<string>\",\n      \"template\": \"<string>\"\n    },\n    {\n      \"event\": \"<string>\",\n      \"template\": \"<string>\"\n    }\n  ],\n  \"verify_ssl\": \"<boolean>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"events\": [\n    \"*\",\n    \"package.quarantined\"\n  ],\n  \"target_url\": \"http://Fr.pyth1e9Bq1HEBc\",\n  \"templates\": [\n    {\n      \"event\": \"<string>\",\n      \"template\": \"<string>\"\n    },\n    {\n      \"event\": \"<string>\",\n      \"template\": \"<string>\"\n    }\n  ],\n  \"created_at\": \"1959-02-18T06:55:26.171Z\",\n  \"created_by\": \"string\",\n  \"created_by_url\": \"https://eqiMAPRZJreInwkPVvczbDwJHNp.vkdGRe.LHMuYuB4+mxP3XGO4AA-9+\",\n  \"disable_reason\": 6,\n  \"disable_reason_str\": \"string\",\n  \"identifier\": 1369,\n  \"is_active\": false,\n  \"is_last_response_bad\": false,\n  \"last_response_status\": 3811,\n  \"last_response_status_str\": \"string\",\n  \"num_sent\": 4639,\n  \"package_query\": \"string\",\n  \"request_body_format\": 0,\n  \"request_body_format_str\": \"string\",\n  \"request_body_template_format\": 1,\n  \"request_body_template_format_str\": \"string\",\n  \"request_content_type\": \"string\",\n  \"secret_header\": \"GL6RWo4\",\n  \"self_url\": \"https://kw.vbIBIUXS84Byi4FwtkNi9Mv3h,FBMQ53KQPkcHKJu.xz84ONvCqQ.MmUi5d\",\n  \"slug_perm\": \"Iou\",\n  \"updated_at\": \"1985-07-23T10:36:21.079Z\",\n  \"updated_by\": \"string\",\n  \"updated_by_url\": \"http://UCQgDJEcBopgImuPXpFSShRT.axeEcZcIjlsNb46J3tFMDrK44hbgMdBKav2-yEX2bUpa,rkZ04qoZidkKME.\",\n  \"verify_ssl\": false\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "53558aef-70f8-433a-afe8-a4d38c9247dd",
+              "name": "Request could not be processed (see detail).",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "webhooks",
+                    ":owner",
+                    ":repo",
+                    ":identifier",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "owner",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "repo",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "identifier",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-Api-Key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"events\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"is_active\": \"<boolean>\",\n  \"package_query\": \"<string>\",\n  \"request_body_format\": \"<integer>\",\n  \"request_body_template_format\": \"<integer>\",\n  \"request_content_type\": \"<string>\",\n  \"secret_header\": \"<string>\",\n  \"secret_value\": \"<string>\",\n  \"signature_key\": \"<string>\",\n  \"target_url\": \"<uri>\",\n  \"templates\": [\n    {\n      \"event\": \"<string>\",\n      \"template\": \"<string>\"\n    },\n    {\n      \"event\": \"<string>\",\n      \"template\": \"<string>\"\n    }\n  ],\n  \"verify_ssl\": \"<boolean>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"detail\": \"string\",\n  \"fields\": {\n    \"key_0\": [\n      \"string\",\n      \"str\"\n    ],\n    \"key_1\": [\n      \"string\",\n      \"string\"\n    ],\n    \"key_2\": [\n      \"string\",\n      \"string\"\n    ]\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "4baeff89-4a6c-467b-aa6b-e305197c38e2",
+              "name": "Owner namespace or repository not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "webhooks",
+                    ":owner",
+                    ":repo",
+                    ":identifier",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "owner",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "repo",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "identifier",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-Api-Key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"events\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"is_active\": \"<boolean>\",\n  \"package_query\": \"<string>\",\n  \"request_body_format\": \"<integer>\",\n  \"request_body_template_format\": \"<integer>\",\n  \"request_content_type\": \"<string>\",\n  \"secret_header\": \"<string>\",\n  \"secret_value\": \"<string>\",\n  \"signature_key\": \"<string>\",\n  \"target_url\": \"<uri>\",\n  \"templates\": [\n    {\n      \"event\": \"<string>\",\n      \"template\": \"<string>\"\n    },\n    {\n      \"event\": \"<string>\",\n      \"template\": \"<string>\"\n    }\n  ],\n  \"verify_ssl\": \"<boolean>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"detail\": \"string\",\n  \"fields\": {\n    \"key_0\": [\n      \"string\",\n      \"str\"\n    ],\n    \"key_1\": [\n      \"string\",\n      \"string\"\n    ],\n    \"key_2\": [\n      \"string\",\n      \"string\"\n    ]\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "48a20982-aacc-4496-b6be-a1b85923f833",
+              "name": "Missing or invalid parameters (see detail).",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "webhooks",
+                    ":owner",
+                    ":repo",
+                    ":identifier",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "owner",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "repo",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "identifier",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-Api-Key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"events\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"is_active\": \"<boolean>\",\n  \"package_query\": \"<string>\",\n  \"request_body_format\": \"<integer>\",\n  \"request_body_template_format\": \"<integer>\",\n  \"request_content_type\": \"<string>\",\n  \"secret_header\": \"<string>\",\n  \"secret_value\": \"<string>\",\n  \"signature_key\": \"<string>\",\n  \"target_url\": \"<uri>\",\n  \"templates\": [\n    {\n      \"event\": \"<string>\",\n      \"template\": \"<string>\"\n    },\n    {\n      \"event\": \"<string>\",\n      \"template\": \"<string>\"\n    }\n  ],\n  \"verify_ssl\": \"<boolean>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+              "code": 422,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"detail\": \"string\",\n  \"fields\": {\n    \"key_0\": [\n      \"string\",\n      \"str\"\n    ],\n    \"key_1\": [\n      \"string\",\n      \"string\"\n    ],\n    \"key_2\": [\n      \"string\",\n      \"string\"\n    ]\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "8f44cf03-4827-4b0d-b62e-26b2fdfc5e09",
+          "name": "Delete a specific webhook in a repository.",
+          "request": {
+            "name": "Delete a specific webhook in a repository.",
+            "description": {
+              "content": "Delete a specific webhook in a repository.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "webhooks",
+                ":owner",
+                ":repo",
+                ":identifier",
+                ""
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "owner",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "repo",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "identifier",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "DELETE",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "c5b100be-0cde-433c-bb38-f4345b11bb35",
+              "name": "Deleted the specified webhook successfully.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "webhooks",
+                    ":owner",
+                    ":repo",
+                    ":identifier",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "owner",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "repo",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "identifier",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-Api-Key",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "No Content",
+              "code": 204,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "a2c1e8af-54f6-450d-b53e-f14dc59fb2fe",
+              "name": "The webhook cannot be deleted.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "webhooks",
+                    ":owner",
+                    ":repo",
+                    ":identifier",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "owner",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "repo",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "identifier",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-Api-Key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"detail\": \"string\",\n  \"fields\": {\n    \"key_0\": [\n      \"string\",\n      \"str\"\n    ],\n    \"key_1\": [\n      \"string\",\n      \"string\"\n    ],\n    \"key_2\": [\n      \"string\",\n      \"string\"\n    ]\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "0d47d253-15f8-42c1-813e-9b5863c91888",
+              "name": "Missing or invalid parameters (see detail).",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "webhooks",
+                    ":owner",
+                    ":repo",
+                    ":identifier",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "owner",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "repo",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "identifier",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-Api-Key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+              "code": 422,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"detail\": \"string\",\n  \"fields\": {\n    \"key_0\": [\n      \"string\",\n      \"str\"\n    ],\n    \"key_1\": [\n      \"string\",\n      \"string\"\n    ],\n    \"key_2\": [\n      \"string\",\n      \"string\"\n    ]\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.cloudsmith.io",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      {
+        "key": "key",
+        "value": "X-Api-Key"
+      },
+      {
+        "key": "value",
+        "value": "{{apiKey}}"
+      },
+      {
+        "key": "in",
+        "value": "header"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "9431a3bb-80cf-4c61-8dcb-840441a18342",
+    "name": "Cloudsmith API (v1) audit-log webhooks API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "The API to the Cloudsmith Service\n\nContact Support:\n Name: Cloudsmith Support\n Email: support@cloudsmith.io",
+      "type": "text/plain"
+    }
+  }
+}

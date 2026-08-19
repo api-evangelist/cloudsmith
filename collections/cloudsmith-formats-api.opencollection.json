@@ -1,0 +1,47 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Cloudsmith API (v1) audit-log formats API",
+    "version": "v1"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "formats",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get a list of all supported package formats.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/formats/"
+          },
+          "docs": "Get a list of all supported package formats."
+        },
+        {
+          "info": {
+            "name": "Get a specific supported package format.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/formats/:slug/",
+            "params": [
+              {
+                "name": "slug",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Get a specific supported package format."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

@@ -1,0 +1,389 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Cloudsmith API (v1) audit-log entitlements API",
+    "version": "v1"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "entitlements",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get a list of all entitlements in a repository.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/entitlements/:owner/:repo/",
+            "params": [
+              {
+                "name": "owner",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "repo",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "page",
+                "value": "",
+                "type": "query",
+                "description": "A page number within the paginated result set."
+              },
+              {
+                "name": "page_size",
+                "value": "",
+                "type": "query",
+                "description": "Number of results to return per page."
+              },
+              {
+                "name": "show_tokens",
+                "value": "",
+                "type": "query",
+                "description": "Show entitlement token strings in results"
+              },
+              {
+                "name": "query",
+                "value": "",
+                "type": "query",
+                "description": "A search term for querying names of entitlements."
+              },
+              {
+                "name": "active",
+                "value": "",
+                "type": "query",
+                "description": "If true, only include active tokens"
+              },
+              {
+                "name": "sort",
+                "value": "",
+                "type": "query",
+                "description": "A field for sorting objects in ascending or descending order. Use `-` prefix for descending order (e.g., `-name`). Available options: name."
+              }
+            ]
+          },
+          "docs": "Get a list of all entitlements in a repository."
+        },
+        {
+          "info": {
+            "name": "Create a specific entitlement in a repository.",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/entitlements/:owner/:repo/",
+            "params": [
+              {
+                "name": "owner",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "repo",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "show_tokens",
+                "value": "",
+                "type": "query",
+                "description": "Show entitlement token strings in results"
+              }
+            ]
+          },
+          "docs": "Create a specific entitlement in a repository."
+        },
+        {
+          "info": {
+            "name": "Synchronise tokens from a source repository.",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/entitlements/:owner/:repo/sync/",
+            "params": [
+              {
+                "name": "owner",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "repo",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "show_tokens",
+                "value": "",
+                "type": "query",
+                "description": "Show entitlement token strings in results"
+              }
+            ]
+          },
+          "docs": "Synchronise tokens from a source repository."
+        },
+        {
+          "info": {
+            "name": "Get a specific entitlement in a repository.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/entitlements/:owner/:repo/:identifier/",
+            "params": [
+              {
+                "name": "owner",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "repo",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "identifier",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "fuzzy",
+                "value": "",
+                "type": "query",
+                "description": "If true, entitlement identifiers including name will be fuzzy matched."
+              },
+              {
+                "name": "show_tokens",
+                "value": "",
+                "type": "query",
+                "description": "Show entitlement token strings in results"
+              }
+            ]
+          },
+          "docs": "Get a specific entitlement in a repository."
+        },
+        {
+          "info": {
+            "name": "Update a specific entitlement in a repository.",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "{{baseUrl}}/entitlements/:owner/:repo/:identifier/",
+            "params": [
+              {
+                "name": "owner",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "repo",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "identifier",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "show_tokens",
+                "value": "",
+                "type": "query",
+                "description": "Show entitlement token strings in results"
+              }
+            ]
+          },
+          "docs": "Update a specific entitlement in a repository."
+        },
+        {
+          "info": {
+            "name": "Delete a specific entitlement in a repository.",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "{{baseUrl}}/entitlements/:owner/:repo/:identifier/",
+            "params": [
+              {
+                "name": "owner",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "repo",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "identifier",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Delete a specific entitlement in a repository."
+        },
+        {
+          "info": {
+            "name": "Disable an entitlement token in a repository.",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/entitlements/:owner/:repo/:identifier/disable/",
+            "params": [
+              {
+                "name": "owner",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "repo",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "identifier",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Disable an entitlement token in a repository."
+        },
+        {
+          "info": {
+            "name": "Enable an entitlement token in a repository.",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/entitlements/:owner/:repo/:identifier/enable/",
+            "params": [
+              {
+                "name": "owner",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "repo",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "identifier",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Enable an entitlement token in a repository."
+        },
+        {
+          "info": {
+            "name": "Refresh an entitlement token in a repository.",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/entitlements/:owner/:repo/:identifier/refresh/",
+            "params": [
+              {
+                "name": "owner",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "repo",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "identifier",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "show_tokens",
+                "value": "",
+                "type": "query",
+                "description": "Show entitlement token strings in results"
+              }
+            ]
+          },
+          "docs": "Refresh an entitlement token in a repository."
+        },
+        {
+          "info": {
+            "name": "Reset the statistics for an entitlement token in a repository.",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/entitlements/:owner/:repo/:identifier/reset/",
+            "params": [
+              {
+                "name": "owner",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "repo",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "identifier",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "show_tokens",
+                "value": "",
+                "type": "query",
+                "description": "Show entitlement token strings in results"
+              }
+            ]
+          },
+          "docs": "Reset the statistics for an entitlement token in a repository."
+        },
+        {
+          "info": {
+            "name": "Set private broadcast access for an entitlement token in a repository.",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/entitlements/:owner/:repo/:identifier/toggle-private-broadcasts/",
+            "params": [
+              {
+                "name": "owner",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "repo",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "identifier",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Set private broadcast access for an entitlement token in a repository."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

@@ -1,0 +1,1818 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Cloudsmith API (v1) audit-log orgs API",
+    "version": "v1"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "orgs",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get a list of all the organizations you are associated with.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/orgs/",
+            "params": [
+              {
+                "name": "page",
+                "value": "",
+                "type": "query",
+                "description": "A page number within the paginated result set."
+              },
+              {
+                "name": "page_size",
+                "value": "",
+                "type": "query",
+                "description": "Number of results to return per page."
+              }
+            ]
+          },
+          "docs": "Get a list of all the organizations you are associated with."
+        },
+        {
+          "info": {
+            "name": "Get the details for the specific organization.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/orgs/:org/",
+            "params": [
+              {
+                "name": "org",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Get the details for the specific organization."
+        },
+        {
+          "info": {
+            "name": "Delete the specified organization.",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "{{baseUrl}}/orgs/:org/",
+            "params": [
+              {
+                "name": "org",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Delete the specified organization."
+        },
+        {
+          "info": {
+            "name": "Get a list of all package deny policies.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/orgs/:org/deny-policy/",
+            "params": [
+              {
+                "name": "org",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "page",
+                "value": "",
+                "type": "query",
+                "description": "A page number within the paginated result set."
+              },
+              {
+                "name": "page_size",
+                "value": "",
+                "type": "query",
+                "description": "Number of results to return per page."
+              }
+            ]
+          },
+          "docs": "Get a list of all package deny policies."
+        },
+        {
+          "info": {
+            "name": "Create a package deny policy.",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/orgs/:org/deny-policy/",
+            "params": [
+              {
+                "name": "org",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Create a package deny policy."
+        },
+        {
+          "info": {
+            "name": "Get a package deny policy.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/orgs/:org/deny-policy/:slug_perm/",
+            "params": [
+              {
+                "name": "org",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "slug_perm",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Get a package deny policy."
+        },
+        {
+          "info": {
+            "name": "Update a package deny policy.",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "{{baseUrl}}/orgs/:org/deny-policy/:slug_perm/",
+            "params": [
+              {
+                "name": "org",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "slug_perm",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Update a package deny policy."
+        },
+        {
+          "info": {
+            "name": "Partially update a package deny policy.",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "{{baseUrl}}/orgs/:org/deny-policy/:slug_perm/",
+            "params": [
+              {
+                "name": "org",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "slug_perm",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Partially update a package deny policy."
+        },
+        {
+          "info": {
+            "name": "Delete a package deny policy.",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "{{baseUrl}}/orgs/:org/deny-policy/:slug_perm/",
+            "params": [
+              {
+                "name": "org",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "slug_perm",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Delete a package deny policy."
+        },
+        {
+          "info": {
+            "name": "Get a list of all invites for an organization.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/orgs/:org/invites/",
+            "params": [
+              {
+                "name": "org",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "page",
+                "value": "",
+                "type": "query",
+                "description": "A page number within the paginated result set."
+              },
+              {
+                "name": "page_size",
+                "value": "",
+                "type": "query",
+                "description": "Number of results to return per page."
+              }
+            ]
+          },
+          "docs": "Get a list of all invites for an organization."
+        },
+        {
+          "info": {
+            "name": "Create an organization invite for a specific user",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/orgs/:org/invites/",
+            "params": [
+              {
+                "name": "org",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Create an organization invite for a specific user"
+        },
+        {
+          "info": {
+            "name": "Update a specific organization invite.",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "{{baseUrl}}/orgs/:org/invites/:slug_perm/",
+            "params": [
+              {
+                "name": "org",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "slug_perm",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Update a specific organization invite."
+        },
+        {
+          "info": {
+            "name": "Delete a specific organization invite",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "{{baseUrl}}/orgs/:org/invites/:slug_perm/",
+            "params": [
+              {
+                "name": "org",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "slug_perm",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Delete a specific organization invite"
+        },
+        {
+          "info": {
+            "name": "Extend an organization invite.",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/orgs/:org/invites/:slug_perm/extend/",
+            "params": [
+              {
+                "name": "org",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "slug_perm",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Extend an organization invite."
+        },
+        {
+          "info": {
+            "name": "Resend an organization invite.",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/orgs/:org/invites/:slug_perm/resend/",
+            "params": [
+              {
+                "name": "org",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "slug_perm",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Resend an organization invite."
+        },
+        {
+          "info": {
+            "name": "List all current license policy violations for this Organization.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/orgs/:org/license-policy-violation/",
+            "params": [
+              {
+                "name": "org",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "cursor",
+                "value": "",
+                "type": "query",
+                "description": "The pagination cursor value."
+              },
+              {
+                "name": "page_size",
+                "value": "",
+                "type": "query",
+                "description": "Number of results to return per page."
+              }
+            ]
+          },
+          "docs": "List all current license policy violations for this Organization."
+        },
+        {
+          "info": {
+            "name": "Get a list of all package license policies.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/orgs/:org/license-policy/",
+            "params": [
+              {
+                "name": "org",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "page",
+                "value": "",
+                "type": "query",
+                "description": "A page number within the paginated result set."
+              },
+              {
+                "name": "page_size",
+                "value": "",
+                "type": "query",
+                "description": "Number of results to return per page."
+              }
+            ]
+          },
+          "docs": "Get a list of all package license policies."
+        },
+        {
+          "info": {
+            "name": "Create a package license policy.",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/orgs/:org/license-policy/",
+            "params": [
+              {
+                "name": "org",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Create a package license policy."
+        },
+        {
+          "info": {
+            "name": "List evaluation requests for this policy.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/orgs/:org/license-policy/:policy_slug_perm/evaluation/",
+            "params": [
+              {
+                "name": "org",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "policy_slug_perm",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "page",
+                "value": "",
+                "type": "query",
+                "description": "A page number within the paginated result set."
+              },
+              {
+                "name": "page_size",
+                "value": "",
+                "type": "query",
+                "description": "Number of results to return per page."
+              }
+            ]
+          },
+          "docs": "List evaluation requests for this policy."
+        },
+        {
+          "info": {
+            "name": "Create an evaluation request for this policy.",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/orgs/:org/license-policy/:policy_slug_perm/evaluation/",
+            "params": [
+              {
+                "name": "org",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "policy_slug_perm",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Create an evaluation request for this policy."
+        },
+        {
+          "info": {
+            "name": "Retrieve an evaluation request for this policy.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/orgs/:org/license-policy/:policy_slug_perm/evaluation/:slug_perm/",
+            "params": [
+              {
+                "name": "org",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "policy_slug_perm",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "slug_perm",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Retrieve an evaluation request for this policy."
+        },
+        {
+          "info": {
+            "name": "Get a package license policy.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/orgs/:org/license-policy/:slug_perm/",
+            "params": [
+              {
+                "name": "org",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "slug_perm",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Get a package license policy."
+        },
+        {
+          "info": {
+            "name": "Update a package license policy.",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "{{baseUrl}}/orgs/:org/license-policy/:slug_perm/",
+            "params": [
+              {
+                "name": "org",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "slug_perm",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Update a package license policy."
+        },
+        {
+          "info": {
+            "name": "Partially update a package license policy.",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "{{baseUrl}}/orgs/:org/license-policy/:slug_perm/",
+            "params": [
+              {
+                "name": "org",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "slug_perm",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Partially update a package license policy."
+        },
+        {
+          "info": {
+            "name": "Delete a package license policy.",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "{{baseUrl}}/orgs/:org/license-policy/:slug_perm/",
+            "params": [
+              {
+                "name": "org",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "slug_perm",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Delete a package license policy."
+        },
+        {
+          "info": {
+            "name": "Get the details for all organization members.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/orgs/:org/members/",
+            "params": [
+              {
+                "name": "org",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "page",
+                "value": "",
+                "type": "query",
+                "description": "A page number within the paginated result set."
+              },
+              {
+                "name": "page_size",
+                "value": "",
+                "type": "query",
+                "description": "Number of results to return per page."
+              },
+              {
+                "name": "is_active",
+                "value": "",
+                "type": "query",
+                "description": "Filter for active/inactive users."
+              },
+              {
+                "name": "query",
+                "value": "",
+                "type": "query",
+                "description": "A search term for querying of members within an Organization.Available options are: email, org, user, userslug, inactive, user_name, role"
+              },
+              {
+                "name": "sort",
+                "value": "",
+                "type": "query",
+                "description": "A field for sorting objects in ascending or descending order. Use `-` prefix for descending order (e.g., `-user_name`). Available options: user_name, role."
+              }
+            ]
+          },
+          "docs": "Get the details for all organization members."
+        },
+        {
+          "info": {
+            "name": "Get the details for a specific organization member.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/orgs/:org/members/:member/",
+            "params": [
+              {
+                "name": "org",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "member",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Get the details for a specific organization member."
+        },
+        {
+          "info": {
+            "name": "Views for working with organization members.",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "{{baseUrl}}/orgs/:org/members/:member/",
+            "params": [
+              {
+                "name": "org",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "member",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Views for working with organization members."
+        },
+        {
+          "info": {
+            "name": "Removes a member from the organization.",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "{{baseUrl}}/orgs/:org/members/:member/",
+            "params": [
+              {
+                "name": "org",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "member",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Removes a member from the organization."
+        },
+        {
+          "info": {
+            "name": "Refresh a member of the organization's API key.",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/orgs/:org/members/:member/refresh/",
+            "params": [
+              {
+                "name": "org",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "member",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Refresh a member of the organization's API key."
+        },
+        {
+          "info": {
+            "name": "Removes a member from the organization (deprecated, use DELETE instead).",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/orgs/:org/members/:member/remove/",
+            "params": [
+              {
+                "name": "org",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "member",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Removes a member from the organization (deprecated, use DELETE instead)."
+        },
+        {
+          "info": {
+            "name": "Update a member's role in the organization.",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "{{baseUrl}}/orgs/:org/members/:member/update-role/",
+            "params": [
+              {
+                "name": "org",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "member",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Update a member's role in the organization."
+        },
+        {
+          "info": {
+            "name": "Update a member's visibility in the organization.",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "{{baseUrl}}/orgs/:org/members/:member/update-visibility/",
+            "params": [
+              {
+                "name": "org",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "member",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Update a member's visibility in the organization."
+        },
+        {
+          "info": {
+            "name": "Retrieve the list of OpenID Connect provider settings for the org.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/orgs/:org/openid-connect/",
+            "params": [
+              {
+                "name": "org",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "page",
+                "value": "",
+                "type": "query",
+                "description": "A page number within the paginated result set."
+              },
+              {
+                "name": "page_size",
+                "value": "",
+                "type": "query",
+                "description": "Number of results to return per page."
+              },
+              {
+                "name": "query",
+                "value": "",
+                "type": "query",
+                "description": "A search term for querying of OpenID Connect (OIDC) provider settings.Available options are: name, provider_url, service_account"
+              },
+              {
+                "name": "sort",
+                "value": "",
+                "type": "query",
+                "description": "A field for sorting objects in ascending or descending order. Use `-` prefix for descending order (e.g., `-name`). Available options: name."
+              }
+            ]
+          },
+          "docs": "Retrieve the list of OpenID Connect provider settings for the org."
+        },
+        {
+          "info": {
+            "name": "Create the OpenID Connect provider settings for the org.",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/orgs/:org/openid-connect/",
+            "params": [
+              {
+                "name": "org",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Create the OpenID Connect provider settings for the org."
+        },
+        {
+          "info": {
+            "name": "Retrieve the list of OpenID Connect dynamic mappings for the provider setting.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/orgs/:org/openid-connect/:provider_setting/dynamic-mappings/",
+            "params": [
+              {
+                "name": "org",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "provider_setting",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "page",
+                "value": "",
+                "type": "query",
+                "description": "A page number within the paginated result set."
+              },
+              {
+                "name": "page_size",
+                "value": "",
+                "type": "query",
+                "description": "Number of results to return per page."
+              }
+            ]
+          },
+          "docs": "Retrieve the list of OpenID Connect dynamic mappings for the provider setting."
+        },
+        {
+          "info": {
+            "name": "Retrieve a specific OpenID Connect dynamic mapping for the provider setting.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/orgs/:org/openid-connect/:provider_setting/dynamic-mappings/:claim_value/",
+            "params": [
+              {
+                "name": "org",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "provider_setting",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "claim_value",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Retrieve a specific OpenID Connect dynamic mapping for the provider setting."
+        },
+        {
+          "info": {
+            "name": "Retrieve a specific OpenID Connect provider setting for the org.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/orgs/:org/openid-connect/:slug_perm/",
+            "params": [
+              {
+                "name": "org",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "slug_perm",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Retrieve a specific OpenID Connect provider setting for the org."
+        },
+        {
+          "info": {
+            "name": "Update a specific OpenID Connect provider setting for the org.",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "{{baseUrl}}/orgs/:org/openid-connect/:slug_perm/",
+            "params": [
+              {
+                "name": "org",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "slug_perm",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Update a specific OpenID Connect provider setting for the org."
+        },
+        {
+          "info": {
+            "name": "Update a specific OpenID Connect provider setting for the org.",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "{{baseUrl}}/orgs/:org/openid-connect/:slug_perm/",
+            "params": [
+              {
+                "name": "org",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "slug_perm",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Update a specific OpenID Connect provider setting for the org."
+        },
+        {
+          "info": {
+            "name": "Delete a specific OpenID Connect provider setting for the org.",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "{{baseUrl}}/orgs/:org/openid-connect/:slug_perm/",
+            "params": [
+              {
+                "name": "org",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "slug_perm",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Delete a specific OpenID Connect provider setting for the org."
+        },
+        {
+          "info": {
+            "name": "Retrieve the SAML Authentication settings for this Organization.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/orgs/:org/saml-authentication",
+            "params": [
+              {
+                "name": "org",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Retrieve the SAML Authentication settings for this Organization."
+        },
+        {
+          "info": {
+            "name": "Update the SAML Authentication settings for this Organization.",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "{{baseUrl}}/orgs/:org/saml-authentication",
+            "params": [
+              {
+                "name": "org",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Update the SAML Authentication settings for this Organization."
+        },
+        {
+          "info": {
+            "name": "Get the details of all SAML Group Sync mapping within an organization.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/orgs/:org/saml-group-sync/",
+            "params": [
+              {
+                "name": "org",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "page",
+                "value": "",
+                "type": "query",
+                "description": "A page number within the paginated result set."
+              },
+              {
+                "name": "page_size",
+                "value": "",
+                "type": "query",
+                "description": "Number of results to return per page."
+              }
+            ]
+          },
+          "docs": "Get the details of all SAML Group Sync mapping within an organization."
+        },
+        {
+          "info": {
+            "name": "Create a new SAML Group Sync mapping within an organization.",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/orgs/:org/saml-group-sync/",
+            "params": [
+              {
+                "name": "org",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Create a new SAML Group Sync mapping within an organization."
+        },
+        {
+          "info": {
+            "name": "Disable SAML Group Sync for this organization.",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/orgs/:org/saml-group-sync/disable/",
+            "params": [
+              {
+                "name": "org",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Disable SAML Group Sync for this organization."
+        },
+        {
+          "info": {
+            "name": "Enable SAML Group Sync for this organization.",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/orgs/:org/saml-group-sync/enable/",
+            "params": [
+              {
+                "name": "org",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Enable SAML Group Sync for this organization."
+        },
+        {
+          "info": {
+            "name": "Retrieve the SAML Group Sync status for this organization.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/orgs/:org/saml-group-sync/status/",
+            "params": [
+              {
+                "name": "org",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Retrieve the SAML Group Sync status for this organization."
+        },
+        {
+          "info": {
+            "name": "Delete a SAML Group Sync mapping from an organization.",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "{{baseUrl}}/orgs/:org/saml-group-sync/:slug_perm/",
+            "params": [
+              {
+                "name": "org",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "slug_perm",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Delete a SAML Group Sync mapping from an organization."
+        },
+        {
+          "info": {
+            "name": "Get a list of all services within an organization.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/orgs/:org/services/",
+            "params": [
+              {
+                "name": "org",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "page",
+                "value": "",
+                "type": "query",
+                "description": "A page number within the paginated result set."
+              },
+              {
+                "name": "page_size",
+                "value": "",
+                "type": "query",
+                "description": "Number of results to return per page."
+              },
+              {
+                "name": "query",
+                "value": "",
+                "type": "query",
+                "description": "A search term for querying of services within an Organization.Available options are: name, role"
+              },
+              {
+                "name": "sort",
+                "value": "",
+                "type": "query",
+                "description": "A field for sorting objects in ascending or descending order. Use `-` prefix for descending order (e.g., `-created_at`). Available options: created_at, name, role."
+              }
+            ]
+          },
+          "docs": "Get a list of all services within an organization."
+        },
+        {
+          "info": {
+            "name": "Create a service within an organization.",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/orgs/:org/services/",
+            "params": [
+              {
+                "name": "org",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Create a service within an organization."
+        },
+        {
+          "info": {
+            "name": "Retrieve details of a single service within an organization.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/orgs/:org/services/:service/",
+            "params": [
+              {
+                "name": "org",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "service",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Retrieve details of a single service within an organization."
+        },
+        {
+          "info": {
+            "name": "Update a service within an organization.",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "{{baseUrl}}/orgs/:org/services/:service/",
+            "params": [
+              {
+                "name": "org",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "service",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Update a service within an organization."
+        },
+        {
+          "info": {
+            "name": "Delete a specific service",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "{{baseUrl}}/orgs/:org/services/:service/",
+            "params": [
+              {
+                "name": "org",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "service",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Delete a specific service"
+        },
+        {
+          "info": {
+            "name": "Refresh service API token.",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/orgs/:org/services/:service/refresh/",
+            "params": [
+              {
+                "name": "org",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "service",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Refresh service API token."
+        },
+        {
+          "info": {
+            "name": "Get the details of all teams within an organization.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/orgs/:org/teams/",
+            "params": [
+              {
+                "name": "org",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "page",
+                "value": "",
+                "type": "query",
+                "description": "A page number within the paginated result set."
+              },
+              {
+                "name": "page_size",
+                "value": "",
+                "type": "query",
+                "description": "Number of results to return per page."
+              },
+              {
+                "name": "for_user",
+                "value": "",
+                "type": "query",
+                "description": "Filter for teams that you are a member of."
+              },
+              {
+                "name": "query",
+                "value": "",
+                "type": "query",
+                "description": "A search term for querying of teams within an Organization.Available options are: name, slug, user, userslug"
+              },
+              {
+                "name": "sort",
+                "value": "",
+                "type": "query",
+                "description": "A field for sorting objects in ascending or descending order. Use `-` prefix for descending order (e.g., `-name`). Available options: name, members."
+              }
+            ]
+          },
+          "docs": "Get the details of all teams within an organization."
+        },
+        {
+          "info": {
+            "name": "Create a team for this organization.",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/orgs/:org/teams/",
+            "params": [
+              {
+                "name": "org",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Create a team for this organization."
+        },
+        {
+          "info": {
+            "name": "Get the details of a specific team within an organization.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/orgs/:org/teams/:team/",
+            "params": [
+              {
+                "name": "org",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "team",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Get the details of a specific team within an organization."
+        },
+        {
+          "info": {
+            "name": "Update a specific team in a organization.",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "{{baseUrl}}/orgs/:org/teams/:team/",
+            "params": [
+              {
+                "name": "org",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "team",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Update a specific team in a organization."
+        },
+        {
+          "info": {
+            "name": "Delete a specific team in a organization.",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "{{baseUrl}}/orgs/:org/teams/:team/",
+            "params": [
+              {
+                "name": "org",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "team",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Delete a specific team in a organization."
+        },
+        {
+          "info": {
+            "name": "List all members for the team.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/orgs/:org/teams/:team/members",
+            "params": [
+              {
+                "name": "org",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "team",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "user_kind",
+                "value": "",
+                "type": "query",
+                "description": "Filter accounts by type. Possible values are 'user' and 'service'. If not provided, only users are returned."
+              }
+            ]
+          },
+          "docs": "List all members for the team."
+        },
+        {
+          "info": {
+            "name": "Add users to a team.",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/orgs/:org/teams/:team/members",
+            "params": [
+              {
+                "name": "org",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "team",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Add users to a team."
+        },
+        {
+          "info": {
+            "name": "Replace all team members.",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "{{baseUrl}}/orgs/:org/teams/:team/members",
+            "params": [
+              {
+                "name": "org",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "team",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Replace all team members."
+        },
+        {
+          "info": {
+            "name": "List all current vulnerability policy violations for this Organization.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/orgs/:org/vulnerability-policy-violation/",
+            "params": [
+              {
+                "name": "org",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "cursor",
+                "value": "",
+                "type": "query",
+                "description": "The pagination cursor value."
+              },
+              {
+                "name": "page_size",
+                "value": "",
+                "type": "query",
+                "description": "Number of results to return per page."
+              }
+            ]
+          },
+          "docs": "List all current vulnerability policy violations for this Organization."
+        },
+        {
+          "info": {
+            "name": "Get a list of all package vulnerability policies.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/orgs/:org/vulnerability-policy/",
+            "params": [
+              {
+                "name": "org",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "page",
+                "value": "",
+                "type": "query",
+                "description": "A page number within the paginated result set."
+              },
+              {
+                "name": "page_size",
+                "value": "",
+                "type": "query",
+                "description": "Number of results to return per page."
+              }
+            ]
+          },
+          "docs": "Get a list of all package vulnerability policies."
+        },
+        {
+          "info": {
+            "name": "Create a package vulnerability policy.",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/orgs/:org/vulnerability-policy/",
+            "params": [
+              {
+                "name": "org",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Create a package vulnerability policy."
+        },
+        {
+          "info": {
+            "name": "List evaluation requests for this policy.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/orgs/:org/vulnerability-policy/:policy_slug_perm/evaluation/",
+            "params": [
+              {
+                "name": "org",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "policy_slug_perm",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "page",
+                "value": "",
+                "type": "query",
+                "description": "A page number within the paginated result set."
+              },
+              {
+                "name": "page_size",
+                "value": "",
+                "type": "query",
+                "description": "Number of results to return per page."
+              }
+            ]
+          },
+          "docs": "List evaluation requests for this policy."
+        },
+        {
+          "info": {
+            "name": "Create an evaluation request for this policy.",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/orgs/:org/vulnerability-policy/:policy_slug_perm/evaluation/",
+            "params": [
+              {
+                "name": "org",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "policy_slug_perm",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Create an evaluation request for this policy."
+        },
+        {
+          "info": {
+            "name": "Retrieve an evaluation request for this policy.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/orgs/:org/vulnerability-policy/:policy_slug_perm/evaluation/:slug_perm/",
+            "params": [
+              {
+                "name": "org",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "policy_slug_perm",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "slug_perm",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Retrieve an evaluation request for this policy."
+        },
+        {
+          "info": {
+            "name": "Get a package vulnerability policy.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/orgs/:org/vulnerability-policy/:slug_perm/",
+            "params": [
+              {
+                "name": "org",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "slug_perm",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Get a package vulnerability policy."
+        },
+        {
+          "info": {
+            "name": "Update a package vulnerability policy.",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "{{baseUrl}}/orgs/:org/vulnerability-policy/:slug_perm/",
+            "params": [
+              {
+                "name": "org",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "slug_perm",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Update a package vulnerability policy."
+        },
+        {
+          "info": {
+            "name": "Partially update a package vulnerability policy.",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "{{baseUrl}}/orgs/:org/vulnerability-policy/:slug_perm/",
+            "params": [
+              {
+                "name": "org",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "slug_perm",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Partially update a package vulnerability policy."
+        },
+        {
+          "info": {
+            "name": "Delete a package vulnerability policy.",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "{{baseUrl}}/orgs/:org/vulnerability-policy/:slug_perm/",
+            "params": [
+              {
+                "name": "org",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "slug_perm",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Delete a package vulnerability policy."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

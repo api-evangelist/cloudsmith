@@ -1,0 +1,127 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Cloudsmith API (v1) audit-log badges API",
+    "version": "v1"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "badges",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get latest package version for a package or package group.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/badges/version/:owner/:repo/:package_format/:package_name/:package_version/:package_identifiers/",
+            "params": [
+              {
+                "name": "owner",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "repo",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "package_format",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "package_name",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "package_version",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "package_identifiers",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "badge_token",
+                "value": "",
+                "type": "query",
+                "description": "Badge token to authenticate for private packages"
+              },
+              {
+                "name": "cacheSeconds",
+                "value": "",
+                "type": "query",
+                "description": "Override the shields.io badge cacheSeconds value."
+              },
+              {
+                "name": "color",
+                "value": "",
+                "type": "query",
+                "description": "Override the shields.io badge color value."
+              },
+              {
+                "name": "label",
+                "value": "",
+                "type": "query",
+                "description": "Override the shields.io badge label value."
+              },
+              {
+                "name": "labelColor",
+                "value": "",
+                "type": "query",
+                "description": "Override the shields.io badge labelColor value."
+              },
+              {
+                "name": "logoColor",
+                "value": "",
+                "type": "query",
+                "description": "Override the shields.io badge logoColor value."
+              },
+              {
+                "name": "logoWidth",
+                "value": "",
+                "type": "query",
+                "description": "Override the shields.io badge logoWidth value."
+              },
+              {
+                "name": "render",
+                "value": "",
+                "type": "query",
+                "description": "If true, badge will be rendered"
+              },
+              {
+                "name": "shields",
+                "value": "",
+                "type": "query",
+                "description": "If true, a shields response will be generated"
+              },
+              {
+                "name": "show_latest",
+                "value": "",
+                "type": "query",
+                "description": "If true, for latest version badges a '(latest)' suffix is added"
+              },
+              {
+                "name": "style",
+                "value": "",
+                "type": "query",
+                "description": "Override the shields.io badge style value."
+              }
+            ]
+          },
+          "docs": "Get latest package version for a package or package group."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

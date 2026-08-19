@@ -1,0 +1,29 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Cloudsmith API (v1) audit-log status API",
+    "version": "v1"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "status",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Endpoint to check basic API connectivity.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/status/check/basic/"
+          },
+          "docs": "Endpoint to check basic API connectivity."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

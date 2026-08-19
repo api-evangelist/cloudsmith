@@ -1,0 +1,619 @@
+{
+  "item": [
+    {
+      "id": "a241b5cf-4355-45ac-ac06-e4cdcd274212",
+      "name": "badges",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "a27fa43e-d3c5-48fd-ad8c-c7ce7ec273c9",
+          "name": "Get latest package version for a package or package group.",
+          "request": {
+            "name": "Get latest package version for a package or package group.",
+            "description": {
+              "content": "Get latest package version for a package or package group.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "badges",
+                "version",
+                ":owner",
+                ":repo",
+                ":package_format",
+                ":package_name",
+                ":package_version",
+                ":package_identifiers",
+                ""
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "badge_token",
+                  "value": "",
+                  "description": "Badge token to authenticate for private packages"
+                },
+                {
+                  "disabled": false,
+                  "key": "cacheSeconds",
+                  "value": "300",
+                  "description": "Override the shields.io badge cacheSeconds value."
+                },
+                {
+                  "disabled": false,
+                  "key": "color",
+                  "value": "12577E",
+                  "description": "Override the shields.io badge color value."
+                },
+                {
+                  "disabled": false,
+                  "key": "label",
+                  "value": "cloudsmith",
+                  "description": "Override the shields.io badge label value."
+                },
+                {
+                  "disabled": false,
+                  "key": "labelColor",
+                  "value": "021F2F",
+                  "description": "Override the shields.io badge labelColor value."
+                },
+                {
+                  "disabled": false,
+                  "key": "logoColor",
+                  "value": "45B6EE",
+                  "description": "Override the shields.io badge logoColor value."
+                },
+                {
+                  "disabled": false,
+                  "key": "logoWidth",
+                  "value": "10",
+                  "description": "Override the shields.io badge logoWidth value."
+                },
+                {
+                  "disabled": false,
+                  "key": "render",
+                  "value": "false",
+                  "description": "If true, badge will be rendered"
+                },
+                {
+                  "disabled": false,
+                  "key": "shields",
+                  "value": "false",
+                  "description": "If true, a shields response will be generated"
+                },
+                {
+                  "disabled": false,
+                  "key": "show_latest",
+                  "value": "false",
+                  "description": "If true, for latest version badges a '(latest)' suffix is added"
+                },
+                {
+                  "disabled": false,
+                  "key": "style",
+                  "value": "flat-square",
+                  "description": "Override the shields.io badge style value."
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "owner",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "repo",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "package_format",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "package_name",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "package_version",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "package_identifiers",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "dc808f9c-3401-4b65-9401-c5b81e145c5f",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "badges",
+                    "version",
+                    ":owner",
+                    ":repo",
+                    ":package_format",
+                    ":package_name",
+                    ":package_version",
+                    ":package_identifiers",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "badge_token",
+                      "value": ""
+                    },
+                    {
+                      "key": "cacheSeconds",
+                      "value": "300"
+                    },
+                    {
+                      "key": "color",
+                      "value": "12577E"
+                    },
+                    {
+                      "key": "label",
+                      "value": "cloudsmith"
+                    },
+                    {
+                      "key": "labelColor",
+                      "value": "021F2F"
+                    },
+                    {
+                      "key": "logoColor",
+                      "value": "45B6EE"
+                    },
+                    {
+                      "key": "logoWidth",
+                      "value": "10"
+                    },
+                    {
+                      "key": "render",
+                      "value": "false"
+                    },
+                    {
+                      "key": "shields",
+                      "value": "false"
+                    },
+                    {
+                      "key": "show_latest",
+                      "value": "false"
+                    },
+                    {
+                      "key": "style",
+                      "value": "flat-square"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "owner",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "repo",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "package_format",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "package_name",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "package_version",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "package_identifiers",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-Api-Key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "aa4c14c6-cd84-41f3-8cb2-f99cbf14c8af",
+              "name": "Request could not be processed (see detail).",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "badges",
+                    "version",
+                    ":owner",
+                    ":repo",
+                    ":package_format",
+                    ":package_name",
+                    ":package_version",
+                    ":package_identifiers",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "badge_token",
+                      "value": ""
+                    },
+                    {
+                      "key": "cacheSeconds",
+                      "value": "300"
+                    },
+                    {
+                      "key": "color",
+                      "value": "12577E"
+                    },
+                    {
+                      "key": "label",
+                      "value": "cloudsmith"
+                    },
+                    {
+                      "key": "labelColor",
+                      "value": "021F2F"
+                    },
+                    {
+                      "key": "logoColor",
+                      "value": "45B6EE"
+                    },
+                    {
+                      "key": "logoWidth",
+                      "value": "10"
+                    },
+                    {
+                      "key": "render",
+                      "value": "false"
+                    },
+                    {
+                      "key": "shields",
+                      "value": "false"
+                    },
+                    {
+                      "key": "show_latest",
+                      "value": "false"
+                    },
+                    {
+                      "key": "style",
+                      "value": "flat-square"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "owner",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "repo",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "package_format",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "package_name",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "package_version",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "package_identifiers",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-Api-Key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"detail\": \"string\",\n  \"fields\": {\n    \"key_0\": [\n      \"string\",\n      \"string\"\n    ],\n    \"key_1\": [\n      \"string\",\n      \"string\"\n    ]\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "69d6a880-b53a-43ea-9621-3094871e3262",
+              "name": "Missing or invalid parameters (see detail).",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "badges",
+                    "version",
+                    ":owner",
+                    ":repo",
+                    ":package_format",
+                    ":package_name",
+                    ":package_version",
+                    ":package_identifiers",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "badge_token",
+                      "value": ""
+                    },
+                    {
+                      "key": "cacheSeconds",
+                      "value": "300"
+                    },
+                    {
+                      "key": "color",
+                      "value": "12577E"
+                    },
+                    {
+                      "key": "label",
+                      "value": "cloudsmith"
+                    },
+                    {
+                      "key": "labelColor",
+                      "value": "021F2F"
+                    },
+                    {
+                      "key": "logoColor",
+                      "value": "45B6EE"
+                    },
+                    {
+                      "key": "logoWidth",
+                      "value": "10"
+                    },
+                    {
+                      "key": "render",
+                      "value": "false"
+                    },
+                    {
+                      "key": "shields",
+                      "value": "false"
+                    },
+                    {
+                      "key": "show_latest",
+                      "value": "false"
+                    },
+                    {
+                      "key": "style",
+                      "value": "flat-square"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "owner",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "repo",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "package_format",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "package_name",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "package_version",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "package_identifiers",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-Api-Key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+              "code": 422,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"detail\": \"string\",\n  \"fields\": {\n    \"key_0\": [\n      \"string\",\n      \"string\"\n    ]\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.cloudsmith.io",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      {
+        "key": "key",
+        "value": "X-Api-Key"
+      },
+      {
+        "key": "value",
+        "value": "{{apiKey}}"
+      },
+      {
+        "key": "in",
+        "value": "header"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "a26ae261-991f-424f-956f-3534c9f67b22",
+    "name": "Cloudsmith API (v1) audit-log badges API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "The API to the Cloudsmith Service\n\nContact Support:\n Name: Cloudsmith Support\n Email: support@cloudsmith.io",
+      "type": "text/plain"
+    }
+  }
+}

@@ -1,0 +1,421 @@
+{
+  "item": [
+    {
+      "id": "83353e5b-19b2-4903-a6da-2d72289516e9",
+      "name": "formats",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "016926bc-f58b-4bae-aede-fc760a4bf19e",
+          "name": "Get a list of all supported package formats.",
+          "request": {
+            "name": "Get a list of all supported package formats.",
+            "description": {
+              "content": "Get a list of all supported package formats.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "formats",
+                ""
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "6187cf14-238c-465b-8c22-fe2aef453355",
+              "name": "Available package formats retrieved",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "formats",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-Api-Key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"description\": \"string\",\n    \"extensions\": [\n      \"string\",\n      \"string\"\n    ],\n    \"name\": \"string\",\n    \"premium\": true,\n    \"slug\": \"string\",\n    \"supports\": {\n      \"dependencies\": true,\n      \"distributions\": true,\n      \"file_lists\": false,\n      \"filepaths\": true,\n      \"metadata\": true,\n      \"upstreams\": {\n        \"auth_modes\": [\n          \"Username and Password\",\n          \"Username and Password\"\n        ],\n        \"caching\": false,\n        \"indexing\": false,\n        \"proxying\": true,\n        \"trust\": true,\n        \"indexing_behavior\": \"Unsupported\",\n        \"signature_verification\": \"Unsupported\"\n      },\n      \"versioning\": false\n    },\n    \"distributions\": [\n      {\n        \"name\": \"string\",\n        \"self_url\": \"http://PprMHTnrbPeDpOAzWXEhKcsDSNSXzuh.igJUcPx4Pp-\",\n        \"slug\": \"string\",\n        \"variants\": \"string\"\n      },\n      {\n        \"name\": \"str\",\n        \"self_url\": \"http://uOKvSWw.rcup4AGxReU9bGKfKZ\",\n        \"slug\": \"string\",\n        \"variants\": \"string\"\n      }\n    ],\n    \"premium_plan_id\": \"string\",\n    \"premium_plan_name\": \"string\"\n  },\n  {\n    \"description\": \"string\",\n    \"extensions\": [\n      \"string\",\n      \"string\"\n    ],\n    \"name\": \"string\",\n    \"premium\": true,\n    \"slug\": \"string\",\n    \"supports\": {\n      \"dependencies\": false,\n      \"distributions\": false,\n      \"file_lists\": true,\n      \"filepaths\": false,\n      \"metadata\": false,\n      \"upstreams\": {\n        \"auth_modes\": [\n          \"Username and Password\",\n          \"Username and Password\"\n        ],\n        \"caching\": true,\n        \"indexing\": true,\n        \"proxying\": false,\n        \"trust\": false,\n        \"indexing_behavior\": \"Unsupported\",\n        \"signature_verification\": \"Unsupported\"\n      },\n      \"versioning\": false\n    },\n    \"distributions\": [\n      {\n        \"name\": \"string\",\n        \"self_url\": \"http://wdwlyjOMPLwZhYJjOhWN.yuyHYGUNhgJTT-3DqBfxJra.M5SMg42AGIQk\",\n        \"slug\": \"st\",\n        \"variants\": \"string\"\n      },\n      {\n        \"name\": \"string\",\n        \"self_url\": \"http://BNNBuclqDyKwHaIKLRvMjjuhBIJNpwad.zrpeT9dhGJwyOZ.NRgmv7fa1XG5zdXfucXWSG.pAPNtxQgohCiTZsD\",\n        \"slug\": \"string\",\n        \"variants\": \"string\"\n      }\n    ],\n    \"premium_plan_id\": \"string\",\n    \"premium_plan_name\": \"string\"\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "1b6bdca5-2498-4fe9-8a91-b05bc0ed22c9",
+              "name": "Request could not be processed (see detail).",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "formats",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-Api-Key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"detail\": \"string\",\n  \"fields\": {\n    \"key_0\": [\n      \"string\",\n      \"string\"\n    ],\n    \"key_1\": [\n      \"string\",\n      \"string\"\n    ],\n    \"key_2\": [\n      \"string\",\n      \"string\"\n    ]\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "974ffc4e-2d7c-4245-bf0b-bfc8ef219832",
+              "name": "Missing or invalid parameters (see detail).",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "formats",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-Api-Key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+              "code": 422,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"detail\": \"st\",\n  \"fields\": {\n    \"key_0\": [\n      \"string\",\n      \"string\"\n    ],\n    \"key_1\": [\n      \"string\",\n      \"string\"\n    ]\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "3acbb940-ba01-4dae-98fc-4711137162c6",
+          "name": "Get a specific supported package format.",
+          "request": {
+            "name": "Get a specific supported package format.",
+            "description": {
+              "content": "Get a specific supported package format.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "formats",
+                ":slug",
+                ""
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "slug",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "60204b2d-f707-4120-b8b3-0786cb038273",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "formats",
+                    ":slug",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "slug",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-Api-Key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"description\": \"string\",\n  \"extensions\": [\n    \"string\",\n    \"string\"\n  ],\n  \"name\": \"string\",\n  \"premium\": true,\n  \"slug\": \"string\",\n  \"supports\": {\n    \"dependencies\": false,\n    \"distributions\": true,\n    \"file_lists\": false,\n    \"filepaths\": false,\n    \"metadata\": false,\n    \"upstreams\": {\n      \"auth_modes\": [\n        \"Username and Password\",\n        \"Username and Password\"\n      ],\n      \"caching\": true,\n      \"indexing\": false,\n      \"proxying\": false,\n      \"trust\": false,\n      \"indexing_behavior\": \"Unsupported\",\n      \"signature_verification\": \"Unsupported\"\n    },\n    \"versioning\": true\n  },\n  \"distributions\": [\n    {\n      \"name\": \"string\",\n      \"self_url\": \"http://xNvoK.pojqQCJQzQ3D+PQ4muOz7YanpYasKE,0iXxw9O\",\n      \"slug\": \"string\",\n      \"variants\": \"string\"\n    },\n    {\n      \"name\": \"string\",\n      \"self_url\": \"https://yaoduzsFRpmhqQGTKJJFO.fuitGW9YO+aRUE940V4QlpbReqtR\",\n      \"slug\": \"string\",\n      \"variants\": \"string\"\n    }\n  ],\n  \"premium_plan_id\": \"string\",\n  \"premium_plan_name\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "f56990eb-e333-4695-960a-b6c4d1475da0",
+              "name": "Request could not be processed (see detail).",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "formats",
+                    ":slug",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "slug",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-Api-Key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"detail\": \"st\",\n  \"fields\": {\n    \"key_0\": [\n      \"string\",\n      \"string\"\n    ],\n    \"key_1\": [\n      \"string\",\n      \"string\"\n    ]\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "7bd3ea31-c0aa-4a70-bdb6-78e4bb59918a",
+              "name": "Missing or invalid parameters (see detail).",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "formats",
+                    ":slug",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "slug",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-Api-Key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+              "code": 422,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"detail\": \"st\",\n  \"fields\": {\n    \"key_0\": [\n      \"string\",\n      \"string\"\n    ],\n    \"key_1\": [\n      \"string\",\n      \"string\"\n    ]\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.cloudsmith.io",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      {
+        "key": "key",
+        "value": "X-Api-Key"
+      },
+      {
+        "key": "value",
+        "value": "{{apiKey}}"
+      },
+      {
+        "key": "in",
+        "value": "header"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "5cc8add6-95e1-4215-b1fc-df0ad1cdd855",
+    "name": "Cloudsmith API (v1) audit-log formats API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "The API to the Cloudsmith Service\n\nContact Support:\n Name: Cloudsmith Support\n Email: support@cloudsmith.io",
+      "type": "text/plain"
+    }
+  }
+}

@@ -1,0 +1,47 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Cloudsmith API (v1) audit-log distros API",
+    "version": "v1"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "distros",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get a list of all supported distributions.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/distros/"
+          },
+          "docs": "Get a list of all supported distributions."
+        },
+        {
+          "info": {
+            "name": "View for viewing/listing distributions.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/distros/:slug/",
+            "params": [
+              {
+                "name": "slug",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "View for viewing/listing distributions."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}
