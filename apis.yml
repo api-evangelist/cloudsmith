@@ -45,6 +45,8 @@ apis:
   humanURL: https://docs.cloudsmith.com/api
   baseURL: https://api.cloudsmith.io
   tags:
+  - Audit Log
+  tags_raw:
   - audit-log
   properties:
   - type: OpenAPI
@@ -59,6 +61,8 @@ apis:
   humanURL: https://docs.cloudsmith.com/api
   baseURL: https://api.cloudsmith.io
   tags:
+  - Badges
+  tags_raw:
   - badges
   properties:
   - type: OpenAPI
@@ -73,6 +77,8 @@ apis:
   humanURL: https://docs.cloudsmith.com/api
   baseURL: https://api.cloudsmith.io
   tags:
+  - Broadcasts
+  tags_raw:
   - broadcasts
   properties:
   - type: OpenAPI
@@ -87,6 +93,8 @@ apis:
   humanURL: https://docs.cloudsmith.com/api
   baseURL: https://api.cloudsmith.io
   tags:
+  - Bulk action
+  tags_raw:
   - bulk-action
   properties:
   - type: OpenAPI
@@ -115,6 +123,8 @@ apis:
   humanURL: https://docs.cloudsmith.com/api
   baseURL: https://api.cloudsmith.io
   tags:
+  - Entitlements
+  tags_raw:
   - entitlements
   properties:
   - type: OpenAPI
@@ -129,6 +139,8 @@ apis:
   humanURL: https://docs.cloudsmith.com/api
   baseURL: https://api.cloudsmith.io
   tags:
+  - File
+  tags_raw:
   - files
   properties:
   - type: OpenAPI
@@ -143,6 +155,8 @@ apis:
   humanURL: https://docs.cloudsmith.com/api
   baseURL: https://api.cloudsmith.io
   tags:
+  - Formats
+  tags_raw:
   - formats
   properties:
   - type: OpenAPI
@@ -157,6 +171,8 @@ apis:
   humanURL: https://docs.cloudsmith.com/api
   baseURL: https://api.cloudsmith.io
   tags:
+  - Metrics
+  tags_raw:
   - metrics
   properties:
   - type: OpenAPI
@@ -171,6 +187,8 @@ apis:
   humanURL: https://docs.cloudsmith.com/api
   baseURL: https://api.cloudsmith.io
   tags:
+  - Namespaces
+  tags_raw:
   - namespaces
   properties:
   - type: OpenAPI
@@ -185,6 +203,8 @@ apis:
   humanURL: https://docs.cloudsmith.com/api
   baseURL: https://api.cloudsmith.io
   tags:
+  - Organization
+  tags_raw:
   - orgs
   properties:
   - type: OpenAPI
@@ -199,6 +219,8 @@ apis:
   humanURL: https://docs.cloudsmith.com/api
   baseURL: https://api.cloudsmith.io
   tags:
+  - Packages
+  tags_raw:
   - packages
   properties:
   - type: OpenAPI
@@ -213,6 +235,8 @@ apis:
   humanURL: https://docs.cloudsmith.com/api
   baseURL: https://api.cloudsmith.io
   tags:
+  - Quota
+  tags_raw:
   - quota
   properties:
   - type: OpenAPI
@@ -227,6 +251,8 @@ apis:
   humanURL: https://docs.cloudsmith.com/api
   baseURL: https://api.cloudsmith.io
   tags:
+  - Rates
+  tags_raw:
   - rates
   properties:
   - type: OpenAPI
@@ -241,6 +267,8 @@ apis:
   humanURL: https://docs.cloudsmith.com/api
   baseURL: https://api.cloudsmith.io
   tags:
+  - Recycle Bin
+  tags_raw:
   - recycle-bin
   properties:
   - type: OpenAPI
@@ -255,6 +283,8 @@ apis:
   humanURL: https://docs.cloudsmith.com/api
   baseURL: https://api.cloudsmith.io
   tags:
+  - Repos
+  tags_raw:
   - repos
   properties:
   - type: OpenAPI
@@ -269,6 +299,8 @@ apis:
   humanURL: https://docs.cloudsmith.com/api
   baseURL: https://api.cloudsmith.io
   tags:
+  - Status
+  tags_raw:
   - status
   properties:
   - type: OpenAPI
@@ -297,6 +329,8 @@ apis:
   humanURL: https://docs.cloudsmith.com/api
   baseURL: https://api.cloudsmith.io
   tags:
+  - User
+  tags_raw:
   - user
   properties:
   - type: OpenAPI
@@ -311,6 +345,8 @@ apis:
   humanURL: https://docs.cloudsmith.com/api
   baseURL: https://api.cloudsmith.io
   tags:
+  - User
+  tags_raw:
   - users
   properties:
   - type: OpenAPI
@@ -325,6 +361,8 @@ apis:
   humanURL: https://docs.cloudsmith.com/api
   baseURL: https://api.cloudsmith.io
   tags:
+  - Vulnerabilities
+  tags_raw:
   - vulnerabilities
   properties:
   - type: OpenAPI
@@ -339,6 +377,8 @@ apis:
   humanURL: https://docs.cloudsmith.com/api
   baseURL: https://api.cloudsmith.io
   tags:
+  - Webhook
+  tags_raw:
   - webhooks
   properties:
   - type: OpenAPI
