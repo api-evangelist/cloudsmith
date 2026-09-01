@@ -56,7 +56,7 @@ apis:
   humanURL: https://docs.cloudsmith.com/api
   baseURL: https://api.cloudsmith.io
   tags:
-  - audit-log
+  - Audit Log
   tags_raw:
   - audit-log
   properties:
@@ -72,7 +72,7 @@ apis:
   humanURL: https://docs.cloudsmith.com/api
   baseURL: https://api.cloudsmith.io
   tags:
-  - badges
+  - Badges
   tags_raw:
   - badges
   properties:
@@ -88,7 +88,7 @@ apis:
   humanURL: https://docs.cloudsmith.com/api
   baseURL: https://api.cloudsmith.io
   tags:
-  - broadcasts
+  - Broadcasts
   tags_raw:
   - broadcasts
   properties:
@@ -104,7 +104,7 @@ apis:
   humanURL: https://docs.cloudsmith.com/api
   baseURL: https://api.cloudsmith.io
   tags:
-  - bulk-action
+  - Bulk action
   tags_raw:
   - bulk-action
   properties:
@@ -134,7 +134,7 @@ apis:
   humanURL: https://docs.cloudsmith.com/api
   baseURL: https://api.cloudsmith.io
   tags:
-  - entitlements
+  - Entitlements
   tags_raw:
   - entitlements
   properties:
@@ -166,7 +166,7 @@ apis:
   humanURL: https://docs.cloudsmith.com/api
   baseURL: https://api.cloudsmith.io
   tags:
-  - formats
+  - Formats
   tags_raw:
   - formats
   properties:
@@ -198,7 +198,7 @@ apis:
   humanURL: https://docs.cloudsmith.com/api
   baseURL: https://api.cloudsmith.io
   tags:
-  - namespaces
+  - Namespaces
   tags_raw:
   - namespaces
   properties:
@@ -214,7 +214,7 @@ apis:
   humanURL: https://docs.cloudsmith.com/api
   baseURL: https://api.cloudsmith.io
   tags:
-  - orgs
+  - Organization
   tags_raw:
   - orgs
   properties:
@@ -246,7 +246,7 @@ apis:
   humanURL: https://docs.cloudsmith.com/api
   baseURL: https://api.cloudsmith.io
   tags:
-  - quota
+  - Quota
   tags_raw:
   - quota
   properties:
@@ -262,7 +262,7 @@ apis:
   humanURL: https://docs.cloudsmith.com/api
   baseURL: https://api.cloudsmith.io
   tags:
-  - rates
+  - Rates
   tags_raw:
   - rates
   properties:
@@ -278,7 +278,7 @@ apis:
   humanURL: https://docs.cloudsmith.com/api
   baseURL: https://api.cloudsmith.io
   tags:
-  - recycle-bin
+  - Recycle Bin
   tags_raw:
   - recycle-bin
   properties:
@@ -294,7 +294,7 @@ apis:
   humanURL: https://docs.cloudsmith.com/api
   baseURL: https://api.cloudsmith.io
   tags:
-  - repos
+  - Repos
   tags_raw:
   - repos
   properties:
@@ -372,7 +372,7 @@ apis:
   humanURL: https://docs.cloudsmith.com/api
   baseURL: https://api.cloudsmith.io
   tags:
-  - vulnerabilities
+  - Vulnerabilities
   tags_raw:
   - vulnerabilities
   properties:
