@@ -41,6 +41,7 @@ specificationVersion: '0.23'
 kind: company
 tags:
   - Artifact Management
+  - Developer Tools
   - DevOps
   - DevSecOps
   - Distribution
