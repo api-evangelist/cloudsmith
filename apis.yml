@@ -58,7 +58,7 @@ apis:
   humanURL: https://docs.cloudsmith.com/api
   baseURL: https://api.cloudsmith.io
   tags:
-  - Audit Log
+  - Audit Logs
   tags_raw:
   - audit-log
   properties:
@@ -90,7 +90,7 @@ apis:
   humanURL: https://docs.cloudsmith.com/api
   baseURL: https://api.cloudsmith.io
   tags:
-  - Broadcasts
+  - Broadcast
   tags_raw:
   - broadcasts
   properties:
@@ -328,6 +328,8 @@ apis:
   humanURL: https://docs.cloudsmith.com/api
   baseURL: https://api.cloudsmith.io
   tags:
+  - Storage Regions
+  tags_raw:
   - storage-regions
   properties:
   - type: OpenAPI
