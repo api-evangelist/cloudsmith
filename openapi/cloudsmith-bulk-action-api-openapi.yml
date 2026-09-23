@@ -1,6 +1,6 @@
-swagger: '2.0'
+openapi: 3.2.0
 info:
-  title: Cloudsmith API (v1) audit-log bulk-action API
+  title: Cloudsmith API (v1) Bulk Action API
   description: The API to the Cloudsmith Service
   termsOfService: https://help.cloudsmith.io
   contact:
@@ -11,138 +11,143 @@ info:
     name: MIT
     url: https://opensource.org/licenses/MIT
   version: v1
-host: api.cloudsmith.io
-basePath: /
-schemes:
-- https
-consumes:
-- application/json
-produces:
-- application/json
+servers:
+- url: https://api.cloudsmith.io/
 security:
 - apikey: []
 - basic: []
 tags:
-- name: bulk-action
+- name: Bulk action
 paths:
   /bulk-action/{owner}/:
     parameters:
     - name: owner
       in: path
       required: true
-      type: string
+      schema:
+        type: string
     post:
       operationId: bulk_action
-      description: 'Perform bulk operations on multiple packages within a repository or across all accessible repositories. If ''repository'' is provided, actions are limited to that repository. If ''repository'' is omitted, actions are performed across all repositories the user has access to within the workspace. Returns a list of successfully actioned packages and any packages that failed with error details. '
-      parameters:
-      - name: data
-        in: body
-        required: false
-        schema:
-          $ref: '#/definitions/PackageBulkAction'
+      description: Perform bulk operations on multiple packages within a repository or across all accessible repositories. If 'repository' is provided, actions are limited to that repository. If 'repository' is omitted, actions are performed across all repositories the user has access to within the workspace. Returns a list of successfully actioned packages and any packages that failed with error details.
       responses:
         '200':
           description: OK
-          schema:
-            $ref: '#/definitions/PackageBulkActionResponse'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PackageBulkActionResponse'
         '400':
           description: Request could not be processed (see detail).
-          schema:
-            $ref: '#/definitions/ErrorDetail'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorDetail'
         '422':
           description: Missing or invalid parameters (see detail).
-          schema:
-            $ref: '#/definitions/ErrorDetail'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorDetail'
       tags:
-      - bulk-action
-definitions:
-  PackageBulkActionResponse:
-    type: object
-    properties:
-      action:
-        title: Action
-        description: The action that was performed.
-        type: string
-        readOnly: true
-        minLength: 1
-      packages_actioned:
-        description: List of package identifiers that were successfully actioned.
-        type: array
-        items:
+      - Bulk action
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PackageBulkAction'
+      summary: Bulk action
+      x-summary-source: derived
+components:
+  schemas:
+    PackageBulkAction:
+      required:
+      - action
+      - identifiers
+      type: object
+      properties:
+        action:
+          title: Action
+          description: The action to perform on the packages.
+          type: string
+          enum:
+          - Delete
+          - Resync
+          - Quarantine
+          - Unquarantine
+          - Move
+          - Copy
+          - Rescan
+        identifiers:
+          description: A list of package identifiers to apply the action to.
+          type: array
+          items:
+            type: string
+            maxLength: 255
+            minLength: 1
+          maxItems: 100
+          minItems: 1
+        repository:
+          title: Repository
+          description: The repository name to filter packages to. If not provided, the action will be performed across all accessible repositories in the workspace.
+          type: string
+          maxLength: 255
+          minLength: 1
+        target_repository:
+          title: Target repository
+          description: The slug of the target repository
           type: string
           minLength: 1
-        readOnly: true
-      packages_failed_to_action:
-        title: Packages failed to action
-        description: Dictionary of package identifiers that failed with their error details.
-        type: object
-        additionalProperties:
-          type: object
-          additionalProperties:
-            type: string
-            x-nullable: true
-        readOnly: true
-  ErrorDetail:
-    required:
-    - detail
-    type: object
-    properties:
-      detail:
-        title: Detail
-        description: An extended message for the response.
-        type: string
-        minLength: 1
-      fields:
-        title: Fields
-        description: 'A Dictionary of related errors where key: Field and value: Array of Errors related to that field'
-        type: object
-        additionalProperties:
+    PackageBulkActionResponse:
+      type: object
+      properties:
+        action:
+          title: Action
+          description: The action that was performed.
+          type: string
+          readOnly: true
+          minLength: 1
+        packages_actioned:
+          description: List of package identifiers that were successfully actioned.
           type: array
           items:
             type: string
             minLength: 1
-  PackageBulkAction:
-    required:
-    - action
-    - identifiers
-    type: object
-    properties:
-      action:
-        title: Action
-        description: The action to perform on the packages.
-        type: string
-        enum:
-        - Delete
-        - Resync
-        - Quarantine
-        - Unquarantine
-        - Move
-        - Copy
-        - Rescan
-      identifiers:
-        description: A list of package identifiers to apply the action to.
-        type: array
-        items:
+          readOnly: true
+        packages_failed_to_action:
+          title: Packages failed to action
+          description: Dictionary of package identifiers that failed with their error details.
+          type: object
+          additionalProperties:
+            type: object
+            additionalProperties:
+              type:
+              - string
+              - 'null'
+          readOnly: true
+    ErrorDetail:
+      required:
+      - detail
+      type: object
+      properties:
+        detail:
+          title: Detail
+          description: An extended message for the response.
           type: string
-          maxLength: 255
           minLength: 1
-        maxItems: 100
-        minItems: 1
-      repository:
-        title: Repository
-        description: The repository name to filter packages to. If not provided, the action will be performed across all accessible repositories in the workspace.
-        type: string
-        maxLength: 255
-        minLength: 1
-      target_repository:
-        title: Target repository
-        description: The slug of the target repository
-        type: string
-        minLength: 1
-securityDefinitions:
-  apikey:
-    type: apiKey
-    name: X-Api-Key
-    in: header
-  basic:
-    type: basic
+        fields:
+          title: Fields
+          description: 'A Dictionary of related errors where key: Field and value: Array of Errors related to that field'
+          type: object
+          additionalProperties:
+            type: array
+            items:
+              type: string
+              minLength: 1
+  securitySchemes:
+    apikey:
+      type: apiKey
+      name: X-Api-Key
+      in: header
+    basic:
+      type: http
+      scheme: basic

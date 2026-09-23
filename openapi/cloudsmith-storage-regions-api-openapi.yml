@@ -1,6 +1,6 @@
-swagger: '2.0'
+openapi: 3.2.0
 info:
-  title: Cloudsmith API (v1) audit-log storage-regions API
+  title: Cloudsmith API (v1) Storage Regions API
   description: The API to the Cloudsmith Service
   termsOfService: https://help.cloudsmith.io
   contact:
@@ -11,110 +11,117 @@ info:
     name: MIT
     url: https://opensource.org/licenses/MIT
   version: v1
-host: api.cloudsmith.io
-basePath: /
-schemes:
-- https
-consumes:
-- application/json
-produces:
-- application/json
+servers:
+- url: https://api.cloudsmith.io/
 security:
 - apikey: []
 - basic: []
 tags:
-- name: storage-regions
+- name: Storage Regions
 paths:
   /storage-regions/:
     parameters: []
     get:
       operationId: storage-regions_list
-      summary: Get a list of all available storage regions.
+      summary: Get a list of all available storage regions
       description: Get a list of all available storage regions.
-      parameters: []
       responses:
         '200':
           description: Available storage regions retrieved
-          schema:
-            type: array
-            items:
-              $ref: '#/definitions/StorageRegion'
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/StorageRegion'
         '400':
           description: Request could not be processed (see detail).
-          schema:
-            $ref: '#/definitions/ErrorDetail'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorDetail'
         '422':
           description: Missing or invalid parameters (see detail).
-          schema:
-            $ref: '#/definitions/ErrorDetail'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorDetail'
       tags:
-      - storage-regions
+      - Storage Regions
   /storage-regions/{slug}/:
     parameters:
     - name: slug
       in: path
       required: true
-      type: string
+      schema:
+        type: string
     get:
       operationId: storage-regions_read
-      summary: Get a specific storage region.
+      summary: Get a specific storage region
       description: Get a specific storage region.
-      parameters: []
       responses:
         '200':
           description: OK
-          schema:
-            $ref: '#/definitions/StorageRegion'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/StorageRegion'
         '400':
           description: Request could not be processed (see detail).
-          schema:
-            $ref: '#/definitions/ErrorDetail'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorDetail'
         '422':
           description: Missing or invalid parameters (see detail).
-          schema:
-            $ref: '#/definitions/ErrorDetail'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorDetail'
       tags:
-      - storage-regions
-definitions:
-  ErrorDetail:
-    required:
-    - detail
-    type: object
-    properties:
-      detail:
-        title: Detail
-        description: An extended message for the response.
-        type: string
-        minLength: 1
-      fields:
-        title: Fields
-        description: 'A Dictionary of related errors where key: Field and value: Array of Errors related to that field'
-        type: object
-        additionalProperties:
-          type: array
-          items:
-            type: string
-            minLength: 1
-  StorageRegion:
-    required:
-    - label
-    - slug
-    type: object
-    properties:
-      label:
-        title: Label
-        description: Name of the storage region
-        type: string
-        minLength: 1
-      slug:
-        title: Slug
-        description: Slug for the storage region
-        type: string
-        minLength: 1
-securityDefinitions:
-  apikey:
-    type: apiKey
-    name: X-Api-Key
-    in: header
-  basic:
-    type: basic
+      - Storage Regions
+components:
+  schemas:
+    ErrorDetail:
+      required:
+      - detail
+      type: object
+      properties:
+        detail:
+          title: Detail
+          description: An extended message for the response.
+          type: string
+          minLength: 1
+        fields:
+          title: Fields
+          description: 'A Dictionary of related errors where key: Field and value: Array of Errors related to that field'
+          type: object
+          additionalProperties:
+            type: array
+            items:
+              type: string
+              minLength: 1
+    StorageRegion:
+      required:
+      - label
+      - slug
+      type: object
+      properties:
+        label:
+          title: Label
+          description: Name of the storage region
+          type: string
+          minLength: 1
+        slug:
+          title: Slug
+          description: Slug for the storage region
+          type: string
+          minLength: 1
+  securitySchemes:
+    apikey:
+      type: apiKey
+      name: X-Api-Key
+      in: header
+    basic:
+      type: http
+      scheme: basic

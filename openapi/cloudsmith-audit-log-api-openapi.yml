@@ -1,6 +1,6 @@
-swagger: '2.0'
+openapi: 3.2.0
 info:
-  title: Cloudsmith API (v1) audit-log API
+  title: Cloudsmith API (v1) Audit Log API
   description: The API to the Cloudsmith Service
   termsOfService: https://help.cloudsmith.io
   contact:
@@ -11,341 +11,377 @@ info:
     name: MIT
     url: https://opensource.org/licenses/MIT
   version: v1
-host: api.cloudsmith.io
-basePath: /
-schemes:
-- https
-consumes:
-- application/json
-produces:
-- application/json
+servers:
+- url: https://api.cloudsmith.io/
 security:
 - apikey: []
 - basic: []
 tags:
-- name: audit-log
+- name: Audit Log
 paths:
   /audit-log/{owner}/:
     parameters:
     - name: owner
       in: path
       required: true
-      type: string
+      schema:
+        type: string
     get:
       operationId: audit_log_namespace_list
-      summary: Lists audit log entries for a specific namespace.
+      summary: Lists audit log entries for a specific namespace
       description: Lists audit log entries for a specific namespace.
       parameters:
       - name: page
         in: query
         description: A page number within the paginated result set.
         required: false
-        type: integer
+        schema:
+          type: integer
       - name: page_size
         in: query
         description: Number of results to return per page.
         required: false
-        type: integer
+        schema:
+          type: integer
       - name: query
         in: query
         description: A search term for querying events, actors, or timestamps of log records.
         required: false
-        type: string
+        schema:
+          type: string
       responses:
         '200':
           description: Retrieved the list of audit log entries
-          schema:
-            type: array
-            items:
-              $ref: '#/definitions/NamespaceAuditLog'
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/NamespaceAuditLog'
         '402':
           description: Audit logs are not active; upgrade your account!
-          schema:
-            $ref: '#/definitions/ErrorDetail'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorDetail'
         '400':
           description: Request could not be processed (see detail).
-          schema:
-            $ref: '#/definitions/ErrorDetail'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorDetail'
         '422':
           description: Missing or invalid parameters (see detail).
-          schema:
-            $ref: '#/definitions/ErrorDetail'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorDetail'
       tags:
-      - audit-log
+      - Audit Log
   /audit-log/{owner}/{repo}/:
     parameters:
     - name: owner
       in: path
       required: true
-      type: string
+      schema:
+        type: string
     - name: repo
       in: path
       required: true
-      type: string
+      schema:
+        type: string
     get:
       operationId: audit_log_repo_list
-      summary: Lists audit log entries for a specific repository.
+      summary: Lists audit log entries for a specific repository
       description: Lists audit log entries for a specific repository.
       parameters:
       - name: page
         in: query
         description: A page number within the paginated result set.
         required: false
-        type: integer
+        schema:
+          type: integer
       - name: page_size
         in: query
         description: Number of results to return per page.
         required: false
-        type: integer
+        schema:
+          type: integer
       - name: query
         in: query
         description: A search term for querying events, actors, or timestamps of log records.
         required: false
-        type: string
+        schema:
+          type: string
       responses:
         '200':
           description: Retrieved the list of audit log entries
-          schema:
-            type: array
-            items:
-              $ref: '#/definitions/RepositoryAuditLog'
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/RepositoryAuditLog'
         '402':
           description: Audit logs are not active; upgrade your account!
-          schema:
-            $ref: '#/definitions/ErrorDetail'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorDetail'
         '400':
           description: Request could not be processed (see detail).
-          schema:
-            $ref: '#/definitions/ErrorDetail'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorDetail'
         '422':
           description: Missing or invalid parameters (see detail).
-          schema:
-            $ref: '#/definitions/ErrorDetail'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorDetail'
       tags:
-      - audit-log
-definitions:
-  NamespaceAuditLog:
-    required:
-    - actor
-    - actor_ip_address
-    - actor_location
-    - actor_slug_perm
-    - context
-    - event
-    - event_at
-    - object
-    - object_kind
-    - object_slug_perm
-    - target
-    - target_kind
-    type: object
-    properties:
-      actor:
-        title: Actor
-        type: string
-        minLength: 1
-        x-nullable: true
-      actor_ip_address:
-        title: Actor ip address
-        type: string
-        minLength: 1
-        x-nullable: true
-      actor_kind:
-        title: Actor kind
-        type: string
-        readOnly: true
-      actor_location:
-        $ref: '#/definitions/GeoIpLocation'
-      actor_slug_perm:
-        title: Actor slug perm
-        type: string
-        minLength: 1
-        x-nullable: true
-      actor_url:
-        title: Actor url
-        type: string
-        format: uri
-        readOnly: true
-        x-nullable: true
-      context:
-        title: Context
-        type: string
-        minLength: 1
-      event:
-        title: Event
-        type: string
-        minLength: 1
-      event_at:
-        title: Event at
-        type: string
-        format: date-time
-      object:
-        title: Object
-        type: string
-        minLength: 1
-      object_kind:
-        title: Object kind
-        type: string
-        minLength: 1
-      object_slug_perm:
-        title: Object slug perm
-        type: string
-        minLength: 1
-      target:
-        title: Target
-        type: string
-        minLength: 1
-      target_kind:
-        title: Target kind
-        type: string
-        minLength: 1
-      target_slug_perm:
-        title: Target slug perm
-        type: string
-        format: slug
-        pattern: ^[-a-zA-Z0-9_]+$
-        maxLength: 24
-        x-nullable: true
-      uuid:
-        title: Uuid
-        type: string
-        format: uuid
-        readOnly: true
-  ErrorDetail:
-    required:
-    - detail
-    type: object
-    properties:
-      detail:
-        title: Detail
-        description: An extended message for the response.
-        type: string
-        minLength: 1
-      fields:
-        title: Fields
-        description: 'A Dictionary of related errors where key: Field and value: Array of Errors related to that field'
-        type: object
-        additionalProperties:
-          type: array
-          items:
-            type: string
-            minLength: 1
-  RepositoryAuditLog:
-    required:
-    - actor
-    - actor_ip_address
-    - actor_location
-    - actor_slug_perm
-    - context
-    - event
-    - event_at
-    - object
-    - object_kind
-    - object_slug_perm
-    type: object
-    properties:
-      actor:
-        title: Actor
-        type: string
-        minLength: 1
-        x-nullable: true
-      actor_ip_address:
-        title: Actor ip address
-        type: string
-        minLength: 1
-        x-nullable: true
-      actor_kind:
-        title: Actor kind
-        type: string
-        readOnly: true
-      actor_location:
-        $ref: '#/definitions/GeoIpLocation'
-      actor_slug_perm:
-        title: Actor slug perm
-        type: string
-        minLength: 1
-        x-nullable: true
-      actor_url:
-        title: Actor url
-        type: string
-        format: uri
-        readOnly: true
-        x-nullable: true
-      context:
-        title: Context
-        type: string
-        minLength: 1
-      event:
-        title: Event
-        type: string
-        minLength: 1
-      event_at:
-        title: Event at
-        type: string
-        format: date-time
-      object:
-        title: Object
-        type: string
-        minLength: 1
-      object_kind:
-        title: Object kind
-        type: string
-        minLength: 1
-      object_slug_perm:
-        title: Object slug perm
-        type: string
-        minLength: 1
-      uuid:
-        title: Uuid
-        type: string
-        format: uuid
-        readOnly: true
-  GeoIpLocation:
-    required:
-    - city
-    - continent
-    - country
-    - postal_code
-    type: object
-    properties:
-      city:
-        title: City
-        type: string
-        minLength: 1
-        x-nullable: true
-      continent:
-        title: Continent
-        type: string
-        minLength: 1
-        x-nullable: true
-      country:
-        title: Country
-        type: string
-        minLength: 1
-        x-nullable: true
-      country_code:
-        title: Country code
-        type: string
-        readOnly: true
-      latitude:
-        title: Latitude
-        type: string
-        format: decimal
-        x-nullable: true
-      longitude:
-        title: Longitude
-        type: string
-        format: decimal
-        x-nullable: true
-      postal_code:
-        title: Postal code
-        type: string
-        minLength: 1
-        x-nullable: true
-securityDefinitions:
-  apikey:
-    type: apiKey
-    name: X-Api-Key
-    in: header
-  basic:
-    type: basic
+      - Audit Log
+components:
+  schemas:
+    NamespaceAuditLog:
+      required:
+      - actor
+      - actor_ip_address
+      - actor_location
+      - actor_slug_perm
+      - context
+      - event
+      - event_at
+      - object
+      - object_kind
+      - object_slug_perm
+      - target
+      - target_kind
+      type: object
+      properties:
+        actor:
+          title: Actor
+          type:
+          - string
+          - 'null'
+          minLength: 1
+        actor_ip_address:
+          title: Actor ip address
+          type:
+          - string
+          - 'null'
+          minLength: 1
+        actor_kind:
+          title: Actor kind
+          type: string
+          readOnly: true
+        actor_location:
+          $ref: '#/components/schemas/GeoIpLocation'
+        actor_slug_perm:
+          title: Actor slug perm
+          type:
+          - string
+          - 'null'
+          minLength: 1
+        actor_url:
+          title: Actor url
+          type:
+          - string
+          - 'null'
+          format: uri
+          readOnly: true
+        context:
+          title: Context
+          type: string
+          minLength: 1
+        event:
+          title: Event
+          type: string
+          minLength: 1
+        event_at:
+          title: Event at
+          type: string
+          format: date-time
+        object:
+          title: Object
+          type: string
+          minLength: 1
+        object_kind:
+          title: Object kind
+          type: string
+          minLength: 1
+        object_slug_perm:
+          title: Object slug perm
+          type: string
+          minLength: 1
+        target:
+          title: Target
+          type: string
+          minLength: 1
+        target_kind:
+          title: Target kind
+          type: string
+          minLength: 1
+        target_slug_perm:
+          title: Target slug perm
+          type:
+          - string
+          - 'null'
+          format: slug
+          pattern: ^[-a-zA-Z0-9_]+$
+          maxLength: 24
+        uuid:
+          title: Uuid
+          type: string
+          format: uuid
+          readOnly: true
+    GeoIpLocation:
+      required:
+      - city
+      - continent
+      - country
+      - postal_code
+      type: object
+      properties:
+        city:
+          title: City
+          type:
+          - string
+          - 'null'
+          minLength: 1
+        continent:
+          title: Continent
+          type:
+          - string
+          - 'null'
+          minLength: 1
+        country:
+          title: Country
+          type:
+          - string
+          - 'null'
+          minLength: 1
+        country_code:
+          title: Country code
+          type: string
+          readOnly: true
+        latitude:
+          title: Latitude
+          type:
+          - string
+          - 'null'
+          format: decimal
+        longitude:
+          title: Longitude
+          type:
+          - string
+          - 'null'
+          format: decimal
+        postal_code:
+          title: Postal code
+          type:
+          - string
+          - 'null'
+          minLength: 1
+    RepositoryAuditLog:
+      required:
+      - actor
+      - actor_ip_address
+      - actor_location
+      - actor_slug_perm
+      - context
+      - event
+      - event_at
+      - object
+      - object_kind
+      - object_slug_perm
+      type: object
+      properties:
+        actor:
+          title: Actor
+          type:
+          - string
+          - 'null'
+          minLength: 1
+        actor_ip_address:
+          title: Actor ip address
+          type:
+          - string
+          - 'null'
+          minLength: 1
+        actor_kind:
+          title: Actor kind
+          type: string
+          readOnly: true
+        actor_location:
+          $ref: '#/components/schemas/GeoIpLocation'
+        actor_slug_perm:
+          title: Actor slug perm
+          type:
+          - string
+          - 'null'
+          minLength: 1
+        actor_url:
+          title: Actor url
+          type:
+          - string
+          - 'null'
+          format: uri
+          readOnly: true
+        context:
+          title: Context
+          type: string
+          minLength: 1
+        event:
+          title: Event
+          type: string
+          minLength: 1
+        event_at:
+          title: Event at
+          type: string
+          format: date-time
+        object:
+          title: Object
+          type: string
+          minLength: 1
+        object_kind:
+          title: Object kind
+          type: string
+          minLength: 1
+        object_slug_perm:
+          title: Object slug perm
+          type: string
+          minLength: 1
+        uuid:
+          title: Uuid
+          type: string
+          format: uuid
+          readOnly: true
+    ErrorDetail:
+      required:
+      - detail
+      type: object
+      properties:
+        detail:
+          title: Detail
+          description: An extended message for the response.
+          type: string
+          minLength: 1
+        fields:
+          title: Fields
+          description: 'A Dictionary of related errors where key: Field and value: Array of Errors related to that field'
+          type: object
+          additionalProperties:
+            type: array
+            items:
+              type: string
+              minLength: 1
+  securitySchemes:
+    apikey:
+      type: apiKey
+      name: X-Api-Key
+      in: header
+    basic:
+      type: http
+      scheme: basic

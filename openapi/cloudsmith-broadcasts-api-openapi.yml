@@ -1,6 +1,6 @@
-swagger: '2.0'
+openapi: 3.2.0
 info:
-  title: Cloudsmith API (v1) audit-log broadcasts API
+  title: Cloudsmith API (v1) Broadcasts API
   description: The API to the Cloudsmith Service
   termsOfService: https://help.cloudsmith.io
   contact:
@@ -11,111 +11,117 @@ info:
     name: MIT
     url: https://opensource.org/licenses/MIT
   version: v1
-host: api.cloudsmith.io
-basePath: /
-schemes:
-- https
-consumes:
-- application/json
-produces:
-- application/json
+servers:
+- url: https://api.cloudsmith.io/
 security:
 - apikey: []
 - basic: []
 tags:
-- name: broadcasts
+- name: Broadcasts
 paths:
   /broadcasts/{org}/broadcast-token/:
     parameters:
     - name: org
       in: path
       required: true
-      type: string
+      schema:
+        type: string
     post:
       operationId: broadcasts_create_broadcast_token
-      summary: Create a broadcast token.
+      summary: Create a broadcast token
       description: Create a broadcast token.
-      parameters:
-      - name: data
-        in: body
-        required: false
-        schema:
-          $ref: '#/definitions/BroadcastTokenInput'
       responses:
         '201':
           description: Created
-          schema:
-            $ref: '#/definitions/BroadcastToken'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BroadcastToken'
         '200':
           description: OK
-          schema:
-            $ref: '#/definitions/BroadcastToken'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BroadcastToken'
         '422':
           description: Entitlement token parameter is required.
-          schema:
-            $ref: '#/definitions/ErrorDetail'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorDetail'
         '404':
           description: Entitlement token not found
-          schema:
-            $ref: '#/definitions/ErrorDetail'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorDetail'
         '400':
           description: Request could not be processed (see detail).
-          schema:
-            $ref: '#/definitions/ErrorDetail'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorDetail'
       tags:
-      - broadcasts
-definitions:
-  ErrorDetail:
-    required:
-    - detail
-    type: object
-    properties:
-      detail:
-        title: Detail
-        description: An extended message for the response.
-        type: string
-        minLength: 1
-      fields:
-        title: Fields
-        description: 'A Dictionary of related errors where key: Field and value: Array of Errors related to that field'
-        type: object
-        additionalProperties:
-          type: array
-          items:
-            type: string
-            minLength: 1
-  BroadcastToken:
-    type: object
-    properties:
-      expires_at:
-        title: Expires at
-        type: string
-        format: date-time
-        readOnly: true
-      token:
-        title: Token
-        type: string
-        readOnly: true
-        minLength: 1
-  BroadcastTokenInput:
-    required:
-    - entitlement_token
-    type: object
-    properties:
-      entitlement_token:
-        title: Entitlement token
-        description: Repository entitlement token used to authorize the creation of a broadcast token
-        type: string
-        minLength: 1
-      expires_in:
-        title: Expires in
-        description: Token expiry time in seconds (optional, defaults to 3600 seconds)
-        type: integer
-        minimum: 1
-securityDefinitions:
-  apikey:
-    type: apiKey
-    name: X-Api-Key
-    in: header
-  basic:
-    type: basic
+      - Broadcasts
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/BroadcastTokenInput'
+components:
+  schemas:
+    ErrorDetail:
+      required:
+      - detail
+      type: object
+      properties:
+        detail:
+          title: Detail
+          description: An extended message for the response.
+          type: string
+          minLength: 1
+        fields:
+          title: Fields
+          description: 'A Dictionary of related errors where key: Field and value: Array of Errors related to that field'
+          type: object
+          additionalProperties:
+            type: array
+            items:
+              type: string
+              minLength: 1
+    BroadcastTokenInput:
+      required:
+      - entitlement_token
+      type: object
+      properties:
+        entitlement_token:
+          title: Entitlement token
+          description: Repository entitlement token used to authorize the creation of a broadcast token
+          type: string
+          minLength: 1
+        expires_in:
+          title: Expires in
+          description: Token expiry time in seconds (optional, defaults to 3600 seconds)
+          type: integer
+          minimum: 1
+    BroadcastToken:
+      type: object
+      properties:
+        expires_at:
+          title: Expires at
+          type: string
+          format: date-time
+          readOnly: true
+        token:
+          title: Token
+          type: string
+          readOnly: true
+          minLength: 1
+  securitySchemes:
+    apikey:
+      type: apiKey
+      name: X-Api-Key
+      in: header
+    basic:
+      type: http
+      scheme: basic
