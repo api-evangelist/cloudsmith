@@ -149,6 +149,155 @@ paths:
       - Quota
 components:
   schemas:
+    AllocatedLimit:
+      type: object
+      properties:
+        configured:
+          title: Configured
+          type: string
+          maxLength: 32
+          minLength: 1
+        percentage_used:
+          title: Percentage used
+          type: string
+          maxLength: 10
+          minLength: 1
+        plan_limit:
+          title: Plan limit
+          type: string
+          maxLength: 32
+          minLength: 1
+        used:
+          title: Used
+          type: string
+          maxLength: 32
+          minLength: 1
+    UsageLimits:
+      required:
+      - bandwidth
+      - storage
+      type: object
+      properties:
+        bandwidth:
+          $ref: '#/components/schemas/AllocatedLimit'
+        storage:
+          $ref: '#/components/schemas/StorageAllocatedLimit'
+    Usage:
+      type: object
+      properties:
+        limit:
+          title: Limit
+          type: string
+          maxLength: 32
+          minLength: 1
+        percentage:
+          title: Percentage
+          type: string
+          maxLength: 10
+          minLength: 1
+        used:
+          title: Used
+          type: string
+          maxLength: 32
+          minLength: 1
+    StorageAllocatedLimitRaw:
+      type: object
+      properties:
+        configured:
+          title: Configured
+          type: integer
+        peak:
+          title: Peak
+          type: integer
+        percentage_used:
+          title: Percentage used
+          type: string
+          format: decimal
+        plan_limit:
+          title: Plan limit
+          type: integer
+        used:
+          title: Used
+          type: integer
+        used_pre_deduplication:
+          title: Used pre deduplication
+          type: integer
+    AllocatedLimitRaw:
+      type: object
+      properties:
+        configured:
+          title: Configured
+          type: integer
+        percentage_used:
+          title: Percentage used
+          type: string
+          format: decimal
+        plan_limit:
+          title: Plan limit
+          type: integer
+        used:
+          title: Used
+          type: integer
+    HistoryFieldsetRaw:
+      required:
+      - downloaded
+      - storage_used
+      - uploaded
+      type: object
+      properties:
+        downloaded:
+          $ref: '#/components/schemas/UsageRaw'
+        storage_used:
+          $ref: '#/components/schemas/StorageUsageRaw'
+        uploaded:
+          $ref: '#/components/schemas/UsageRaw'
+    Quota:
+      required:
+      - usage
+      type: object
+      properties:
+        usage:
+          $ref: '#/components/schemas/UsageFieldset'
+    UsageFieldset:
+      required:
+      - display
+      - raw
+      type: object
+      properties:
+        display:
+          $ref: '#/components/schemas/UsageLimits'
+        raw:
+          $ref: '#/components/schemas/UsageLimitsRaw'
+    History:
+      required:
+      - display
+      - end
+      - plan
+      - raw
+      - start
+      type: object
+      properties:
+        days:
+          title: Days
+          type: integer
+          default: 0
+        display:
+          $ref: '#/components/schemas/HistoryFieldset'
+        end:
+          title: End
+          type: string
+          format: date-time
+        plan:
+          title: Plan
+          type: string
+          maxLength: 64
+          minLength: 1
+        raw:
+          $ref: '#/components/schemas/HistoryFieldsetRaw'
+        start:
+          title: Start
+          type: string
+          format: date-time
     HistoryFieldset:
       required:
       - downloaded
@@ -162,32 +311,16 @@ components:
           $ref: '#/components/schemas/StorageUsage'
         uploaded:
           $ref: '#/components/schemas/Usage'
-    UsageFieldset:
+    UsageLimitsRaw:
       required:
-      - display
-      - raw
+      - bandwidth
+      - storage
       type: object
       properties:
-        display:
-          $ref: '#/components/schemas/UsageLimits'
-        raw:
-          $ref: '#/components/schemas/UsageLimitsRaw'
-    StorageUsageRaw:
-      type: object
-      properties:
-        limit:
-          title: Limit
-          type: integer
-        peak:
-          title: Peak
-          type: integer
-        percentage:
-          title: Percentage
-          type: string
-          format: decimal
-        used:
-          title: Used
-          type: integer
+        bandwidth:
+          $ref: '#/components/schemas/AllocatedLimitRaw'
+        storage:
+          $ref: '#/components/schemas/StorageAllocatedLimitRaw'
     StorageAllocatedLimit:
       type: object
       properties:
@@ -221,107 +354,15 @@ components:
           type: string
           maxLength: 32
           minLength: 1
-    UsageRaw:
-      type: object
-      properties:
-        limit:
-          title: Limit
-          type: integer
-        percentage:
-          title: Percentage
-          type: string
-          format: decimal
-        used:
-          title: Used
-          type: integer
-    AllocatedLimitRaw:
-      type: object
-      properties:
-        configured:
-          title: Configured
-          type: integer
-        percentage_used:
-          title: Percentage used
-          type: string
-          format: decimal
-        plan_limit:
-          title: Plan limit
-          type: integer
-        used:
-          title: Used
-          type: integer
-    UsageLimits:
+    QuotaHistory:
       required:
-      - bandwidth
-      - storage
+      - history
       type: object
       properties:
-        bandwidth:
-          $ref: '#/components/schemas/AllocatedLimit'
-        storage:
-          $ref: '#/components/schemas/StorageAllocatedLimit'
-    Quota:
-      required:
-      - usage
-      type: object
-      properties:
-        usage:
-          $ref: '#/components/schemas/UsageFieldset'
-    ErrorDetail:
-      required:
-      - detail
-      type: object
-      properties:
-        detail:
-          title: Detail
-          description: An extended message for the response.
-          type: string
-          minLength: 1
-        fields:
-          title: Fields
-          description: 'A Dictionary of related errors where key: Field and value: Array of Errors related to that field'
-          type: object
-          additionalProperties:
-            type: array
-            items:
-              type: string
-              minLength: 1
-    AllocatedLimit:
-      type: object
-      properties:
-        configured:
-          title: Configured
-          type: string
-          maxLength: 32
-          minLength: 1
-        percentage_used:
-          title: Percentage used
-          type: string
-          maxLength: 10
-          minLength: 1
-        plan_limit:
-          title: Plan limit
-          type: string
-          maxLength: 32
-          minLength: 1
-        used:
-          title: Used
-          type: string
-          maxLength: 32
-          minLength: 1
-    HistoryFieldsetRaw:
-      required:
-      - downloaded
-      - storage_used
-      - uploaded
-      type: object
-      properties:
-        downloaded:
-          $ref: '#/components/schemas/UsageRaw'
-        storage_used:
-          $ref: '#/components/schemas/StorageUsageRaw'
-        uploaded:
-          $ref: '#/components/schemas/UsageRaw'
+        history:
+          type: array
+          items:
+            $ref: '#/components/schemas/History'
     StorageUsage:
       type: object
       properties:
@@ -345,95 +386,54 @@ components:
           type: string
           maxLength: 32
           minLength: 1
-    History:
-      required:
-      - display
-      - end
-      - plan
-      - raw
-      - start
-      type: object
-      properties:
-        days:
-          title: Days
-          type: integer
-          default: 0
-        display:
-          $ref: '#/components/schemas/HistoryFieldset'
-        end:
-          title: End
-          type: string
-          format: date-time
-        plan:
-          title: Plan
-          type: string
-          maxLength: 64
-          minLength: 1
-        raw:
-          $ref: '#/components/schemas/HistoryFieldsetRaw'
-        start:
-          title: Start
-          type: string
-          format: date-time
-    StorageAllocatedLimitRaw:
-      type: object
-      properties:
-        configured:
-          title: Configured
-          type: integer
-        peak:
-          title: Peak
-          type: integer
-        percentage_used:
-          title: Percentage used
-          type: string
-          format: decimal
-        plan_limit:
-          title: Plan limit
-          type: integer
-        used:
-          title: Used
-          type: integer
-        used_pre_deduplication:
-          title: Used pre deduplication
-          type: integer
-    QuotaHistory:
-      required:
-      - history
-      type: object
-      properties:
-        history:
-          type: array
-          items:
-            $ref: '#/components/schemas/History'
-    UsageLimitsRaw:
-      required:
-      - bandwidth
-      - storage
-      type: object
-      properties:
-        bandwidth:
-          $ref: '#/components/schemas/AllocatedLimitRaw'
-        storage:
-          $ref: '#/components/schemas/StorageAllocatedLimitRaw'
-    Usage:
+    StorageUsageRaw:
       type: object
       properties:
         limit:
           title: Limit
-          type: string
-          maxLength: 32
-          minLength: 1
+          type: integer
+        peak:
+          title: Peak
+          type: integer
         percentage:
           title: Percentage
           type: string
-          maxLength: 10
-          minLength: 1
+          format: decimal
         used:
           title: Used
+          type: integer
+    ErrorDetail:
+      required:
+      - detail
+      type: object
+      properties:
+        detail:
+          title: Detail
+          description: An extended message for the response.
           type: string
-          maxLength: 32
           minLength: 1
+        fields:
+          title: Fields
+          description: 'A Dictionary of related errors where key: Field and value: Array of Errors related to that field'
+          type: object
+          additionalProperties:
+            type: array
+            items:
+              type: string
+              minLength: 1
+    UsageRaw:
+      type: object
+      properties:
+        limit:
+          title: Limit
+          type: integer
+        percentage:
+          title: Percentage
+          type: string
+          format: decimal
+        used:
+          title: Used
+          type: integer
   securitySchemes:
     apikey:
       type: apiKey

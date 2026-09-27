@@ -220,7 +220,7 @@ paths:
       - Metrics
 components:
   schemas:
-    CommonDownloadsMetrics:
+    CommonBandwidthMetrics:
       required:
       - average
       - highest
@@ -229,13 +229,52 @@ components:
       type: object
       properties:
         average:
-          $ref: '#/components/schemas/CommonDownloadsMetricsValue'
+          $ref: '#/components/schemas/CommonBandwidthMetricsValue'
         highest:
-          $ref: '#/components/schemas/CommonDownloadsMetricsValue'
+          $ref: '#/components/schemas/CommonBandwidthMetricsValue'
         lowest:
-          $ref: '#/components/schemas/CommonDownloadsMetricsValue'
+          $ref: '#/components/schemas/CommonBandwidthMetricsValue'
         total:
-          $ref: '#/components/schemas/CommonDownloadsMetricsValue'
+          $ref: '#/components/schemas/CommonBandwidthMetricsValue'
+    EntitlementUsageMetrics:
+      required:
+      - tokens
+      type: object
+      properties:
+        tokens:
+          $ref: '#/components/schemas/CommonMetrics'
+    PackageUsageMetrics:
+      required:
+      - packages
+      type: object
+      properties:
+        packages:
+          $ref: '#/components/schemas/CommonMetrics'
+    CommonMetrics:
+      required:
+      - bandwidth
+      - downloads
+      type: object
+      properties:
+        active:
+          title: Active
+          description: Number of packages with at least 1 download
+          type: integer
+          default: 0
+        bandwidth:
+          $ref: '#/components/schemas/CommonBandwidthMetrics'
+        downloads:
+          $ref: '#/components/schemas/CommonDownloadsMetrics'
+        inactive:
+          title: Inactive
+          description: Packages with zero downloads
+          type: integer
+          default: 0
+        total:
+          title: Total
+          description: Total number of packages in repo
+          type: integer
+          default: 0
     CommonBandwidthMetricsValue:
       description: Average bandwidth usage in the specified period, e.g. a day
       required:
@@ -259,6 +298,22 @@ components:
           title: Value
           description: Human readable version of display value
           type: integer
+    CommonDownloadsMetrics:
+      required:
+      - average
+      - highest
+      - lowest
+      - total
+      type: object
+      properties:
+        average:
+          $ref: '#/components/schemas/CommonDownloadsMetricsValue'
+        highest:
+          $ref: '#/components/schemas/CommonDownloadsMetricsValue'
+        lowest:
+          $ref: '#/components/schemas/CommonDownloadsMetricsValue'
+        total:
+          $ref: '#/components/schemas/CommonDownloadsMetricsValue'
     ErrorDetail:
       required:
       - detail
@@ -286,61 +341,6 @@ components:
         value:
           title: Value
           type: integer
-    EntitlementUsageMetrics:
-      required:
-      - tokens
-      type: object
-      properties:
-        tokens:
-          $ref: '#/components/schemas/CommonMetrics'
-    CommonMetrics:
-      required:
-      - bandwidth
-      - downloads
-      type: object
-      properties:
-        active:
-          title: Active
-          description: Number of packages with at least 1 download
-          type: integer
-          default: 0
-        bandwidth:
-          $ref: '#/components/schemas/CommonBandwidthMetrics'
-        downloads:
-          $ref: '#/components/schemas/CommonDownloadsMetrics'
-        inactive:
-          title: Inactive
-          description: Packages with zero downloads
-          type: integer
-          default: 0
-        total:
-          title: Total
-          description: Total number of packages in repo
-          type: integer
-          default: 0
-    PackageUsageMetrics:
-      required:
-      - packages
-      type: object
-      properties:
-        packages:
-          $ref: '#/components/schemas/CommonMetrics'
-    CommonBandwidthMetrics:
-      required:
-      - average
-      - highest
-      - lowest
-      - total
-      type: object
-      properties:
-        average:
-          $ref: '#/components/schemas/CommonBandwidthMetricsValue'
-        highest:
-          $ref: '#/components/schemas/CommonBandwidthMetricsValue'
-        lowest:
-          $ref: '#/components/schemas/CommonBandwidthMetricsValue'
-        total:
-          $ref: '#/components/schemas/CommonBandwidthMetricsValue'
   securitySchemes:
     apikey:
       type: apiKey

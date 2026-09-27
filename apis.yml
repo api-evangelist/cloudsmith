@@ -53,7 +53,7 @@ tags:
   - Vulnerability Scanning
 apis:
 - aid: cloudsmith:cloudsmith-audit-log-api
-  name: Cloudsmith audit-log API
+  name: Cloudsmith Audit Log API
   description: The audit-log API from Cloudsmith — 2 operation(s) for audit-log.
   humanURL: https://docs.cloudsmith.com/api
   baseURL: https://api.cloudsmith.io
@@ -69,7 +69,7 @@ apis:
   - type: GettingStarted
     url: https://help.cloudsmith.io/reference/getting-started-with-the-api
 - aid: cloudsmith:cloudsmith-badges-api
-  name: Cloudsmith badges API
+  name: Cloudsmith Badges API
   description: The badges API from Cloudsmith — 1 operation(s) for badges.
   humanURL: https://docs.cloudsmith.com/api
   baseURL: https://api.cloudsmith.io
@@ -85,7 +85,7 @@ apis:
   - type: GettingStarted
     url: https://help.cloudsmith.io/reference/getting-started-with-the-api
 - aid: cloudsmith:cloudsmith-broadcasts-api
-  name: Cloudsmith broadcasts API
+  name: Cloudsmith Broadcasts API
   description: The broadcasts API from Cloudsmith — 1 operation(s) for broadcasts.
   humanURL: https://docs.cloudsmith.com/api
   baseURL: https://api.cloudsmith.io
@@ -101,7 +101,7 @@ apis:
   - type: GettingStarted
     url: https://help.cloudsmith.io/reference/getting-started-with-the-api
 - aid: cloudsmith:cloudsmith-bulk-action-api
-  name: Cloudsmith bulk-action API
+  name: Cloudsmith Bulk Action API
   description: The bulk-action API from Cloudsmith — 1 operation(s) for bulk-action.
   humanURL: https://docs.cloudsmith.com/api
   baseURL: https://api.cloudsmith.io
@@ -117,7 +117,7 @@ apis:
   - type: GettingStarted
     url: https://help.cloudsmith.io/reference/getting-started-with-the-api
 - aid: cloudsmith:cloudsmith-distros-api
-  name: Cloudsmith distros API
+  name: Cloudsmith Distros API
   description: The distros API from Cloudsmith — 2 operation(s) for distros.
   humanURL: https://docs.cloudsmith.com/api
   baseURL: https://api.cloudsmith.io
@@ -131,7 +131,7 @@ apis:
   - type: GettingStarted
     url: https://help.cloudsmith.io/reference/getting-started-with-the-api
 - aid: cloudsmith:cloudsmith-entitlements-api
-  name: Cloudsmith entitlements API
+  name: Cloudsmith Entitlements API
   description: The entitlements API from Cloudsmith — 8 operation(s) for entitlements.
   humanURL: https://docs.cloudsmith.com/api
   baseURL: https://api.cloudsmith.io
@@ -147,7 +147,7 @@ apis:
   - type: GettingStarted
     url: https://help.cloudsmith.io/reference/getting-started-with-the-api
 - aid: cloudsmith:cloudsmith-files-api
-  name: Cloudsmith files API
+  name: Cloudsmith Files API
   description: The files API from Cloudsmith — 5 operation(s) for files.
   humanURL: https://docs.cloudsmith.com/api
   baseURL: https://api.cloudsmith.io
@@ -163,7 +163,7 @@ apis:
   - type: GettingStarted
     url: https://help.cloudsmith.io/reference/getting-started-with-the-api
 - aid: cloudsmith:cloudsmith-formats-api
-  name: Cloudsmith formats API
+  name: Cloudsmith Formats API
   description: The formats API from Cloudsmith — 2 operation(s) for formats.
   humanURL: https://docs.cloudsmith.com/api
   baseURL: https://api.cloudsmith.io
@@ -179,7 +179,7 @@ apis:
   - type: GettingStarted
     url: https://help.cloudsmith.io/reference/getting-started-with-the-api
 - aid: cloudsmith:cloudsmith-metrics-api
-  name: Cloudsmith metrics API
+  name: Cloudsmith Metrics API
   description: The metrics API from Cloudsmith — 3 operation(s) for metrics.
   humanURL: https://docs.cloudsmith.com/api
   baseURL: https://api.cloudsmith.io
@@ -195,7 +195,7 @@ apis:
   - type: GettingStarted
     url: https://help.cloudsmith.io/reference/getting-started-with-the-api
 - aid: cloudsmith:cloudsmith-namespaces-api
-  name: Cloudsmith namespaces API
+  name: Cloudsmith Namespaces API
   description: The namespaces API from Cloudsmith — 2 operation(s) for namespaces.
   humanURL: https://docs.cloudsmith.com/api
   baseURL: https://api.cloudsmith.io
@@ -211,7 +211,7 @@ apis:
   - type: GettingStarted
     url: https://help.cloudsmith.io/reference/getting-started-with-the-api
 - aid: cloudsmith:cloudsmith-orgs-api
-  name: Cloudsmith orgs API
+  name: Cloudsmith Orgs API
   description: The orgs API from Cloudsmith — 40 operation(s) for orgs.
   humanURL: https://docs.cloudsmith.com/api
   baseURL: https://api.cloudsmith.io
@@ -227,7 +227,7 @@ apis:
   - type: GettingStarted
     url: https://help.cloudsmith.io/reference/getting-started-with-the-api
 - aid: cloudsmith:cloudsmith-packages-api
-  name: Cloudsmith packages API
+  name: Cloudsmith Packages API
   description: The packages API from Cloudsmith — 70 operation(s) for packages.
   humanURL: https://docs.cloudsmith.com/api
   baseURL: https://api.cloudsmith.io
@@ -243,7 +243,7 @@ apis:
   - type: GettingStarted
     url: https://help.cloudsmith.io/reference/getting-started-with-the-api
 - aid: cloudsmith:cloudsmith-quota-api
-  name: Cloudsmith quota API
+  name: Cloudsmith Quota API
   description: The quota API from Cloudsmith — 4 operation(s) for quota.
   humanURL: https://docs.cloudsmith.com/api
   baseURL: https://api.cloudsmith.io
@@ -259,7 +259,7 @@ apis:
   - type: GettingStarted
     url: https://help.cloudsmith.io/reference/getting-started-with-the-api
 - aid: cloudsmith:cloudsmith-rates-api
-  name: Cloudsmith rates API
+  name: Cloudsmith Rates API
   description: The rates API from Cloudsmith — 1 operation(s) for rates.
   humanURL: https://docs.cloudsmith.com/api
   baseURL: https://api.cloudsmith.io
@@ -275,7 +275,7 @@ apis:
   - type: GettingStarted
     url: https://help.cloudsmith.io/reference/getting-started-with-the-api
 - aid: cloudsmith:cloudsmith-recycle-bin-api
-  name: Cloudsmith recycle-bin API
+  name: Cloudsmith Recycle Bin API
   description: The recycle-bin API from Cloudsmith — 2 operation(s) for recycle-bin.
   humanURL: https://docs.cloudsmith.com/api
   baseURL: https://api.cloudsmith.io
@@ -291,7 +291,7 @@ apis:
   - type: GettingStarted
     url: https://help.cloudsmith.io/reference/getting-started-with-the-api
 - aid: cloudsmith:cloudsmith-repos-api
-  name: Cloudsmith repos API
+  name: Cloudsmith Repos API
   description: The repos API from Cloudsmith — 59 operation(s) for repos.
   humanURL: https://docs.cloudsmith.com/api
   baseURL: https://api.cloudsmith.io
@@ -307,7 +307,7 @@ apis:
   - type: GettingStarted
     url: https://help.cloudsmith.io/reference/getting-started-with-the-api
 - aid: cloudsmith:cloudsmith-status-api
-  name: Cloudsmith status API
+  name: Cloudsmith Status API
   description: The status API from Cloudsmith — 1 operation(s) for status.
   humanURL: https://docs.cloudsmith.com/api
   baseURL: https://api.cloudsmith.io
@@ -323,7 +323,7 @@ apis:
   - type: GettingStarted
     url: https://help.cloudsmith.io/reference/getting-started-with-the-api
 - aid: cloudsmith:cloudsmith-storage-regions-api
-  name: Cloudsmith storage-regions API
+  name: Cloudsmith Storage Regions API
   description: The storage-regions API from Cloudsmith — 2 operation(s) for storage-regions.
   humanURL: https://docs.cloudsmith.com/api
   baseURL: https://api.cloudsmith.io
@@ -339,7 +339,7 @@ apis:
   - type: GettingStarted
     url: https://help.cloudsmith.io/reference/getting-started-with-the-api
 - aid: cloudsmith:cloudsmith-user-api
-  name: Cloudsmith user API
+  name: Cloudsmith User API
   description: The user API from Cloudsmith — 4 operation(s) for user.
   humanURL: https://docs.cloudsmith.com/api
   baseURL: https://api.cloudsmith.io
@@ -355,7 +355,7 @@ apis:
   - type: GettingStarted
     url: https://help.cloudsmith.io/reference/getting-started-with-the-api
 - aid: cloudsmith:cloudsmith-users-api
-  name: Cloudsmith users API
+  name: Cloudsmith Users API
   description: The users API from Cloudsmith — 1 operation(s) for users.
   humanURL: https://docs.cloudsmith.com/api
   baseURL: https://api.cloudsmith.io
@@ -371,7 +371,7 @@ apis:
   - type: GettingStarted
     url: https://help.cloudsmith.io/reference/getting-started-with-the-api
 - aid: cloudsmith:cloudsmith-vulnerabilities-api
-  name: Cloudsmith vulnerabilities API
+  name: Cloudsmith Vulnerabilities API
   description: The vulnerabilities API from Cloudsmith — 4 operation(s) for vulnerabilities.
   humanURL: https://docs.cloudsmith.com/api
   baseURL: https://api.cloudsmith.io
@@ -387,7 +387,7 @@ apis:
   - type: GettingStarted
     url: https://help.cloudsmith.io/reference/getting-started-with-the-api
 - aid: cloudsmith:cloudsmith-webhooks-api
-  name: Cloudsmith webhooks API
+  name: Cloudsmith Webhooks API
   description: The webhooks API from Cloudsmith — 2 operation(s) for webhooks.
   humanURL: https://docs.cloudsmith.com/api
   baseURL: https://api.cloudsmith.io

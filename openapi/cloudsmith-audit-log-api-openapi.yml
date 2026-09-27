@@ -236,54 +236,6 @@ components:
           type: string
           format: uuid
           readOnly: true
-    GeoIpLocation:
-      required:
-      - city
-      - continent
-      - country
-      - postal_code
-      type: object
-      properties:
-        city:
-          title: City
-          type:
-          - string
-          - 'null'
-          minLength: 1
-        continent:
-          title: Continent
-          type:
-          - string
-          - 'null'
-          minLength: 1
-        country:
-          title: Country
-          type:
-          - string
-          - 'null'
-          minLength: 1
-        country_code:
-          title: Country code
-          type: string
-          readOnly: true
-        latitude:
-          title: Latitude
-          type:
-          - string
-          - 'null'
-          format: decimal
-        longitude:
-          title: Longitude
-          type:
-          - string
-          - 'null'
-          format: decimal
-        postal_code:
-          title: Postal code
-          type:
-          - string
-          - 'null'
-          minLength: 1
     RepositoryAuditLog:
       required:
       - actor
@@ -377,6 +329,54 @@ components:
             items:
               type: string
               minLength: 1
+    GeoIpLocation:
+      required:
+      - city
+      - continent
+      - country
+      - postal_code
+      type: object
+      properties:
+        city:
+          title: City
+          type:
+          - string
+          - 'null'
+          minLength: 1
+        continent:
+          title: Continent
+          type:
+          - string
+          - 'null'
+          minLength: 1
+        country:
+          title: Country
+          type:
+          - string
+          - 'null'
+          minLength: 1
+        country_code:
+          title: Country code
+          type: string
+          readOnly: true
+        latitude:
+          title: Latitude
+          type:
+          - string
+          - 'null'
+          format: decimal
+        longitude:
+          title: Longitude
+          type:
+          - string
+          - 'null'
+          format: decimal
+        postal_code:
+          title: Postal code
+          type:
+          - string
+          - 'null'
+          minLength: 1
   securitySchemes:
     apikey:
       type: apiKey

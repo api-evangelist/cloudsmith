@@ -214,11 +214,25 @@ paths:
       - Webhooks
 components:
   schemas:
-    RepositoryWebhookRequest:
+    WebhookTemplate:
       required:
-      - events
-      - target_url
-      - templates
+      - event
+      type:
+      - object
+      - 'null'
+      properties:
+        event:
+          title: Event
+          type: string
+          maxLength: 128
+          minLength: 1
+        template:
+          title: Template
+          type:
+          - string
+          - 'null'
+          maxLength: 4096
+    RepositoryWebhookRequestPatch:
       type: object
       properties:
         events:
@@ -493,26 +507,11 @@ components:
           title: Verify SSL Certificates
           description: If enabled, SSL certificates is verified when webhooks are sent. It's recommended to leave this enabled as not verifying the integrity of SSL certificates leaves you susceptible to Man-in-the-Middle (MITM) attacks.
           type: boolean
-    ErrorDetail:
+    RepositoryWebhookRequest:
       required:
-      - detail
-      type: object
-      properties:
-        detail:
-          title: Detail
-          description: An extended message for the response.
-          type: string
-          minLength: 1
-        fields:
-          title: Fields
-          description: 'A Dictionary of related errors where key: Field and value: Array of Errors related to that field'
-          type: object
-          additionalProperties:
-            type: array
-            items:
-              type: string
-              minLength: 1
-    RepositoryWebhookRequestPatch:
+      - events
+      - target_url
+      - templates
       type: object
       properties:
         events:
@@ -608,24 +607,25 @@ components:
           title: Verify SSL Certificates
           description: If enabled, SSL certificates is verified when webhooks are sent. It's recommended to leave this enabled as not verifying the integrity of SSL certificates leaves you susceptible to Man-in-the-Middle (MITM) attacks.
           type: boolean
-    WebhookTemplate:
+    ErrorDetail:
       required:
-      - event
-      type:
-      - object
-      - 'null'
+      - detail
+      type: object
       properties:
-        event:
-          title: Event
+        detail:
+          title: Detail
+          description: An extended message for the response.
           type: string
-          maxLength: 128
           minLength: 1
-        template:
-          title: Template
-          type:
-          - string
-          - 'null'
-          maxLength: 4096
+        fields:
+          title: Fields
+          description: 'A Dictionary of related errors where key: Field and value: Array of Errors related to that field'
+          type: object
+          additionalProperties:
+            type: array
+            items:
+              type: string
+              minLength: 1
   securitySchemes:
     apikey:
       type: apiKey
