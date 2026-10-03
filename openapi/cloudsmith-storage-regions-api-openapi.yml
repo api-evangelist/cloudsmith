@@ -82,6 +82,22 @@ paths:
       - Storage Regions
 components:
   schemas:
+    StorageRegion:
+      required:
+      - label
+      - slug
+      type: object
+      properties:
+        label:
+          title: Label
+          description: Name of the storage region
+          type: string
+          minLength: 1
+        slug:
+          title: Slug
+          description: Slug for the storage region
+          type: string
+          minLength: 1
     ErrorDetail:
       required:
       - detail
@@ -101,22 +117,6 @@ components:
             items:
               type: string
               minLength: 1
-    StorageRegion:
-      required:
-      - label
-      - slug
-      type: object
-      properties:
-        label:
-          title: Label
-          description: Name of the storage region
-          type: string
-          minLength: 1
-        slug:
-          title: Slug
-          description: Slug for the storage region
-          type: string
-          minLength: 1
   securitySchemes:
     apikey:
       type: apiKey

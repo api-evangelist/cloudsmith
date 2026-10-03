@@ -144,6 +144,128 @@ paths:
       - Audit Log
 components:
   schemas:
+    RepositoryAuditLog:
+      required:
+      - actor
+      - actor_ip_address
+      - actor_location
+      - actor_slug_perm
+      - context
+      - event
+      - event_at
+      - object
+      - object_kind
+      - object_slug_perm
+      type: object
+      properties:
+        actor:
+          title: Actor
+          type:
+          - string
+          - 'null'
+          minLength: 1
+        actor_ip_address:
+          title: Actor ip address
+          type:
+          - string
+          - 'null'
+          minLength: 1
+        actor_kind:
+          title: Actor kind
+          type: string
+          readOnly: true
+        actor_location:
+          $ref: '#/components/schemas/GeoIpLocation'
+        actor_slug_perm:
+          title: Actor slug perm
+          type:
+          - string
+          - 'null'
+          minLength: 1
+        actor_url:
+          title: Actor url
+          type:
+          - string
+          - 'null'
+          format: uri
+          readOnly: true
+        context:
+          title: Context
+          type: string
+          minLength: 1
+        event:
+          title: Event
+          type: string
+          minLength: 1
+        event_at:
+          title: Event at
+          type: string
+          format: date-time
+        object:
+          title: Object
+          type: string
+          minLength: 1
+        object_kind:
+          title: Object kind
+          type: string
+          minLength: 1
+        object_slug_perm:
+          title: Object slug perm
+          type: string
+          minLength: 1
+        uuid:
+          title: Uuid
+          type: string
+          format: uuid
+          readOnly: true
+    GeoIpLocation:
+      required:
+      - city
+      - continent
+      - country
+      - postal_code
+      type: object
+      properties:
+        city:
+          title: City
+          type:
+          - string
+          - 'null'
+          minLength: 1
+        continent:
+          title: Continent
+          type:
+          - string
+          - 'null'
+          minLength: 1
+        country:
+          title: Country
+          type:
+          - string
+          - 'null'
+          minLength: 1
+        country_code:
+          title: Country code
+          type: string
+          readOnly: true
+        latitude:
+          title: Latitude
+          type:
+          - string
+          - 'null'
+          format: decimal
+        longitude:
+          title: Longitude
+          type:
+          - string
+          - 'null'
+          format: decimal
+        postal_code:
+          title: Postal code
+          type:
+          - string
+          - 'null'
+          minLength: 1
     NamespaceAuditLog:
       required:
       - actor
@@ -236,80 +358,6 @@ components:
           type: string
           format: uuid
           readOnly: true
-    RepositoryAuditLog:
-      required:
-      - actor
-      - actor_ip_address
-      - actor_location
-      - actor_slug_perm
-      - context
-      - event
-      - event_at
-      - object
-      - object_kind
-      - object_slug_perm
-      type: object
-      properties:
-        actor:
-          title: Actor
-          type:
-          - string
-          - 'null'
-          minLength: 1
-        actor_ip_address:
-          title: Actor ip address
-          type:
-          - string
-          - 'null'
-          minLength: 1
-        actor_kind:
-          title: Actor kind
-          type: string
-          readOnly: true
-        actor_location:
-          $ref: '#/components/schemas/GeoIpLocation'
-        actor_slug_perm:
-          title: Actor slug perm
-          type:
-          - string
-          - 'null'
-          minLength: 1
-        actor_url:
-          title: Actor url
-          type:
-          - string
-          - 'null'
-          format: uri
-          readOnly: true
-        context:
-          title: Context
-          type: string
-          minLength: 1
-        event:
-          title: Event
-          type: string
-          minLength: 1
-        event_at:
-          title: Event at
-          type: string
-          format: date-time
-        object:
-          title: Object
-          type: string
-          minLength: 1
-        object_kind:
-          title: Object kind
-          type: string
-          minLength: 1
-        object_slug_perm:
-          title: Object slug perm
-          type: string
-          minLength: 1
-        uuid:
-          title: Uuid
-          type: string
-          format: uuid
-          readOnly: true
     ErrorDetail:
       required:
       - detail
@@ -329,54 +377,6 @@ components:
             items:
               type: string
               minLength: 1
-    GeoIpLocation:
-      required:
-      - city
-      - continent
-      - country
-      - postal_code
-      type: object
-      properties:
-        city:
-          title: City
-          type:
-          - string
-          - 'null'
-          minLength: 1
-        continent:
-          title: Continent
-          type:
-          - string
-          - 'null'
-          minLength: 1
-        country:
-          title: Country
-          type:
-          - string
-          - 'null'
-          minLength: 1
-        country_code:
-          title: Country code
-          type: string
-          readOnly: true
-        latitude:
-          title: Latitude
-          type:
-          - string
-          - 'null'
-          format: decimal
-        longitude:
-          title: Longitude
-          type:
-          - string
-          - 'null'
-          format: decimal
-        postal_code:
-          title: Postal code
-          type:
-          - string
-          - 'null'
-          minLength: 1
   securitySchemes:
     apikey:
       type: apiKey

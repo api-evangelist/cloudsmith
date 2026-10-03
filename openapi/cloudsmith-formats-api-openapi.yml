@@ -139,25 +139,44 @@ components:
           title: Trust
           description: If true the upstream format supports configurable trust levels (trusted vs untrusted) for upstream sources.
           type: boolean
-    ErrorDetail:
+    FormatSupport:
+      description: A set of what the package format supports
       required:
-      - detail
+      - dependencies
+      - distributions
+      - file_lists
+      - filepaths
+      - metadata
+      - upstreams
+      - versioning
       type: object
       properties:
-        detail:
-          title: Detail
-          description: An extended message for the response.
-          type: string
-          minLength: 1
-        fields:
-          title: Fields
-          description: 'A Dictionary of related errors where key: Field and value: Array of Errors related to that field'
-          type: object
-          additionalProperties:
-            type: array
-            items:
-              type: string
-              minLength: 1
+        dependencies:
+          title: Dependencies
+          description: If true the package format supports dependencies
+          type: boolean
+        distributions:
+          title: Distributions
+          description: If true the package format supports distributions
+          type: boolean
+        file_lists:
+          title: File lists
+          description: If true the package format supports file lists
+          type: boolean
+        filepaths:
+          title: Filepaths
+          description: If true the package format supports filepaths
+          type: boolean
+        metadata:
+          title: Metadata
+          description: If true the package format supports metadata
+          type: boolean
+        upstreams:
+          $ref: '#/components/schemas/FormatSupportUpstream'
+        versioning:
+          title: Versioning
+          description: If true the package format supports versioning
+          type: boolean
     Format:
       required:
       - description
@@ -246,44 +265,25 @@ components:
           - string
           - 'null'
           maxLength: 128
-    FormatSupport:
-      description: A set of what the package format supports
+    ErrorDetail:
       required:
-      - dependencies
-      - distributions
-      - file_lists
-      - filepaths
-      - metadata
-      - upstreams
-      - versioning
+      - detail
       type: object
       properties:
-        dependencies:
-          title: Dependencies
-          description: If true the package format supports dependencies
-          type: boolean
-        distributions:
-          title: Distributions
-          description: If true the package format supports distributions
-          type: boolean
-        file_lists:
-          title: File lists
-          description: If true the package format supports file lists
-          type: boolean
-        filepaths:
-          title: Filepaths
-          description: If true the package format supports filepaths
-          type: boolean
-        metadata:
-          title: Metadata
-          description: If true the package format supports metadata
-          type: boolean
-        upstreams:
-          $ref: '#/components/schemas/FormatSupportUpstream'
-        versioning:
-          title: Versioning
-          description: If true the package format supports versioning
-          type: boolean
+        detail:
+          title: Detail
+          description: An extended message for the response.
+          type: string
+          minLength: 1
+        fields:
+          title: Fields
+          description: 'A Dictionary of related errors where key: Field and value: Array of Errors related to that field'
+          type: object
+          additionalProperties:
+            type: array
+            items:
+              type: string
+              minLength: 1
   securitySchemes:
     apikey:
       type: apiKey

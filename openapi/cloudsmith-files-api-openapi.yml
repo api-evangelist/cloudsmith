@@ -276,39 +276,6 @@ paths:
       - Files
 components:
   schemas:
-    PackageFileUploadRequest:
-      required:
-      - filename
-      type: object
-      properties:
-        filename:
-          title: Filename
-          description: Filename for the package file upload.
-          type: string
-          minLength: 1
-        md5_checksum:
-          title: Md5 checksum
-          description: MD5 checksum for a POST-based package file upload.
-          type: string
-          maxLength: 32
-          minLength: 32
-        method:
-          title: Method
-          description: The method to use for package file upload.
-          type: string
-          enum:
-          - put_parts
-          - put
-          - post
-          - presigned
-          - unsigned_put
-          default: post
-        sha256_checksum:
-          title: Sha256 checksum
-          description: SHA256 checksum for a PUT-based package file upload.
-          type: string
-          maxLength: 64
-          minLength: 64
     PackageFilePartsUpload:
       type: object
       properties:
@@ -334,25 +301,6 @@ components:
           format: uri
           readOnly: true
           minLength: 1
-    ErrorDetail:
-      required:
-      - detail
-      type: object
-      properties:
-        detail:
-          title: Detail
-          description: An extended message for the response.
-          type: string
-          minLength: 1
-        fields:
-          title: Fields
-          description: 'A Dictionary of related errors where key: Field and value: Array of Errors related to that field'
-          type: object
-          additionalProperties:
-            type: array
-            items:
-              type: string
-              minLength: 1
     PackageFileUpload:
       type: object
       properties:
@@ -392,6 +340,58 @@ components:
           format: uri
           readOnly: true
           minLength: 1
+    ErrorDetail:
+      required:
+      - detail
+      type: object
+      properties:
+        detail:
+          title: Detail
+          description: An extended message for the response.
+          type: string
+          minLength: 1
+        fields:
+          title: Fields
+          description: 'A Dictionary of related errors where key: Field and value: Array of Errors related to that field'
+          type: object
+          additionalProperties:
+            type: array
+            items:
+              type: string
+              minLength: 1
+    PackageFileUploadRequest:
+      required:
+      - filename
+      type: object
+      properties:
+        filename:
+          title: Filename
+          description: Filename for the package file upload.
+          type: string
+          minLength: 1
+        md5_checksum:
+          title: Md5 checksum
+          description: MD5 checksum for a POST-based package file upload.
+          type: string
+          maxLength: 32
+          minLength: 32
+        method:
+          title: Method
+          description: The method to use for package file upload.
+          type: string
+          enum:
+          - put_parts
+          - put
+          - post
+          - presigned
+          - unsigned_put
+          default: post
+        sha256_checksum:
+          title: Sha256 checksum
+          description: SHA256 checksum for a PUT-based package file upload.
+          type: string
+          maxLength: 64
+          minLength: 64
   securitySchemes:
     apikey:
       type: apiKey

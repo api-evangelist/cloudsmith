@@ -220,7 +220,7 @@ paths:
       - Metrics
 components:
   schemas:
-    CommonBandwidthMetrics:
+    CommonDownloadsMetrics:
       required:
       - average
       - highest
@@ -229,20 +229,13 @@ components:
       type: object
       properties:
         average:
-          $ref: '#/components/schemas/CommonBandwidthMetricsValue'
+          $ref: '#/components/schemas/CommonDownloadsMetricsValue'
         highest:
-          $ref: '#/components/schemas/CommonBandwidthMetricsValue'
+          $ref: '#/components/schemas/CommonDownloadsMetricsValue'
         lowest:
-          $ref: '#/components/schemas/CommonBandwidthMetricsValue'
+          $ref: '#/components/schemas/CommonDownloadsMetricsValue'
         total:
-          $ref: '#/components/schemas/CommonBandwidthMetricsValue'
-    EntitlementUsageMetrics:
-      required:
-      - tokens
-      type: object
-      properties:
-        tokens:
-          $ref: '#/components/schemas/CommonMetrics'
+          $ref: '#/components/schemas/CommonDownloadsMetricsValue'
     PackageUsageMetrics:
       required:
       - packages
@@ -275,6 +268,29 @@ components:
           description: Total number of packages in repo
           type: integer
           default: 0
+    EntitlementUsageMetrics:
+      required:
+      - tokens
+      type: object
+      properties:
+        tokens:
+          $ref: '#/components/schemas/CommonMetrics'
+    CommonBandwidthMetrics:
+      required:
+      - average
+      - highest
+      - lowest
+      - total
+      type: object
+      properties:
+        average:
+          $ref: '#/components/schemas/CommonBandwidthMetricsValue'
+        highest:
+          $ref: '#/components/schemas/CommonBandwidthMetricsValue'
+        lowest:
+          $ref: '#/components/schemas/CommonBandwidthMetricsValue'
+        total:
+          $ref: '#/components/schemas/CommonBandwidthMetricsValue'
     CommonBandwidthMetricsValue:
       description: Average bandwidth usage in the specified period, e.g. a day
       required:
@@ -298,22 +314,6 @@ components:
           title: Value
           description: Human readable version of display value
           type: integer
-    CommonDownloadsMetrics:
-      required:
-      - average
-      - highest
-      - lowest
-      - total
-      type: object
-      properties:
-        average:
-          $ref: '#/components/schemas/CommonDownloadsMetricsValue'
-        highest:
-          $ref: '#/components/schemas/CommonDownloadsMetricsValue'
-        lowest:
-          $ref: '#/components/schemas/CommonDownloadsMetricsValue'
-        total:
-          $ref: '#/components/schemas/CommonDownloadsMetricsValue'
     ErrorDetail:
       required:
       - detail

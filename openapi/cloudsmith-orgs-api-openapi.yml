@@ -2848,6 +2848,82 @@ paths:
       - Orgs
 components:
   schemas:
+    OrganizationTeamRequestPatch:
+      type: object
+      properties:
+        description:
+          title: Description
+          description: A detailed description of the team.
+          type:
+          - string
+          - 'null'
+          maxLength: 200
+        name:
+          title: Name
+          description: A descriptive name for the team.
+          type: string
+          pattern: ^\w[\w \-'\.\/()]+$
+          maxLength: 200
+          minLength: 1
+        slug:
+          title: Slug
+          type: string
+          format: slug
+          pattern: ^[-a-zA-Z0-9_]+$
+          minLength: 1
+        visibility:
+          title: Visibility
+          type: string
+          enum:
+          - Visible
+          - Hidden
+          default: Visible
+    OrganizationMembershipVisibilityUpdateRequestPatch:
+      type: object
+      properties:
+        visibility:
+          title: Visibility
+          type: string
+          enum:
+          - Public
+          - Private
+          default: Public
+    OrganizationGroupSyncRequest:
+      required:
+      - idp_key
+      - idp_value
+      - organization
+      - team
+      type: object
+      properties:
+        idp_key:
+          title: Idp key
+          type: string
+          maxLength: 100
+          minLength: 1
+        idp_value:
+          title: Idp value
+          type: string
+          maxLength: 100
+          minLength: 1
+        organization:
+          title: Organization
+          type: string
+        role:
+          title: Role
+          type: string
+          enum:
+          - Manager
+          - Member
+          default: Member
+        team:
+          title: Team
+          type: string
+          format: slug
+          pattern: ^[-a-zA-Z0-9_]+$
+    OrganizationMembershipRequestPatch:
+      type: object
+      properties: {}
     NestedVulnerabilityPolicy:
       type: object
       properties:
@@ -2910,6 +2986,346 @@ components:
           type: string
           format: uri
           readOnly: true
+    OrganizationSAMLAuthRequestPatch:
+      type: object
+      properties:
+        saml_auth_enabled:
+          title: Saml auth enabled
+          type: boolean
+        saml_auth_enforced:
+          title: Saml auth enforced
+          type: boolean
+        saml_metadata_inline:
+          title: Inline SAML metadata
+          description: If configured, SAML metadata will be used as entered instead of retrieved from a remote URL.
+          type: string
+          maxLength: 32000
+        saml_metadata_url:
+          title: Saml metadata url
+          description: If configured, SAML metadata be retrieved from a remote URL.
+          type:
+          - string
+          - 'null'
+          format: uri
+          maxLength: 254
+    ProviderSettings:
+      required:
+      - claims
+      - enabled
+      - name
+      - provider_url
+      type: object
+      properties:
+        claims:
+          title: Claims
+          description: The set of claims that any received tokens from the provider must contain to authenticate as the configured service account.
+          type: object
+        enabled:
+          title: Enabled
+          description: Whether the provider settings should be used for incoming OIDC requests.
+          type: boolean
+        mapping_claim:
+          title: Mapping claim
+          description: 'The OIDC claim to use for mapping to service accounts in dynamic_mappings.
+
+
+            Note: This field and the dynamic mappings feature are still in early access. Breaking changes are possible as we receive feedback on this feature.'
+          type:
+          - string
+          - 'null'
+          minLength: 1
+        name:
+          title: Name
+          description: The name of the provider settings are being configured for
+          type: string
+          minLength: 1
+        provider_url:
+          title: Provider url
+          description: 'The URL from the provider that serves as the base for the OpenID configuration.
+
+            For example, if the OpenID configuration is available at https://token.actions.githubusercontent.com/.well-known/openid-configuration, the provider URL would be https://token.actions.githubusercontent.com/'
+          type: string
+          format: uri
+          minLength: 1
+        service_accounts:
+          description: The service accounts associated with these provider settings.
+          type: array
+          items:
+            description: The service accounts associated with these provider settings.
+            type: string
+          uniqueItems: true
+        slug:
+          title: Slug
+          description: The slug of the provider settings
+          type: string
+          format: slug
+          pattern: ^[-a-zA-Z0-9_]+$
+          readOnly: true
+          minLength: 1
+        slug_perm:
+          title: Slug perm
+          description: The unique, immutable identifier of the provider settings.
+          type: string
+          format: slug
+          pattern: ^[-a-zA-Z0-9_]+$
+          readOnly: true
+          minLength: 1
+    OrganizationMembershipVisibilityUpdate:
+      type: object
+      properties:
+        email:
+          title: Email
+          type: string
+          readOnly: true
+          minLength: 1
+        has_two_factor:
+          title: Has two factor
+          type: boolean
+          readOnly: true
+        joined_at:
+          title: Joined at
+          type: string
+          format: date-time
+          readOnly: true
+        last_login_at:
+          title: Last login at
+          type:
+          - string
+          - 'null'
+          format: date-time
+          readOnly: true
+        last_login_method:
+          title: Last login method
+          type: string
+          enum:
+          - Unknown
+          - Password
+          - Social
+          - SAML
+          - OIDC
+          readOnly: true
+          default: Unknown
+        role:
+          title: Role
+          type: string
+          enum:
+          - Owner
+          - Manager
+          - Member
+          - Collaborator
+          readOnly: true
+          default: Owner
+        user:
+          title: User
+          type: string
+          readOnly: true
+          minLength: 1
+        user_id:
+          title: User id
+          type: string
+          readOnly: true
+          minLength: 1
+        user_name:
+          title: User name
+          type: string
+          readOnly: true
+          minLength: 1
+        user_url:
+          title: User url
+          type: string
+          format: uri
+          readOnly: true
+        visibility:
+          title: Visibility
+          type: string
+          enum:
+          - Public
+          - Private
+          default: Public
+    OrganizationPackageLicensePolicyRequestPatch:
+      type: object
+      properties:
+        allow_unknown_licenses:
+          title: Allow unknown licenses
+          type: boolean
+        description:
+          title: Description
+          type:
+          - string
+          - 'null'
+          maxLength: 250
+          minLength: 1
+        name:
+          title: Name
+          type: string
+          maxLength: 100
+          minLength: 1
+        on_violation_quarantine:
+          title: On violation quarantine
+          type: boolean
+        package_query_string:
+          title: Package query string
+          type:
+          - string
+          - 'null'
+          minLength: 1
+        spdx_identifiers:
+          type: array
+          items:
+            type: string
+          uniqueItems: true
+    OrganizationGroupSync:
+      required:
+      - idp_key
+      - idp_value
+      - team
+      type: object
+      properties:
+        idp_key:
+          title: Idp key
+          type: string
+          maxLength: 100
+          minLength: 1
+        idp_value:
+          title: Idp value
+          type: string
+          maxLength: 100
+          minLength: 1
+        role:
+          title: Role
+          type: string
+          enum:
+          - Manager
+          - Member
+          default: Member
+        slug_perm:
+          title: Slug perm
+          type: string
+          format: slug
+          pattern: ^[-a-zA-Z0-9_]+$
+          readOnly: true
+          minLength: 1
+        team:
+          title: Team
+          type: string
+          format: slug
+          pattern: ^[-a-zA-Z0-9_]+$
+    OrganizationMembershipRoleUpdateRequestPatch:
+      type: object
+      properties:
+        role:
+          title: Role
+          type: string
+          enum:
+          - Owner
+          - Manager
+          - Member
+          - Collaborator
+          default: Owner
+    OrganizationPackageVulnerabilityPolicyRequest:
+      required:
+      - name
+      type: object
+      properties:
+        allow_unknown_severity:
+          title: Allow unknown severity
+          description: Denotes whether vulnerabilities detected by a security scan with an unknown severity are permitted by this policy.
+          type: boolean
+        description:
+          title: Description
+          type:
+          - string
+          - 'null'
+          maxLength: 250
+          minLength: 1
+        min_severity:
+          title: Min severity
+          type: string
+          enum:
+          - Low
+          - Medium
+          - High
+          - Critical
+          default: Critical
+        name:
+          title: Name
+          type: string
+          maxLength: 100
+          minLength: 1
+        on_violation_quarantine:
+          title: On violation quarantine
+          type: boolean
+        package_query_string:
+          title: Package query string
+          type:
+          - string
+          - 'null'
+          minLength: 1
+    Service:
+      required:
+      - name
+      type: object
+      properties:
+        created_at:
+          title: Created at
+          type: string
+          format: date-time
+          readOnly: true
+        created_by:
+          title: Created by
+          type: string
+          readOnly: true
+          minLength: 1
+        created_by_url:
+          title: Created by url
+          type: string
+          format: uri
+          readOnly: true
+        description:
+          title: Description
+          description: The description of the service
+          type: string
+          maxLength: 1024
+          minLength: 1
+        key:
+          title: Key
+          description: The API key of the service
+          type: string
+          readOnly: true
+        key_expires_at:
+          title: Key expires at
+          description: The time at which the API key will expire. This will only be populated if the Organization has an active API Key Policy.
+          type:
+          - string
+          - 'null'
+          format: date-time
+          readOnly: true
+        name:
+          title: Name
+          description: The name of the service
+          type: string
+          maxLength: 120
+          minLength: 1
+        role:
+          title: Role
+          description: The role of the service.
+          type: string
+          enum:
+          - Manager
+          - Member
+          default: Member
+        slug:
+          title: Slug
+          description: The slug of the service
+          type: string
+          format: slug
+          pattern: ^[-a-zA-Z0-9_]+$
+          readOnly: true
+          minLength: 1
+        teams:
+          type: array
+          items:
+            $ref: '#/components/schemas/ServiceTeams'
     OrganizationPackageVulnerabilityPolicyRequestPatch:
       type: object
       properties:
@@ -2946,6 +3362,185 @@ components:
           type:
           - string
           - 'null'
+          minLength: 1
+    OrganizationTeam:
+      required:
+      - name
+      type: object
+      properties:
+        description:
+          title: Description
+          description: A detailed description of the team.
+          type:
+          - string
+          - 'null'
+          maxLength: 200
+        name:
+          title: Name
+          description: A descriptive name for the team.
+          type: string
+          pattern: ^\w[\w \-'\.\/()]+$
+          maxLength: 200
+          minLength: 1
+        slug:
+          title: Slug
+          type: string
+          format: slug
+          pattern: ^[-a-zA-Z0-9_]+$
+          minLength: 1
+        slug_perm:
+          title: Slug perm
+          type: string
+          format: slug
+          pattern: ^[-a-zA-Z0-9_]+$
+          readOnly: true
+          minLength: 1
+        visibility:
+          title: Visibility
+          type: string
+          enum:
+          - Visible
+          - Hidden
+          default: Visible
+    PackageDenyPolicyRequest:
+      required:
+      - package_query_string
+      type: object
+      properties:
+        description:
+          title: Description
+          type:
+          - string
+          - 'null'
+          maxLength: 250
+        enabled:
+          title: Enabled
+          description: Whether this rule is enabled or disabled.
+          type: boolean
+        name:
+          title: Name
+          type:
+          - string
+          - 'null'
+          maxLength: 100
+        package_query_string:
+          title: Package query string
+          description: Packages that match this query will trigger this deny rule.
+          type: string
+          minLength: 1
+    OrganizationTeamMembers:
+      required:
+      - members
+      type: object
+      properties:
+        members:
+          description: The team members
+          type: array
+          items:
+            $ref: '#/components/schemas/OrganizationTeamServiceMember'
+    OrganizationPackageLicensePolicyRequest:
+      required:
+      - name
+      - spdx_identifiers
+      type: object
+      properties:
+        allow_unknown_licenses:
+          title: Allow unknown licenses
+          type: boolean
+        description:
+          title: Description
+          type:
+          - string
+          - 'null'
+          maxLength: 250
+          minLength: 1
+        name:
+          title: Name
+          type: string
+          maxLength: 100
+          minLength: 1
+        on_violation_quarantine:
+          title: On violation quarantine
+          type: boolean
+        package_query_string:
+          title: Package query string
+          type:
+          - string
+          - 'null'
+          minLength: 1
+        spdx_identifiers:
+          type: array
+          items:
+            type: string
+          uniqueItems: true
+    PackageLicensePolicyEvaluationRequest:
+      type: object
+      properties:
+        created_at:
+          title: Created at
+          type: string
+          format: date-time
+          readOnly: true
+        evaluation_count:
+          title: Evaluation count
+          type: integer
+          readOnly: true
+        policy:
+          $ref: '#/components/schemas/NestedLicensePolicy'
+        slug_perm:
+          title: Slug perm
+          type: string
+          format: slug
+          pattern: ^[-a-zA-Z0-9_]+$
+          readOnly: true
+          minLength: 1
+        status:
+          title: Status
+          type: string
+          enum:
+          - Pending
+          - In Progress
+          - Complete
+          - Cancelled
+          - Errored
+          readOnly: true
+          default: Pending
+        updated_at:
+          title: Updated at
+          type: string
+          format: date-time
+          readOnly: true
+        violation_count:
+          title: Violation count
+          type: integer
+          readOnly: true
+    OrganizationInviteRequest:
+      type: object
+      properties:
+        email:
+          title: Email
+          description: The email of the user to be invited.
+          type: string
+          format: email
+          minLength: 1
+        role:
+          title: Role
+          description: The role to be assigned to the invited user.
+          type: string
+          enum:
+          - Owner
+          - Manager
+          - Member
+          - Collaborator
+          default: Member
+        teams:
+          type: array
+          items:
+            $ref: '#/components/schemas/OrganizationTeamInvite'
+        user:
+          title: User
+          description: The slug of the user to be invited.
+          type: string
           minLength: 1
     OrganizationMembership:
       type: object
@@ -3024,9 +3619,365 @@ components:
           - Private
           readOnly: true
           default: Public
-    PackageDenyPolicyRequest:
+    OrganizationPackageVulnerabilityPolicy:
+      required:
+      - name
+      type: object
+      properties:
+        allow_unknown_severity:
+          title: Allow unknown severity
+          description: Denotes whether vulnerabilities detected by a security scan with an unknown severity are permitted by this policy.
+          type: boolean
+        created_at:
+          title: Created at
+          type: string
+          format: date-time
+          readOnly: true
+        description:
+          title: Description
+          type:
+          - string
+          - 'null'
+          maxLength: 250
+          minLength: 1
+        min_severity:
+          title: Min severity
+          type: string
+          enum:
+          - Low
+          - Medium
+          - High
+          - Critical
+          default: Critical
+        name:
+          title: Name
+          type: string
+          maxLength: 100
+          minLength: 1
+        on_violation_quarantine:
+          title: On violation quarantine
+          type: boolean
+        package_query_string:
+          title: Package query string
+          type:
+          - string
+          - 'null'
+          minLength: 1
+        slug_perm:
+          title: Slug perm
+          type: string
+          format: slug
+          pattern: ^[-a-zA-Z0-9_]+$
+          readOnly: true
+          minLength: 1
+        updated_at:
+          title: Updated at
+          type: string
+          format: date-time
+          readOnly: true
+    ErrorDetail:
+      required:
+      - detail
+      type: object
+      properties:
+        detail:
+          title: Detail
+          description: An extended message for the response.
+          type: string
+          minLength: 1
+        fields:
+          title: Fields
+          description: 'A Dictionary of related errors where key: Field and value: Array of Errors related to that field'
+          type: object
+          additionalProperties:
+            type: array
+            items:
+              type: string
+              minLength: 1
+    DynamicMapping:
+      description: 'The dynamic mappings of `mapping_claim` values to service accounts. Cannot be provided if `service_accounts` is also set.
+
+
+        Note: This field and the dynamic mappings feature are still in early access. Breaking changes are possible as we receive feedback on this feature.'
+      required:
+      - claim_value
+      - service_account
+      type: object
+      properties:
+        claim_value:
+          title: Claim value
+          description: 'The OIDC token claim value that must be present in the token for it to successfully authenticate as the mapped `service_account`.
+
+
+            Note: This field and the dynamic mappings feature are still in early access. Breaking changes are possible as we receive feedback on this feature.'
+          type: string
+          minLength: 1
+        service_account:
+          title: Service account
+          description: 'The service account associated with the provider setting and `claim_value`
+
+
+            Note: This field and the dynamic mappings feature are still in early access. Breaking changes are possible as we receive feedback on this feature.'
+          type: string
+          minLength: 1
+    OrganizationInviteExtend:
+      type: object
+      properties:
+        email:
+          title: Email
+          description: The email of the user to be invited.
+          type: string
+          format: email
+          minLength: 1
+        expires_at:
+          title: Expires at
+          type: string
+          format: date-time
+          readOnly: true
+        inviter:
+          title: Inviter
+          type: string
+          readOnly: true
+          minLength: 1
+        inviter_url:
+          title: Inviter url
+          type:
+          - string
+          - 'null'
+          format: uri
+          readOnly: true
+        org:
+          title: Org
+          type: string
+          readOnly: true
+        role:
+          title: Role
+          description: The role to be assigned to the invited user.
+          type: string
+          enum:
+          - Owner
+          - Manager
+          - Member
+          - Collaborator
+          default: Member
+        slug_perm:
+          title: Slug perm
+          description: The slug_perm of the invite to be extended.
+          type: string
+          format: slug
+          pattern: ^[-a-zA-Z0-9_]+$
+          readOnly: true
+          minLength: 1
+        teams:
+          type: array
+          items:
+            $ref: '#/components/schemas/OrganizationTeamInvite'
+        user:
+          title: User
+          description: The slug of the user to be invited.
+          type: string
+          minLength: 1
+        user_url:
+          title: User url
+          type:
+          - string
+          - 'null'
+          format: uri
+          readOnly: true
+    OrganizationTeamRequest:
+      required:
+      - name
+      type: object
+      properties:
+        description:
+          title: Description
+          description: A detailed description of the team.
+          type:
+          - string
+          - 'null'
+          maxLength: 200
+        name:
+          title: Name
+          description: A descriptive name for the team.
+          type: string
+          pattern: ^\w[\w \-'\.\/()]+$
+          maxLength: 200
+          minLength: 1
+        slug:
+          title: Slug
+          type: string
+          format: slug
+          pattern: ^[-a-zA-Z0-9_]+$
+          minLength: 1
+        visibility:
+          title: Visibility
+          type: string
+          enum:
+          - Visible
+          - Hidden
+          default: Visible
+    PackageVulnerabilityPolicyViolationLog:
+      required:
+      - package
+      - policy
+      - reasons
+      - vulnerability_scan_results
+      type: object
+      properties:
+        event_at:
+          title: Event at
+          type: string
+          format: date-time
+          readOnly: true
+        package:
+          $ref: '#/components/schemas/PackageVulnerability'
+        policy:
+          $ref: '#/components/schemas/NestedVulnerabilityPolicy'
+        reasons:
+          type: array
+          items:
+            type: string
+            minLength: 1
+        vulnerability_scan_results:
+          $ref: '#/components/schemas/NestedVulnerabilityScanResults'
+    ServiceRequestPatch:
+      type: object
+      properties:
+        description:
+          title: Description
+          description: The description of the service
+          type: string
+          maxLength: 1024
+          minLength: 1
+        name:
+          title: Name
+          description: The name of the service
+          type: string
+          maxLength: 120
+          minLength: 1
+        role:
+          title: Role
+          description: The role of the service.
+          type: string
+          enum:
+          - Manager
+          - Member
+          default: Member
+        teams:
+          type: array
+          items:
+            $ref: '#/components/schemas/ServiceTeams'
+    ProviderSettingsWriteRequestPatch:
+      type: object
+      properties:
+        claims:
+          title: Claims
+          description: The set of claims that any received tokens from the provider must contain to authenticate as the configured service account.
+          type: object
+        dynamic_mappings:
+          description: 'The dynamic mappings of `mapping_claim` values to service accounts. Cannot be provided if `service_accounts` is also set.
+
+
+            Note: This field and the dynamic mappings feature are still in early access. Breaking changes are possible as we receive feedback on this feature.'
+          type: array
+          items:
+            $ref: '#/components/schemas/DynamicMapping'
+        enabled:
+          title: Enabled
+          description: Whether the provider settings should be used for incoming OIDC requests.
+          type: boolean
+        mapping_claim:
+          title: Mapping claim
+          description: 'The OIDC claim to use for mapping to service accounts in dynamic_mappings. Cannot be provided if `service_accounts` is also set.
+
+
+            Note: This field and the dynamic mappings feature are still in early access. Breaking changes are possible as we receive feedback on this feature.'
+          type:
+          - string
+          - 'null'
+          minLength: 1
+        name:
+          title: Name
+          description: The name of the provider settings are being configured for
+          type: string
+          minLength: 1
+        provider_url:
+          title: Provider url
+          description: 'The URL from the provider that serves as the base for the OpenID configuration.
+
+            For example, if the OpenID configuration is available at https://token.actions.githubusercontent.com/.well-known/openid-configuration, the provider URL would be https://token.actions.githubusercontent.com/'
+          type: string
+          format: uri
+          minLength: 1
+        service_accounts:
+          description: The service accounts associated with these provider settings. Cannot be provided if `mapping_claim` or `dynamic_mappings` are specified.
+          type: array
+          items:
+            description: The service accounts associated with these provider settings. Cannot be provided if `mapping_claim` or `dynamic_mappings` are specified.
+            type: string
+          uniqueItems: true
+    PackageDenyPolicy:
       required:
       - package_query_string
+      type: object
+      properties:
+        action:
+          title: Action
+          type: string
+          enum:
+          - Block downloads
+          readOnly: true
+          default: Block downloads
+        created_at:
+          title: Created at
+          type: string
+          format: date-time
+          readOnly: true
+        description:
+          title: Description
+          type:
+          - string
+          - 'null'
+          maxLength: 250
+        enabled:
+          title: Enabled
+          description: Whether this rule is enabled or disabled.
+          type: boolean
+        name:
+          title: Name
+          type:
+          - string
+          - 'null'
+          maxLength: 100
+        package_query_string:
+          title: Package query string
+          description: Packages that match this query will trigger this deny rule.
+          type: string
+          minLength: 1
+        slug_perm:
+          title: Slug perm
+          type: string
+          format: slug
+          pattern: ^[-a-zA-Z0-9_]+$
+          readOnly: true
+          minLength: 1
+        status:
+          title: Status
+          type: string
+          enum:
+          - Pending
+          - In Progress
+          - Complete
+          - Cancelled
+          - Errored
+          readOnly: true
+          default: In Progress
+        updated_at:
+          title: Updated at
+          type: string
+          format: date-time
+          readOnly: true
+    PackageDenyPolicyRequestPatch:
       type: object
       properties:
         description:
@@ -3050,9 +4001,263 @@ components:
           description: Packages that match this query will trigger this deny rule.
           type: string
           minLength: 1
-    PackageVulnerabilityPolicyEvaluationRequestRequest:
+    OrganizationInviteUpdateRequestPatch:
       type: object
-      properties: {}
+      properties:
+        role:
+          title: Role
+          description: The role to be assigned to the invited user.
+          type: string
+          enum:
+          - Owner
+          - Manager
+          - Member
+          - Collaborator
+          default: Member
+    ProviderSettingsWriteRequest:
+      required:
+      - claims
+      - enabled
+      - name
+      - provider_url
+      type: object
+      properties:
+        claims:
+          title: Claims
+          description: The set of claims that any received tokens from the provider must contain to authenticate as the configured service account.
+          type: object
+        dynamic_mappings:
+          description: 'The dynamic mappings of `mapping_claim` values to service accounts. Cannot be provided if `service_accounts` is also set.
+
+
+            Note: This field and the dynamic mappings feature are still in early access. Breaking changes are possible as we receive feedback on this feature.'
+          type: array
+          items:
+            $ref: '#/components/schemas/DynamicMapping'
+        enabled:
+          title: Enabled
+          description: Whether the provider settings should be used for incoming OIDC requests.
+          type: boolean
+        mapping_claim:
+          title: Mapping claim
+          description: 'The OIDC claim to use for mapping to service accounts in dynamic_mappings. Cannot be provided if `service_accounts` is also set.
+
+
+            Note: This field and the dynamic mappings feature are still in early access. Breaking changes are possible as we receive feedback on this feature.'
+          type:
+          - string
+          - 'null'
+          minLength: 1
+        name:
+          title: Name
+          description: The name of the provider settings are being configured for
+          type: string
+          minLength: 1
+        provider_url:
+          title: Provider url
+          description: 'The URL from the provider that serves as the base for the OpenID configuration.
+
+            For example, if the OpenID configuration is available at https://token.actions.githubusercontent.com/.well-known/openid-configuration, the provider URL would be https://token.actions.githubusercontent.com/'
+          type: string
+          format: uri
+          minLength: 1
+        service_accounts:
+          description: The service accounts associated with these provider settings. Cannot be provided if `mapping_claim` or `dynamic_mappings` are specified.
+          type: array
+          items:
+            description: The service accounts associated with these provider settings. Cannot be provided if `mapping_claim` or `dynamic_mappings` are specified.
+            type: string
+          uniqueItems: true
+    OrganizationPackageLicensePolicy:
+      required:
+      - name
+      - spdx_identifiers
+      type: object
+      properties:
+        allow_unknown_licenses:
+          title: Allow unknown licenses
+          type: boolean
+        created_at:
+          title: Created at
+          type: string
+          format: date-time
+          readOnly: true
+        description:
+          title: Description
+          type:
+          - string
+          - 'null'
+          maxLength: 250
+          minLength: 1
+        name:
+          title: Name
+          type: string
+          maxLength: 100
+          minLength: 1
+        on_violation_quarantine:
+          title: On violation quarantine
+          type: boolean
+        package_query_string:
+          title: Package query string
+          type:
+          - string
+          - 'null'
+          minLength: 1
+        slug_perm:
+          title: Slug perm
+          type: string
+          format: slug
+          pattern: ^[-a-zA-Z0-9_]+$
+          readOnly: true
+          minLength: 1
+        spdx_identifiers:
+          type: array
+          items:
+            type: string
+          uniqueItems: true
+        updated_at:
+          title: Updated at
+          type: string
+          format: date-time
+          readOnly: true
+    OrganizationGroupSyncStatus:
+      type: object
+      properties:
+        saml_group_sync_status:
+          title: Saml group sync status
+          type: boolean
+          readOnly: true
+    PackageVulnerabilityPolicyEvaluationRequest:
+      type: object
+      properties:
+        created_at:
+          title: Created at
+          type: string
+          format: date-time
+          readOnly: true
+        evaluation_count:
+          title: Evaluation count
+          type: integer
+          readOnly: true
+        policy:
+          $ref: '#/components/schemas/NestedVulnerabilityPolicy'
+        slug_perm:
+          title: Slug perm
+          type: string
+          format: slug
+          pattern: ^[-a-zA-Z0-9_]+$
+          readOnly: true
+          minLength: 1
+        status:
+          title: Status
+          type: string
+          enum:
+          - Pending
+          - In Progress
+          - Complete
+          - Cancelled
+          - Errored
+          readOnly: true
+          default: Pending
+        updated_at:
+          title: Updated at
+          type: string
+          format: date-time
+          readOnly: true
+        violation_count:
+          title: Violation count
+          type: integer
+          readOnly: true
+    ProviderSettingsWrite:
+      required:
+      - claims
+      - enabled
+      - name
+      - provider_url
+      type: object
+      properties:
+        claims:
+          title: Claims
+          description: The set of claims that any received tokens from the provider must contain to authenticate as the configured service account.
+          type: object
+        dynamic_mappings:
+          description: 'The dynamic mappings of `mapping_claim` values to service accounts. Cannot be provided if `service_accounts` is also set.
+
+
+            Note: This field and the dynamic mappings feature are still in early access. Breaking changes are possible as we receive feedback on this feature.'
+          type: array
+          items:
+            $ref: '#/components/schemas/DynamicMapping'
+        enabled:
+          title: Enabled
+          description: Whether the provider settings should be used for incoming OIDC requests.
+          type: boolean
+        mapping_claim:
+          title: Mapping claim
+          description: 'The OIDC claim to use for mapping to service accounts in dynamic_mappings. Cannot be provided if `service_accounts` is also set.
+
+
+            Note: This field and the dynamic mappings feature are still in early access. Breaking changes are possible as we receive feedback on this feature.'
+          type:
+          - string
+          - 'null'
+          minLength: 1
+        name:
+          title: Name
+          description: The name of the provider settings are being configured for
+          type: string
+          minLength: 1
+        provider_url:
+          title: Provider url
+          description: 'The URL from the provider that serves as the base for the OpenID configuration.
+
+            For example, if the OpenID configuration is available at https://token.actions.githubusercontent.com/.well-known/openid-configuration, the provider URL would be https://token.actions.githubusercontent.com/'
+          type: string
+          format: uri
+          minLength: 1
+        service_accounts:
+          description: The service accounts associated with these provider settings. Cannot be provided if `mapping_claim` or `dynamic_mappings` are specified.
+          type: array
+          items:
+            description: The service accounts associated with these provider settings. Cannot be provided if `mapping_claim` or `dynamic_mappings` are specified.
+            type: string
+          uniqueItems: true
+        slug:
+          title: Slug
+          description: The slug of the provider settings
+          type: string
+          format: slug
+          pattern: ^[-a-zA-Z0-9_]+$
+          readOnly: true
+          minLength: 1
+        slug_perm:
+          title: Slug perm
+          description: The unique, immutable identifier of the provider settings.
+          type: string
+          format: slug
+          pattern: ^[-a-zA-Z0-9_]+$
+          readOnly: true
+          minLength: 1
+    OrganizationTeamInvite:
+      required:
+      - team
+      type: object
+      properties:
+        role:
+          title: Role
+          description: The role to be assigned to the invited user in the team.
+          type: string
+          enum:
+          - Manager
+          - Member
+          default: Member
+        team:
+          title: Team
+          description: The team identifier (slug).
+          type: string
+          format: slug
+          pattern: ^[-a-zA-Z0-9_]+$
+          minLength: 1
     OrganizationMembershipRoleUpdate:
       type: object
       properties:
@@ -3125,386 +4330,6 @@ components:
           - Private
           readOnly: true
           default: Public
-    OrganizationInviteUpdateRequestPatch:
-      type: object
-      properties:
-        role:
-          title: Role
-          description: The role to be assigned to the invited user.
-          type: string
-          enum:
-          - Owner
-          - Manager
-          - Member
-          - Collaborator
-          default: Member
-    OrganizationMembershipVisibilityUpdateRequestPatch:
-      type: object
-      properties:
-        visibility:
-          title: Visibility
-          type: string
-          enum:
-          - Public
-          - Private
-          default: Public
-    ProviderSettingsWriteRequestPatch:
-      type: object
-      properties:
-        claims:
-          title: Claims
-          description: The set of claims that any received tokens from the provider must contain to authenticate as the configured service account.
-          type: object
-        dynamic_mappings:
-          description: 'The dynamic mappings of `mapping_claim` values to service accounts. Cannot be provided if `service_accounts` is also set.
-
-
-            Note: This field and the dynamic mappings feature are still in early access. Breaking changes are possible as we receive feedback on this feature.'
-          type: array
-          items:
-            $ref: '#/components/schemas/DynamicMapping'
-        enabled:
-          title: Enabled
-          description: Whether the provider settings should be used for incoming OIDC requests.
-          type: boolean
-        mapping_claim:
-          title: Mapping claim
-          description: 'The OIDC claim to use for mapping to service accounts in dynamic_mappings. Cannot be provided if `service_accounts` is also set.
-
-
-            Note: This field and the dynamic mappings feature are still in early access. Breaking changes are possible as we receive feedback on this feature.'
-          type:
-          - string
-          - 'null'
-          minLength: 1
-        name:
-          title: Name
-          description: The name of the provider settings are being configured for
-          type: string
-          minLength: 1
-        provider_url:
-          title: Provider url
-          description: 'The URL from the provider that serves as the base for the OpenID configuration.
-
-            For example, if the OpenID configuration is available at https://token.actions.githubusercontent.com/.well-known/openid-configuration, the provider URL would be https://token.actions.githubusercontent.com/'
-          type: string
-          format: uri
-          minLength: 1
-        service_accounts:
-          description: The service accounts associated with these provider settings. Cannot be provided if `mapping_claim` or `dynamic_mappings` are specified.
-          type: array
-          items:
-            description: The service accounts associated with these provider settings. Cannot be provided if `mapping_claim` or `dynamic_mappings` are specified.
-            type: string
-          uniqueItems: true
-    OrganizationInviteRequest:
-      type: object
-      properties:
-        email:
-          title: Email
-          description: The email of the user to be invited.
-          type: string
-          format: email
-          minLength: 1
-        role:
-          title: Role
-          description: The role to be assigned to the invited user.
-          type: string
-          enum:
-          - Owner
-          - Manager
-          - Member
-          - Collaborator
-          default: Member
-        teams:
-          type: array
-          items:
-            $ref: '#/components/schemas/OrganizationTeamInvite'
-        user:
-          title: User
-          description: The slug of the user to be invited.
-          type: string
-          minLength: 1
-    OrganizationTeamRequestPatch:
-      type: object
-      properties:
-        description:
-          title: Description
-          description: A detailed description of the team.
-          type:
-          - string
-          - 'null'
-          maxLength: 200
-        name:
-          title: Name
-          description: A descriptive name for the team.
-          type: string
-          pattern: ^\w[\w \-'\.\/()]+$
-          maxLength: 200
-          minLength: 1
-        slug:
-          title: Slug
-          type: string
-          format: slug
-          pattern: ^[-a-zA-Z0-9_]+$
-          minLength: 1
-        visibility:
-          title: Visibility
-          type: string
-          enum:
-          - Visible
-          - Hidden
-          default: Visible
-    OrganizationPackageLicensePolicyRequest:
-      required:
-      - name
-      - spdx_identifiers
-      type: object
-      properties:
-        allow_unknown_licenses:
-          title: Allow unknown licenses
-          type: boolean
-        description:
-          title: Description
-          type:
-          - string
-          - 'null'
-          maxLength: 250
-          minLength: 1
-        name:
-          title: Name
-          type: string
-          maxLength: 100
-          minLength: 1
-        on_violation_quarantine:
-          title: On violation quarantine
-          type: boolean
-        package_query_string:
-          title: Package query string
-          type:
-          - string
-          - 'null'
-          minLength: 1
-        spdx_identifiers:
-          type: array
-          items:
-            type: string
-          uniqueItems: true
-    OrganizationGroupSync:
-      required:
-      - idp_key
-      - idp_value
-      - team
-      type: object
-      properties:
-        idp_key:
-          title: Idp key
-          type: string
-          maxLength: 100
-          minLength: 1
-        idp_value:
-          title: Idp value
-          type: string
-          maxLength: 100
-          minLength: 1
-        role:
-          title: Role
-          type: string
-          enum:
-          - Manager
-          - Member
-          default: Member
-        slug_perm:
-          title: Slug perm
-          type: string
-          format: slug
-          pattern: ^[-a-zA-Z0-9_]+$
-          readOnly: true
-          minLength: 1
-        team:
-          title: Team
-          type: string
-          format: slug
-          pattern: ^[-a-zA-Z0-9_]+$
-    ErrorDetail:
-      required:
-      - detail
-      type: object
-      properties:
-        detail:
-          title: Detail
-          description: An extended message for the response.
-          type: string
-          minLength: 1
-        fields:
-          title: Fields
-          description: 'A Dictionary of related errors where key: Field and value: Array of Errors related to that field'
-          type: object
-          additionalProperties:
-            type: array
-            items:
-              type: string
-              minLength: 1
-    OrganizationPackageLicensePolicyRequestPatch:
-      type: object
-      properties:
-        allow_unknown_licenses:
-          title: Allow unknown licenses
-          type: boolean
-        description:
-          title: Description
-          type:
-          - string
-          - 'null'
-          maxLength: 250
-          minLength: 1
-        name:
-          title: Name
-          type: string
-          maxLength: 100
-          minLength: 1
-        on_violation_quarantine:
-          title: On violation quarantine
-          type: boolean
-        package_query_string:
-          title: Package query string
-          type:
-          - string
-          - 'null'
-          minLength: 1
-        spdx_identifiers:
-          type: array
-          items:
-            type: string
-          uniqueItems: true
-    OrganizationGroupSyncRequest:
-      required:
-      - idp_key
-      - idp_value
-      - organization
-      - team
-      type: object
-      properties:
-        idp_key:
-          title: Idp key
-          type: string
-          maxLength: 100
-          minLength: 1
-        idp_value:
-          title: Idp value
-          type: string
-          maxLength: 100
-          minLength: 1
-        organization:
-          title: Organization
-          type: string
-        role:
-          title: Role
-          type: string
-          enum:
-          - Manager
-          - Member
-          default: Member
-        team:
-          title: Team
-          type: string
-          format: slug
-          pattern: ^[-a-zA-Z0-9_]+$
-    PackageLicensePolicyViolationLog:
-      required:
-      - package
-      - policy
-      - reasons
-      type: object
-      properties:
-        event_at:
-          title: Event at
-          type: string
-          format: date-time
-          readOnly: true
-        package:
-          $ref: '#/components/schemas/PackageVulnerability'
-        policy:
-          $ref: '#/components/schemas/NestedLicensePolicy'
-        reasons:
-          type: array
-          items:
-            type: string
-            minLength: 1
-    OrganizationInviteExtend:
-      type: object
-      properties:
-        email:
-          title: Email
-          description: The email of the user to be invited.
-          type: string
-          format: email
-          minLength: 1
-        expires_at:
-          title: Expires at
-          type: string
-          format: date-time
-          readOnly: true
-        inviter:
-          title: Inviter
-          type: string
-          readOnly: true
-          minLength: 1
-        inviter_url:
-          title: Inviter url
-          type:
-          - string
-          - 'null'
-          format: uri
-          readOnly: true
-        org:
-          title: Org
-          type: string
-          readOnly: true
-        role:
-          title: Role
-          description: The role to be assigned to the invited user.
-          type: string
-          enum:
-          - Owner
-          - Manager
-          - Member
-          - Collaborator
-          default: Member
-        slug_perm:
-          title: Slug perm
-          description: The slug_perm of the invite to be extended.
-          type: string
-          format: slug
-          pattern: ^[-a-zA-Z0-9_]+$
-          readOnly: true
-          minLength: 1
-        teams:
-          type: array
-          items:
-            $ref: '#/components/schemas/OrganizationTeamInvite'
-        user:
-          title: User
-          description: The slug of the user to be invited.
-          type: string
-          minLength: 1
-        user_url:
-          title: User url
-          type:
-          - string
-          - 'null'
-          format: uri
-          readOnly: true
-    OrganizationTeamMembers:
-      required:
-      - members
-      type: object
-      properties:
-        members:
-          description: The team members
-          type: array
-          items:
-            $ref: '#/components/schemas/OrganizationTeamServiceMember'
     ServiceRequest:
       required:
       - name
@@ -3534,238 +4359,79 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/ServiceTeams'
-    Service:
+    OrganizationSAMLAuth:
       required:
-      - name
+      - saml_auth_enabled
+      - saml_auth_enforced
+      type: object
+      properties:
+        saml_auth_enabled:
+          title: Saml auth enabled
+          type: boolean
+        saml_auth_enforced:
+          title: Saml auth enforced
+          type: boolean
+        saml_metadata_inline:
+          title: Inline SAML metadata
+          description: If configured, SAML metadata will be used as entered instead of retrieved from a remote URL.
+          type: string
+          maxLength: 32000
+        saml_metadata_url:
+          title: Saml metadata url
+          description: If configured, SAML metadata be retrieved from a remote URL.
+          type:
+          - string
+          - 'null'
+          format: uri
+          maxLength: 254
+    NestedVulnerabilityScanResults:
+      required:
+      - identifier
+      - scan_id
       type: object
       properties:
         created_at:
           title: Created at
+          description: The time this scan result was stored.
           type: string
           format: date-time
           readOnly: true
-        created_by:
-          title: Created by
-          type: string
+        has_vulnerabilities:
+          title: Has vulnerabilities
+          description: Do the results contain any known vulnerabilities?
+          type: boolean
           readOnly: true
-          minLength: 1
-        created_by_url:
-          title: Created by url
+        identifier:
+          title: Identifier
           type: string
+          minLength: 1
+        max_severity:
+          title: Max severity
+          type: string
+          enum:
+          - Unknown
+          - Low
+          - Medium
+          - High
+          - Critical
+          default: Unknown
+        num_vulnerabilities:
+          title: Num vulnerabilities
+          type: integer
+          default: 0
+        scan_id:
+          title: Scan id
+          description: 'Deprecated (23-05-15): Please use ''identifier'' instead. Previously: A monotonically increasing number that identified a scan within a repository.'
+          type:
+          - integer
+          - 'null'
+        url:
+          title: Url
+          type:
+          - string
+          - 'null'
           format: uri
           readOnly: true
-        description:
-          title: Description
-          description: The description of the service
-          type: string
-          maxLength: 1024
-          minLength: 1
-        key:
-          title: Key
-          description: The API key of the service
-          type: string
-          readOnly: true
-        key_expires_at:
-          title: Key expires at
-          description: The time at which the API key will expire. This will only be populated if the Organization has an active API Key Policy.
-          type:
-          - string
-          - 'null'
-          format: date-time
-          readOnly: true
-        name:
-          title: Name
-          description: The name of the service
-          type: string
-          maxLength: 120
-          minLength: 1
-        role:
-          title: Role
-          description: The role of the service.
-          type: string
-          enum:
-          - Manager
-          - Member
-          default: Member
-        slug:
-          title: Slug
-          description: The slug of the service
-          type: string
-          format: slug
-          pattern: ^[-a-zA-Z0-9_]+$
-          readOnly: true
-          minLength: 1
-        teams:
-          type: array
-          items:
-            $ref: '#/components/schemas/ServiceTeams'
-    PackageDenyPolicy:
-      required:
-      - package_query_string
-      type: object
-      properties:
-        action:
-          title: Action
-          type: string
-          enum:
-          - Block downloads
-          readOnly: true
-          default: Block downloads
-        created_at:
-          title: Created at
-          type: string
-          format: date-time
-          readOnly: true
-        description:
-          title: Description
-          type:
-          - string
-          - 'null'
-          maxLength: 250
-        enabled:
-          title: Enabled
-          description: Whether this rule is enabled or disabled.
-          type: boolean
-        name:
-          title: Name
-          type:
-          - string
-          - 'null'
-          maxLength: 100
-        package_query_string:
-          title: Package query string
-          description: Packages that match this query will trigger this deny rule.
-          type: string
-          minLength: 1
-        slug_perm:
-          title: Slug perm
-          type: string
-          format: slug
-          pattern: ^[-a-zA-Z0-9_]+$
-          readOnly: true
-          minLength: 1
-        status:
-          title: Status
-          type: string
-          enum:
-          - Pending
-          - In Progress
-          - Complete
-          - Cancelled
-          - Errored
-          readOnly: true
-          default: In Progress
-        updated_at:
-          title: Updated at
-          type: string
-          format: date-time
-          readOnly: true
-    OrganizationPackageLicensePolicy:
-      required:
-      - name
-      - spdx_identifiers
-      type: object
-      properties:
-        allow_unknown_licenses:
-          title: Allow unknown licenses
-          type: boolean
-        created_at:
-          title: Created at
-          type: string
-          format: date-time
-          readOnly: true
-        description:
-          title: Description
-          type:
-          - string
-          - 'null'
-          maxLength: 250
-          minLength: 1
-        name:
-          title: Name
-          type: string
-          maxLength: 100
-          minLength: 1
-        on_violation_quarantine:
-          title: On violation quarantine
-          type: boolean
-        package_query_string:
-          title: Package query string
-          type:
-          - string
-          - 'null'
-          minLength: 1
-        slug_perm:
-          title: Slug perm
-          type: string
-          format: slug
-          pattern: ^[-a-zA-Z0-9_]+$
-          readOnly: true
-          minLength: 1
-        spdx_identifiers:
-          type: array
-          items:
-            type: string
-          uniqueItems: true
-        updated_at:
-          title: Updated at
-          type: string
-          format: date-time
-          readOnly: true
-    ProviderSettingsWriteRequest:
-      required:
-      - claims
-      - enabled
-      - name
-      - provider_url
-      type: object
-      properties:
-        claims:
-          title: Claims
-          description: The set of claims that any received tokens from the provider must contain to authenticate as the configured service account.
-          type: object
-        dynamic_mappings:
-          description: 'The dynamic mappings of `mapping_claim` values to service accounts. Cannot be provided if `service_accounts` is also set.
-
-
-            Note: This field and the dynamic mappings feature are still in early access. Breaking changes are possible as we receive feedback on this feature.'
-          type: array
-          items:
-            $ref: '#/components/schemas/DynamicMapping'
-        enabled:
-          title: Enabled
-          description: Whether the provider settings should be used for incoming OIDC requests.
-          type: boolean
-        mapping_claim:
-          title: Mapping claim
-          description: 'The OIDC claim to use for mapping to service accounts in dynamic_mappings. Cannot be provided if `service_accounts` is also set.
-
-
-            Note: This field and the dynamic mappings feature are still in early access. Breaking changes are possible as we receive feedback on this feature.'
-          type:
-          - string
-          - 'null'
-          minLength: 1
-        name:
-          title: Name
-          description: The name of the provider settings are being configured for
-          type: string
-          minLength: 1
-        provider_url:
-          title: Provider url
-          description: 'The URL from the provider that serves as the base for the OpenID configuration.
-
-            For example, if the OpenID configuration is available at https://token.actions.githubusercontent.com/.well-known/openid-configuration, the provider URL would be https://token.actions.githubusercontent.com/'
-          type: string
-          format: uri
-          minLength: 1
-        service_accounts:
-          description: The service accounts associated with these provider settings. Cannot be provided if `mapping_claim` or `dynamic_mappings` are specified.
-          type: array
-          items:
-            description: The service accounts associated with these provider settings. Cannot be provided if `mapping_claim` or `dynamic_mappings` are specified.
-            type: string
-          uniqueItems: true
     NestedLicensePolicy:
       required:
       - spdx_identifiers
@@ -3825,6 +4491,30 @@ components:
           type: string
           format: uri
           readOnly: true
+    PackageVulnerabilityPolicyEvaluationRequestRequest:
+      type: object
+      properties: {}
+    PackageLicensePolicyViolationLog:
+      required:
+      - package
+      - policy
+      - reasons
+      type: object
+      properties:
+        event_at:
+          title: Event at
+          type: string
+          format: date-time
+          readOnly: true
+        package:
+          $ref: '#/components/schemas/PackageVulnerability'
+        policy:
+          $ref: '#/components/schemas/NestedLicensePolicy'
+        reasons:
+          type: array
+          items:
+            type: string
+            minLength: 1
     OrganizationInvite:
       type: object
       properties:
@@ -3888,143 +4578,30 @@ components:
           - 'null'
           format: uri
           readOnly: true
-    ServiceRequestPatch:
+    OrganizationTeamServiceMember:
+      description: The team members
+      required:
+      - role
+      - user
       type: object
       properties:
-        description:
-          title: Description
-          description: The description of the service
-          type: string
-          maxLength: 1024
-          minLength: 1
-        name:
-          title: Name
-          description: The name of the service
-          type: string
-          maxLength: 120
-          minLength: 1
         role:
           title: Role
-          description: The role of the service.
           type: string
           enum:
           - Manager
           - Member
-          default: Member
-        teams:
-          type: array
-          items:
-            $ref: '#/components/schemas/ServiceTeams'
-    PackageVulnerability:
-      required:
-      - identifier
-      type: object
-      properties:
-        identifier:
-          title: Identifier
+        user:
+          title: User
           type: string
           minLength: 1
-        name:
-          title: Name
-          description: The name of this package.
-          type:
-          - string
-          - 'null'
-          readOnly: true
-        url:
-          title: Url
-          type:
-          - string
-          - 'null'
-          format: uri
-          readOnly: true
-        version:
-          title: Version
-          description: The raw version for this package.
-          type:
-          - string
-          - 'null'
-          readOnly: true
-    OrganizationPackageVulnerabilityPolicyRequest:
-      required:
-      - name
-      type: object
-      properties:
-        allow_unknown_severity:
-          title: Allow unknown severity
-          description: Denotes whether vulnerabilities detected by a security scan with an unknown severity are permitted by this policy.
-          type: boolean
-        description:
-          title: Description
-          type:
-          - string
-          - 'null'
-          maxLength: 250
-          minLength: 1
-        min_severity:
-          title: Min severity
+        user_kind:
+          title: User kind
           type: string
           enum:
-          - Low
-          - Medium
-          - High
-          - Critical
-          default: Critical
-        name:
-          title: Name
-          type: string
-          maxLength: 100
-          minLength: 1
-        on_violation_quarantine:
-          title: On violation quarantine
-          type: boolean
-        package_query_string:
-          title: Package query string
-          type:
-          - string
-          - 'null'
-          minLength: 1
-    PackageVulnerabilityPolicyEvaluationRequest:
-      type: object
-      properties:
-        created_at:
-          title: Created at
-          type: string
-          format: date-time
-          readOnly: true
-        evaluation_count:
-          title: Evaluation count
-          type: integer
-          readOnly: true
-        policy:
-          $ref: '#/components/schemas/NestedVulnerabilityPolicy'
-        slug_perm:
-          title: Slug perm
-          type: string
-          format: slug
-          pattern: ^[-a-zA-Z0-9_]+$
-          readOnly: true
-          minLength: 1
-        status:
-          title: Status
-          type: string
-          enum:
-          - Pending
-          - In Progress
-          - Complete
-          - Cancelled
-          - Errored
-          readOnly: true
-          default: Pending
-        updated_at:
-          title: Updated at
-          type: string
-          format: date-time
-          readOnly: true
-        violation_count:
-          title: Violation count
-          type: integer
-          readOnly: true
+          - User
+          - Service
+          default: User
     Organization:
       required:
       - name
@@ -4069,370 +4646,39 @@ components:
           - string
           - 'null'
           readOnly: true
-    OrganizationTeam:
+    PackageVulnerability:
       required:
-      - name
+      - identifier
       type: object
       properties:
-        description:
-          title: Description
-          description: A detailed description of the team.
-          type:
-          - string
-          - 'null'
-          maxLength: 200
+        identifier:
+          title: Identifier
+          type: string
+          minLength: 1
         name:
           title: Name
-          description: A descriptive name for the team.
-          type: string
-          pattern: ^\w[\w \-'\.\/()]+$
-          maxLength: 200
-          minLength: 1
-        slug:
-          title: Slug
-          type: string
-          format: slug
-          pattern: ^[-a-zA-Z0-9_]+$
-          minLength: 1
-        slug_perm:
-          title: Slug perm
-          type: string
-          format: slug
-          pattern: ^[-a-zA-Z0-9_]+$
-          readOnly: true
-          minLength: 1
-        visibility:
-          title: Visibility
-          type: string
-          enum:
-          - Visible
-          - Hidden
-          default: Visible
-    OrganizationMembershipVisibilityUpdate:
-      type: object
-      properties:
-        email:
-          title: Email
-          type: string
-          readOnly: true
-          minLength: 1
-        has_two_factor:
-          title: Has two factor
-          type: boolean
-          readOnly: true
-        joined_at:
-          title: Joined at
-          type: string
-          format: date-time
-          readOnly: true
-        last_login_at:
-          title: Last login at
+          description: The name of this package.
           type:
           - string
           - 'null'
-          format: date-time
           readOnly: true
-        last_login_method:
-          title: Last login method
-          type: string
-          enum:
-          - Unknown
-          - Password
-          - Social
-          - SAML
-          - OIDC
-          readOnly: true
-          default: Unknown
-        role:
-          title: Role
-          type: string
-          enum:
-          - Owner
-          - Manager
-          - Member
-          - Collaborator
-          readOnly: true
-          default: Owner
-        user:
-          title: User
-          type: string
-          readOnly: true
-          minLength: 1
-        user_id:
-          title: User id
-          type: string
-          readOnly: true
-          minLength: 1
-        user_name:
-          title: User name
-          type: string
-          readOnly: true
-          minLength: 1
-        user_url:
-          title: User url
-          type: string
+        url:
+          title: Url
+          type:
+          - string
+          - 'null'
           format: uri
           readOnly: true
-        visibility:
-          title: Visibility
-          type: string
-          enum:
-          - Public
-          - Private
-          default: Public
-    OrganizationTeamServiceMember:
-      description: The team members
-      required:
-      - role
-      - user
-      type: object
-      properties:
-        role:
-          title: Role
-          type: string
-          enum:
-          - Manager
-          - Member
-        user:
-          title: User
-          type: string
-          minLength: 1
-        user_kind:
-          title: User kind
-          type: string
-          enum:
-          - User
-          - Service
-          default: User
+        version:
+          title: Version
+          description: The raw version for this package.
+          type:
+          - string
+          - 'null'
+          readOnly: true
     PackageLicensePolicyEvaluationRequestRequest:
       type: object
       properties: {}
-    PackageLicensePolicyEvaluationRequest:
-      type: object
-      properties:
-        created_at:
-          title: Created at
-          type: string
-          format: date-time
-          readOnly: true
-        evaluation_count:
-          title: Evaluation count
-          type: integer
-          readOnly: true
-        policy:
-          $ref: '#/components/schemas/NestedLicensePolicy'
-        slug_perm:
-          title: Slug perm
-          type: string
-          format: slug
-          pattern: ^[-a-zA-Z0-9_]+$
-          readOnly: true
-          minLength: 1
-        status:
-          title: Status
-          type: string
-          enum:
-          - Pending
-          - In Progress
-          - Complete
-          - Cancelled
-          - Errored
-          readOnly: true
-          default: Pending
-        updated_at:
-          title: Updated at
-          type: string
-          format: date-time
-          readOnly: true
-        violation_count:
-          title: Violation count
-          type: integer
-          readOnly: true
-    OrganizationSAMLAuth:
-      required:
-      - saml_auth_enabled
-      - saml_auth_enforced
-      type: object
-      properties:
-        saml_auth_enabled:
-          title: Saml auth enabled
-          type: boolean
-        saml_auth_enforced:
-          title: Saml auth enforced
-          type: boolean
-        saml_metadata_inline:
-          title: Inline SAML metadata
-          description: If configured, SAML metadata will be used as entered instead of retrieved from a remote URL.
-          type: string
-          maxLength: 32000
-        saml_metadata_url:
-          title: Saml metadata url
-          description: If configured, SAML metadata be retrieved from a remote URL.
-          type:
-          - string
-          - 'null'
-          format: uri
-          maxLength: 254
-    OrganizationSAMLAuthRequestPatch:
-      type: object
-      properties:
-        saml_auth_enabled:
-          title: Saml auth enabled
-          type: boolean
-        saml_auth_enforced:
-          title: Saml auth enforced
-          type: boolean
-        saml_metadata_inline:
-          title: Inline SAML metadata
-          description: If configured, SAML metadata will be used as entered instead of retrieved from a remote URL.
-          type: string
-          maxLength: 32000
-        saml_metadata_url:
-          title: Saml metadata url
-          description: If configured, SAML metadata be retrieved from a remote URL.
-          type:
-          - string
-          - 'null'
-          format: uri
-          maxLength: 254
-    OrganizationTeamInvite:
-      required:
-      - team
-      type: object
-      properties:
-        role:
-          title: Role
-          description: The role to be assigned to the invited user in the team.
-          type: string
-          enum:
-          - Manager
-          - Member
-          default: Member
-        team:
-          title: Team
-          description: The team identifier (slug).
-          type: string
-          format: slug
-          pattern: ^[-a-zA-Z0-9_]+$
-          minLength: 1
-    OrganizationPackageVulnerabilityPolicy:
-      required:
-      - name
-      type: object
-      properties:
-        allow_unknown_severity:
-          title: Allow unknown severity
-          description: Denotes whether vulnerabilities detected by a security scan with an unknown severity are permitted by this policy.
-          type: boolean
-        created_at:
-          title: Created at
-          type: string
-          format: date-time
-          readOnly: true
-        description:
-          title: Description
-          type:
-          - string
-          - 'null'
-          maxLength: 250
-          minLength: 1
-        min_severity:
-          title: Min severity
-          type: string
-          enum:
-          - Low
-          - Medium
-          - High
-          - Critical
-          default: Critical
-        name:
-          title: Name
-          type: string
-          maxLength: 100
-          minLength: 1
-        on_violation_quarantine:
-          title: On violation quarantine
-          type: boolean
-        package_query_string:
-          title: Package query string
-          type:
-          - string
-          - 'null'
-          minLength: 1
-        slug_perm:
-          title: Slug perm
-          type: string
-          format: slug
-          pattern: ^[-a-zA-Z0-9_]+$
-          readOnly: true
-          minLength: 1
-        updated_at:
-          title: Updated at
-          type: string
-          format: date-time
-          readOnly: true
-    ProviderSettings:
-      required:
-      - claims
-      - enabled
-      - name
-      - provider_url
-      type: object
-      properties:
-        claims:
-          title: Claims
-          description: The set of claims that any received tokens from the provider must contain to authenticate as the configured service account.
-          type: object
-        enabled:
-          title: Enabled
-          description: Whether the provider settings should be used for incoming OIDC requests.
-          type: boolean
-        mapping_claim:
-          title: Mapping claim
-          description: 'The OIDC claim to use for mapping to service accounts in dynamic_mappings.
-
-
-            Note: This field and the dynamic mappings feature are still in early access. Breaking changes are possible as we receive feedback on this feature.'
-          type:
-          - string
-          - 'null'
-          minLength: 1
-        name:
-          title: Name
-          description: The name of the provider settings are being configured for
-          type: string
-          minLength: 1
-        provider_url:
-          title: Provider url
-          description: 'The URL from the provider that serves as the base for the OpenID configuration.
-
-            For example, if the OpenID configuration is available at https://token.actions.githubusercontent.com/.well-known/openid-configuration, the provider URL would be https://token.actions.githubusercontent.com/'
-          type: string
-          format: uri
-          minLength: 1
-        service_accounts:
-          description: The service accounts associated with these provider settings.
-          type: array
-          items:
-            description: The service accounts associated with these provider settings.
-            type: string
-          uniqueItems: true
-        slug:
-          title: Slug
-          description: The slug of the provider settings
-          type: string
-          format: slug
-          pattern: ^[-a-zA-Z0-9_]+$
-          readOnly: true
-          minLength: 1
-        slug_perm:
-          title: Slug perm
-          description: The unique, immutable identifier of the provider settings.
-          type: string
-          format: slug
-          pattern: ^[-a-zA-Z0-9_]+$
-          readOnly: true
-          minLength: 1
     ServiceTeams:
       required:
       - slug
@@ -4453,252 +4699,6 @@ components:
           format: slug
           pattern: ^[-a-zA-Z0-9_]+$
           minLength: 1
-    ProviderSettingsWrite:
-      required:
-      - claims
-      - enabled
-      - name
-      - provider_url
-      type: object
-      properties:
-        claims:
-          title: Claims
-          description: The set of claims that any received tokens from the provider must contain to authenticate as the configured service account.
-          type: object
-        dynamic_mappings:
-          description: 'The dynamic mappings of `mapping_claim` values to service accounts. Cannot be provided if `service_accounts` is also set.
-
-
-            Note: This field and the dynamic mappings feature are still in early access. Breaking changes are possible as we receive feedback on this feature.'
-          type: array
-          items:
-            $ref: '#/components/schemas/DynamicMapping'
-        enabled:
-          title: Enabled
-          description: Whether the provider settings should be used for incoming OIDC requests.
-          type: boolean
-        mapping_claim:
-          title: Mapping claim
-          description: 'The OIDC claim to use for mapping to service accounts in dynamic_mappings. Cannot be provided if `service_accounts` is also set.
-
-
-            Note: This field and the dynamic mappings feature are still in early access. Breaking changes are possible as we receive feedback on this feature.'
-          type:
-          - string
-          - 'null'
-          minLength: 1
-        name:
-          title: Name
-          description: The name of the provider settings are being configured for
-          type: string
-          minLength: 1
-        provider_url:
-          title: Provider url
-          description: 'The URL from the provider that serves as the base for the OpenID configuration.
-
-            For example, if the OpenID configuration is available at https://token.actions.githubusercontent.com/.well-known/openid-configuration, the provider URL would be https://token.actions.githubusercontent.com/'
-          type: string
-          format: uri
-          minLength: 1
-        service_accounts:
-          description: The service accounts associated with these provider settings. Cannot be provided if `mapping_claim` or `dynamic_mappings` are specified.
-          type: array
-          items:
-            description: The service accounts associated with these provider settings. Cannot be provided if `mapping_claim` or `dynamic_mappings` are specified.
-            type: string
-          uniqueItems: true
-        slug:
-          title: Slug
-          description: The slug of the provider settings
-          type: string
-          format: slug
-          pattern: ^[-a-zA-Z0-9_]+$
-          readOnly: true
-          minLength: 1
-        slug_perm:
-          title: Slug perm
-          description: The unique, immutable identifier of the provider settings.
-          type: string
-          format: slug
-          pattern: ^[-a-zA-Z0-9_]+$
-          readOnly: true
-          minLength: 1
-    OrganizationMembershipRequestPatch:
-      type: object
-      properties: {}
-    PackageVulnerabilityPolicyViolationLog:
-      required:
-      - package
-      - policy
-      - reasons
-      - vulnerability_scan_results
-      type: object
-      properties:
-        event_at:
-          title: Event at
-          type: string
-          format: date-time
-          readOnly: true
-        package:
-          $ref: '#/components/schemas/PackageVulnerability'
-        policy:
-          $ref: '#/components/schemas/NestedVulnerabilityPolicy'
-        reasons:
-          type: array
-          items:
-            type: string
-            minLength: 1
-        vulnerability_scan_results:
-          $ref: '#/components/schemas/NestedVulnerabilityScanResults'
-    OrganizationMembershipRoleUpdateRequestPatch:
-      type: object
-      properties:
-        role:
-          title: Role
-          type: string
-          enum:
-          - Owner
-          - Manager
-          - Member
-          - Collaborator
-          default: Owner
-    DynamicMapping:
-      description: 'The dynamic mappings of `mapping_claim` values to service accounts. Cannot be provided if `service_accounts` is also set.
-
-
-        Note: This field and the dynamic mappings feature are still in early access. Breaking changes are possible as we receive feedback on this feature.'
-      required:
-      - claim_value
-      - service_account
-      type: object
-      properties:
-        claim_value:
-          title: Claim value
-          description: 'The OIDC token claim value that must be present in the token for it to successfully authenticate as the mapped `service_account`.
-
-
-            Note: This field and the dynamic mappings feature are still in early access. Breaking changes are possible as we receive feedback on this feature.'
-          type: string
-          minLength: 1
-        service_account:
-          title: Service account
-          description: 'The service account associated with the provider setting and `claim_value`
-
-
-            Note: This field and the dynamic mappings feature are still in early access. Breaking changes are possible as we receive feedback on this feature.'
-          type: string
-          minLength: 1
-    PackageDenyPolicyRequestPatch:
-      type: object
-      properties:
-        description:
-          title: Description
-          type:
-          - string
-          - 'null'
-          maxLength: 250
-        enabled:
-          title: Enabled
-          description: Whether this rule is enabled or disabled.
-          type: boolean
-        name:
-          title: Name
-          type:
-          - string
-          - 'null'
-          maxLength: 100
-        package_query_string:
-          title: Package query string
-          description: Packages that match this query will trigger this deny rule.
-          type: string
-          minLength: 1
-    NestedVulnerabilityScanResults:
-      required:
-      - identifier
-      - scan_id
-      type: object
-      properties:
-        created_at:
-          title: Created at
-          description: The time this scan result was stored.
-          type: string
-          format: date-time
-          readOnly: true
-        has_vulnerabilities:
-          title: Has vulnerabilities
-          description: Do the results contain any known vulnerabilities?
-          type: boolean
-          readOnly: true
-        identifier:
-          title: Identifier
-          type: string
-          minLength: 1
-        max_severity:
-          title: Max severity
-          type: string
-          enum:
-          - Unknown
-          - Low
-          - Medium
-          - High
-          - Critical
-          default: Unknown
-        num_vulnerabilities:
-          title: Num vulnerabilities
-          type: integer
-          default: 0
-        scan_id:
-          title: Scan id
-          description: 'Deprecated (23-05-15): Please use ''identifier'' instead. Previously: A monotonically increasing number that identified a scan within a repository.'
-          type:
-          - integer
-          - 'null'
-        url:
-          title: Url
-          type:
-          - string
-          - 'null'
-          format: uri
-          readOnly: true
-    OrganizationGroupSyncStatus:
-      type: object
-      properties:
-        saml_group_sync_status:
-          title: Saml group sync status
-          type: boolean
-          readOnly: true
-    OrganizationTeamRequest:
-      required:
-      - name
-      type: object
-      properties:
-        description:
-          title: Description
-          description: A detailed description of the team.
-          type:
-          - string
-          - 'null'
-          maxLength: 200
-        name:
-          title: Name
-          description: A descriptive name for the team.
-          type: string
-          pattern: ^\w[\w \-'\.\/()]+$
-          maxLength: 200
-          minLength: 1
-        slug:
-          title: Slug
-          type: string
-          format: slug
-          pattern: ^[-a-zA-Z0-9_]+$
-          minLength: 1
-        visibility:
-          title: Visibility
-          type: string
-          enum:
-          - Visible
-          - Hidden
-          default: Visible
   securitySchemes:
     apikey:
       type: apiKey

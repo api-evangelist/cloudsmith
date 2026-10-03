@@ -328,6 +328,125 @@ components:
           title: Verify SSL Certificates
           description: If enabled, SSL certificates is verified when webhooks are sent. It's recommended to leave this enabled as not verifying the integrity of SSL certificates leaves you susceptible to Man-in-the-Middle (MITM) attacks.
           type: boolean
+    ErrorDetail:
+      required:
+      - detail
+      type: object
+      properties:
+        detail:
+          title: Detail
+          description: An extended message for the response.
+          type: string
+          minLength: 1
+        fields:
+          title: Fields
+          description: 'A Dictionary of related errors where key: Field and value: Array of Errors related to that field'
+          type: object
+          additionalProperties:
+            type: array
+            items:
+              type: string
+              minLength: 1
+    RepositoryWebhookRequest:
+      required:
+      - events
+      - target_url
+      - templates
+      type: object
+      properties:
+        events:
+          type:
+          - array
+          - 'null'
+          items:
+            type: string
+            enum:
+            - '*'
+            - package.created
+            - package.deleted
+            - package.downloaded
+            - package.failed
+            - package.quarantined
+            - package.released
+            - package.restored
+            - package.security_scanned
+            - package.synced
+            - package.syncing
+            - package.tags_updated
+        is_active:
+          title: Webhook Active
+          description: If enabled, the webhook will trigger on subscribed events and send payloads to the configured target URL.
+          type: boolean
+        package_query:
+          title: Package query
+          description: The package-based search query for webhooks to fire. This uses the same syntax as the standard search used for repositories, and also supports boolean logic operators such as OR/AND/NOT and parentheses for grouping. If a package does not match, the webhook will not fire.
+          type:
+          - string
+          - 'null'
+          maxLength: 1024
+        request_body_format:
+          title: Payload Format
+          description: 'The format of the payloads for webhook requests. Valid options are: (0) JSON, (1) JSON array, (2) form encoded JSON and (3) Handlebars template.'
+          type: integer
+          enum:
+          - 0
+          - 1
+          - 2
+          - 3
+        request_body_template_format:
+          title: Payload Template Format
+          description: 'The format of the payloads for webhook requests. Valid options are: (0) Generic/user defined, (1) JSON and (2) XML.'
+          type: integer
+          enum:
+          - 0
+          - 1
+          - 2
+        request_content_type:
+          title: Content Type Header Value
+          description: 'The value that will be sent for the ''Content Type'' header. '
+          type:
+          - string
+          - 'null'
+          maxLength: 128
+        secret_header:
+          title: Secret Header
+          description: The header to send the predefined secret in. This must be unique from existing headers or it won't be sent. You can use this as a form of authentication on the endpoint side.
+          type:
+          - string
+          - 'null'
+          pattern: ^[-\w]+$
+          maxLength: 64
+        secret_value:
+          title: Secret Value
+          description: 'The value for the predefined secret (note: this is treated as a passphrase and is encrypted when we store it). You can use this as a form of authentication on the endpoint side.'
+          type:
+          - string
+          - 'null'
+          pattern: ^[^\n\r]+$
+          maxLength: 512
+        signature_key:
+          title: HMAC Signature Key
+          description: 'The value for the signature key - This is used to generate an HMAC-based hex digest of the request body, which we send as the X-Cloudsmith-Signature header so that you can ensure that the request wasn''t modified by a malicious party (note: this is treated as a passphrase and is encrypted when we store it).'
+          type: string
+          maxLength: 512
+          minLength: 1
+        target_url:
+          title: Payload URL
+          description: The destination URL that webhook payloads will be POST'ed to.
+          type: string
+          format: uri
+          maxLength: 2000
+          minLength: 1
+        templates:
+          type:
+          - array
+          - 'null'
+          items:
+            $ref: '#/components/schemas/WebhookTemplate'
+        verify_ssl:
+          title: Verify SSL Certificates
+          description: If enabled, SSL certificates is verified when webhooks are sent. It's recommended to leave this enabled as not verifying the integrity of SSL certificates leaves you susceptible to Man-in-the-Middle (MITM) attacks.
+          type: boolean
     RepositoryWebhook:
       required:
       - events
@@ -507,125 +626,6 @@ components:
           title: Verify SSL Certificates
           description: If enabled, SSL certificates is verified when webhooks are sent. It's recommended to leave this enabled as not verifying the integrity of SSL certificates leaves you susceptible to Man-in-the-Middle (MITM) attacks.
           type: boolean
-    RepositoryWebhookRequest:
-      required:
-      - events
-      - target_url
-      - templates
-      type: object
-      properties:
-        events:
-          type:
-          - array
-          - 'null'
-          items:
-            type: string
-            enum:
-            - '*'
-            - package.created
-            - package.deleted
-            - package.downloaded
-            - package.failed
-            - package.quarantined
-            - package.released
-            - package.restored
-            - package.security_scanned
-            - package.synced
-            - package.syncing
-            - package.tags_updated
-        is_active:
-          title: Webhook Active
-          description: If enabled, the webhook will trigger on subscribed events and send payloads to the configured target URL.
-          type: boolean
-        package_query:
-          title: Package query
-          description: The package-based search query for webhooks to fire. This uses the same syntax as the standard search used for repositories, and also supports boolean logic operators such as OR/AND/NOT and parentheses for grouping. If a package does not match, the webhook will not fire.
-          type:
-          - string
-          - 'null'
-          maxLength: 1024
-        request_body_format:
-          title: Payload Format
-          description: 'The format of the payloads for webhook requests. Valid options are: (0) JSON, (1) JSON array, (2) form encoded JSON and (3) Handlebars template.'
-          type: integer
-          enum:
-          - 0
-          - 1
-          - 2
-          - 3
-        request_body_template_format:
-          title: Payload Template Format
-          description: 'The format of the payloads for webhook requests. Valid options are: (0) Generic/user defined, (1) JSON and (2) XML.'
-          type: integer
-          enum:
-          - 0
-          - 1
-          - 2
-        request_content_type:
-          title: Content Type Header Value
-          description: 'The value that will be sent for the ''Content Type'' header. '
-          type:
-          - string
-          - 'null'
-          maxLength: 128
-        secret_header:
-          title: Secret Header
-          description: The header to send the predefined secret in. This must be unique from existing headers or it won't be sent. You can use this as a form of authentication on the endpoint side.
-          type:
-          - string
-          - 'null'
-          pattern: ^[-\w]+$
-          maxLength: 64
-        secret_value:
-          title: Secret Value
-          description: 'The value for the predefined secret (note: this is treated as a passphrase and is encrypted when we store it). You can use this as a form of authentication on the endpoint side.'
-          type:
-          - string
-          - 'null'
-          pattern: ^[^\n\r]+$
-          maxLength: 512
-        signature_key:
-          title: HMAC Signature Key
-          description: 'The value for the signature key - This is used to generate an HMAC-based hex digest of the request body, which we send as the X-Cloudsmith-Signature header so that you can ensure that the request wasn''t modified by a malicious party (note: this is treated as a passphrase and is encrypted when we store it).'
-          type: string
-          maxLength: 512
-          minLength: 1
-        target_url:
-          title: Payload URL
-          description: The destination URL that webhook payloads will be POST'ed to.
-          type: string
-          format: uri
-          maxLength: 2000
-          minLength: 1
-        templates:
-          type:
-          - array
-          - 'null'
-          items:
-            $ref: '#/components/schemas/WebhookTemplate'
-        verify_ssl:
-          title: Verify SSL Certificates
-          description: If enabled, SSL certificates is verified when webhooks are sent. It's recommended to leave this enabled as not verifying the integrity of SSL certificates leaves you susceptible to Man-in-the-Middle (MITM) attacks.
-          type: boolean
-    ErrorDetail:
-      required:
-      - detail
-      type: object
-      properties:
-        detail:
-          title: Detail
-          description: An extended message for the response.
-          type: string
-          minLength: 1
-        fields:
-          title: Fields
-          description: 'A Dictionary of related errors where key: Field and value: Array of Errors related to that field'
-          type: object
-          additionalProperties:
-            type: array
-            items:
-              type: string
-              minLength: 1
   securitySchemes:
     apikey:
       type: apiKey

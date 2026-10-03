@@ -84,25 +84,21 @@ paths:
       x-simplified: fields[distributions]=slug,name
 components:
   schemas:
-    ErrorDetail:
-      required:
-      - detail
+    DistributionVersion:
+      description: A list of the versions for this distribution
       type: object
       properties:
-        detail:
-          title: Detail
-          description: An extended message for the response.
+        name:
+          title: Name
+          description: The textual name for this version.
           type: string
+          maxLength: 64
+        slug:
+          title: Slug
+          description: The slug identifier for this version
+          type: string
+          readOnly: true
           minLength: 1
-        fields:
-          title: Fields
-          description: 'A Dictionary of related errors where key: Field and value: Array of Errors related to that field'
-          type: object
-          additionalProperties:
-            type: array
-            items:
-              type: string
-              minLength: 1
     DistributionFull:
       required:
       - name
@@ -146,21 +142,25 @@ components:
           items:
             $ref: '#/components/schemas/DistributionVersion'
           readOnly: true
-    DistributionVersion:
-      description: A list of the versions for this distribution
+    ErrorDetail:
+      required:
+      - detail
       type: object
       properties:
-        name:
-          title: Name
-          description: The textual name for this version.
+        detail:
+          title: Detail
+          description: An extended message for the response.
           type: string
-          maxLength: 64
-        slug:
-          title: Slug
-          description: The slug identifier for this version
-          type: string
-          readOnly: true
           minLength: 1
+        fields:
+          title: Fields
+          description: 'A Dictionary of related errors where key: Field and value: Array of Errors related to that field'
+          type: object
+          additionalProperties:
+            type: array
+            items:
+              type: string
+              minLength: 1
   securitySchemes:
     apikey:
       type: apiKey
