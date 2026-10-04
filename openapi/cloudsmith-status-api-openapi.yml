@@ -49,6 +49,23 @@ paths:
       security: []
 components:
   schemas:
+    StatusBasic:
+      type: object
+      properties:
+        detail:
+          title: Detail
+          description: The message describing the state of the API.
+          type: string
+          readOnly: true
+          default: Cloudsmith API is operational.
+          minLength: 1
+        version:
+          title: Version
+          description: The current version for the Cloudsmith service.
+          type: string
+          readOnly: true
+          default: '1.0'
+          minLength: 1
     ErrorDetail:
       required:
       - detail
@@ -68,23 +85,6 @@ components:
             items:
               type: string
               minLength: 1
-    StatusBasic:
-      type: object
-      properties:
-        detail:
-          title: Detail
-          description: The message describing the state of the API.
-          type: string
-          readOnly: true
-          default: Cloudsmith API is operational.
-          minLength: 1
-        version:
-          title: Version
-          description: The current version for the Cloudsmith service.
-          type: string
-          readOnly: true
-          default: '1.0'
-          minLength: 1
   securitySchemes:
     apikey:
       type: apiKey

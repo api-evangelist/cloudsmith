@@ -224,69 +224,6 @@ paths:
       - Vulnerabilities
 components:
   schemas:
-    VulnerabilityScanResultsList:
-      required:
-      - identifier
-      - package
-      - scan_id
-      type: object
-      properties:
-        created_at:
-          title: Created at
-          description: The time this scan result was stored.
-          type: string
-          format: date-time
-          readOnly: true
-        has_vulnerabilities:
-          title: Has vulnerabilities
-          description: Do the results contain any known vulnerabilities?
-          type: boolean
-          readOnly: true
-        identifier:
-          title: Identifier
-          type: string
-          minLength: 1
-        max_severity:
-          title: Max severity
-          type: string
-          enum:
-          - Unknown
-          - Low
-          - Medium
-          - High
-          - Critical
-          default: Unknown
-        num_vulnerabilities:
-          title: Num vulnerabilities
-          type: integer
-          default: 0
-        package:
-          $ref: '#/components/schemas/PackageVulnerability'
-        scan_id:
-          title: Scan id
-          description: 'Deprecated (23-05-15): Please use ''identifier'' instead. Previously: A monotonically increasing number that identified a scan within a repository.'
-          type:
-          - integer
-          - 'null'
-    VulnerabilityScan:
-      required:
-      - results
-      - target
-      - type
-      type: object
-      properties:
-        results:
-          type: array
-          items:
-            $ref: '#/components/schemas/Vulnerability'
-        target:
-          title: Target
-          type: string
-          minLength: 1
-        type:
-          title: Type
-          type: string
-          minLength: 1
     VulnerabilityScanResults:
       required:
       - identifier
@@ -336,6 +273,50 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/VulnerabilityScan'
+    VulnerabilityScanResultsList:
+      required:
+      - identifier
+      - package
+      - scan_id
+      type: object
+      properties:
+        created_at:
+          title: Created at
+          description: The time this scan result was stored.
+          type: string
+          format: date-time
+          readOnly: true
+        has_vulnerabilities:
+          title: Has vulnerabilities
+          description: Do the results contain any known vulnerabilities?
+          type: boolean
+          readOnly: true
+        identifier:
+          title: Identifier
+          type: string
+          minLength: 1
+        max_severity:
+          title: Max severity
+          type: string
+          enum:
+          - Unknown
+          - Low
+          - Medium
+          - High
+          - Critical
+          default: Unknown
+        num_vulnerabilities:
+          title: Num vulnerabilities
+          type: integer
+          default: 0
+        package:
+          $ref: '#/components/schemas/PackageVulnerability'
+        scan_id:
+          title: Scan id
+          description: 'Deprecated (23-05-15): Please use ''identifier'' instead. Previously: A monotonically increasing number that identified a scan within a repository.'
+          type:
+          - integer
+          - 'null'
     PackageVulnerability:
       required:
       - identifier
@@ -366,6 +347,44 @@ components:
           - string
           - 'null'
           readOnly: true
+    ErrorDetail:
+      required:
+      - detail
+      type: object
+      properties:
+        detail:
+          title: Detail
+          description: An extended message for the response.
+          type: string
+          minLength: 1
+        fields:
+          title: Fields
+          description: 'A Dictionary of related errors where key: Field and value: Array of Errors related to that field'
+          type: object
+          additionalProperties:
+            type: array
+            items:
+              type: string
+              minLength: 1
+    VulnerabilityScan:
+      required:
+      - results
+      - target
+      - type
+      type: object
+      properties:
+        results:
+          type: array
+          items:
+            $ref: '#/components/schemas/Vulnerability'
+        target:
+          title: Target
+          type: string
+          minLength: 1
+        type:
+          title: Type
+          type: string
+          minLength: 1
     VulnerabilityScanVersion:
       required:
       - major
@@ -397,25 +416,6 @@ components:
           type: string
           default: ''
           maxLength: 1024
-    ErrorDetail:
-      required:
-      - detail
-      type: object
-      properties:
-        detail:
-          title: Detail
-          description: An extended message for the response.
-          type: string
-          minLength: 1
-        fields:
-          title: Fields
-          description: 'A Dictionary of related errors where key: Field and value: Array of Errors related to that field'
-          type: object
-          additionalProperties:
-            type: array
-            items:
-              type: string
-              minLength: 1
     Vulnerability:
       required:
       - affected_version

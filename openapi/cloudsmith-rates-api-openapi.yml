@@ -58,25 +58,6 @@ components:
           additionalProperties:
             $ref: '#/components/schemas/RateCheck'
           readOnly: true
-    ErrorDetail:
-      required:
-      - detail
-      type: object
-      properties:
-        detail:
-          title: Detail
-          description: An extended message for the response.
-          type: string
-          minLength: 1
-        fields:
-          title: Fields
-          description: 'A Dictionary of related errors where key: Field and value: Array of Errors related to that field'
-          type: object
-          additionalProperties:
-            type: array
-            items:
-              type: string
-              minLength: 1
     RateCheck:
       type: object
       properties:
@@ -111,6 +92,25 @@ components:
           description: If true, throttling is currently being enforced.
           type: boolean
           readOnly: true
+    ErrorDetail:
+      required:
+      - detail
+      type: object
+      properties:
+        detail:
+          title: Detail
+          description: An extended message for the response.
+          type: string
+          minLength: 1
+        fields:
+          title: Fields
+          description: 'A Dictionary of related errors where key: Field and value: Array of Errors related to that field'
+          type: object
+          additionalProperties:
+            type: array
+            items:
+              type: string
+              minLength: 1
   securitySchemes:
     apikey:
       type: apiKey

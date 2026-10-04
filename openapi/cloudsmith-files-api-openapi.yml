@@ -276,31 +276,6 @@ paths:
       - Files
 components:
   schemas:
-    PackageFilePartsUpload:
-      type: object
-      properties:
-        identifier:
-          title: Identifier
-          description: The identifier for the file to use uploading parts.
-          type: string
-          format: uri
-          readOnly: true
-          minLength: 1
-        upload_querystring:
-          title: Upload querystring
-          description: The querystring to use for the next-step PUT upload.
-          type:
-          - string
-          - 'null'
-          readOnly: true
-          minLength: 1
-        upload_url:
-          title: Upload url
-          description: The URL to use for the next-step PUT upload
-          type: string
-          format: uri
-          readOnly: true
-          minLength: 1
     PackageFileUpload:
       type: object
       properties:
@@ -336,6 +311,31 @@ components:
         upload_url:
           title: Upload url
           description: The URL to use for the next-step POST or PUT upload
+          type: string
+          format: uri
+          readOnly: true
+          minLength: 1
+    PackageFilePartsUpload:
+      type: object
+      properties:
+        identifier:
+          title: Identifier
+          description: The identifier for the file to use uploading parts.
+          type: string
+          format: uri
+          readOnly: true
+          minLength: 1
+        upload_querystring:
+          title: Upload querystring
+          description: The querystring to use for the next-step PUT upload.
+          type:
+          - string
+          - 'null'
+          readOnly: true
+          minLength: 1
+        upload_url:
+          title: Upload url
+          description: The URL to use for the next-step PUT upload
           type: string
           format: uri
           readOnly: true

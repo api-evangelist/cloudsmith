@@ -112,57 +112,10 @@ paths:
       x-summary-source: derived
 components:
   schemas:
-    PackageRecycleBin:
-      required:
-      - action
-      - identifiers
-      type: object
-      properties:
-        action:
-          title: Action
-          description: The action to perform on soft-deleted packages.
-          type: string
-          enum:
-          - hard_delete
-          - restore
-        identifiers:
-          description: A list of soft-deleted package identifiers to action.
-          type: array
-          items:
-            type: string
-            maxLength: 255
-            minLength: 1
-          maxItems: 100
-          minItems: 1
-        repository:
-          title: Repository
-          description: The repository name to filter packages to. If not provided, the action will be performed across all accessible repositories in the workspace.
-          type: string
-          maxLength: 255
-          minLength: 1
     Tags:
       description: All tags on the package, grouped by tag type. This includes immutable tags, but doesn't distinguish them from mutable. To see which tags are immutable specifically, see the tags_immutable field.
       type: object
       properties: {}
-    ErrorDetail:
-      required:
-      - detail
-      type: object
-      properties:
-        detail:
-          title: Detail
-          description: An extended message for the response.
-          type: string
-          minLength: 1
-        fields:
-          title: Fields
-          description: 'A Dictionary of related errors where key: Field and value: Array of Errors related to that field'
-          type: object
-          additionalProperties:
-            type: array
-            items:
-              type: string
-              minLength: 1
     RecycleBinPackage:
       type: object
       properties:
@@ -349,6 +302,53 @@ components:
               - string
               - 'null'
           readOnly: true
+    ErrorDetail:
+      required:
+      - detail
+      type: object
+      properties:
+        detail:
+          title: Detail
+          description: An extended message for the response.
+          type: string
+          minLength: 1
+        fields:
+          title: Fields
+          description: 'A Dictionary of related errors where key: Field and value: Array of Errors related to that field'
+          type: object
+          additionalProperties:
+            type: array
+            items:
+              type: string
+              minLength: 1
+    PackageRecycleBin:
+      required:
+      - action
+      - identifiers
+      type: object
+      properties:
+        action:
+          title: Action
+          description: The action to perform on soft-deleted packages.
+          type: string
+          enum:
+          - hard_delete
+          - restore
+        identifiers:
+          description: A list of soft-deleted package identifiers to action.
+          type: array
+          items:
+            type: string
+            maxLength: 255
+            minLength: 1
+          maxItems: 100
+          minItems: 1
+        repository:
+          title: Repository
+          description: The repository name to filter packages to. If not provided, the action will be performed across all accessible repositories in the workspace.
+          type: string
+          maxLength: 255
+          minLength: 1
   securitySchemes:
     apikey:
       type: apiKey

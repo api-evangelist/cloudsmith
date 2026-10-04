@@ -221,6 +221,64 @@ components:
           description: Two-factor authentication code
           type: string
           minLength: 1
+    UserAuthenticationToken:
+      type: object
+      properties:
+        created:
+          title: Created
+          description: The time at which the API key was created.
+          type: string
+          format: date-time
+          readOnly: true
+        key:
+          title: Key
+          description: The unique API key used for authentication. This will be obfuscated on read-only HTTP methods.
+          type: string
+          readOnly: true
+        slug_perm:
+          title: Slug perm
+          description: The slug_perm for token.
+          type: string
+          readOnly: true
+    ErrorDetail:
+      required:
+      - detail
+      type: object
+      properties:
+        detail:
+          title: Detail
+          description: An extended message for the response.
+          type: string
+          minLength: 1
+        fields:
+          title: Fields
+          description: 'A Dictionary of related errors where key: Field and value: Array of Errors related to that field'
+          type: object
+          additionalProperties:
+            type: array
+            items:
+              type: string
+              minLength: 1
+    UserAuthToken:
+      type: object
+      properties:
+        token:
+          title: Token
+          description: API token for the authenticated user
+          type: string
+          readOnly: true
+          minLength: 1
+        two_factor_required:
+          title: Two factor required
+          description: Flag indicating whether a 2FA code is required to complete authentication
+          type: boolean
+          readOnly: true
+        two_factor_token:
+          title: Two factor token
+          description: Token to use when providing 2FA code
+          type: string
+          readOnly: true
+          minLength: 1
     UserBrief:
       type: object
       properties:
@@ -270,64 +328,6 @@ components:
           - string
           - 'null'
           readOnly: true
-    UserAuthToken:
-      type: object
-      properties:
-        token:
-          title: Token
-          description: API token for the authenticated user
-          type: string
-          readOnly: true
-          minLength: 1
-        two_factor_required:
-          title: Two factor required
-          description: Flag indicating whether a 2FA code is required to complete authentication
-          type: boolean
-          readOnly: true
-        two_factor_token:
-          title: Two factor token
-          description: Token to use when providing 2FA code
-          type: string
-          readOnly: true
-          minLength: 1
-    UserAuthenticationToken:
-      type: object
-      properties:
-        created:
-          title: Created
-          description: The time at which the API key was created.
-          type: string
-          format: date-time
-          readOnly: true
-        key:
-          title: Key
-          description: The unique API key used for authentication. This will be obfuscated on read-only HTTP methods.
-          type: string
-          readOnly: true
-        slug_perm:
-          title: Slug perm
-          description: The slug_perm for token.
-          type: string
-          readOnly: true
-    ErrorDetail:
-      required:
-      - detail
-      type: object
-      properties:
-        detail:
-          title: Detail
-          description: An extended message for the response.
-          type: string
-          minLength: 1
-        fields:
-          title: Fields
-          description: 'A Dictionary of related errors where key: Field and value: Array of Errors related to that field'
-          type: object
-          additionalProperties:
-            type: array
-            items:
-              type: string
-              minLength: 1
   securitySchemes:
     apikey:
       type: apiKey

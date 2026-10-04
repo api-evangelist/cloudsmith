@@ -149,15 +149,125 @@ paths:
       - Quota
 components:
   schemas:
-    QuotaHistory:
+    UsageLimits:
       required:
-      - history
+      - bandwidth
+      - storage
       type: object
       properties:
-        history:
-          type: array
-          items:
-            $ref: '#/components/schemas/History'
+        bandwidth:
+          $ref: '#/components/schemas/AllocatedLimit'
+        storage:
+          $ref: '#/components/schemas/StorageAllocatedLimit'
+    UsageFieldset:
+      required:
+      - display
+      - raw
+      type: object
+      properties:
+        display:
+          $ref: '#/components/schemas/UsageLimits'
+        raw:
+          $ref: '#/components/schemas/UsageLimitsRaw'
+    Quota:
+      required:
+      - usage
+      type: object
+      properties:
+        usage:
+          $ref: '#/components/schemas/UsageFieldset'
+    History:
+      required:
+      - display
+      - end
+      - plan
+      - raw
+      - start
+      type: object
+      properties:
+        days:
+          title: Days
+          type: integer
+          default: 0
+        display:
+          $ref: '#/components/schemas/HistoryFieldset'
+        end:
+          title: End
+          type: string
+          format: date-time
+        plan:
+          title: Plan
+          type: string
+          maxLength: 64
+          minLength: 1
+        raw:
+          $ref: '#/components/schemas/HistoryFieldsetRaw'
+        start:
+          title: Start
+          type: string
+          format: date-time
+    UsageLimitsRaw:
+      required:
+      - bandwidth
+      - storage
+      type: object
+      properties:
+        bandwidth:
+          $ref: '#/components/schemas/AllocatedLimitRaw'
+        storage:
+          $ref: '#/components/schemas/StorageAllocatedLimitRaw'
+    HistoryFieldsetRaw:
+      required:
+      - downloaded
+      - storage_used
+      - uploaded
+      type: object
+      properties:
+        downloaded:
+          $ref: '#/components/schemas/UsageRaw'
+        storage_used:
+          $ref: '#/components/schemas/StorageUsageRaw'
+        uploaded:
+          $ref: '#/components/schemas/UsageRaw'
+    AllocatedLimit:
+      type: object
+      properties:
+        configured:
+          title: Configured
+          type: string
+          maxLength: 32
+          minLength: 1
+        percentage_used:
+          title: Percentage used
+          type: string
+          maxLength: 10
+          minLength: 1
+        plan_limit:
+          title: Plan limit
+          type: string
+          maxLength: 32
+          minLength: 1
+        used:
+          title: Used
+          type: string
+          maxLength: 32
+          minLength: 1
+    StorageUsageRaw:
+      type: object
+      properties:
+        limit:
+          title: Limit
+          type: integer
+        peak:
+          title: Peak
+          type: integer
+        percentage:
+          title: Percentage
+          type: string
+          format: decimal
+        used:
+          title: Used
+          type: integer
     AllocatedLimitRaw:
       type: object
       properties:
@@ -196,57 +306,30 @@ components:
         used_pre_deduplication:
           title: Used pre deduplication
           type: integer
-    HistoryFieldsetRaw:
+    ErrorDetail:
       required:
-      - downloaded
-      - storage_used
-      - uploaded
+      - detail
       type: object
       properties:
-        downloaded:
-          $ref: '#/components/schemas/UsageRaw'
-        storage_used:
-          $ref: '#/components/schemas/StorageUsageRaw'
-        uploaded:
-          $ref: '#/components/schemas/UsageRaw'
-    History:
-      required:
-      - display
-      - end
-      - plan
-      - raw
-      - start
-      type: object
-      properties:
-        days:
-          title: Days
-          type: integer
-          default: 0
-        display:
-          $ref: '#/components/schemas/HistoryFieldset'
-        end:
-          title: End
+        detail:
+          title: Detail
+          description: An extended message for the response.
           type: string
-          format: date-time
-        plan:
-          title: Plan
-          type: string
-          maxLength: 64
           minLength: 1
-        raw:
-          $ref: '#/components/schemas/HistoryFieldsetRaw'
-        start:
-          title: Start
-          type: string
-          format: date-time
-    StorageUsageRaw:
+        fields:
+          title: Fields
+          description: 'A Dictionary of related errors where key: Field and value: Array of Errors related to that field'
+          type: object
+          additionalProperties:
+            type: array
+            items:
+              type: string
+              minLength: 1
+    UsageRaw:
       type: object
       properties:
         limit:
           title: Limit
-          type: integer
-        peak:
-          title: Peak
           type: integer
         percentage:
           title: Percentage
@@ -273,48 +356,29 @@ components:
           type: string
           maxLength: 32
           minLength: 1
-    UsageFieldset:
-      required:
-      - display
-      - raw
-      type: object
-      properties:
-        display:
-          $ref: '#/components/schemas/UsageLimits'
-        raw:
-          $ref: '#/components/schemas/UsageLimitsRaw'
-    UsageRaw:
+    StorageUsage:
       type: object
       properties:
         limit:
           title: Limit
-          type: integer
+          type: string
+          maxLength: 32
+          minLength: 1
+        peak:
+          title: Peak
+          type: string
+          maxLength: 32
+          minLength: 1
         percentage:
           title: Percentage
           type: string
-          format: decimal
+          maxLength: 10
+          minLength: 1
         used:
           title: Used
-          type: integer
-    ErrorDetail:
-      required:
-      - detail
-      type: object
-      properties:
-        detail:
-          title: Detail
-          description: An extended message for the response.
           type: string
+          maxLength: 32
           minLength: 1
-        fields:
-          title: Fields
-          description: 'A Dictionary of related errors where key: Field and value: Array of Errors related to that field'
-          type: object
-          additionalProperties:
-            type: array
-            items:
-              type: string
-              minLength: 1
     StorageAllocatedLimit:
       type: object
       properties:
@@ -348,49 +412,6 @@ components:
           type: string
           maxLength: 32
           minLength: 1
-    UsageLimitsRaw:
-      required:
-      - bandwidth
-      - storage
-      type: object
-      properties:
-        bandwidth:
-          $ref: '#/components/schemas/AllocatedLimitRaw'
-        storage:
-          $ref: '#/components/schemas/StorageAllocatedLimitRaw'
-    StorageUsage:
-      type: object
-      properties:
-        limit:
-          title: Limit
-          type: string
-          maxLength: 32
-          minLength: 1
-        peak:
-          title: Peak
-          type: string
-          maxLength: 32
-          minLength: 1
-        percentage:
-          title: Percentage
-          type: string
-          maxLength: 10
-          minLength: 1
-        used:
-          title: Used
-          type: string
-          maxLength: 32
-          minLength: 1
-    UsageLimits:
-      required:
-      - bandwidth
-      - storage
-      type: object
-      properties:
-        bandwidth:
-          $ref: '#/components/schemas/AllocatedLimit'
-        storage:
-          $ref: '#/components/schemas/StorageAllocatedLimit'
     HistoryFieldset:
       required:
       - downloaded
@@ -404,36 +425,15 @@ components:
           $ref: '#/components/schemas/StorageUsage'
         uploaded:
           $ref: '#/components/schemas/Usage'
-    Quota:
+    QuotaHistory:
       required:
-      - usage
+      - history
       type: object
       properties:
-        usage:
-          $ref: '#/components/schemas/UsageFieldset'
-    AllocatedLimit:
-      type: object
-      properties:
-        configured:
-          title: Configured
-          type: string
-          maxLength: 32
-          minLength: 1
-        percentage_used:
-          title: Percentage used
-          type: string
-          maxLength: 10
-          minLength: 1
-        plan_limit:
-          title: Plan limit
-          type: string
-          maxLength: 32
-          minLength: 1
-        used:
-          title: Used
-          type: string
-          maxLength: 32
-          minLength: 1
+        history:
+          type: array
+          items:
+            $ref: '#/components/schemas/History'
   securitySchemes:
     apikey:
       type: apiKey

@@ -144,6 +144,54 @@ paths:
       - Audit Log
 components:
   schemas:
+    GeoIpLocation:
+      required:
+      - city
+      - continent
+      - country
+      - postal_code
+      type: object
+      properties:
+        city:
+          title: City
+          type:
+          - string
+          - 'null'
+          minLength: 1
+        continent:
+          title: Continent
+          type:
+          - string
+          - 'null'
+          minLength: 1
+        country:
+          title: Country
+          type:
+          - string
+          - 'null'
+          minLength: 1
+        country_code:
+          title: Country code
+          type: string
+          readOnly: true
+        latitude:
+          title: Latitude
+          type:
+          - string
+          - 'null'
+          format: decimal
+        longitude:
+          title: Longitude
+          type:
+          - string
+          - 'null'
+          format: decimal
+        postal_code:
+          title: Postal code
+          type:
+          - string
+          - 'null'
+          minLength: 1
     RepositoryAuditLog:
       required:
       - actor
@@ -218,54 +266,25 @@ components:
           type: string
           format: uuid
           readOnly: true
-    GeoIpLocation:
+    ErrorDetail:
       required:
-      - city
-      - continent
-      - country
-      - postal_code
+      - detail
       type: object
       properties:
-        city:
-          title: City
-          type:
-          - string
-          - 'null'
-          minLength: 1
-        continent:
-          title: Continent
-          type:
-          - string
-          - 'null'
-          minLength: 1
-        country:
-          title: Country
-          type:
-          - string
-          - 'null'
-          minLength: 1
-        country_code:
-          title: Country code
+        detail:
+          title: Detail
+          description: An extended message for the response.
           type: string
-          readOnly: true
-        latitude:
-          title: Latitude
-          type:
-          - string
-          - 'null'
-          format: decimal
-        longitude:
-          title: Longitude
-          type:
-          - string
-          - 'null'
-          format: decimal
-        postal_code:
-          title: Postal code
-          type:
-          - string
-          - 'null'
           minLength: 1
+        fields:
+          title: Fields
+          description: 'A Dictionary of related errors where key: Field and value: Array of Errors related to that field'
+          type: object
+          additionalProperties:
+            type: array
+            items:
+              type: string
+              minLength: 1
     NamespaceAuditLog:
       required:
       - actor
@@ -358,25 +377,6 @@ components:
           type: string
           format: uuid
           readOnly: true
-    ErrorDetail:
-      required:
-      - detail
-      type: object
-      properties:
-        detail:
-          title: Detail
-          description: An extended message for the response.
-          type: string
-          minLength: 1
-        fields:
-          title: Fields
-          description: 'A Dictionary of related errors where key: Field and value: Array of Errors related to that field'
-          type: object
-          additionalProperties:
-            type: array
-            items:
-              type: string
-              minLength: 1
   securitySchemes:
     apikey:
       type: apiKey

@@ -156,9 +156,6 @@ paths:
       - Badges
 components:
   schemas:
-    PackageVersionBadge:
-      type: object
-      properties: {}
     ErrorDetail:
       required:
       - detail
@@ -178,6 +175,9 @@ components:
             items:
               type: string
               minLength: 1
+    PackageVersionBadge:
+      type: object
+      properties: {}
   securitySchemes:
     apikey:
       type: apiKey
