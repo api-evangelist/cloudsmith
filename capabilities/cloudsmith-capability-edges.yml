@@ -1,0 +1,69 @@
+slug: cloudsmith
+provider: Cloudsmith
+generated_by: planning/capability-mapping/scripts/classify_capabilities.py
+model: claude-opus-5
+frame:
+- Software & Technology
+min_confidence: 0.7
+capability_model:
+  source: https://github.com/vincentmakes/turbo-ea-capabilities
+  license: CC-BY-4.0
+  attribution: Turbo EA Capabilities by Vincent Verdet — Turbo EA, https://github.com/vincentmakes/turbo-ea-capabilities,
+    CC BY 4.0
+  notice: NOTICE
+edge_count: 5
+edges:
+- tag: Vulnerabilities
+  spec_file: cloudsmith-vulnerabilities-api-openapi.yml
+  capability_id: BC-620.40
+  capability_id_l1: BC-620
+  capability_name: Vulnerability Management
+  confidence: 0.85
+  evidence: GET /vulnerabilities/{owner}/{repo}/{package}/ vulnerabilities_package_list "Lists scan results
+    for a specific package"; schemas VulnerabilityScanResults, PackageVulnerability
+  reason: Operations expose security vulnerability scan results for packages and repositories — scanning
+    and surfacing of vulnerabilities for remediation, i.e. vulnerability management rather than any product-telemetry
+    or quality reading.
+- tag: Webhooks
+  spec_file: cloudsmith-webhooks-api-openapi.yml
+  capability_id: BC-4270.80
+  capability_id_l1: BC-4270
+  capability_name: Webhook & Event Subscription Management
+  confidence: 0.78
+  evidence: POST /webhooks/{owner}/{repo}/ webhooks_create "Create a specific webhook in a repository";
+    schemas RepositoryWebhook, WebhookTemplate
+  reason: Full CRUD lifecycle over outbound webhook subscriptions attached to repositories, which is exactly
+    the webhook & event subscription management capability in the developer-platform area of this frame.
+- tag: Orgs
+  spec_file: cloudsmith-orgs-api-openapi.yml
+  capability_id: BC-620.20
+  capability_id_l1: BC-620
+  capability_name: Identity & Access Management
+  confidence: 0.7
+  evidence: orgs_invites_create "Create an organization invite for a specific user"; schemas OrganizationMembershipRoleUpdateRequestPatch,
+    OrganizationSAMLAuthRequestPatch, OrganizationGroupSync, OrganizationTeamMembers
+  reason: The bulk of the surface manages org membership, teams, roles, invites, SAML authentication and
+    directory group sync — identity, federation and access administration. Some operations (package deny/license/vulnerability
+    policies) sit outside this, hence not full confidence.
+- tag: Packages
+  spec_file: cloudsmith-packages-api-openapi.yml
+  capability_id: BC-4210
+  capability_id_l1: BC-4210
+  capability_name: Software Release & Deployment Management
+  confidence: 0.7
+  evidence: packages_upload_docker "Create a new Docker package"; packages_list "Get a list of all packages
+    associated with repository"; schemas MavenPackageUploadRequest, PackageDependency
+  reason: 'Publishing, listing and copying versioned build artefacts across 30+ package formats is artefact
+    management within the software release and deployment chain. L1 only: the evidence does not clearly
+    name CI pipelines versus release engineering as the narrower sub-capability.'
+- tag: Repos
+  spec_file: cloudsmith-repos-api-openapi.yml
+  capability_id: BC-4210
+  capability_id_l1: BC-4210
+  capability_name: Software Release & Deployment Management
+  confidence: 0.7
+  evidence: repos_create "Create a new repository in a given namespace"; repos_ecdsa_regenerate "Regenerate
+    ECDSA Key for the Repository"; schemas RepositoryRetentionRulesRequestPatch, DebUpstream
+  reason: Creation and stewardship of managed artifact repositories including signing keys, upstream proxying
+    and retention rules — artefact repository management supporting software release and distribution.
+    L1 only, as the specific sub-capability is not pinned by the operations.

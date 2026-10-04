@@ -403,6 +403,9 @@ apis:
   - type: GettingStarted
     url: https://help.cloudsmith.io/reference/getting-started-with-the-api
 common:
+  - type: CapabilityMap
+    url: capabilities/cloudsmith-capability-edges.yml
+    name: Cloudsmith Business Capability Map
   - type: AgenticAccess
     url: agentic-access/cloudsmith-agentic-access.yml
   - type: DomainSecurity
