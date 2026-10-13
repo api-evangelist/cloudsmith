@@ -1,0 +1,13 @@
+fetched: '2026-10-13'
+method: fetched
+source: https://help.cloudsmith.io/docs/docker-registry
+page: https://help.cloudsmith.io/docs/docker-registry
+file: cloudsmith-oci-distribution-1.md
+bytes: 16528
+sha256: 5fe6db685586fe7f6dded6240e9acdf102a14c9b871c0d8bf6f613d6e91b0b12
+anchor: open-container-initiative
+shape: oci-distribution
+classification: declares-compatibility
+quote: Cloudsmith provides public & private registries for OCI artifacts, to learn more about it visit our OCI Repository
+  documentation.
+note: text extracted from the provider's own page (tags stripped), saved for evidence
