@@ -2,6 +2,7 @@ generated: '2026-10-13'
 method: searched
 checked:
 - https://aws.amazon.com/marketplace/
+- https://github.com/marketplace?type=actions
 marketplace_apps: []
 edges:
 - partner_name: AWS Marketplace
@@ -94,3 +95,23 @@ edges:
   degree: full
   evidence_kind: conformance-register
   note: the OCI conformance suite was run against this registry and the result submitted to the OCI register
+- partner_name: GitHub Marketplace (actions)
+  partner: github-actions
+  partner_match: aggregator
+  type: marketplace
+  marketplace: github-actions
+  channel: partner-built
+  relationship: platform-app
+  direction: third-party
+  evidence: https://github.com/marketplace/actions/cloudsmith-push
+  listing_count: 2
+  apps:
+  - Cloudsmith Push
+  - Cloudsmith CLI Setup
+  publisher_name: Cloudsmith
+  badges:
+  - Verified creator
+  detected_by: sweep-devtools.py
+  detected: '2026-10-14'
+source:
+- https://github.com/marketplace?type=actions

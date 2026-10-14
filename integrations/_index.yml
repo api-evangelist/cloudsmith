@@ -26,3 +26,15 @@
   relationship: compatible
   status: not-a-workflow
   arazzo: null
+- slug: cloudsmith-github-marketplace-actions
+  label: GitHub Marketplace (actions)
+  partner: github-actions
+  partner_name: GitHub Marketplace (actions)
+  type: marketplace
+  marketplace: github-actions
+  channel: partner-built
+  evidence: https://github.com/marketplace/actions/cloudsmith-push
+  source: edge
+  relationship: platform-app
+  status: not-a-workflow
+  arazzo: null
