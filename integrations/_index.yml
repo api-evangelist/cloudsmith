@@ -15,3 +15,14 @@
   relationship: distribution-channel
   status: not-a-workflow
   arazzo: null
+- slug: cloudsmith-open-container-initiative
+  label: Open Container Initiative
+  partner: open-container-initiative
+  partner_name: Open Container Initiative
+  type: docs
+  channel: provider-built
+  evidence: https://help.cloudsmith.io/docs/docker-registry
+  source: edge
+  relationship: compatible
+  status: not-a-workflow
+  arazzo: null
