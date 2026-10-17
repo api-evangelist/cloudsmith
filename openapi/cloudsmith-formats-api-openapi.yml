@@ -84,6 +84,25 @@ paths:
       x-simplified: fields[distributions]=slug,name
 components:
   schemas:
+    ErrorDetail:
+      required:
+      - detail
+      type: object
+      properties:
+        detail:
+          title: Detail
+          description: An extended message for the response.
+          type: string
+          minLength: 1
+        fields:
+          title: Fields
+          description: 'A Dictionary of related errors where key: Field and value: Array of Errors related to that field'
+          type: object
+          additionalProperties:
+            type: array
+            items:
+              type: string
+              minLength: 1
     FormatSupport:
       description: A set of what the package format supports
       required:
@@ -122,110 +141,6 @@ components:
           title: Versioning
           description: If true the package format supports versioning
           type: boolean
-    FormatSupportUpstream:
-      description: The upstream support for the package format
-      required:
-      - auth_modes
-      - caching
-      - indexing
-      - proxying
-      - trust
-      type: object
-      properties:
-        auth_modes:
-          description: The authentication modes supported by the upstream format
-          type: array
-          items:
-            type: string
-            enum:
-            - Username and Password
-            - Token
-            - Certificate and Key
-            default: Username and Password
-        caching:
-          title: Caching
-          description: If true the upstream format supports caching
-          type: boolean
-        indexing:
-          title: Indexing
-          description: If true the upstream format supports indexing
-          type: boolean
-        indexing_behavior:
-          title: Indexing behavior
-          description: The behavior of the upstream when indexing
-          type: string
-          enum:
-          - Unsupported
-          - Ahead-of-time (static) indexing
-          - Just-in-time (dynamic) indexing
-          default: Unsupported
-        proxying:
-          title: Proxying
-          description: If true the upstream format supports proxying
-          type: boolean
-        signature_verification:
-          title: Signature verification
-          description: The signature verification supported by the upstream format
-          type: string
-          enum:
-          - Unsupported
-          - Repository Metadata
-          - Packages
-          - Repository Metadata and Packages
-          default: Unsupported
-        trust:
-          title: Trust
-          description: If true the upstream format supports configurable trust levels (trusted vs untrusted) for upstream sources.
-          type: boolean
-    Distribution:
-      description: The distributions supported by this package format
-      required:
-      - name
-      type:
-      - object
-      - 'null'
-      properties:
-        name:
-          title: Name
-          type: string
-          maxLength: 32
-          minLength: 1
-        self_url:
-          title: Self url
-          type: string
-          format: uri
-          readOnly: true
-        slug:
-          title: Slug
-          description: The slug identifier for this distribution
-          type: string
-          readOnly: true
-          minLength: 1
-        variants:
-          title: Variants
-          type:
-          - string
-          - 'null'
-          maxLength: 128
-    ErrorDetail:
-      required:
-      - detail
-      type: object
-      properties:
-        detail:
-          title: Detail
-          description: An extended message for the response.
-          type: string
-          minLength: 1
-        fields:
-          title: Fields
-          description: 'A Dictionary of related errors where key: Field and value: Array of Errors related to that field'
-          type: object
-          additionalProperties:
-            type: array
-            items:
-              type: string
-              minLength: 1
     Format:
       required:
       - description
@@ -284,6 +199,91 @@ components:
           minLength: 1
         supports:
           $ref: '#/components/schemas/FormatSupport'
+    Distribution:
+      description: The distributions supported by this package format
+      required:
+      - name
+      type:
+      - object
+      - 'null'
+      properties:
+        name:
+          title: Name
+          type: string
+          maxLength: 32
+          minLength: 1
+        self_url:
+          title: Self url
+          type: string
+          format: uri
+          readOnly: true
+        slug:
+          title: Slug
+          description: The slug identifier for this distribution
+          type: string
+          readOnly: true
+          minLength: 1
+        variants:
+          title: Variants
+          type:
+          - string
+          - 'null'
+          maxLength: 128
+    FormatSupportUpstream:
+      description: The upstream support for the package format
+      required:
+      - auth_modes
+      - caching
+      - indexing
+      - proxying
+      - trust
+      type: object
+      properties:
+        auth_modes:
+          description: The authentication modes supported by the upstream format
+          type: array
+          items:
+            type: string
+            enum:
+            - Username and Password
+            - Token
+            - Certificate and Key
+            default: Username and Password
+        caching:
+          title: Caching
+          description: If true the upstream format supports caching
+          type: boolean
+        indexing:
+          title: Indexing
+          description: If true the upstream format supports indexing
+          type: boolean
+        indexing_behavior:
+          title: Indexing behavior
+          description: The behavior of the upstream when indexing
+          type: string
+          enum:
+          - Unsupported
+          - Ahead-of-time (static) indexing
+          - Just-in-time (dynamic) indexing
+          default: Unsupported
+        proxying:
+          title: Proxying
+          description: If true the upstream format supports proxying
+          type: boolean
+        signature_verification:
+          title: Signature verification
+          description: The signature verification supported by the upstream format
+          type: string
+          enum:
+          - Unsupported
+          - Repository Metadata
+          - Packages
+          - Repository Metadata and Packages
+          default: Unsupported
+        trust:
+          title: Trust
+          description: If true the upstream format supports configurable trust levels (trusted vs untrusted) for upstream sources.
+          type: boolean
   securitySchemes:
     apikey:
       type: apiKey

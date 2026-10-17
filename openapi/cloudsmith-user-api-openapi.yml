@@ -202,44 +202,6 @@ paths:
       - User
 components:
   schemas:
-    UserAuthTokenRequest:
-      type: object
-      properties:
-        email:
-          title: Email
-          description: Email address to authenticate with
-          type: string
-          format: email
-          minLength: 1
-        password:
-          title: Password
-          description: Password to authenticate with
-          type: string
-          minLength: 1
-        totp_token:
-          title: Two-factor code
-          description: Two-factor authentication code
-          type: string
-          minLength: 1
-    UserAuthenticationToken:
-      type: object
-      properties:
-        created:
-          title: Created
-          description: The time at which the API key was created.
-          type: string
-          format: date-time
-          readOnly: true
-        key:
-          title: Key
-          description: The unique API key used for authentication. This will be obfuscated on read-only HTTP methods.
-          type: string
-          readOnly: true
-        slug_perm:
-          title: Slug perm
-          description: The slug_perm for token.
-          type: string
-          readOnly: true
     ErrorDetail:
       required:
       - detail
@@ -259,6 +221,25 @@ components:
             items:
               type: string
               minLength: 1
+    UserAuthenticationToken:
+      type: object
+      properties:
+        created:
+          title: Created
+          description: The time at which the API key was created.
+          type: string
+          format: date-time
+          readOnly: true
+        key:
+          title: Key
+          description: The unique API key used for authentication. This will be obfuscated on read-only HTTP methods.
+          type: string
+          readOnly: true
+        slug_perm:
+          title: Slug perm
+          description: The slug_perm for token.
+          type: string
+          readOnly: true
     UserAuthToken:
       type: object
       properties:
@@ -328,6 +309,25 @@ components:
           - string
           - 'null'
           readOnly: true
+    UserAuthTokenRequest:
+      type: object
+      properties:
+        email:
+          title: Email
+          description: Email address to authenticate with
+          type: string
+          format: email
+          minLength: 1
+        password:
+          title: Password
+          description: Password to authenticate with
+          type: string
+          minLength: 1
+        totp_token:
+          title: Two-factor code
+          description: Two-factor authentication code
+          type: string
+          minLength: 1
   securitySchemes:
     apikey:
       type: apiKey

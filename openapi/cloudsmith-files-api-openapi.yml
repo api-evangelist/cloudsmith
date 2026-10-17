@@ -276,45 +276,6 @@ paths:
       - Files
 components:
   schemas:
-    PackageFileUpload:
-      type: object
-      properties:
-        identifier:
-          title: Identifier
-          description: The identifier for the file to use when creating packages
-          type: string
-          format: uri
-          readOnly: true
-          minLength: 1
-        upload_fields:
-          title: Upload fields
-          description: The dictionary of fields that must be sent with POST uploads
-          type:
-          - object
-          - 'null'
-          readOnly: true
-        upload_headers:
-          title: Upload headers
-          description: The dictionary of headers that must be sent with uploads
-          type:
-          - object
-          - 'null'
-          readOnly: true
-        upload_querystring:
-          title: Upload querystring
-          description: The querystring to use for the next-step POST or PUT upload
-          type:
-          - string
-          - 'null'
-          readOnly: true
-          minLength: 1
-        upload_url:
-          title: Upload url
-          description: The URL to use for the next-step POST or PUT upload
-          type: string
-          format: uri
-          readOnly: true
-          minLength: 1
     PackageFilePartsUpload:
       type: object
       properties:
@@ -359,6 +320,45 @@ components:
             items:
               type: string
               minLength: 1
+    PackageFileUpload:
+      type: object
+      properties:
+        identifier:
+          title: Identifier
+          description: The identifier for the file to use when creating packages
+          type: string
+          format: uri
+          readOnly: true
+          minLength: 1
+        upload_fields:
+          title: Upload fields
+          description: The dictionary of fields that must be sent with POST uploads
+          type:
+          - object
+          - 'null'
+          readOnly: true
+        upload_headers:
+          title: Upload headers
+          description: The dictionary of headers that must be sent with uploads
+          type:
+          - object
+          - 'null'
+          readOnly: true
+        upload_querystring:
+          title: Upload querystring
+          description: The querystring to use for the next-step POST or PUT upload
+          type:
+          - string
+          - 'null'
+          readOnly: true
+          minLength: 1
+        upload_url:
+          title: Upload url
+          description: The URL to use for the next-step POST or PUT upload
+          type: string
+          format: uri
+          readOnly: true
+          minLength: 1
     PackageFileUploadRequest:
       required:
       - filename

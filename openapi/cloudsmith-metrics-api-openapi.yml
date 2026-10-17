@@ -220,29 +220,6 @@ paths:
       - Metrics
 components:
   schemas:
-    CommonBandwidthMetrics:
-      required:
-      - average
-      - highest
-      - lowest
-      - total
-      type: object
-      properties:
-        average:
-          $ref: '#/components/schemas/CommonBandwidthMetricsValue'
-        highest:
-          $ref: '#/components/schemas/CommonBandwidthMetricsValue'
-        lowest:
-          $ref: '#/components/schemas/CommonBandwidthMetricsValue'
-        total:
-          $ref: '#/components/schemas/CommonBandwidthMetricsValue'
-    EntitlementUsageMetrics:
-      required:
-      - tokens
-      type: object
-      properties:
-        tokens:
-          $ref: '#/components/schemas/CommonMetrics'
     CommonMetrics:
       required:
       - bandwidth
@@ -268,6 +245,71 @@ components:
           description: Total number of packages in repo
           type: integer
           default: 0
+    CommonBandwidthMetrics:
+      required:
+      - average
+      - highest
+      - lowest
+      - total
+      type: object
+      properties:
+        average:
+          $ref: '#/components/schemas/CommonBandwidthMetricsValue'
+        highest:
+          $ref: '#/components/schemas/CommonBandwidthMetricsValue'
+        lowest:
+          $ref: '#/components/schemas/CommonBandwidthMetricsValue'
+        total:
+          $ref: '#/components/schemas/CommonBandwidthMetricsValue'
+    ErrorDetail:
+      required:
+      - detail
+      type: object
+      properties:
+        detail:
+          title: Detail
+          description: An extended message for the response.
+          type: string
+          minLength: 1
+        fields:
+          title: Fields
+          description: 'A Dictionary of related errors where key: Field and value: Array of Errors related to that field'
+          type: object
+          additionalProperties:
+            type: array
+            items:
+              type: string
+              minLength: 1
+    EntitlementUsageMetrics:
+      required:
+      - tokens
+      type: object
+      properties:
+        tokens:
+          $ref: '#/components/schemas/CommonMetrics'
+    CommonBandwidthMetricsValue:
+      description: Average bandwidth usage in the specified period, e.g. a day
+      required:
+      - display
+      - value
+      type: object
+      properties:
+        display:
+          title: Display
+          description: Bandwidth usage value
+          type: string
+          maxLength: 64
+          minLength: 1
+        units:
+          title: Units
+          description: Unit of measurement e.g. bytes
+          type: string
+          default: bytes
+          minLength: 1
+        value:
+          title: Value
+          description: Human readable version of display value
+          type: integer
     CommonDownloadsMetrics:
       required:
       - average
@@ -292,48 +334,6 @@ components:
         value:
           title: Value
           type: integer
-    CommonBandwidthMetricsValue:
-      description: Average bandwidth usage in the specified period, e.g. a day
-      required:
-      - display
-      - value
-      type: object
-      properties:
-        display:
-          title: Display
-          description: Bandwidth usage value
-          type: string
-          maxLength: 64
-          minLength: 1
-        units:
-          title: Units
-          description: Unit of measurement e.g. bytes
-          type: string
-          default: bytes
-          minLength: 1
-        value:
-          title: Value
-          description: Human readable version of display value
-          type: integer
-    ErrorDetail:
-      required:
-      - detail
-      type: object
-      properties:
-        detail:
-          title: Detail
-          description: An extended message for the response.
-          type: string
-          minLength: 1
-        fields:
-          title: Fields
-          description: 'A Dictionary of related errors where key: Field and value: Array of Errors related to that field'
-          type: object
-          additionalProperties:
-            type: array
-            items:
-              type: string
-              minLength: 1
     PackageUsageMetrics:
       required:
       - packages

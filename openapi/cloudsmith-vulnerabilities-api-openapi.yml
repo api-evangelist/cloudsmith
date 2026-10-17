@@ -273,6 +273,56 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/VulnerabilityScan'
+    VulnerabilityScanVersion:
+      required:
+      - major
+      - minor
+      - patch
+      type: object
+      properties:
+        major:
+          title: Major
+          type: integer
+        minor:
+          title: Minor
+          type: integer
+        operator:
+          title: Operator
+          type: string
+          default: ''
+          maxLength: 32
+        patch:
+          title: Patch
+          type: integer
+        raw_version:
+          title: Raw version
+          type: string
+          default: ''
+          maxLength: 1024
+        version:
+          title: Version
+          type: string
+          default: ''
+          maxLength: 1024
+    ErrorDetail:
+      required:
+      - detail
+      type: object
+      properties:
+        detail:
+          title: Detail
+          description: An extended message for the response.
+          type: string
+          minLength: 1
+        fields:
+          title: Fields
+          description: 'A Dictionary of related errors where key: Field and value: Array of Errors related to that field'
+          type: object
+          additionalProperties:
+            type: array
+            items:
+              type: string
+              minLength: 1
     VulnerabilityScanResultsList:
       required:
       - identifier
@@ -317,105 +367,6 @@ components:
           type:
           - integer
           - 'null'
-    PackageVulnerability:
-      required:
-      - identifier
-      type: object
-      properties:
-        identifier:
-          title: Identifier
-          type: string
-          minLength: 1
-        name:
-          title: Name
-          description: The name of this package.
-          type:
-          - string
-          - 'null'
-          readOnly: true
-        url:
-          title: Url
-          type:
-          - string
-          - 'null'
-          format: uri
-          readOnly: true
-        version:
-          title: Version
-          description: The raw version for this package.
-          type:
-          - string
-          - 'null'
-          readOnly: true
-    ErrorDetail:
-      required:
-      - detail
-      type: object
-      properties:
-        detail:
-          title: Detail
-          description: An extended message for the response.
-          type: string
-          minLength: 1
-        fields:
-          title: Fields
-          description: 'A Dictionary of related errors where key: Field and value: Array of Errors related to that field'
-          type: object
-          additionalProperties:
-            type: array
-            items:
-              type: string
-              minLength: 1
-    VulnerabilityScan:
-      required:
-      - results
-      - target
-      - type
-      type: object
-      properties:
-        results:
-          type: array
-          items:
-            $ref: '#/components/schemas/Vulnerability'
-        target:
-          title: Target
-          type: string
-          minLength: 1
-        type:
-          title: Type
-          type: string
-          minLength: 1
-    VulnerabilityScanVersion:
-      required:
-      - major
-      - minor
-      - patch
-      type: object
-      properties:
-        major:
-          title: Major
-          type: integer
-        minor:
-          title: Minor
-          type: integer
-        operator:
-          title: Operator
-          type: string
-          default: ''
-          maxLength: 32
-        patch:
-          title: Patch
-          type: integer
-        raw_version:
-          title: Raw version
-          type: string
-          default: ''
-          maxLength: 1024
-        version:
-          title: Version
-          type: string
-          default: ''
-          maxLength: 1024
     Vulnerability:
       required:
       - affected_version
@@ -482,6 +433,55 @@ components:
           type: string
           maxLength: 13
           minLength: 1
+    VulnerabilityScan:
+      required:
+      - results
+      - target
+      - type
+      type: object
+      properties:
+        results:
+          type: array
+          items:
+            $ref: '#/components/schemas/Vulnerability'
+        target:
+          title: Target
+          type: string
+          minLength: 1
+        type:
+          title: Type
+          type: string
+          minLength: 1
+    PackageVulnerability:
+      required:
+      - identifier
+      type: object
+      properties:
+        identifier:
+          title: Identifier
+          type: string
+          minLength: 1
+        name:
+          title: Name
+          description: The name of this package.
+          type:
+          - string
+          - 'null'
+          readOnly: true
+        url:
+          title: Url
+          type:
+          - string
+          - 'null'
+          format: uri
+          readOnly: true
+        version:
+          title: Version
+          description: The raw version for this package.
+          type:
+          - string
+          - 'null'
+          readOnly: true
   securitySchemes:
     apikey:
       type: apiKey
