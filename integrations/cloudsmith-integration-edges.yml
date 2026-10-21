@@ -12,6 +12,8 @@ checked:
 - https://www.openchainproject.org/community-of-conformance
 - https://zapier.com/api/v4/apps/
 - vs-code-marketplace/integrations/vs-code-marketplace-integration-edges.yml
+- opentofu/integrations/opentofu-integration-edges.yml
+- terraform/integrations/terraform-integration-edges.yml
 marketplace_apps: []
 edges:
 - partner_name: AWS Marketplace
@@ -231,5 +233,44 @@ edges:
   badges:
   - Verified publisher
   - Verified domain
+- partner_name: OpenTofu (opentofu-registry)
+  partner: opentofu
+  partner_match: mirror
+  mirror_match: domain
+  type: marketplace
+  relationship: platform-app
+  direction: third-party
+  channel: partner-built
+  marketplace: opentofu-registry
+  evidence: https://search.opentofu.org/provider/cloudsmith-io/cloudsmith
+  mirror_of: opentofu/integrations/opentofu-integration-edges.yml
+  apps:
+  - cloudsmith-io/cloudsmith
+  listing_count: 1
+  detected: '2026-10-21'
+  detected_by: mirror-platform-listings.py
+  category: infrastructure-as-code provider registry listing
+  badges:
+  - Verified publisher (GitHub domain-verified organization)
+- partner_name: Terraform (terraform-registry)
+  partner: terraform
+  partner_match: mirror
+  mirror_match: domain
+  type: marketplace
+  relationship: platform-app
+  direction: third-party
+  channel: partner-built
+  marketplace: terraform-registry
+  evidence: https://registry.terraform.io/providers/cloudsmith-io/cloudsmith
+  mirror_of: terraform/integrations/terraform-integration-edges.yml
+  apps:
+  - cloudsmith-io/cloudsmith
+  listing_count: 1
+  detected: '2026-10-21'
+  detected_by: mirror-platform-listings.py
+  category: infrastructure-as-code provider registry listing
+  badges:
+  - Verified publisher (Terraform partner tier)
+  - Verified publisher (GitHub domain-verified organization)
 source:
 - https://github.com/marketplace?type=actions
