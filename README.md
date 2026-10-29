@@ -1,4 +1,4 @@
-# Cloudsmith (cloudsmith)
+# Cloudsmith
 
 <!-- API-EVANGELIST-PROVENANCE:BEGIN -->
 > ### About this repository
@@ -66,71 +66,173 @@
 
 Cloudsmith is a cloud-native, universal package management platform providing fully managed, geo-replicated artifact repositories for over 30 package formats (Docker, npm, Maven, NuGet, PyPI, RubyGems, RPM, Deb, Helm, Cargo, Go, Composer, Conan, Conda, Vagrant, Raw, and more). The Cloudsmith REST API (v1) at api.cloudsmith.io exposes operations for organizations, repositories, packages, files, entitlements, vulnerabilities, webhooks, audit logs, metrics, quotas, deny policies, namespaces, distros, formats, recycle bin, storage regions, and broadcasts. Authentication is via API key passed in the Authorization header as "token YOUR_API_KEY".
 
-**APIs.json:** [https://raw.githubusercontent.com/api-evangelist/cloudsmith/refs/heads/main/apis.yml](https://raw.githubusercontent.com/api-evangelist/cloudsmith/refs/heads/main/apis.yml)
+**Areas:** Artifact Management · Developer Tools · DevOps · DevSecOps · Distribution · Package Management · Registry · Repository · Software Supply Chain · Universal · Vulnerability Scanning
 
-## Scope
+## Cloudsmith on APIs.io
 
-- **Type:** Index
+Everything profiled for Cloudsmith is published on APIs.io rather than in this repository. Start at the provider page — **[apis.io/providers/cloudsmith/](https://apis.io/providers/cloudsmith/)** — or go straight to one of the APIs or properties below.
 
-## Tags
+### APIs (22)
 
-- Artifact Management
-- DevOps
-- DevSecOps
-- Distribution
-- Package Management
-- Registry
-- Repository
-- Software Supply Chain
-- Universal
-- Vulnerability Scanning
+- [Cloudsmith Audit Log API](https://apis.io/apis/cloudsmith/cloudsmith-audit-log-api/) — The audit-log API from Cloudsmith — 2 operation(s) for audit-log.
+- [Cloudsmith Badges API](https://apis.io/apis/cloudsmith/cloudsmith-badges-api/) — The badges API from Cloudsmith — 1 operation(s) for badges.
+- [Cloudsmith Broadcasts API](https://apis.io/apis/cloudsmith/cloudsmith-broadcasts-api/) — The broadcasts API from Cloudsmith — 1 operation(s) for broadcasts.
+- [Cloudsmith Bulk Action API](https://apis.io/apis/cloudsmith/cloudsmith-bulk-action-api/) — The bulk-action API from Cloudsmith — 1 operation(s) for bulk-action.
+- [Cloudsmith Distros API](https://apis.io/apis/cloudsmith/cloudsmith-distros-api/) — The distros API from Cloudsmith — 2 operation(s) for distros.
+- [Cloudsmith Entitlements API](https://apis.io/apis/cloudsmith/cloudsmith-entitlements-api/) — The entitlements API from Cloudsmith — 8 operation(s) for entitlements.
+- [Cloudsmith Files API](https://apis.io/apis/cloudsmith/cloudsmith-files-api/) — The files API from Cloudsmith — 5 operation(s) for files.
+- [Cloudsmith Formats API](https://apis.io/apis/cloudsmith/cloudsmith-formats-api/) — The formats API from Cloudsmith — 2 operation(s) for formats.
+- [Cloudsmith Metrics API](https://apis.io/apis/cloudsmith/cloudsmith-metrics-api/) — The metrics API from Cloudsmith — 3 operation(s) for metrics.
+- [Cloudsmith Namespaces API](https://apis.io/apis/cloudsmith/cloudsmith-namespaces-api/) — The namespaces API from Cloudsmith — 2 operation(s) for namespaces.
+- [Cloudsmith Orgs API](https://apis.io/apis/cloudsmith/cloudsmith-orgs-api/) — The orgs API from Cloudsmith — 40 operation(s) for orgs.
+- [Cloudsmith Packages API](https://apis.io/apis/cloudsmith/cloudsmith-packages-api/) — The packages API from Cloudsmith — 70 operation(s) for packages.
+- [Cloudsmith Quota API](https://apis.io/apis/cloudsmith/cloudsmith-quota-api/) — The quota API from Cloudsmith — 4 operation(s) for quota.
+- [Cloudsmith Rates API](https://apis.io/apis/cloudsmith/cloudsmith-rates-api/) — The rates API from Cloudsmith — 1 operation(s) for rates.
+- [Cloudsmith Recycle Bin API](https://apis.io/apis/cloudsmith/cloudsmith-recycle-bin-api/) — The recycle-bin API from Cloudsmith — 2 operation(s) for recycle-bin.
+- [Cloudsmith Repos API](https://apis.io/apis/cloudsmith/cloudsmith-repos-api/) — The repos API from Cloudsmith — 59 operation(s) for repos.
+- [Cloudsmith Status API](https://apis.io/apis/cloudsmith/cloudsmith-status-api/) — The status API from Cloudsmith — 1 operation(s) for status.
+- [Cloudsmith Storage Regions API](https://apis.io/apis/cloudsmith/cloudsmith-storage-regions-api/) — The storage-regions API from Cloudsmith — 2 operation(s) for storage-regions.
+- [Cloudsmith User API](https://apis.io/apis/cloudsmith/cloudsmith-user-api/) — The user API from Cloudsmith — 4 operation(s) for user.
+- [Cloudsmith Users API](https://apis.io/apis/cloudsmith/cloudsmith-users-api/) — The users API from Cloudsmith — 1 operation(s) for users.
+- [Cloudsmith Vulnerabilities API](https://apis.io/apis/cloudsmith/cloudsmith-vulnerabilities-api/) — The vulnerabilities API from Cloudsmith — 4 operation(s) for vulnerabilities.
+- [Cloudsmith Webhooks API](https://apis.io/apis/cloudsmith/cloudsmith-webhooks-api/) — The webhooks API from Cloudsmith — 2 operation(s) for webhooks.
 
-## Timestamps
+### Published properties
 
-- **Created:** 2024-01-01
-- **Modified:** 2026-05-19
+Each property below is a page on APIs.io carrying the machine-readable artifact and what it says.
 
-## APIs
+#### Agentic access (1)
 
-### Cloudsmith API (v1)
+Which operations an agent can call, which act, and which need a human in the loop.
 
-The Cloudsmith REST API (v1) covers 217+ endpoints across 22 tag groups including repos, orgs, packages, entitlements, files, user, webhooks, quota, vulnerabilities, metrics, audit-log, distros, formats, namespaces, recycle-bin, storage-regions, badges, broadcasts, bulk-action, rates, status. Default page size is 30 items, max 500. Authentication is via personal or service-account API key in the Authorization header.
+- [Cloudsmith Agentic Access](https://apis.io/agentic-access/cloudsmith/cloudsmith-agentic-access/)
 
-- **Human URL:** [https://docs.cloudsmith.com/api](https://docs.cloudsmith.com/api)
-- **Base URL:** `https://api.cloudsmith.io`
+#### JSON-LD (1)
 
-#### Tags
+Linked-data contexts for the provider's vocabulary.
 
-- REST
-- Packages
-- Repositories
-- Entitlements
-- Webhooks
+- [Cloudsmith Context](https://apis.io/jsonld/cloudsmith/cloudsmith-context/)
 
-#### Properties
+#### Collections (23)
 
-- [Documentation](https://docs.cloudsmith.com/api)
-- [OpenAPI](https://api.cloudsmith.io/?format=openapi) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
-- [OpenAPI](openapi/cloudsmith-openapi.json) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
-- [Postman Collection](collections/cloudsmith.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/cloudsmith.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [Getting Started](https://help.cloudsmith.io/reference/getting-started-with-the-api)
+Postman and Open Collection request collections.
 
-## Common Properties
+- [Cloudsmith API (v1)](https://apis.io/collections/cloudsmith/open-cloudsmith/)
+- [Cloudsmith API (v1) audit-log API](https://apis.io/collections/cloudsmith/open-cloudsmith-audit-log-api/)
+- [Cloudsmith API (v1) audit-log badges API](https://apis.io/collections/cloudsmith/open-cloudsmith-badges-api/)
+- [Cloudsmith API (v1) audit-log broadcasts API](https://apis.io/collections/cloudsmith/open-cloudsmith-broadcasts-api/)
+- [Cloudsmith API (v1) audit-log bulk-action API](https://apis.io/collections/cloudsmith/open-cloudsmith-bulk-action-api/)
+- [Cloudsmith API (v1) audit-log distros API](https://apis.io/collections/cloudsmith/open-cloudsmith-distros-api/)
+- [Cloudsmith API (v1) audit-log entitlements API](https://apis.io/collections/cloudsmith/open-cloudsmith-entitlements-api/)
+- [Cloudsmith API (v1) audit-log files API](https://apis.io/collections/cloudsmith/open-cloudsmith-files-api/)
+- [Cloudsmith API (v1) audit-log formats API](https://apis.io/collections/cloudsmith/open-cloudsmith-formats-api/)
+- [Cloudsmith API (v1) audit-log metrics API](https://apis.io/collections/cloudsmith/open-cloudsmith-metrics-api/)
+- [Cloudsmith API (v1) audit-log namespaces API](https://apis.io/collections/cloudsmith/open-cloudsmith-namespaces-api/)
+- [Cloudsmith API (v1) audit-log orgs API](https://apis.io/collections/cloudsmith/open-cloudsmith-orgs-api/)
+- [Cloudsmith API (v1) audit-log packages API](https://apis.io/collections/cloudsmith/open-cloudsmith-packages-api/)
+- [Cloudsmith API (v1) audit-log quota API](https://apis.io/collections/cloudsmith/open-cloudsmith-quota-api/)
+- [Cloudsmith API (v1) audit-log rates API](https://apis.io/collections/cloudsmith/open-cloudsmith-rates-api/)
+- [Cloudsmith API (v1) audit-log recycle-bin API](https://apis.io/collections/cloudsmith/open-cloudsmith-recycle-bin-api/)
+- [Cloudsmith API (v1) audit-log repos API](https://apis.io/collections/cloudsmith/open-cloudsmith-repos-api/)
+- [Cloudsmith API (v1) audit-log status API](https://apis.io/collections/cloudsmith/open-cloudsmith-status-api/)
+- [Cloudsmith API (v1) audit-log storage-regions API](https://apis.io/collections/cloudsmith/open-cloudsmith-storage-regions-api/)
+- [Cloudsmith API (v1) audit-log user API](https://apis.io/collections/cloudsmith/open-cloudsmith-user-api/)
+- [Cloudsmith API (v1) audit-log users API](https://apis.io/collections/cloudsmith/open-cloudsmith-users-api/)
+- [Cloudsmith API (v1) audit-log vulnerabilities API](https://apis.io/collections/cloudsmith/open-cloudsmith-vulnerabilities-api/)
+- [Cloudsmith API (v1) audit-log webhooks API](https://apis.io/collections/cloudsmith/open-cloudsmith-webhooks-api/)
 
-- [LinkedIn](https://www.linkedin.com/company/cloudsmith)
+#### Governance rules (1)
+
+Spectral rulesets for the provider's contracts.
+
+- [Cloudsmith API Rules](https://apis.io/rules/cloudsmith/cloudsmith-rules/)
+
+#### Security (2)
+
+Authentication, trust centre, and vulnerability disclosure.
+
+- [Cloudsmith Authentication](https://apis.io/security/cloudsmith/cloudsmith-authentication/)
+- [Cloudsmith Domain Security](https://apis.io/security/cloudsmith/cloudsmith-domain-security/)
+
+#### Plans and pricing (1)
+
+Published plans, tiers and prices.
+
+- [Cloudsmith Plans Pricing](https://apis.io/plans/cloudsmith/cloudsmith-plans-pricing/)
+
+#### Rate limits (1)
+
+Published request limits.
+
+- [Cloudsmith Rate Limits](https://apis.io/rate-limits/cloudsmith/cloudsmith-rate-limits/)
+
+#### FinOps (1)
+
+What the API costs to run, by operation.
+
+- [Cloudsmith Finops](https://apis.io/finops/cloudsmith/cloudsmith-finops/)
+
+## Where to find this API
+
+Links to the company's own pages. This repository publishes no copy of their specifications — the canonical document is theirs and lives at the URLs below.
+
 - [Website](https://cloudsmith.com/)
 - [Documentation](https://docs.cloudsmith.com/)
-- [API Reference](https://docs.cloudsmith.com/api)
-- [Getting Started](https://help.cloudsmith.io/reference/getting-started-with-the-api)
-- [Status Page](https://status.cloudsmith.io/)
-- [Privacy Policy](https://cloudsmith.com/legal/privacy-notice/)
-- [Git Hub](https://github.com/cloudsmith-io)
-- [OpenAPI](openapi/cloudsmith-openapi.json) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
-- [JSON-LD](json-ld/cloudsmith-context.jsonld) — [JSON-LD](https://www.w3.org/TR/json-ld11/)
-- [Spectral Rules](rules/cloudsmith-rules.yml) — [Spectral](https://docs.stoplight.io/docs/spectral)
+- [Getting started](https://help.cloudsmith.io/reference/getting-started-with-the-api)
+- [API reference](https://docs.cloudsmith.com/api)
+- [Blog](https://cloudsmith.com/blog)
+- [Privacy policy](https://cloudsmith.com/legal/privacy-notice/)
+- [Status](https://status.cloudsmith.io/)
 
-## Maintainers
+## API Evangelist rating
 
-**FN:** Kin Lane
-**Email:** kinlane@gmail.com
+**Kin Score 32.3** — thin · rubric 0.24.0 · scored 2026-10-17
+
+| Facet | Score |
+|---|---|
+| Discoverability | 66.1 |
+| Contract quality | 50.1 |
+| Contract governance | 13.6 |
+| Operational transparency | 26.3 |
+| Developer ergonomics | 31.0 |
+| Access clarity | 10.5 |
+
+**Agent readiness 23.7** — agent-aware
+
+| Agent-readiness dimension | Result |
+|---|---|
+| Spec Presence | yes |
+| Agentic Access | derived (partial credit) |
+| Reversibility Documented | — |
+| MCP Server | — |
+| Auth Clarity | bearer (partial credit) |
+| Idempotency | — |
+| Error Semantics | verified |
+| OpenAPI Examples | — |
+| Rate Limit Signal | derived (partial credit) |
+| Event Surface Described | — |
+| Agent Skills | — |
+| Well Known Catalog | — |
+| Consent Identity | — |
+| Agent Card | — |
+| Dry Run Mode | — |
+| Delegated Identity | — |
+| Protected Resource Metadata | — |
+| Dynamic Client Registration | — |
+| Agentic Commerce | — |
+
+**Regulatory alignment 18.6** — Horizontal (data, software, accessibility, platform)
+
+The rubric is published at [github.com/api-evangelist/kin-score](https://github.com/api-evangelist/kin-score). The per-check breakdown behind these numbers — which checks were earned, partial or missed — along with score history and how this provider compares to its peers, is available at [apis.io/providers/cloudsmith/](https://apis.io/providers/cloudsmith/).
+
+## How this profile is made
+
+API Evangelist profiles a company's public API surface the way a developer would find it: the website, developer portal and documentation, the specifications it publishes, its public repositories, and its pricing, status and changelog pages. From that it derives the properties above — contracts split per API, workflows, schemas, collections, governance rules, plans and rate limits — and scores them against the published [Kin Score rubric](https://github.com/api-evangelist/kin-score).
+
+The artifacts are published on [APIs.io](https://apis.io), not in this repository. This repository is the public record for Cloudsmith: the place to say something is wrong, missing or out of date, and to ask for a re-score or a removal.
+
+## Open an issue
+
+- **Something about this listing** — a wrong description, a missing API, a stale artifact or a question about the rating: [open an issue on this repository](https://github.com/api-evangelist/cloudsmith/issues/new).
+- **A new API, or one that is not in the catalog yet** — [submit it on APIs.io](https://apis.io/add/).
+- **Anything else** — [the APIs.io inbox](https://github.com/api-search/inbox/issues/new) or [info@apievangelist.com](mailto:info@apievangelist.com).
